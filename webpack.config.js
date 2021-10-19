@@ -80,12 +80,16 @@ module.exports = (env, argv) => {
           loader: 'babel-loader',
         },
         {
-          test: /\.(png|jpe?g|gif|woff|woff2|ttf|svg|ico)$/i,
+          test: /\.(png|jpe?g|gif|woff|woff2|ttf|ico)$/i,
           use: [
             {
               loader: 'file-loader',
             },
           ],
+        },
+        {
+          test: /\.svg$/,
+          use: ['@svgr/webpack'],
         },
         getStyleRule({
           test: REGEX.CSS,
