@@ -3985,6 +3985,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"classnames@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "classnames@npm:2.3.1"
+  checksum: 14db8889d56c267a591f08b0834989fe542d47fac659af5a539e110cc4266694e8de86e4e3bbd271157dbd831361310a8293e0167141e80b0f03a0f175c80960
+  languageName: node
+  linkType: hard
+
 "clean-css@npm:^4.2.3":
   version: 4.2.3
   resolution: "clean-css@npm:4.2.3"
@@ -6143,6 +6150,7 @@ __metadata:
     "@typescript-eslint/parser": ^4.29.2
     autoprefixer: ^10.3.6
     babel-loader: ^8.2.2
+    classnames: ^2.3.1
     clean-webpack-plugin: ^4.0.0-alpha.0
     css-loader: ^6.2.0
     eslint: ^7.32.0
