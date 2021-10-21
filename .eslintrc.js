@@ -47,6 +47,7 @@ module.exports = {
         '': 'never',
       },
     ],
+    '@typescript-eslint/naming-convention': 'off',
   },
   settings: {
     'import/resolver': {
