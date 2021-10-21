@@ -120,6 +120,7 @@ module.exports = (env, argv) => {
       compress: true,
       port: 9000,
       hot: true,
+      historyApiFallback: true,
     },
     plugins: [
       new MiniCssExtractPlugin(),
