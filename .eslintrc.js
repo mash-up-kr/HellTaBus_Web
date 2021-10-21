@@ -27,6 +27,7 @@ module.exports = {
     project: './tsconfig.json',
   },
   rules: {
+    'import/prefer-default-export': 'off',
     'linebreak-style': 'off',
     'react/prop-types': 0,
     'prettier/prettier': [
