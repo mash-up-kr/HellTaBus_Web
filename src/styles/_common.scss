@@ -1,0 +1,132 @@
+@import './color';
+
+.a11yhidden {
+  clip: rect(0 0 0 0);
+  clip-path: polygon(0 0, 0 0, 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@mixin survey-default-with-button {
+  .container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    height: 100vh;
+    margin-top: 53px;
+    width: 100%;
+
+    .common_input {
+      background-color: #f8f8f8;
+      border: none;
+      border-bottom: 1px solid $primary;
+      font-size: 15px;
+      font-weight: 700;
+      height: 43px;
+      outline: none;
+      text-align: center;
+      width: 248px;
+      margin: {
+        bottom: 10px;
+        top: 20px;
+      }
+    }
+
+    .error__icon {
+      position: absolute;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-top: 53px;
+      text-align: center;
+
+      span {
+        color: $primary;
+      }
+    }
+
+    h3 {
+      font-size: 15px;
+      text-align: center;
+    }
+  }
+
+  .next__button {
+    background-color: $primary;
+    bottom: 0;
+    color: white;
+    height: 54px;
+    position: absolute;
+    width: 100%;
+
+    &:disabled {
+      background-color: $primaryVariant1;
+      color: black;
+    }
+  }
+
+  .error_msg {
+    color: $errorMessage;
+    font-size: 12px;
+    margin-bottom: 6px;
+    top: 0;
+  }
+}
+
+@mixin without-button {
+  .container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    height: 100vh;
+    margin-top: 53px;
+    width: 100%;
+
+    .error__icon {
+      position: absolute;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-top: 53px;
+      text-align: center;
+
+      span {
+        color: $primary;
+      }
+    }
+
+    h3 {
+      font-size: 15px;
+      text-align: center;
+    }
+  }
+
+  .next__button {
+    background-color: $primary;
+    bottom: 0;
+    color: white;
+    height: 54px;
+    position: absolute;
+    width: 100%;
+
+    &:disabled {
+      background-color: $primaryVariant1;
+      color: black;
+    }
+  }
+
+  .error_msg {
+    color: $errorMessage;
+    font-size: 12px;
+    margin-bottom: 6px;
+    top: 0;
+  }
+}
