@@ -27,6 +27,7 @@ module.exports = {
     project: './tsconfig.json',
   },
   rules: {
+    'import/prefer-default-export': 'off',
     'linebreak-style': 'off',
     'react/prop-types': 0,
     'prettier/prettier': [
@@ -35,5 +36,27 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+        '': 'never',
+      },
+    ],
+    '@typescript-eslint/naming-convention': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'react/require-default-props': [0],
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+    'import/extensions': ['.js', '.mjs', '.jsx', '.ts', '.tsx'],
   },
 };
