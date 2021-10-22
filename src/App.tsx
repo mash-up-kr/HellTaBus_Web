@@ -6,7 +6,7 @@ import {
   HOME_PAGE,
   NOT_FOUND_PAGE,
   SURVEY_PAGE,
-} from './consts/route';
+} from '@/consts/route';
 import { Home, Survey, ExerciseChoice, ExerciseRoutine, NotFound } from '@/pages';
 
 function App() {
