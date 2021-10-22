@@ -1,0 +1,19 @@
+@import '../../styles/common';
+
+@include without-button;
+
+.split_input {
+  background-color: #f8f8f8;
+  border: none;
+  border-bottom: 1px solid $primary;
+  font-size: 1rem;
+  font-weight: 700;
+  height: 2.75rem;
+  outline: none;
+  text-align: center;
+  width: 2.5rem;
+  margin: {
+    bottom: 0.625rem;
+    top: 1.25rem;
+  }
+}

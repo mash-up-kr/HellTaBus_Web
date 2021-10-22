@@ -1,0 +1,8 @@
+@import '../../styles/common';
+
+.material-icons-outlined {
+  padding-left: 12.5rem;
+  padding-top: 0.625rem;
+}
+
+@include survey-default-with-button;
