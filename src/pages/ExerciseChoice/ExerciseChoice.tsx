@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
-function ExerciseChoice(): ReactElement {
+function ExerciseChoice() {
   return <div />;
 }
 

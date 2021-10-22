@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { EXERCISE_CHOICE_PAGE, EXERCISE_ROUTINE_PAGE, SURVEY_PAGE } from '@/consts/route';
@@ -6,7 +6,7 @@ import style from './home.module.scss';
 
 const { s_navigator } = style;
 
-function Home(): ReactElement {
+function Home() {
   return (
     <nav className={classNames(s_navigator)}>
       <ul>

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import {
   EXERCISE_CHOICE_PAGE,
@@ -9,7 +9,7 @@ import {
 } from './consts/route';
 import { Home, Survey, ExerciseChoice, ExerciseRoutine, NotFound } from '@/pages';
 
-function App(): ReactElement {
+function App() {
   return (
     <Switch>
       <Route exact path={HOME_PAGE} component={Home} />

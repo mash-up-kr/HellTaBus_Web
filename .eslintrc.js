@@ -48,6 +48,8 @@ module.exports = {
       },
     ],
     '@typescript-eslint/naming-convention': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'react/require-default-props': [0],
   },
   settings: {
     'import/resolver': {
