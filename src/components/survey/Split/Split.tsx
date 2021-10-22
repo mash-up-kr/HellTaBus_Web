@@ -5,6 +5,7 @@ interface Props {
   setPageCount: (page: number) => void;
 }
 
-const Split = ({ setSplit, setPageCount }: Props) => {};
-
+const Split = ({ setSplit, setPageCount }: Props): JSX.Element => {
+  return <div />;
+};
 export default Split;

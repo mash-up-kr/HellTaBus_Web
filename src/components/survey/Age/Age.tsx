@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 interface Props {
   nickname: string;
@@ -6,6 +6,8 @@ interface Props {
   setPageCount: (page: number) => void;
 }
 
-const Age = ({ nickname, setAge, setPageCount }: Props) => {};
+const Age = ({ nickname, setAge, setPageCount }: Props): JSX.Element => {
+  return <div />;
+};
 
 export default Age;

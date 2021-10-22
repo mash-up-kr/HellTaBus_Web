@@ -6,6 +6,8 @@ interface Props {
   setPageCount: (page: number) => void;
 }
 
-const Nickname = ({ nickname, setNickname, setPageCount }: Props) => {};
+const Nickname = ({ nickname, setNickname, setPageCount }: Props): JSX.Element => {
+  return <div />;
+};
 
 export default Nickname;

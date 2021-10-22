@@ -7,6 +7,7 @@ interface Props {
   setPageCount: (page: number) => void;
 }
 
-const Gender = ({ nickname, gender, setGender, setPageCount }: Props) => {};
-
+const Gender = ({ nickname, gender, setGender, setPageCount }: Props): JSX.Element => {
+  return <div />;
+};
 export default Gender;
