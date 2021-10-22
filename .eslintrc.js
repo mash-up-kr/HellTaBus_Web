@@ -27,6 +27,7 @@ module.exports = {
     project: './tsconfig.json',
   },
   rules: {
+    'import/prefer-default-export': 'off',
     'linebreak-style': 'off',
     'react/prop-types': 0,
     'prettier/prettier': [
@@ -46,6 +47,9 @@ module.exports = {
         '': 'never',
       },
     ],
+    '@typescript-eslint/naming-convention': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'react/require-default-props': [0],
   },
   settings: {
     'import/resolver': {
