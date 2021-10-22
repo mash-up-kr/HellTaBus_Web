@@ -1,0 +1,17 @@
+@import '../../styles/common';
+
+@include survey-default-with-button;
+
+.s_header {
+  align-items: center;
+  display: flex;
+  height: 88px;
+  padding: 0 16px;
+  width: 360px;
+
+  .s_previous__button {
+    background-color: $background;
+    height: 40px;
+    width: 40px;
+  }
+}
