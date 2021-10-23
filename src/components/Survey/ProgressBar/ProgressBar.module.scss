@@ -1,7 +1,7 @@
 @import '../../styles/color';
 
 .s_wrapper {
-  background-color: #c5c5c5;
+  background-color: $colorDisable;
   border-radius: 8px;
   height: 10px;
   text-align: right;
@@ -16,7 +16,7 @@
   }
 
   .s_step {
-    color: #777;
+    color: $onPrimary;
     font-size: 1rem;
     text-align: right;
   }
