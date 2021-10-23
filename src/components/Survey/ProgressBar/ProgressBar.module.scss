@@ -2,14 +2,14 @@
 
 .s_wrapper {
   background-color: #c5c5c5;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   height: 10px;
   text-align: right;
   width: 300px;
 
   .s_progress {
     background-color: $primary;
-    border-radius: 1rem;
+    border-radius: 16px;
     height: 10px;
     transition: 1s ease;
     transition-delay: 0.5s;
