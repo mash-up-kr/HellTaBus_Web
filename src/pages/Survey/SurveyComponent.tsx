@@ -1,6 +1,6 @@
 import React from 'react';
 import { SURVEY_STATE_KEY } from '@/consts/keys';
-import { SurveyState } from '@/consts/types';
+import { SurveyState } from '@/types/Survey/Survey';
 import { Age, Gender, Nickname, BodyInfo, Split } from '@/components/survey';
 
 interface Props {

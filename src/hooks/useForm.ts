@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SurveyState } from '@/consts/types';
+import { SurveyState } from '@/types/Survey/Survey';
 
 interface Props {
   SURVEY_INITIALSTATE: SurveyState;
