@@ -3,7 +3,7 @@ import styles from './ProgressBar.module.scss';
 
 const { s_wrapper, s_step, s_progress, s_currentStep } = styles;
 
-function ProgressBar({ percent }: { percent: number }): JSX.Element {
+const ProgressBar = ({ percent }: { percent: number }) => {
   const [value, setValue] = useState(percent * 312 - 60);
 
   useEffect(() => {
@@ -18,6 +18,6 @@ function ProgressBar({ percent }: { percent: number }): JSX.Element {
       </span>
     </div>
   );
-}
+};
 
 export default ProgressBar;
