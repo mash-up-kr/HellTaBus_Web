@@ -1,0 +1,28 @@
+@import '@/styles/color';
+
+.s_wrapper {
+  background-color: $colorDisable;
+  border-radius: 8px;
+  height: 10px;
+  text-align: right;
+  width: 300px;
+
+  .s_progress {
+    background-color: $primary;
+    border-radius: 16px;
+    height: 10px;
+    transition: 1s ease;
+    transition-delay: 0.5s;
+  }
+
+  .s_step {
+    color: $primaryVariant4;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: right;
+  }
+
+  .s_currentStep {
+    color: $primary;
+  }
+}
