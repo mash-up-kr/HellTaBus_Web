@@ -15,7 +15,7 @@ const Header = ({ currentPage, setPageCount }: Props) => (
     <button
       type="button"
       className={classNames(s_previous__button)}
-      onClick={() => setPageCount(currentPage - 1)}
+      onClick={() => setPageCount((prevPageCount) => prevPageCount - 1)}
     >
       <ArrowBackIcon />
     </button>
