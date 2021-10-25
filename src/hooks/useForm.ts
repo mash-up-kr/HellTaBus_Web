@@ -16,15 +16,11 @@ const useForm = ({ SURVEY_INITIALSTATE }: Props) => {
     }));
   };
 
-  const setPageCount = (newPageCount: number) => {
-    setCurrentPage(newPageCount);
-  };
-
   return {
     currentPage,
     surveyState,
     setState,
-    setPageCount,
+    setCurrentPage,
   };
 };
 

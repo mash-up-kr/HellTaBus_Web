@@ -5,11 +5,11 @@ import SurveyComponent from './SurveyComponent';
 import { SURVEY_INITIALSTATE } from '@/consts/state';
 
 const Survey = (): any => {
-  const { currentPage, surveyState, setState, setPageCount } = useForm({
+  const { currentPage, surveyState, setState, setCurrentPage } = useForm({
     SURVEY_INITIALSTATE,
   });
 
-  const components = SurveyComponent({ surveyState, setState, setPageCount });
+  const components = SurveyComponent({ surveyState, setState, setCurrentPage });
 
   return components.map((component, page) => {
     if (currentPage === page) {
