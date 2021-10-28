@@ -2,11 +2,19 @@ import React from 'react';
 import styles from './survey.module.scss';
 import useForm from '../../hooks/useForm';
 import SurveyComponent from './SurveyComponent';
-import { SURVEY_INITIALSTATE } from '@/consts/state';
+
+const initialState = {
+  nickname: '',
+  gender: '',
+  age: 0,
+  height: 0,
+  weight: 0,
+  split: 0,
+};
 
 const Survey = (): any => {
   const { currentPage, surveyState, setState, setCurrentPage } = useForm({
-    SURVEY_INITIALSTATE,
+    initialState,
   });
 
   const components = SurveyComponent({ surveyState, setState, setCurrentPage });

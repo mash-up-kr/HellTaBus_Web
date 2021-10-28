@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { SurveyState } from '@/types/Survey/Survey';
 
 interface Props {
-  SURVEY_INITIALSTATE: SurveyState;
+  initialState: SurveyState;
 }
 
-const useForm = ({ SURVEY_INITIALSTATE }: Props) => {
+const useForm = ({ initialState }: Props) => {
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const [surveyState, setSurveyState] = useState<SurveyState>(SURVEY_INITIALSTATE);
+  const [surveyState, setSurveyState] = useState<SurveyState>(initialState);
 
   const setState = (key: string) => (value: string | number) => {
     setSurveyState((prev) => ({
