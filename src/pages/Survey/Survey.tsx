@@ -13,11 +13,11 @@ const initialState = {
 };
 
 const Survey = (): any => {
-  const { currentPage, surveyState, setState, setCurrentPage } = useForm({
+  const { currentPage, surveyState, setSurveyStateByKey, setCurrentPage } = useForm({
     initialState,
   });
 
-  const components = SurveyComponent({ surveyState, setState, setCurrentPage });
+  const components = SurveyComponent({ surveyState, setSurveyStateByKey, setCurrentPage });
 
   return components.map((component, page) => {
     if (currentPage === page) {

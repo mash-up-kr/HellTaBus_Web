@@ -9,7 +9,7 @@ const useForm = ({ initialState }: Props) => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [surveyState, setSurveyState] = useState<SurveyState>(initialState);
 
-  const setState = (key: string) => (value: string | number) => {
+  const setSurveyStateByKey = (key: string) => (value: string | number) => {
     setSurveyState((prev) => ({
       ...prev,
       [key]: value,
@@ -19,7 +19,7 @@ const useForm = ({ initialState }: Props) => {
   return {
     currentPage,
     surveyState,
-    setState,
+    setSurveyStateByKey,
     setCurrentPage,
   };
 };
