@@ -1,3 +1,2 @@
-@import './_color';
-@import './_reset';
-@import './_common';
+@forward './_reset';
+@forward './_common';

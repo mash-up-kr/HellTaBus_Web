@@ -1,3 +1,5 @@
+@use './color';
+
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
 /**
@@ -139,8 +141,8 @@ table {
 }
 
 body {
-  background-color: $background;
-  color: $onBackground;
+  background-color: color.$background;
+  color: color.$onBackground;
   font-family: 'Spoqa Han Sans Neo', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -157,7 +159,7 @@ body *::after {
 }
 
 a {
-  color: $onBackground;
+  color: color.$onBackground;
   text-decoration: none;
 }
 
@@ -167,7 +169,7 @@ img {
 
 button {
   border-color: transparent;
-  color: $onBackground;
+  color: color.$onBackground;
   cursor: pointer;
   user-select: none;
 }
