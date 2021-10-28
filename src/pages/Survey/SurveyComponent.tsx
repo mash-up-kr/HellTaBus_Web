@@ -1,7 +1,7 @@
 import React from 'react';
 import { SURVEY_STATE_KEY } from '@/consts/keys';
 import { SurveyState } from '@/types/Survey/Survey';
-import { Age, Gender, Nickname, BodyInfo, Split } from '@/components/survey';
+import { Age, Gender, Nickname, Weight, Height, Split } from '@/components/survey';
 
 interface Props {
   surveyState: SurveyState;
@@ -14,28 +14,32 @@ const SurveyComponent = ({ surveyState, setSurveyStateByKey, setCurrentPage }: P
     <Nickname
       nickname={surveyState.nickname}
       setNickname={setSurveyStateByKey(SURVEY_STATE_KEY.NICKNAME)}
-      setCurrentPage={setCurrentPage}
+      handleClickNextButton={(prevPage) => setCurrentPage(prevPage + 1)}
     />,
     <Gender
       nickname={surveyState.nickname}
       gender={surveyState.gender}
       setGender={setSurveyStateByKey(SURVEY_STATE_KEY.GENDER)}
-      setCurrentPage={setCurrentPage}
+      handleClickNextButton={(prevPage) => setCurrentPage(prevPage + 1)}
     />,
     <Age
       nickname={surveyState.nickname}
       setAge={setSurveyStateByKey(SURVEY_STATE_KEY.AGE)}
-      setCurrentPage={setCurrentPage}
+      handleClickNextButton={(prevPage) => setCurrentPage(prevPage + 1)}
     />,
-    <BodyInfo
+    <Weight
       nickname={surveyState.nickname}
-      setHeight={setSurveyStateByKey(SURVEY_STATE_KEY.HEIGHT)}
       setWeight={setSurveyStateByKey(SURVEY_STATE_KEY.WEIGHT)}
-      setCurrentPage={setCurrentPage}
+      handleClickNextButton={(prevPage) => setCurrentPage(prevPage + 1)}
+    />,
+    <Height
+      nickname={surveyState.nickname}
+      setHeight={setSurveyStateByKey(SURVEY_STATE_KEY.WEIGHT)}
+      handleClickNextButton={(prevPage) => setCurrentPage(prevPage + 1)}
     />,
     <Split
       setSplit={setSurveyStateByKey(SURVEY_STATE_KEY.SPLIT)}
-      setCurrentPage={setCurrentPage}
+      handleClickNextButton={(prevPage) => setCurrentPage(prevPage + 1)}
     />,
   ];
 };

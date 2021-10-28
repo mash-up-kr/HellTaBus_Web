@@ -3,10 +3,10 @@ import React from 'react';
 
 interface Props {
   setSplit: (value: number) => void;
-  setCurrentPage: (page: number) => void;
+  handleClickNextButton: (currentPage: number) => void;
 }
 
-const Split = ({ setSplit, setCurrentPage }: Props): JSX.Element => {
+const Split = ({ setSplit, handleClickNextButton }: Props): JSX.Element => {
   return <div />;
 };
 export default Split;

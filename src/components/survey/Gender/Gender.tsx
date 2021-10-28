@@ -4,10 +4,10 @@ interface Props {
   nickname: string;
   gender: string;
   setGender: (value: string) => void;
-  setCurrentPage: (page: number) => void;
+  handleClickNextButton: (currentPage: number) => void;
 }
 
-const Gender = ({ nickname, gender, setGender, setCurrentPage }: Props): JSX.Element => {
+const Gender = ({ nickname, gender, setGender, handleClickNextButton }: Props): JSX.Element => {
   return <div />;
 };
 export default Gender;
