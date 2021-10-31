@@ -1,28 +1,37 @@
-@import '@/styles/color';
+@use '@/styles/color';
 
-.s_wrapper {
-  background-color: $colorDisable;
-  border-radius: 8px;
-  height: 10px;
+.s_container {
+  background-color: color.$disable;
+  border-radius: 0.5rem;
+  height: 1rem;
+  margin-bottom: 53px;
   text-align: right;
-  width: 300px;
+  width: 31.2rem;
 
   .s_progress {
-    background-color: $primary;
-    border-radius: 16px;
-    height: 10px;
-    transition: 1s ease;
+    background-color: color.$primary;
+    border-radius: 10px;
+    height: 1rem;
+    transition: width 1s ease;
     transition-delay: 0.5s;
   }
 
-  .s_step {
-    color: $primaryVariant4;
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: right;
+  .s_stepContainer {
+    color: color.$onBackground2;
+    display: flex;
+    font-size: 1.2rem;
+    font-weight: 700;
+    justify-content: space-between;
+    margin-top: 6px;
+  }
+
+  .s_stepComment {
+    color: color.$primary;
   }
 
   .s_currentStep {
-    color: $primary;
+    span {
+      color: color.$primary;
+    }
   }
 }
