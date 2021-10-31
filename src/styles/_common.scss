@@ -1,3 +1,5 @@
+@use '@/styles/color';
+
 .s_a11yHidden {
   clip: rect(0 0 0 0);
   clip-path: polygon(0 0, 0 0, 0 0);
@@ -11,4 +13,109 @@
 
 .s_whiteSpace {
   display: block;
+}
+
+@mixin survey-default-with-button {
+  .s_container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+
+    .s_title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      margin-top: 53px;
+
+      span {
+        color: color.$primary;
+      }
+    }
+    .s_inputContainer {
+      position: relative;
+    }
+
+    .s_errorIcon {
+      bottom: 20px;
+      position: absolute;
+      right: 10px;
+    }
+
+    .s_commonInput {
+      background-color: #f8f8f8;
+      border: none;
+      border-bottom: 1px solid color.$primary;
+      font-size: 1.5rem;
+      font-weight: 700;
+      height: 4.3rem;
+      outline: none;
+      text-align: center;
+      width: 24.8rem;
+      margin: {
+        bottom: 10px;
+        top: 20px;
+      }
+    }
+
+    .s_errorInput {
+      border-bottom: 1px solid color.$error;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  .s_errorMsg {
+    color: color.$error;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+    top: 0;
+  }
+}
+
+@mixin without-button {
+  .s_container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+
+    .s_inputContainer {
+      position: relative;
+    }
+
+    .s_errorIcon {
+      bottom: 20px;
+      position: absolute;
+      right: 10px;
+    }
+
+    .s_title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      margin-top: 53px;
+
+      span {
+        color: color.$primary;
+      }
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  .s_errorMsg {
+    color: color.$error;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+    top: 0;
+  }
 }
