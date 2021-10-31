@@ -1,0 +1,82 @@
+@use '@/styles/color';
+
+.s_deem {
+  background: linear-gradient(107.56deg, #2b2d31 0%, #404853 100%);
+  border-radius: 3rem 3rem 0 0;
+  flex-grow: 1;
+  text-align: left;
+
+  .s_recommendSection {
+    background: linear-gradient(180deg, rgba(96, 29, 206, 0.8) 0%, rgba(96, 29, 206, 0.4) 100%);
+    border-radius: 3rem 3rem 0 0;
+    height: 100%;
+    padding: 3.6rem 0 4.7rem;
+  }
+
+  .s_exerciseStart {
+    background: linear-gradient(90.53deg, #6c26de 0.46%, #863dff 99.63%);
+    border: 0;
+    border-radius: 3rem;
+    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.08);
+    color: color.$onPrimary;
+    font-size: 1.6rem;
+    font-weight: 700;
+    height: 5.4rem;
+    line-height: 2.1rem;
+    margin-bottom: 3.2rem;
+    margin-left: 2.4rem;
+    text-align: center;
+    width: 17.1rem;
+  }
+
+  .s_carouselSection {
+    .s_routineMessage {
+      color: color.$onPrimary;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1.6rem;
+      padding: 0 2.4rem;
+      text-align: left;
+      span {
+        line-height: 3.2rem;
+      }
+      em {
+        font-style: normal;
+      }
+
+      .s_split_number {
+        align-items: center;
+        background: rgba(249, 247, 252, 0.2);
+        border: 0.1px solid rgba(249, 247, 252, 0.5);
+        border-radius: 0.8rem;
+        color: color.$primaryVariant1;
+        display: flex;
+        font-size: 1.4rem;
+        height: 2.4rem;
+        justify-content: center;
+        margin-bottom: 0.8rem;
+        width: 5.5rem;
+      }
+    }
+  }
+
+  .s_otherExercise {
+    background: transparent;
+    border: 0;
+    color: color.$onPrimary;
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.9rem;
+    margin: 0 auto;
+    margin-top: 2.4rem;
+
+    .s_rightArrow {
+      margin-left: 0.9rem;
+    }
+
+    & * {
+      vertical-align: middle;
+    }
+  }
+}
