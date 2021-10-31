@@ -1,0 +1,31 @@
+@use '@/styles/color';
+
+.s_exercise {
+  margin: 0 0.4rem 0 0;
+  margin: 0 0.4rem;
+  div:first-child {
+    align-items: center;
+    background: color.$onPrimary;
+    border-radius: 1.6rem;
+    display: flex;
+    height: 14rem;
+    justify-content: center;
+    margin-bottom: 0.8rem;
+    width: 12rem;
+  }
+  &:first-child {
+    margin: 0 0.4rem 0 0;
+  }
+  &:last-child {
+    margin: 0 0 0 0.4rem;
+  }
+
+  .s_exerciseNameWraper {
+    color: color.$onPrimary;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.6rem;
+    text-align: center;
+    word-break: keep-all;
+  }
+}

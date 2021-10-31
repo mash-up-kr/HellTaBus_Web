@@ -1,0 +1,9 @@
+.s_carousel {
+  display: flex;
+  flex-flow: row nowrap;
+  overflow-x: scroll;
+  width: 100%;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

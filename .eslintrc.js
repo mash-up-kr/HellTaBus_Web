@@ -50,6 +50,7 @@ module.exports = {
     '@typescript-eslint/naming-convention': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/require-default-props': [0],
+    'react/no-array-index-key': 'off',
   },
   settings: {
     'import/resolver': {
