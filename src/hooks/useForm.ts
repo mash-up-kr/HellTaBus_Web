@@ -1,12 +1,23 @@
 import { useState } from 'react';
-import { SurveyState } from '@/types/Survey/Survey';
 
-interface Props {
-  initialState: SurveyState;
+interface SurveyState {
+  nickname: string;
+  gender: string;
+  age: number;
+  height: number;
+  weight: number;
+  split: number;
 }
 
-const useForm = ({ initialState }: Props) => {
-  const [currentPage, setCurrentPage] = useState<number>(0);
+const useForm = () => {
+  const initialState = {
+    nickname: '',
+    gender: '',
+    age: 0,
+    height: 0,
+    weight: 0,
+    split: 0,
+  };
   const [surveyState, setSurveyState] = useState<SurveyState>(initialState);
 
   const setSurveyStateByKey = (key: string) => (value: string | number) => {
@@ -16,12 +27,7 @@ const useForm = ({ initialState }: Props) => {
     }));
   };
 
-  return {
-    currentPage,
-    surveyState,
-    setSurveyStateByKey,
-    setCurrentPage,
-  };
+  return { surveyState, setSurveyStateByKey };
 };
 
 export default useForm;
