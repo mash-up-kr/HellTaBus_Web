@@ -7,11 +7,14 @@ interface Props {
 
 const { s_wrapper, s_step, s_progress, s_currentStep } = styles;
 
+const TOTAL_LENGTH = 312;
+const TOTAL_STEP = 6;
+
 const ProgressBar = ({ percent }: Props) => {
-  const [progress, setProgress] = useState(percent * 312 - 60);
+  const [progress, setProgress] = useState(percent * TOTAL_LENGTH - TOTAL_STEP);
 
   useEffect(() => {
-    setProgress(percent * 312);
+    setProgress((percent * TOTAL_LENGTH) / TOTAL_STEP);
   }, [percent]);
 
   return (
