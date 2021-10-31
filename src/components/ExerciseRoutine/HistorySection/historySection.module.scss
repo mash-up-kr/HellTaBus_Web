@@ -1,0 +1,42 @@
+@use '@/styles/color';
+
+.s_historySection {
+  color: color.$onBackground1;
+  font-size: 1.6rem;
+  height: 15.6rem;
+  margin-bottom: 2.2rem;
+
+  .s_calendarSection {
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+    padding: 0 2.4rem;
+    text-align: left;
+
+    em {
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    strong {
+      // TODO: 디자인 시안에 color변수로 추가되면 변경
+      color: #8f57eb;
+    }
+  }
+}
+
+.s_appBar {
+  height: 5.6rem;
+  position: relative;
+
+  button {
+    background-color: transparent;
+    border: 0;
+    height: 4rem;
+    padding: 1rem;
+    position: absolute;
+    right: 1.6rem;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+    width: 4rem;
+  }
+}
