@@ -12,7 +12,7 @@ const TOTAL_LENGTH = 312;
 const TOTAL_STEP = 6;
 
 const ProgressBar = ({ step }: Props) => {
-  const [progress, setProgress] = useState(step * TOTAL_LENGTH - TOTAL_LENGTH / TOTAL_STEP);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     setProgress((step * TOTAL_LENGTH) / TOTAL_STEP);
