@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
-import styles from './progressBar.module.scss';
+import styles from './_progressBar.module.scss';
 
 interface Props {
   step: number;
