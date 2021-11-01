@@ -1,0 +1,20 @@
+@use '@/styles/color.scss';
+@use '@/styles/common.scss';
+
+@include common.survey-default-with-button;
+
+.s_genderButton {
+  background-color: color.$background;
+  border: 0.1rem solid color.$disable;
+  border-radius: 1.2rem;
+  color: color.$disable;
+  height: 5.4rem;
+  margin: 0 0.2rem;
+  width: 14.6rem;
+}
+
+.s_selectedGender {
+  border: 0.15rem solid color.$primary;
+  color: color.$primary;
+  font-weight: 700;
+}

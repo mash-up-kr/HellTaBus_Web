@@ -1,0 +1,37 @@
+@use '@/styles/color';
+
+.s_container {
+  background-color: color.$disable;
+  border-radius: 0.5rem;
+  height: 1rem;
+  margin-bottom: 5.3rem;
+  text-align: right;
+  width: 31.2rem;
+
+  .s_progress {
+    background-color: color.$primary;
+    border-radius: 1rem;
+    height: 1rem;
+    transition: width 1s ease;
+    transition-delay: 0.5s;
+  }
+
+  .s_stepContainer {
+    color: color.$onBackground2;
+    display: flex;
+    font-size: 1.2rem;
+    font-weight: 700;
+    justify-content: space-between;
+    margin-top: 0.6rem;
+  }
+
+  .s_stepComment {
+    color: color.$primary;
+  }
+
+  .s_currentStep {
+    span {
+      color: color.$primary;
+    }
+  }
+}

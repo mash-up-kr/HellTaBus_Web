@@ -1,0 +1,9 @@
+@use '@/styles/color';
+
+.s_exerciseRoutine {
+  background-color: color.$primaryVariant1;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100vh;
+  text-align: center;
+}
