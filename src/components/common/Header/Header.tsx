@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from './header.module.scss';
+import style from './header.module.scss';
 import Back from '@/assets/back.svg';
 
-const { s_header, s_previousButton } = styles;
+const { s_header, s_previousButton } = style;
 
 interface Props {
   handleClickBackButton: () => void;

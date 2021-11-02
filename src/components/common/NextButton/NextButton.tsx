@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from './nextButton.module.scss';
+import style from './nextButton.module.scss';
 
-const { s_nextButton } = styles;
+const { s_nextButton } = style;
 
 interface Props {
   handleClickNextButton: () => void;

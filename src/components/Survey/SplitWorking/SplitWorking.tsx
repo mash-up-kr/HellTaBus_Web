@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from './splitWorking.module.scss';
+import style from './splitWorking.module.scss';
 
-const { s_container, s_selectedContainer, s_content, s_title, s_description } = styles;
+const { s_container, s_selectedContainer, s_content, s_title, s_description } = style;
 
 interface Props {
   selectedSplit: number;

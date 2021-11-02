@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import styles from './gender.module.scss';
+import style from './gender.module.scss';
 import NextButton from '@/components/common/NextButton/NextButton';
 
-const { s_container, s_title, s_genderButton, s_selectedGender } = styles;
+const { s_container, s_title, s_genderButton, s_selectedGender } = style;
 
 interface Props {
   nickname: string;

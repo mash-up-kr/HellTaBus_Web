@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import styles from './nickname.module.scss';
+import style from './nickname.module.scss';
 import Coolicon from '@/assets/coolicon.svg';
 import NextButton from '@/components/common/NextButton/NextButton';
 
@@ -12,7 +12,7 @@ const {
   s_title,
   s_errorMsg,
   s_errorIcon,
-} = styles;
+} = style;
 
 interface Props {
   nickname: string;

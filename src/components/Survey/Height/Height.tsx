@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import styles from './height.module.scss';
+import style from './height.module.scss';
 import NextButton from '@/components/common/NextButton/NextButton';
 import Coolicon from '@/assets/coolicon.svg';
 
@@ -12,7 +12,7 @@ const {
   s_inputContainer,
   s_errorMsg,
   s_errorIcon,
-} = styles;
+} = style;
 
 interface Props {
   nickname: string;
