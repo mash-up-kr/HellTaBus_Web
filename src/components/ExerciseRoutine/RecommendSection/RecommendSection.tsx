@@ -1,6 +1,6 @@
 import React from 'react';
 import { RecommendCarousel } from '@/components';
-import RightArrow from '@/assets/images/right-arrow.svg';
+import RightArrow from '@/assets/svg/right-arrow.svg';
 import style from './recommendSection.module.scss';
 import { Exercise } from '@/types/exercise';
 
