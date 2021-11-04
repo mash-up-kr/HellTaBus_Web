@@ -15,11 +15,12 @@ const WeekHistory = () => {
 
   const currentWeek = useMemo(
     () =>
-      new Array(7)
-        .fill(0)
-        .map((_, day) =>
-          new Date(currentYear, currentMonth, currentDate - currentDay + day).getDate()
-        ),
+      new Array(7).fill(0).map((_, dayOfWeek) => {
+        const diffDate = currentDay - dayOfWeek;
+        const dateOfWeek = currentDate - diffDate;
+        return new Date(currentYear, currentMonth, dateOfWeek).getDate();
+      }),
+
     [currentDate, currentDay, currentMonth, currentYear]
   );
 
