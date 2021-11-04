@@ -1,5 +1,5 @@
 import React from 'react';
-import Setting from '@/assets/svg/setting.svg';
+import Setting from '@/assets/images/setting.svg';
 import style from './historySection.module.scss';
 import { WeekHistory } from '@/components';
 
