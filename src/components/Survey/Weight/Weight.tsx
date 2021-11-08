@@ -27,9 +27,6 @@ const Weight = ({ nickname, weight, setWeight, setNextPage }: Props) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
 
   const isValidWeight = () => {
-    // if (!weight) {
-    //   return '정보를 입력해 주세요';
-    // }
     if (Number.isNaN(weight)) {
       return '몸무게는 숫자만 입력 가능합니다.';
     }

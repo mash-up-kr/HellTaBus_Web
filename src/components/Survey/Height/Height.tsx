@@ -27,9 +27,6 @@ function Height({ nickname, height, setHeight, setNextPage }: Props): JSX.Elemen
   const [errorMessage, setErrorMessage] = useState<string>('');
 
   const isValidHeight = () => {
-    if (!height) {
-      return '정보를 입력해 주세요';
-    }
     if (Number.isNaN(height)) {
       return '키는 숫자만 입력 가능합니다.';
     }

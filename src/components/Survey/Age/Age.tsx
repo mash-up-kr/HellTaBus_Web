@@ -27,9 +27,6 @@ function Age({ nickname, age, setAge, setNextPage }: Props): JSX.Element {
   const [errorMessage, setErrorMessage] = useState<string>('');
 
   const isValidAge = (userAge: number) => {
-    if (!userAge) {
-      return '정보를 입력해 주세요';
-    }
     if (Number.isNaN(userAge)) {
       return '나이에는 숫자만 입력이 가능합니다.';
     }
