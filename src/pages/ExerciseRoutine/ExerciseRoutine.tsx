@@ -2,9 +2,10 @@ import React from 'react';
 import style from './exerciseRoutine.module.scss';
 import { HistorySection, RecommendSection } from '@/components';
 import { Exercise } from '@/types/exercise';
+import Setting from '@/assets/images/setting.svg';
 import dumbbellVentOverLow from '@/assets/images/dumbbell-vent-over-low.jpg';
 
-const { s_exerciseRoutine } = style;
+const { s_exerciseRoutine, s_navigator } = style;
 
 // TODO: api를 붙히면 삭제 할 더미데이터
 const recommendExerciseList: Exercise[] = [
@@ -21,6 +22,11 @@ function ExerciseRoutine() {
   return (
     <section className={s_exerciseRoutine}>
       <h2 className="s_a11yHidden">헬스 루틴 추천</h2>
+      <nav className={s_navigator}>
+        <button type="button">
+          <Setting width="20" height="20" />
+        </button>
+      </nav>
       <HistorySection />
       <RecommendSection recommendExerciseList={recommendExerciseList} />
     </section>
