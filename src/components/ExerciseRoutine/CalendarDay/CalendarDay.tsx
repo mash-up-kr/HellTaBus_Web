@@ -19,10 +19,8 @@ const CalendarDay = ({ day, date, didExercise }: Props) => {
         [s_today]: isToday,
       })}
     >
-      <button type="button">
-        <span className={s_day}>{day}</span>
-        <span className={s_date}>{date}</span>
-      </button>
+      <span className={s_day}>{day}</span>
+      <span className={s_date}>{date}</span>
     </li>
   );
 };
