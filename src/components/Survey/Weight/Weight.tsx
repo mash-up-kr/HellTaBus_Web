@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import styles from './weight.module.scss';
 import Coolicon from '@/assets/coolicon.svg';
@@ -25,27 +26,36 @@ const Weight = ({ nickname, weight, setWeight, setNextPage }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!weight);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
-  const checkWeightValidation = (userWeight: number) => {
-    if (!userWeight) {
-      setErrorMessage('정보를 입력해 주세요');
-      setIsDisabled(true);
-    } else if (Number.isNaN(userWeight)) {
-      setErrorMessage('몸무게는 숫자만 입력 가능합니다.');
-      setIsDisabled(true);
-    } else if (userWeight > 1000) {
-      setErrorMessage(`정말 ${userWeight}kg 맞으신가요!?🤔`);
-      setIsDisabled(true);
-    } else {
-      setErrorMessage('');
-      setIsDisabled(false);
+  const isValidWeight = () => {
+    // if (!weight) {
+    //   return '정보를 입력해 주세요';
+    // }
+    if (Number.isNaN(weight)) {
+      return '몸무게는 숫자만 입력 가능합니다.';
     }
+    if (weight > 1000) {
+      return `정말 ${weight}kg 맞으신가요!?🤔`;
+    }
+
+    return null;
   };
+
+  useEffect(() => {
+    const weightError = isValidWeight();
+
+    if (weightError) {
+      setIsDisabled(true);
+      setErrorMessage(weightError);
+    } else {
+      setIsDisabled(false);
+      setErrorMessage('');
+    }
+  }, [weight]);
 
   const handleChangeWeight = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value }: { value: string } = e.target;
 
     setWeight(+value);
-    checkWeightValidation(+value);
   };
 
   return (
@@ -56,16 +66,18 @@ const Weight = ({ nickname, weight, setWeight, setNextPage }: Props) => {
       <div className={classNames(s_inputContainer)}>
         <input
           className={classNames(s_commonInput, {
-            [s_errorInput]: errorMessage,
+            [s_errorInput]: weight !== 0 && errorMessage,
           })}
           type="text"
           placeholder="몸무게 입력"
           value={weight || ''}
           onChange={handleChangeWeight}
         />
-        {errorMessage && <Coolicon className={classNames(s_errorIcon)} />}
+        {weight !== 0 && errorMessage && <Coolicon className={classNames(s_errorIcon)} />}
       </div>
-      <span className={classNames(s_errorMsg)}>{errorMessage}</span>
+      {weight !== 0 && errorMessage && (
+        <span className={classNames(s_errorMsg)}>{errorMessage}</span>
+      )}
       <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
     </section>
   );

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import styles from './age.module.scss';
 import NextButton from '@/components/common/NextButton/NextButton';
@@ -25,27 +26,35 @@ function Age({ nickname, age, setAge, setNextPage }: Props): JSX.Element {
   const [isDisabled, setIsDisabled] = useState<boolean>(!age);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
-  const checkAgeValidation = (userAge: number) => {
+  const isValidAge = (userAge: number) => {
     if (!userAge) {
-      setErrorMessage('정보를 입력해주세요.');
-      setIsDisabled(true);
-    } else if (Number.isNaN(userAge)) {
-      setErrorMessage('나이에는 숫자만 입력 가능합니다.');
-      setIsDisabled(true);
-    } else if (userAge < 5 || userAge > 200) {
-      setErrorMessage(`정말 ${userAge}살이 맞으신가요?`);
-      setIsDisabled(true);
-    } else {
-      setErrorMessage('');
-      setIsDisabled(false);
+      return '정보를 입력해 주세요';
     }
+    if (Number.isNaN(userAge)) {
+      return '나이에는 숫자만 입력이 가능합니다.';
+    }
+    if (userAge < 5 || userAge > 200) {
+      return `정말 ${age}살이 맞으신가요?`;
+    }
+
+    return null;
   };
+
+  useEffect(() => {
+    const ageError = isValidAge(age);
+
+    if (ageError) {
+      setIsDisabled(true);
+      setErrorMessage(ageError);
+    } else {
+      setIsDisabled(false);
+      setErrorMessage('');
+    }
+  }, [age]);
 
   const handleChangeAge = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value }: { value: string } = e.target;
-
     setAge(+value);
-    checkAgeValidation(+value);
   };
 
   return (
@@ -56,16 +65,16 @@ function Age({ nickname, age, setAge, setNextPage }: Props): JSX.Element {
       <div className={classNames(s_inputContainer)}>
         <input
           className={classNames(s_commonInput, {
-            [s_errorInput]: errorMessage,
+            [s_errorInput]: age !== 0 && errorMessage,
           })}
           type="text"
           placeholder="나이 입력"
           value={age || ''}
           onChange={handleChangeAge}
         />
-        {errorMessage && <Coolicon className={classNames(s_errorIcon)} />}
+        {age !== 0 && errorMessage && <Coolicon className={classNames(s_errorIcon)} />}
       </div>
-      <span className={classNames(s_errorMsg)}>{errorMessage}</span>
+      {errorMessage && <span className={classNames(s_errorMsg)}> {errorMessage}</span>}
       <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
     </section>
   );

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import styles from './height.module.scss';
 import NextButton from '@/components/common/NextButton/NextButton';
@@ -25,27 +26,36 @@ function Height({ nickname, height, setHeight, setNextPage }: Props): JSX.Elemen
   const [isDisabled, setIsDisabled] = useState<boolean>(!height);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
-  const checkHeightValidation = (userHeight: number) => {
-    if (!userHeight) {
-      setErrorMessage('정보를 입력해주세요.');
-      setIsDisabled(true);
-    } else if (Number.isNaN(userHeight)) {
-      setErrorMessage('키는 숫자만 입력 가능합니다.');
-      setIsDisabled(true);
-    } else if (userHeight > 300) {
-      setErrorMessage(`정말 ${userHeight}cm 맞으신가요!?🤔`);
-      setIsDisabled(true);
-    } else {
-      setErrorMessage('');
-      setIsDisabled(false);
+  const isValidHeight = () => {
+    if (!height) {
+      return '정보를 입력해 주세요';
     }
+    if (Number.isNaN(height)) {
+      return '키는 숫자만 입력 가능합니다.';
+    }
+    if (height > 300) {
+      return `정말 ${height}cm 맞으신가요!?🤔`;
+    }
+
+    return null;
   };
+
+  useEffect(() => {
+    const heightError = isValidHeight();
+
+    if (heightError) {
+      setIsDisabled(true);
+      setErrorMessage(heightError);
+    } else {
+      setIsDisabled(false);
+      setErrorMessage('');
+    }
+  }, [height]);
 
   const handleChangeHeight = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value }: { value: string } = e.target;
 
     setHeight(+value);
-    checkHeightValidation(+value);
   };
 
   return (
@@ -56,16 +66,18 @@ function Height({ nickname, height, setHeight, setNextPage }: Props): JSX.Elemen
       <div className={classNames(s_inputContainer)}>
         <input
           className={classNames(s_commonInput, {
-            [s_errorInput]: errorMessage,
+            [s_errorInput]: height !== 0 && errorMessage,
           })}
           type="text"
           placeholder="키 입력"
           value={height || ''}
           onChange={handleChangeHeight}
         />
-        {errorMessage && <Coolicon className={classNames(s_errorIcon)} />}
+        {height !== 0 && errorMessage && <Coolicon className={classNames(s_errorIcon)} />}
       </div>
-      <span className={classNames(s_errorMsg)}>{errorMessage}</span>
+      {height !== 0 && errorMessage && (
+        <span className={classNames(s_errorMsg)}>{errorMessage}</span>
+      )}
       <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
     </section>
   );

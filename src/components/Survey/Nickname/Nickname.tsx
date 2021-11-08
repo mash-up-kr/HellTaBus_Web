@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import styles from './nickname.module.scss';
 import Coolicon from '@/assets/coolicon.svg';
@@ -40,7 +41,32 @@ function Nickname({ nickname, setNickname, setNextPage }: Props) {
     }
   };
 
-  // onChange
+  const isValidNickName = () => {
+    const nicknameRegex = /^[가-힣\s|ㄱ-ㅎ|a-z|A-Z|0-9|_|.|,]+$/g;
+    const nicknameLengthRegex = /^.{2,8}$/g;
+
+    if (!nicknameRegex.test(nickname)) {
+      return '한글, 영어, 숫자, 특수문자(_.,)만 가능해요';
+    }
+    if (!nicknameLengthRegex.test(nickname)) {
+      return '2 ~ 8글자만 가능해요';
+    }
+
+    return null;
+  };
+
+  useEffect(() => {
+    const nickNameError = isValidNickName();
+
+    if (nickNameError) {
+      setIsDisabled(true);
+      setErrorMessage(nickNameError);
+    } else {
+      setIsDisabled(false);
+      setErrorMessage('');
+    }
+  }, [nickname]);
+
   const handleChangeNickname = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value }: { value: string } = e.target;
     setNickname(value);
@@ -53,16 +79,18 @@ function Nickname({ nickname, setNickname, setNextPage }: Props) {
       <div className={classNames(s_inputContainer)}>
         <input
           className={classNames(s_commonInput, {
-            [s_errorInput]: errorMessage,
+            [s_errorInput]: nickname !== '' && errorMessage,
           })}
           type="text"
           placeholder="닉네임 입력"
           value={nickname}
           onChange={handleChangeNickname}
         />
-        {errorMessage && <Coolicon className={classNames(s_errorIcon)} />}
+        {nickname !== '' && errorMessage && <Coolicon className={classNames(s_errorIcon)} />}
       </div>
-      <span className={classNames(s_errorMsg)}>{errorMessage}</span>
+      {nickname !== '' && errorMessage && (
+        <span className={classNames(s_errorMsg)}>{errorMessage}</span>
+      )}
       <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
     </section>
   );
