@@ -8,13 +8,13 @@ const { s_exerciseRoutine } = style;
 
 // TODO: api를 붙히면 삭제 할 더미데이터
 const recommendExerciseList: Exercise[] = [
-  { img: dumbbellVentOverLow, name: '덤벨 벤트 오버 로우' },
-  { img: dumbbellVentOverLow, name: '덤벨 인크라인 벤치프레스' },
-  { img: dumbbellVentOverLow, name: '덤벨 벤트 오버 로우' },
-  { img: dumbbellVentOverLow, name: '덤벨 벤트 오버 로우' },
-  { img: dumbbellVentOverLow, name: '덤벨 벤트 오버 로우' },
-  { img: dumbbellVentOverLow, name: '덤벨 벤트 오버 로우' },
-  { img: dumbbellVentOverLow, name: '덤벨 벤트 오버 로우' },
+  { imageUrl: dumbbellVentOverLow, exerciseName: '덤벨 벤트 오버 로우' },
+  { imageUrl: dumbbellVentOverLow, exerciseName: '덤벨 인크라인 벤치프레스' },
+  { imageUrl: dumbbellVentOverLow, exerciseName: '덤벨 벤트 오버 로우' },
+  { imageUrl: dumbbellVentOverLow, exerciseName: '덤벨 벤트 오버 로우' },
+  { imageUrl: dumbbellVentOverLow, exerciseName: '덤벨 벤트 오버 로우' },
+  { imageUrl: dumbbellVentOverLow, exerciseName: '덤벨 벤트 오버 로우' },
+  { imageUrl: dumbbellVentOverLow, exerciseName: '덤벨 벤트 오버 로우' },
 ];
 
 function ExerciseRoutine() {

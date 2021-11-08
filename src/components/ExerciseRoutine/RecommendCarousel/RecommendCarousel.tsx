@@ -12,8 +12,12 @@ const { s_routineCarousel } = style;
 const RecommendCarousel = ({ recommendList }: Props) => {
   return (
     <Carousel className={s_routineCarousel}>
-      {recommendList.map(({ img, name }, index) => (
-        <ExerciseCard img={img} exerciseName={name} key={`exerciseCard-${index}`} />
+      {recommendList.map(({ imageUrl, exerciseName }, index) => (
+        <ExerciseCard
+          imageUrl={imageUrl}
+          exerciseName={exerciseName}
+          key={`exerciseCard-${index}`}
+        />
       ))}
     </Carousel>
   );
