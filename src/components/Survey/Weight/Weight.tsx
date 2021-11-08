@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 import styles from './weight.module.scss';
 import Coolicon from '@/assets/coolicon.svg';
@@ -23,8 +23,8 @@ interface Props {
 }
 
 const Weight = ({ nickname, weight, setWeight, setNextPage }: Props) => {
-  const [isDisabled, setIsDisabled] = useState<boolean>(!weight);
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const isDisabled = useMemo(() => !weight || !!errorMessage, [weight, errorMessage]);
 
   const isValidWeight = () => {
     if (Number.isNaN(weight)) {
@@ -41,10 +41,8 @@ const Weight = ({ nickname, weight, setWeight, setNextPage }: Props) => {
     const weightError = isValidWeight();
 
     if (weightError) {
-      setIsDisabled(true);
       setErrorMessage(weightError);
     } else {
-      setIsDisabled(false);
       setErrorMessage('');
     }
   }, [weight]);

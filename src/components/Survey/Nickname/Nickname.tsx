@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 import styles from './nickname.module.scss';
 import Coolicon from '@/assets/coolicon.svg';
@@ -22,24 +22,8 @@ interface Props {
 }
 
 function Nickname({ nickname, setNickname, setNextPage }: Props) {
-  const [isDisabled, setIsDisabled] = useState<boolean>(!nickname);
   const [errorMessage, setErrorMessage] = useState<string>('');
-
-  const checkNicknameValidation = (value: string) => {
-    const nicknameRegex = /^[가-힣\s|ㄱ-ㅎ|a-z|A-Z|0-9|_|.|,]+$/g;
-    const nicknameLengthRegex = /^.{2,8}$/g;
-
-    if (!nicknameRegex.test(value)) {
-      setErrorMessage('한글, 영어, 숫자, 특수문자(_.,)만 가능해요');
-      setIsDisabled(true);
-    } else if (!nicknameLengthRegex.test(value)) {
-      setErrorMessage('2 ~ 8글자만 가능해요');
-      setIsDisabled(true);
-    } else {
-      setErrorMessage('');
-      setIsDisabled(false);
-    }
-  };
+  const isDisabled = useMemo(() => !nickname || !!errorMessage, [nickname, errorMessage]);
 
   const isValidNickName = () => {
     const nicknameRegex = /^[가-힣\s|ㄱ-ㅎ|a-z|A-Z|0-9|_|.|,]+$/g;
@@ -59,10 +43,8 @@ function Nickname({ nickname, setNickname, setNextPage }: Props) {
     const nickNameError = isValidNickName();
 
     if (nickNameError) {
-      setIsDisabled(true);
       setErrorMessage(nickNameError);
     } else {
-      setIsDisabled(false);
       setErrorMessage('');
     }
   }, [nickname]);
@@ -70,7 +52,6 @@ function Nickname({ nickname, setNickname, setNextPage }: Props) {
   const handleChangeNickname = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value }: { value: string } = e.target;
     setNickname(value);
-    checkNicknameValidation(value);
   };
 
   return (

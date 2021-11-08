@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import classNames from 'classnames';
 import styles from './age.module.scss';
 import NextButton from '@/components/common/NextButton/NextButton';
@@ -23,8 +23,8 @@ interface Props {
 }
 
 function Age({ nickname, age, setAge, setNextPage }: Props): JSX.Element {
-  const [isDisabled, setIsDisabled] = useState<boolean>(!age);
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const isDisabled = useMemo(() => !age || !!errorMessage, [age, errorMessage]);
 
   const isValidAge = (userAge: number) => {
     if (Number.isNaN(userAge)) {
@@ -41,10 +41,8 @@ function Age({ nickname, age, setAge, setNextPage }: Props): JSX.Element {
     const ageError = isValidAge(age);
 
     if (ageError) {
-      setIsDisabled(true);
       setErrorMessage(ageError);
     } else {
-      setIsDisabled(false);
       setErrorMessage('');
     }
   }, [age]);
@@ -71,7 +69,7 @@ function Age({ nickname, age, setAge, setNextPage }: Props): JSX.Element {
         />
         {age !== 0 && errorMessage && <Coolicon className={classNames(s_errorIcon)} />}
       </div>
-      {errorMessage && <span className={classNames(s_errorMsg)}> {errorMessage}</span>}
+      {age !== 0 && errorMessage && <span className={classNames(s_errorMsg)}> {errorMessage}</span>}
       <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
     </section>
   );

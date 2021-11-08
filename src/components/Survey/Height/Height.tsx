@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 import styles from './height.module.scss';
 import NextButton from '@/components/common/NextButton/NextButton';
@@ -23,8 +23,8 @@ interface Props {
 }
 
 function Height({ nickname, height, setHeight, setNextPage }: Props): JSX.Element {
-  const [isDisabled, setIsDisabled] = useState<boolean>(!height);
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const isDisabled = useMemo(() => !height || !!errorMessage, [height, errorMessage]);
 
   const isValidHeight = () => {
     if (Number.isNaN(height)) {
@@ -41,10 +41,8 @@ function Height({ nickname, height, setHeight, setNextPage }: Props): JSX.Elemen
     const heightError = isValidHeight();
 
     if (heightError) {
-      setIsDisabled(true);
       setErrorMessage(heightError);
     } else {
-      setIsDisabled(false);
       setErrorMessage('');
     }
   }, [height]);
