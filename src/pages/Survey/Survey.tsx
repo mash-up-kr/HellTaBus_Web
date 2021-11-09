@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import classNames from 'classnames';
 import styles from './survey.module.scss';
 import { Age, Gender, Height, Nickname, Split, Weight, Complete } from '@/components/Survey';
-import useForm from '@/hooks/useForm';
+import useForm from '@/hooks/useSurveyForm';
 import ProgressBar from '@/components/Survey/ProgressBar/ProgressBar';
 import Header from '@/components/common/Header/Header';
 
@@ -16,12 +16,13 @@ const SURVEY_STATE_KEY = {
   WEIGHT: 'weight',
   SPLIT: 'split',
 };
+
 const MIN_STEP = 1;
-const MAX_STEP = 6;
+const MAX_STEP = 7;
 
 const Survey = () => {
-  const { surveyState, setSurveyStateByKey } = useForm();
   const [step, setStep] = useState<number>(MIN_STEP);
+  const { surveyState, setSurveyStateByKey } = useForm();
 
   const setPreviousPage = () => {
     if (step <= MIN_STEP) return;
