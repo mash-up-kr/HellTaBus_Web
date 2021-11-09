@@ -1,8 +1,6 @@
 @use '@/styles/color';
 
 .s_exercise {
-  margin: 0 0.4rem 0 0;
-  margin: 0 0.4rem;
   div:first-child {
     align-items: center;
     background: color.$onPrimary;
@@ -12,12 +10,6 @@
     justify-content: center;
     margin-bottom: 0.8rem;
     width: 12rem;
-  }
-  &:first-child {
-    margin: 0 0.4rem 0 0;
-  }
-  &:last-child {
-    margin: 0 0 0 0.4rem;
   }
 
   .s_exerciseNameWraper {

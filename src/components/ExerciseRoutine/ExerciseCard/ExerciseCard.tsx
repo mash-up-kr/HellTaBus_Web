@@ -10,14 +10,14 @@ const { s_exercise, s_exerciseNameWraper } = style;
 
 const ExerciseCard = ({ imageUrl, exerciseName }: Props) => {
   return (
-    <li className={s_exercise}>
+    <article className={s_exercise}>
       <div>
         <img src={imageUrl} alt={exerciseName} />
       </div>
       <div className={s_exerciseNameWraper}>
         <span>{exerciseName}</span>
       </div>
-    </li>
+    </article>
   );
 };
 
