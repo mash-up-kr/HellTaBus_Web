@@ -1,7 +1,8 @@
 @use '@/styles/color.scss';
-@use '@/styles/common.scss';
+@use '@/styles/common';
+@use '@/pages/Survey/survey.module.scss';
 
-@include common.survey-default-with-button;
+@include survey.survey-default-with-button;
 
 .s_genderButton {
   background-color: color.$background;

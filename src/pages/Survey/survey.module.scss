@@ -1,4 +1,64 @@
-@use '@/styles/common';
 @use '@/styles/color';
+@use '@/styles/common';
 
-@include common.survey-default-with-button;
+.s_container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+}
+
+@mixin survey-default-with-button {
+  .s_title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 4rem;
+    margin-top: 5.3rem;
+
+    span {
+      color: color.$primary;
+    }
+  }
+  .s_inputContainer {
+    position: relative;
+  }
+
+  .s_errorIcon {
+    bottom: 2rem;
+    position: absolute;
+    right: 1rem;
+  }
+
+  .s_commonInput {
+    background-color: #f8f8f8;
+    border: none;
+    border-bottom: 0.1rem solid color.$primary;
+    font-size: 1.5rem;
+    font-weight: 700;
+    height: 4.3rem;
+    outline: none;
+    text-align: center;
+    width: 24.8rem;
+    margin: {
+      bottom: 1rem;
+      top: 2rem;
+    }
+  }
+
+  .s_errorInput {
+    border-bottom: 0.1rem solid color.$error;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}
+
+.s_errorMsg {
+  color: color.$error;
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+  top: 0;
+}
