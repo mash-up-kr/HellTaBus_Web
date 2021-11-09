@@ -1,3 +1,13 @@
 .s_routineCarousel {
   padding: 0 2.4rem;
+
+  & > li {
+    margin: 0 0.4rem;
+    &:first-child {
+      margin: 0 0.4rem 0 0;
+    }
+    &:last-child {
+      margin: 0 0 0 0.4rem;
+    }
+  }
 }

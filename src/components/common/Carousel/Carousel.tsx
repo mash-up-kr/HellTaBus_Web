@@ -10,7 +10,15 @@ interface CarouselProps {
 const { s_carousel } = style;
 
 function Carousel({ children, className }: CarouselProps) {
-  return <ul className={classNames(s_carousel, className)}>{children}</ul>;
+  return (
+    <ul className={classNames(s_carousel, className)}>
+      {Array.isArray(children)
+        ? children.map((child, index) => {
+            return <li key={`carouselItem-${index}`}>{child}</li>;
+          })
+        : null}
+    </ul>
+  );
 }
 
 export default Carousel;

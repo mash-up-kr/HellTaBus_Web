@@ -7,3 +7,20 @@
   height: 100vh;
   text-align: center;
 }
+
+.s_navigator {
+  height: 5.6rem;
+  position: relative;
+
+  button {
+    background-color: transparent;
+    border: 0;
+    height: 4rem;
+    padding: 1rem;
+    position: absolute;
+    right: 1.6rem;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+    width: 4rem;
+  }
+}
