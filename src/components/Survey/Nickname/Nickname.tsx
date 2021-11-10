@@ -26,9 +26,13 @@ function Nickname({ nickname, setNickname, setNextPage }: Props) {
 
   // TODO: 공백만을 입력했을 때, valid을 pass하는 문제를 해결(2021.11.10)
   const isValidNickname = useCallback(() => {
+    const nicknameSpaceRegex = /\s/g;
     const nicknameRegex = /^[가-힣\s|ㄱ-ㅎ|a-z|A-Z|0-9|_|.|,]+$/g;
     const nicknameLengthRegex = /^.{2,8}$/g;
 
+    if (nicknameSpaceRegex.test(nickname)) {
+      return '공백을 제거해 주세요.';
+    }
     if (!nicknameRegex.test(nickname)) {
       return '한글, 영어, 숫자, 특수문자(_.,)만 가능해요';
     }
