@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import classNames from 'classnames';
-import styles from './age.module.scss';
-import NextButton from '@/components/common/NextButton/NextButton';
+import style from './age.module.scss';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
 
 const {
@@ -12,7 +11,8 @@ const {
   s_inputContainer,
   s_errorMsg,
   s_errorIcon,
-} = styles;
+  s_nextButton,
+} = style;
 
 interface Props {
   nickname: string;
@@ -21,7 +21,7 @@ interface Props {
   setNextPage: () => void;
 }
 
-function Age({ nickname, age, setAge, setNextPage }: Props): JSX.Element {
+const Age = ({ nickname, age, setAge, setNextPage }: Props) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const isDisabled = useMemo(() => !age || !!errorMessage, [age, errorMessage]);
 
@@ -54,7 +54,7 @@ function Age({ nickname, age, setAge, setNextPage }: Props): JSX.Element {
   return (
     <section className={classNames(s_container)}>
       <h2 className={classNames(s_title)}>
-        {nickname}님의 <span>나이</span>를 알려주세요
+        <p>{nickname}님의</p> <span>나이</span>를 알려주세요
       </h2>
       <div className={classNames(s_inputContainer)}>
         <input
@@ -68,10 +68,17 @@ function Age({ nickname, age, setAge, setNextPage }: Props): JSX.Element {
         />
         {errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
-      {errorMessage && <span className={classNames(s_errorMsg)}> {errorMessage}</span>}
-      <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
+      <span className={classNames(s_errorMsg)}>{errorMessage}</span>
+      <button
+        className={classNames(s_nextButton)}
+        type="button"
+        onClick={setNextPage}
+        disabled={isDisabled}
+      >
+        다음
+      </button>
     </section>
   );
-}
+};
 
 export default Age;

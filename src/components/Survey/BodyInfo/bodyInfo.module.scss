@@ -1,0 +1,67 @@
+@use '@/styles/color';
+@use '@/pages/Survey/survey.module.scss';
+
+@include survey.survey-default-with-button;
+
+.s_heightLabel {
+  color: color.$onBackground2;
+  font-size: 1.2rem;
+  font-weight: 700;
+  left: -14rem;
+  position: absolute;
+}
+.s_weightLabel {
+  color: color.$onBackground2;
+  font-size: 1.2rem;
+  font-weight: 700;
+  left: 1.5rem;
+  position: absolute;
+}
+
+.s_input {
+  background-color: #f8f8f8;
+  border: none;
+  border-bottom: 1px solid color.$primary;
+  font-size: 1.5rem;
+  font-weight: 700;
+  height: 4.3rem;
+  outline: none;
+  padding-left: 1rem;
+  position: relative;
+  width: 13rem;
+  margin: {
+    bottom: 1rem;
+    right: 2rem;
+    top: 2rem;
+  }
+}
+
+.s_heightError {
+  position: absolute;
+  right: 2rem;
+  top: 4.5rem;
+}
+
+.s_heightErrorMsg {
+  color: color.$error;
+  font-size: 1.2rem;
+  position: absolute;
+  right: -1.5rem;
+  top: 8rem;
+  width: 15rem;
+}
+
+.s_weightError {
+  left: 13rem;
+  position: absolute;
+  top: 4.5rem;
+}
+
+.s_weightErrorMsg {
+  color: color.$error;
+  font-size: 1.2rem;
+  left: 2rem;
+  position: absolute;
+  top: 8rem;
+  width: 15rem;
+}

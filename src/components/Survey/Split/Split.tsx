@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import NextButton from '@/components/common/NextButton/NextButton';
-import styles from './split.module.scss';
+import style from './split.module.scss';
 import SplitWorking from '@/components/Survey/SplitWorking/SplitWorking';
 import Pizza0 from '@/assets/svg/pizza0.svg';
 import Pizza3 from '@/assets/svg/pizza3.svg';
 import Pizza5 from '@/assets/svg/pizza5.svg';
 
-const { s_container, s_imagesContainer, s_title } = styles;
+const { s_container, s_imagesContainer, s_title, s_nextButton } = style;
 
 interface Props {
   split: number;
@@ -55,7 +54,14 @@ function Split({ split, setSplit, setNextPage }: Props) {
           가슴 / 등/ 삼두 / 하체 / 어깨로 5개 부위로 나눠서 운동하는 방법입니다.
         </SplitWorking>
       </div>
-      <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
+      <button
+        className={classNames(s_nextButton)}
+        type="button"
+        onClick={setNextPage}
+        disabled={isDisabled}
+      >
+        다음
+      </button>
     </section>
   );
 }

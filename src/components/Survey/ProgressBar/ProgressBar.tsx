@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
-import styles from './progressBar.module.scss';
+import style from './progressBar.module.scss';
 
 interface Props {
   step: number;
 }
 
-const { s_container, s_stepContainer, s_stepComment, s_progress, s_currentStep } = styles;
+const { s_container, s_stepContainer, s_stepComment, s_progress, s_currentStep } = style;
 
 const MIN_STEP = 1;
 const MAX_STEP = 6;

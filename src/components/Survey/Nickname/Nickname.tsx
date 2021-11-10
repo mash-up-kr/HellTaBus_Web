@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
-import styles from './nickname.module.scss';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
-import NextButton from '@/components/common/NextButton/NextButton';
+import style from './nickname.module.scss';
 
 const {
   s_container,
@@ -12,7 +11,8 @@ const {
   s_title,
   s_errorMsg,
   s_errorIcon,
-} = styles;
+  s_nextButton,
+} = style;
 
 interface Props {
   nickname: string;
@@ -20,19 +20,24 @@ interface Props {
   setNextPage: () => void;
 }
 
-function Nickname({ nickname, setNickname, setNextPage }: Props) {
+const Nickname = ({ nickname, setNickname, setNextPage }: Props) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const isDisabled = useMemo(() => !nickname || !!errorMessage, [nickname, errorMessage]);
 
   useEffect(() => {
     const isValidNickname = (userNickname: string) => {
       const nicknameSpaceRegex = /\s/g;
+      const specialCharactersRegex = /[`~!@#$%^&*()|+\-=?;:'"<>\\{\\}\\[\]\\\\/]/g;
       const nicknameRegex = /^[가-힣\s|ㄱ-ㅎ|a-z|A-Z|0-9|_|.|,]+$/g;
       const nicknameLengthRegex = /^.{2,8}$/g;
 
       if (nicknameSpaceRegex.test(userNickname)) {
         return '공백을 제거해 주세요.';
       }
+      if (specialCharactersRegex.test(nickname)) {
+        return '특수문자는 . , _ 만 가능해요';
+      }
+
       if (!nicknameRegex.test(userNickname)) {
         return '한글, 영어, 숫자, 특수문자(_.,)만 가능해요';
       }
@@ -59,7 +64,9 @@ function Nickname({ nickname, setNickname, setNextPage }: Props) {
 
   return (
     <section className={classNames(s_container)}>
-      <h2 className={classNames(s_title)}>당신을 뭐라고 불러드릴까요?</h2>
+      <h2 className={classNames(s_title)}>
+        <p>당신을</p> 뭐라고 불러드릴까요?
+      </h2>
       <div className={classNames(s_inputContainer)}>
         <input
           className={classNames(s_commonInput, {
@@ -72,12 +79,17 @@ function Nickname({ nickname, setNickname, setNextPage }: Props) {
         />
         {nickname !== '' && errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
-      {nickname !== '' && errorMessage && (
-        <span className={classNames(s_errorMsg)}>{errorMessage}</span>
-      )}
-      <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
+      <span className={classNames(s_errorMsg)}>{nickname !== '' && errorMessage}</span>
+      <button
+        className={classNames(s_nextButton)}
+        type="button"
+        onClick={setNextPage}
+        disabled={isDisabled}
+      >
+        다음
+      </button>
     </section>
   );
-}
+};
 
 export default Nickname;

@@ -10,55 +10,171 @@
 }
 
 @mixin survey-default-with-button {
-  .s_title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 4rem;
-    margin-top: 5.3rem;
+  .s_container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
 
-    span {
-      color: color.$primary;
+    .s_title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 4.8rem;
+      margin-left: 2rem;
+      margin-top: 2.4rem;
+      width: 100%;
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      span {
+        color: color.$primary;
+      }
+    }
+    .s_inputContainer {
+      position: relative;
+    }
+
+    .s_errorIcon {
+      bottom: 2.5rem;
+      position: absolute;
+      right: 1rem;
+    }
+
+    .s_commonInput {
+      background-color: #f8f8f8;
+      border: none;
+      border-bottom: 1px solid color.$primary;
+      font-size: 1.5rem;
+      font-weight: 700;
+      height: 4.3rem;
+      outline: none;
+      padding-left: 1rem;
+      width: 30rem;
+      margin: {
+        bottom: 10px;
+        top: 20px;
+      }
+    }
+
+    input::placeholder {
+      color: color.$onBackground3;
+      font-size: 2.2rem;
+      font-weight: 500;
+      opacity: 1; /* 파이어폭스에서 뿌옇게 나오는 현상을 방지하기 위한 css */
+    }
+    input::-webkit-input-placeholder {
+      color: color.$onBackground3;
+      font-size: 2.2rem;
+      font-weight: 500;
+    }
+
+    /* IE */
+    input:-ms-input-placeholder {
+      color: color.$onBackground3;
+      font-size: 2.2rem;
+      font-weight: 500;
+    }
+
+    /* Firefox */
+    input:-mos-input-placeholder {
+      color: color.$onBackground3;
+      font-size: 2.2rem;
+      font-weight: 500;
+    }
+
+    .s_errorInput {
+      border-bottom: 1px solid color.$error;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      text-align: center;
     }
   }
-  .s_inputContainer {
-    position: relative;
+
+  .s_errorMsg {
+    color: color.$error;
+    font-size: 1.2rem;
+    margin-left: 2.5rem;
+    width: 100%;
   }
 
-  .s_errorIcon {
-    bottom: 2rem;
+  .s_nextButton {
+    background-color: color.$primary;
+    bottom: 0;
+    color: color.$onPrimary;
+    font-size: 1.6rem;
+    font-weight: 700;
+    height: 5.4rem;
     position: absolute;
-    right: 1rem;
-  }
+    width: 100%;
 
-  .s_commonInput {
-    background-color: #f8f8f8;
-    border: none;
-    border-bottom: 0.1rem solid color.$primary;
-    font-size: 1.5rem;
-    font-weight: 700;
-    height: 4.3rem;
-    outline: none;
-    text-align: center;
-    width: 24.8rem;
-    margin: {
-      bottom: 1rem;
-      top: 2rem;
+    &:disabled {
+      background-color: color.$disable;
+      color: color.$onBackground;
     }
-  }
-
-  .s_errorInput {
-    border-bottom: 0.1rem solid color.$error;
-  }
-
-  h3 {
-    font-size: 1.5rem;
-    text-align: center;
   }
 }
 
-.s_errorMsg {
-  color: color.$error;
-  font-size: 1.2rem;
-  margin-bottom: 0.6rem;
-  top: 0;
+@mixin without-button {
+  .s_container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+
+    .s_inputContainer {
+      position: relative;
+    }
+
+    .s_errorIcon {
+      bottom: 2.5rem;
+      position: absolute;
+      right: 1rem;
+    }
+
+    .s_title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 4.8rem;
+      margin-top: 2.4rem;
+      width: 100%;
+
+      span {
+        color: color.$primary;
+      }
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  .s_errorMsg {
+    color: color.$error;
+    font-size: 1.2rem;
+    margin-left: 2.5rem;
+    width: 100%;
+  }
+
+  .s_nextButton {
+    background-color: color.$primary;
+    bottom: 0;
+    color: color.$onPrimary;
+    font-size: 1.6rem;
+    font-weight: 700;
+    height: 5.4rem;
+    position: absolute;
+    width: 100%;
+
+    &:disabled {
+      background-color: color.$disable;
+      color: color.$onBackground;
+    }
+  }
 }
