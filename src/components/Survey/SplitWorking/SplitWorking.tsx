@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import styles from './splitWorking.module.scss';
 
@@ -10,7 +10,7 @@ interface Props {
   imageComponent: JSX.Element;
   title: string;
   handleClickSplit: (splitNumber: number) => void;
-  children: string;
+  children: ReactNode;
 }
 
 const SplitWorking = ({
