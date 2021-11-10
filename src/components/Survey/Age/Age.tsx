@@ -61,7 +61,7 @@ function Age({ nickname, age, setAge, setNextPage }: Props): JSX.Element {
           className={classNames(s_commonInput, {
             [s_errorInput]: errorMessage,
           })}
-          type="text"
+          type="number"
           placeholder="나이 입력"
           value={age || ''}
           onChange={handleChangeAge}

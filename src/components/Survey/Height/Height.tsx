@@ -62,7 +62,7 @@ function Height({ nickname, height, setHeight, setNextPage }: Props): JSX.Elemen
           className={classNames(s_commonInput, {
             [s_errorInput]: errorMessage,
           })}
-          type="text"
+          type="number"
           placeholder="키 입력"
           value={height || ''}
           onChange={handleChangeHeight}

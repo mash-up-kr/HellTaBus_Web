@@ -62,7 +62,7 @@ const Weight = ({ nickname, weight, setWeight, setNextPage }: Props) => {
           className={classNames(s_commonInput, {
             [s_errorInput]: errorMessage,
           })}
-          type="text"
+          type="number"
           placeholder="몸무게 입력"
           value={weight || ''}
           onChange={handleChangeWeight}
