@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import style from './age.module.scss';
-import NextButton from '@/components/common/NextButton/NextButton';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
 
 const {
@@ -12,6 +11,7 @@ const {
   s_inputContainer,
   s_errorMsg,
   s_errorIcon,
+  s_nextButton,
 } = style;
 
 interface Props {
@@ -70,7 +70,14 @@ function Age({ nickname, age, setAge, setNextPage }: Props): JSX.Element {
         {errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
       <span className={classNames(s_errorMsg)}>{errorMessage}</span>
-      <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
+      <button
+        className={classNames(s_nextButton)}
+        type="button"
+        onClick={setNextPage}
+        disabled={isDisabled}
+      >
+        다음
+      </button>
     </section>
   );
 }

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './gender.module.scss';
-import NextButton from '@/components/common/NextButton/NextButton';
 
-const { s_a11yHidden, s_container, s_title, s_genderButton, s_selectedGender } = style;
+const { s_a11yHidden, s_container, s_title, s_genderButton, s_selectedGender, s_nextButton } =
+  style;
 
 interface Props {
   nickname: string;
@@ -49,7 +49,14 @@ function Gender({ nickname, gender, setGender, setNextPage }: Props) {
           </button>
         </label>
       </div>
-      <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
+      <button
+        className={classNames(s_nextButton)}
+        type="button"
+        onClick={setNextPage}
+        disabled={isDisabled}
+      >
+        다음
+      </button>
     </section>
   );
 }

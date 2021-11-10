@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import style from './bodyInfo.module.scss';
-import { NextButton } from '@/components/common';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
 
 const {
@@ -16,6 +15,7 @@ const {
   s_weightLabel,
   s_errorInput,
   s_title,
+  s_nextButton,
 } = style;
 
 interface Props {
@@ -127,7 +127,14 @@ const BodyInfo = ({ nickname, height, setHeight, weight, setWeight, setNextPage 
         <span className={classNames(s_heightErrorMsg)}>{heightErrorMessage}</span>
         <span className={classNames(s_weightErrorMsg)}>{weightErrorMessage}</span>
       </div>
-      <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
+      <button
+        className={classNames(s_nextButton)}
+        type="button"
+        onClick={setNextPage}
+        disabled={isDisabled}
+      >
+        다음
+      </button>
     </section>
   );
 };

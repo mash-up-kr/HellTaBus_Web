@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import style from './nickname.module.scss';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
-import NextButton from '@/components/common/NextButton/NextButton';
 
 const {
   s_container,
@@ -12,6 +11,7 @@ const {
   s_title,
   s_errorMsg,
   s_errorIcon,
+  s_nextButton,
 } = style;
 
 interface Props {
@@ -77,7 +77,14 @@ const Nickname = ({ nickname, setNickname, setNextPage }: Props) => {
         {nickname !== '' && errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
       <span className={classNames(s_errorMsg)}>{nickname !== '' && errorMessage}</span>
-      <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
+      <button
+        className={classNames(s_nextButton)}
+        type="button"
+        onClick={setNextPage}
+        disabled={isDisabled}
+      >
+        다음
+      </button>
     </section>
   );
 };
