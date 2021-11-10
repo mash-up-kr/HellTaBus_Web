@@ -1,5 +1,13 @@
-// TODO: api에서 응답받는 interface가 확실하게 잡히면 수정 예정
 export interface Exercise {
-  imageUrl: string;
-  exerciseName: string;
+  id: number;
+  name: string;
+  priority: number;
+  part: string;
+  baseCount: number;
+  setCount: number;
+  startWeight: number;
+  changeWeight: number;
+  setBreakTime: number;
+  breakTime: number;
+  imageLink: string;
 }
