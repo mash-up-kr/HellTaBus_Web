@@ -1,0 +1,101 @@
+@use '@/styles/color.scss';
+@use '@/styles/common';
+@use '@/pages/Survey/survey.module.scss';
+
+.s_container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    width: 100%;
+    margin : {
+      bottom: 0.1rem;
+      left: 2rem;
+      top: 2.4rem;
+    }
+  }
+
+  h3 {
+    color: color.$primaryVariant4;
+    font-size: 1.4rem;
+    font-weight: 400;
+    width: 100%;
+    margin : {
+      bottom: 3.9rem;
+      left: 2rem;
+    }
+  }
+
+  span {
+    color: color.$primary;
+  }
+
+  input::placeholder {
+    color: color.$onBackground3;
+    font-size: 2.2rem;
+    font-weight: 500;
+    opacity: 1; /* 파이어폭스에서 뿌옇게 나오는 현상을 방지하기 위한 css */
+  }
+  input::-webkit-input-placeholder {
+    color: color.$onBackground3;
+    font-size: 2.2rem;
+    font-weight: 500;
+  }
+
+  /* IE */
+  input:-ms-input-placeholder {
+    color: color.$onBackground3;
+    font-size: 2.2rem;
+    font-weight: 500;
+  }
+
+  /* Firefox */
+  input:-mos-input-placeholder {
+    color: color.$onBackground3;
+    font-size: 2.2rem;
+    font-weight: 500;
+  }
+}
+
+.s_nextButton {
+  background-color: color.$primary;
+  bottom: 0;
+  color: color.$onPrimary;
+  font-size: 1.6rem;
+  font-weight: 700;
+  height: 5.4rem;
+  position: absolute;
+  width: 100%;
+
+  &:disabled {
+    background-color: color.$disable;
+    color: color.$onBackground;
+  }
+}
+
+.s_buttonWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.s_exerciseSpeedButton {
+  background-color: color.$background;
+  border: 0.1rem solid color.$disable;
+  border-radius: 1.2rem;
+  color: color.$disable;
+  height: 5.4rem;
+  margin: 0.2rem 0;
+  outline: none;
+  width: 29.6rem;
+}
+
+.s_selectedExerciseSpeed {
+  border: 0.15rem solid color.$primary;
+  color: color.$primary;
+  font-weight: 700;
+}

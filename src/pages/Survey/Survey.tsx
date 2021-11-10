@@ -2,7 +2,16 @@ import React, { Fragment, useState } from 'react';
 import classNames from 'classnames';
 import useForm from '@/hooks/useSurveyForm';
 import style from './survey.module.scss';
-import { Age, Gender, Nickname, Split, Complete, Intro, BodyInfo } from '@/components/Survey';
+import {
+  Age,
+  Gender,
+  Nickname,
+  Split,
+  Complete,
+  Intro,
+  BodyInfo,
+  ExerciseSpeed,
+} from '@/components/Survey';
 import ProgressBar from '@/components/Survey/ProgressBar/ProgressBar';
 import Header from '@/components/common/Header/Header';
 
@@ -15,6 +24,7 @@ const SURVEY_STATE_KEY = {
   HEIGHT: 'height',
   WEIGHT: 'weight',
   SPLIT: 'split',
+  EXCERCISESPEED: 'exerciseSpeed',
 };
 
 const MIN_STEP = 0;
@@ -63,6 +73,11 @@ const Survey = () => {
     <Split
       split={surveyState.split}
       setSplit={setSurveyStateByKey(SURVEY_STATE_KEY.SPLIT)}
+      setNextPage={setNextPage}
+    />,
+    <ExerciseSpeed
+      exerciseSpeed={surveyState.exerciseSpeed}
+      setExerciseSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.EXCERCISESPEED)}
       setNextPage={setNextPage}
     />,
   ];
