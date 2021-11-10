@@ -33,7 +33,7 @@ const Survey = () => {
   };
 
   const components = [
-    <Intro handleClickButton={setNextPage} />,
+    <Intro handleClickStartButton={setNextPage} />,
     <Nickname
       nickname={surveyState.nickname}
       setNickname={setSurveyStateByKey(SURVEY_STATE_KEY.NICKNAME)}
@@ -66,7 +66,7 @@ const Survey = () => {
     />,
   ];
 
-  if (step === 0) return <Intro handleClickButton={setNextPage} />;
+  if (step === 0) return <Intro handleClickStartButton={setNextPage} />;
 
   return (
     <>
