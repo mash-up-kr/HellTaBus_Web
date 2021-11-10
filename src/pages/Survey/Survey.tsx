@@ -1,12 +1,12 @@
 import React, { Fragment, useState } from 'react';
 import classNames from 'classnames';
-import styles from './survey.module.scss';
+import style from './survey.module.scss';
 import { Age, Gender, Nickname, Split, Complete, Intro, BodyInfo } from '@/components/Survey';
 import useForm from '@/hooks/useForm';
 import ProgressBar from '@/components/Survey/ProgressBar/ProgressBar';
 import Header from '@/components/common/Header/Header';
 
-const { s_container, s_a11yHidden } = styles;
+const { s_container, s_a11yHidden } = style;
 
 const SURVEY_STATE_KEY = {
   NICKNAME: 'nickname',
