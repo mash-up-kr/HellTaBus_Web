@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import classNames from 'classnames';
 import styles from './height.module.scss';
 import NextButton from '@/components/common/NextButton/NextButton';
-import ErrorIcon from '@/assets/error-icon.svg';
+import ErrorIcon from '@/assets/svg/error-icon.svg';
 
 const {
   s_container,

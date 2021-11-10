@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import classNames from 'classnames';
 import styles from './nickname.module.scss';
-import ErrorIcon from '@/assets/error-icon.svg';
+import ErrorIcon from '@/assets/svg/error-icon.svg';
 import NextButton from '@/components/common/NextButton/NextButton';
 
 const {
@@ -24,7 +24,7 @@ function Nickname({ nickname, setNickname, setNextPage }: Props) {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const isDisabled = useMemo(() => !nickname || !!errorMessage, [nickname, errorMessage]);
 
-  const isValidNickName = useCallback(() => {
+  const isValidNickname = useCallback(() => {
     const nicknameRegex = /^[가-힣\s|ㄱ-ㅎ|a-z|A-Z|0-9|_|.|,]+$/g;
     const nicknameLengthRegex = /^.{2,8}$/g;
 
@@ -39,14 +39,14 @@ function Nickname({ nickname, setNickname, setNextPage }: Props) {
   }, [nickname]);
 
   useEffect(() => {
-    const nickNameError = isValidNickName();
+    const nickNameError = isValidNickname();
 
     if (nickNameError) {
       setErrorMessage(nickNameError);
     } else {
       setErrorMessage('');
     }
-  }, [isValidNickName]);
+  }, [isValidNickname]);
 
   const handleChangeNickname = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value }: { value: string } = e.target;

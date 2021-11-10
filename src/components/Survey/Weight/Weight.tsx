@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import classNames from 'classnames';
 import styles from './weight.module.scss';
-import ErrorIcon from '@/assets/error-icon.svg';
+import ErrorIcon from '@/assets/svg/error-icon.svg';
 import NextButton from '@/components/common/NextButton/NextButton';
 
 const {

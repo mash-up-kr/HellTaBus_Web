@@ -3,9 +3,9 @@ import classNames from 'classnames';
 import NextButton from '@/components/common/NextButton/NextButton';
 import styles from './split.module.scss';
 import SplitWorking from '@/components/Survey/SplitWorking/SplitWorking';
-import Pizza0 from '@/assets/pizza0.svg';
-import Pizza3 from '@/assets/pizza3.svg';
-import Pizza5 from '@/assets/pizza5.svg';
+import Pizza0 from '@/assets/svg/pizza0.svg';
+import Pizza3 from '@/assets/svg/pizza3.svg';
+import Pizza5 from '@/assets/svg/pizza5.svg';
 
 const { s_container, s_imagesContainer, s_title } = styles;
 
