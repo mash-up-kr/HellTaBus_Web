@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import style from './complete.module.scss';
-import SurveyComplete from '@/assets/complete.svg';
+import SurveyComplete from '@/assets/svg/complete.svg';
 
 const { s_container, s_imgContainer } = style;
 
