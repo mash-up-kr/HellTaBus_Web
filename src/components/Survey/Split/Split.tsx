@@ -30,7 +30,7 @@ function Split({ split, setSplit, setNextPage }: Props) {
         <SplitWorking
           selectedSplit={split}
           currentSplit={1}
-          img={<Pizza0 />}
+          imageComponent={<Pizza0 />}
           title="무분할"
           handleClickSplit={handleClickSplit}
         >
@@ -39,7 +39,7 @@ function Split({ split, setSplit, setNextPage }: Props) {
         <SplitWorking
           selectedSplit={split}
           currentSplit={3}
-          img={<Pizza3 />}
+          imageComponent={<Pizza3 />}
           title="3분할"
           handleClickSplit={handleClickSplit}
         >
@@ -48,7 +48,7 @@ function Split({ split, setSplit, setNextPage }: Props) {
         <SplitWorking
           selectedSplit={split}
           currentSplit={5}
-          img={<Pizza5 />}
+          imageComponent={<Pizza5 />}
           title="5분할"
           handleClickSplit={handleClickSplit}
         >

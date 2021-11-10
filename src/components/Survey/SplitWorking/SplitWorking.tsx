@@ -7,7 +7,7 @@ const { s_container, s_selectedContainer, s_content, s_title, s_description } = 
 interface Props {
   selectedSplit: number;
   currentSplit: number;
-  img: JSX.Element;
+  imageComponent: JSX.Element;
   title: string;
   handleClickSplit: (splitNumber: number) => void;
   children: string;
@@ -16,7 +16,7 @@ interface Props {
 const SplitWorking = ({
   selectedSplit,
   currentSplit,
-  img,
+  imageComponent,
   title,
   handleClickSplit,
   children,
@@ -30,7 +30,7 @@ const SplitWorking = ({
       }}
     >
       <div className={classNames(s_content)}>
-        <>{img}</>
+        {imageComponent}
         <div className={classNames(s_title)}>{title}</div>
         <div className={classNames(s_description)}>{children}</div>
       </div>
