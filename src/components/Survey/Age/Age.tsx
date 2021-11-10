@@ -29,7 +29,7 @@ function Age({ nickname, age, setAge, setNextPage }: Props): JSX.Element {
     if (Number.isNaN(age)) {
       return '나이에는 숫자만 입력이 가능합니다.';
     }
-    if (age < 5 || age > 200) {
+    if (age > 200) {
       return `정말 ${age}살이 맞으신가요?`;
     }
 
@@ -59,16 +59,16 @@ function Age({ nickname, age, setAge, setNextPage }: Props): JSX.Element {
       <div className={classNames(s_inputContainer)}>
         <input
           className={classNames(s_commonInput, {
-            [s_errorInput]: age !== 0 && errorMessage,
+            [s_errorInput]: errorMessage,
           })}
           type="text"
           placeholder="나이 입력"
           value={age || ''}
           onChange={handleChangeAge}
         />
-        {age !== 0 && errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
+        {errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
-      {age !== 0 && errorMessage && <span className={classNames(s_errorMsg)}> {errorMessage}</span>}
+      {errorMessage && <span className={classNames(s_errorMsg)}> {errorMessage}</span>}
       <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
     </section>
   );

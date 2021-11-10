@@ -60,18 +60,16 @@ const Weight = ({ nickname, weight, setWeight, setNextPage }: Props) => {
       <div className={classNames(s_inputContainer)}>
         <input
           className={classNames(s_commonInput, {
-            [s_errorInput]: weight !== 0 && errorMessage,
+            [s_errorInput]: errorMessage,
           })}
           type="text"
           placeholder="몸무게 입력"
           value={weight || ''}
           onChange={handleChangeWeight}
         />
-        {weight !== 0 && errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
+        {errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
-      {weight !== 0 && errorMessage && (
-        <span className={classNames(s_errorMsg)}>{errorMessage}</span>
-      )}
+      {errorMessage && <span className={classNames(s_errorMsg)}>{errorMessage}</span>}
       <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
     </section>
   );

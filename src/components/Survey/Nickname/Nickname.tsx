@@ -24,6 +24,7 @@ function Nickname({ nickname, setNickname, setNextPage }: Props) {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const isDisabled = useMemo(() => !nickname || !!errorMessage, [nickname, errorMessage]);
 
+  // TODO: 공백만을 입력했을 때, valid을 pass하는 문제를 해결(2021.11.10)
   const isValidNickname = useCallback(() => {
     const nicknameRegex = /^[가-힣\s|ㄱ-ㅎ|a-z|A-Z|0-9|_|.|,]+$/g;
     const nicknameLengthRegex = /^.{2,8}$/g;

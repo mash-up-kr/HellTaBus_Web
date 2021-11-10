@@ -60,18 +60,16 @@ function Height({ nickname, height, setHeight, setNextPage }: Props): JSX.Elemen
       <div className={classNames(s_inputContainer)}>
         <input
           className={classNames(s_commonInput, {
-            [s_errorInput]: height !== 0 && errorMessage,
+            [s_errorInput]: errorMessage,
           })}
           type="text"
           placeholder="키 입력"
           value={height || ''}
           onChange={handleChangeHeight}
         />
-        {height !== 0 && errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
+        {errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
-      {height !== 0 && errorMessage && (
-        <span className={classNames(s_errorMsg)}>{errorMessage}</span>
-      )}
+      {errorMessage && <span className={classNames(s_errorMsg)}>{errorMessage}</span>}
       <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
     </section>
   );
