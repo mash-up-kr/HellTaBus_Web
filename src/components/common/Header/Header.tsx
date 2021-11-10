@@ -7,11 +7,13 @@ const { s_header, s_previousButton } = style;
 
 interface Props {
   handleClickBackButton: () => void;
+  className?: string;
+  children?: string;
 }
 
-function Header({ handleClickBackButton }: Props) {
+const Header = ({ handleClickBackButton, className, children }: Props) => {
   return (
-    <header className={classNames(s_header)}>
+    <header className={classNames(s_header, className)}>
       <button
         type="button"
         className={classNames(s_previousButton)}
@@ -19,8 +21,9 @@ function Header({ handleClickBackButton }: Props) {
       >
         <Back />
       </button>
+      <span>{children}</span>
     </header>
   );
-}
+};
 
 export default Header;
