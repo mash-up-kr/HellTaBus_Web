@@ -33,6 +33,7 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, setNextPage }: Props) 
         </p>
         운동 하길 원하시나요?
       </h2>
+      {/* TODO: 오디오 코치 쪽에서 필요한 보조 메세지가 입력됨 -> 다음 commit 시에 수정 할 것! */}
       <h3>목소리를 들어보면 선택이 더 쉬울거에요!</h3>
       <div className={classNames(s_buttonWrapper)}>
         <label htmlFor="slow">

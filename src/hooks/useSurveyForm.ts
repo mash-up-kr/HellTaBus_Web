@@ -7,6 +7,7 @@ interface SurveyState {
   height: number;
   weight: number;
   split: number;
+  audioCoach: string;
   exerciseSpeed: string;
 }
 
@@ -18,6 +19,7 @@ const useForm = () => {
     height: 0,
     weight: 0,
     split: 0,
+    audioCoach: '',
     exerciseSpeed: '',
   };
   const [surveyState, setSurveyState] = useState<SurveyState>(initialState);

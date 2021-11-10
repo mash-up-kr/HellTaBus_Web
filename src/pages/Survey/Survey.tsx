@@ -10,6 +10,7 @@ import {
   Complete,
   Intro,
   BodyInfo,
+  AudioCoach,
   ExerciseSpeed,
 } from '@/components/Survey';
 import ProgressBar from '@/components/Survey/ProgressBar/ProgressBar';
@@ -24,11 +25,12 @@ const SURVEY_STATE_KEY = {
   HEIGHT: 'height',
   WEIGHT: 'weight',
   SPLIT: 'split',
+  AUDIOCOACH: 'audioCoach',
   EXCERCISESPEED: 'exerciseSpeed',
 };
 
 const MIN_STEP = 0;
-const MAX_STEP = 6;
+const MAX_STEP = 7;
 
 const Survey = () => {
   const [step, setStep] = useState<number>(MIN_STEP);
@@ -73,6 +75,11 @@ const Survey = () => {
     <Split
       split={surveyState.split}
       setSplit={setSurveyStateByKey(SURVEY_STATE_KEY.SPLIT)}
+      setNextPage={setNextPage}
+    />,
+    <AudioCoach
+      audioCoach={surveyState.audioCoach}
+      setAudioCoach={setSurveyStateByKey(SURVEY_STATE_KEY.AUDIOCOACH)}
       setNextPage={setNextPage}
     />,
     <ExerciseSpeed
