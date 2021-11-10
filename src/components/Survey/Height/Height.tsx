@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import classNames from 'classnames';
 import styles from './height.module.scss';
 import NextButton from '@/components/common/NextButton/NextButton';
@@ -26,7 +25,7 @@ function Height({ nickname, height, setHeight, setNextPage }: Props): JSX.Elemen
   const [errorMessage, setErrorMessage] = useState<string>('');
   const isDisabled = useMemo(() => !height || !!errorMessage, [height, errorMessage]);
 
-  const isValidHeight = () => {
+  const isValidHeight = useCallback(() => {
     if (Number.isNaN(height)) {
       return '키는 숫자만 입력 가능합니다.';
     }
@@ -35,7 +34,7 @@ function Height({ nickname, height, setHeight, setNextPage }: Props): JSX.Elemen
     }
 
     return null;
-  };
+  }, [height]);
 
   useEffect(() => {
     const heightError = isValidHeight();
@@ -45,7 +44,7 @@ function Height({ nickname, height, setHeight, setNextPage }: Props): JSX.Elemen
     } else {
       setErrorMessage('');
     }
-  }, [height]);
+  }, [isValidHeight]);
 
   const handleChangeHeight = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value }: { value: string } = e.target;

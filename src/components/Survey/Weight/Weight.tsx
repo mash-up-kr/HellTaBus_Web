@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import classNames from 'classnames';
 import styles from './weight.module.scss';
 import Coolicon from '@/assets/coolicon.svg';
@@ -26,7 +25,7 @@ const Weight = ({ nickname, weight, setWeight, setNextPage }: Props) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const isDisabled = useMemo(() => !weight || !!errorMessage, [weight, errorMessage]);
 
-  const isValidWeight = () => {
+  const isValidWeight = useCallback(() => {
     if (Number.isNaN(weight)) {
       return '몸무게는 숫자만 입력 가능합니다.';
     }
@@ -35,7 +34,7 @@ const Weight = ({ nickname, weight, setWeight, setNextPage }: Props) => {
     }
 
     return null;
-  };
+  }, [weight]);
 
   useEffect(() => {
     const weightError = isValidWeight();
@@ -45,7 +44,7 @@ const Weight = ({ nickname, weight, setWeight, setNextPage }: Props) => {
     } else {
       setErrorMessage('');
     }
-  }, [weight]);
+  }, [isValidWeight]);
 
   const handleChangeWeight = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value }: { value: string } = e.target;
