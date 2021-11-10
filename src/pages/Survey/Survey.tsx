@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import classNames from 'classnames';
 import styles from './survey.module.scss';
-import { Age, Gender, Height, Nickname, Split, Weight, Complete } from '@/components/Survey';
+import { Age, Gender, Nickname, Split, Complete, Intro, BodyInfo } from '@/components/Survey';
 import useForm from '@/hooks/useForm';
 import ProgressBar from '@/components/Survey/ProgressBar/ProgressBar';
 import Header from '@/components/common/Header/Header';
@@ -16,7 +16,7 @@ const SURVEY_STATE_KEY = {
   WEIGHT: 'weight',
   SPLIT: 'split',
 };
-const MIN_STEP = 1;
+const MIN_STEP = 0;
 const MAX_STEP = 6;
 
 const Survey = () => {
@@ -33,6 +33,7 @@ const Survey = () => {
   };
 
   const components = [
+    <Intro handleClickButton={setNextPage} />,
     <Nickname
       nickname={surveyState.nickname}
       setNickname={setSurveyStateByKey(SURVEY_STATE_KEY.NICKNAME)}
@@ -50,14 +51,10 @@ const Survey = () => {
       setAge={setSurveyStateByKey(SURVEY_STATE_KEY.AGE)}
       setNextPage={setNextPage}
     />,
-    <Height
+    <BodyInfo
       nickname={surveyState.nickname}
       height={surveyState.height}
       setHeight={setSurveyStateByKey(SURVEY_STATE_KEY.HEIGHT)}
-      setNextPage={setNextPage}
-    />,
-    <Weight
-      nickname={surveyState.nickname}
       weight={surveyState.weight}
       setWeight={setSurveyStateByKey(SURVEY_STATE_KEY.WEIGHT)}
       setNextPage={setNextPage}
@@ -69,23 +66,26 @@ const Survey = () => {
     />,
   ];
 
+  if (step === 0) return <Intro handleClickButton={setNextPage} />;
+
   return (
     <>
-      {step === MAX_STEP ? (
+      {step > MAX_STEP ? (
         <Complete />
       ) : (
-        <div className={classNames(s_container)}>
-          <h1 className={classNames(s_a11yHidden)}>회원 정보 설문조사</h1>
-          <Header handleClickBackButton={setPreviousPage} />
-          <ProgressBar step={step} />
-          {components.map((component, page) => {
-            if (step === page + 1) {
-              // eslint-disable-next-line react/no-array-index-key
-              return <Fragment key={`component-${page}`}>{component}</Fragment>;
-            }
-            return null;
-          })}
-        </div>
+        <form className={classNames(s_container)}>
+          <div>
+            <h1 className={classNames(s_a11yHidden)}>회원 정보 설문조사</h1>
+            <Header handleClickBackButton={setPreviousPage} />
+            <ProgressBar step={step} />
+            {components.map((component, page) => {
+              if (step === page) {
+                return <Fragment key={`component-${page}`}>{component}</Fragment>;
+              }
+              return null;
+            })}
+          </div>
+        </form>
       )}
     </>
   );
