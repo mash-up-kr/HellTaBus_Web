@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './exerciseRoutine.module.scss';
 import { HistorySection, RecommendSection } from '@/components';
-import { Exercise } from '@/types/exercise';
+import { Exercise } from '@/types';
 import Setting from '@/assets/svg/setting.svg';
 import Calendar from '@/assets/svg/calendar.svg';
 import dumbbellVentOverLow from '@/assets/images/dumbbell-vent-over-low.jpg';

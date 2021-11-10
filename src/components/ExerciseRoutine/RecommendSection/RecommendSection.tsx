@@ -1,7 +1,7 @@
 import React from 'react';
 import { RecommendCarousel } from '@/components';
 import style from './recommendSection.module.scss';
-import { Exercise } from '@/types/exercise';
+import { Exercise } from '@/types';
 import RightArrow from '@/assets/svg/right-arrow.svg';
 import dumbbell from '@/assets/images/dumbbell.png';
 import gripper from '@/assets/images/gripper.png';

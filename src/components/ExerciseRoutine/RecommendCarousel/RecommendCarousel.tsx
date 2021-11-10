@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { ExerciseCard, Carousel } from '@/components';
 import style from './recommendCarousel.module.scss';
-import { Exercise } from '@/types/exercise';
+import { Exercise } from '@/types';
 
 interface Props {
   recommendList: Exercise[];

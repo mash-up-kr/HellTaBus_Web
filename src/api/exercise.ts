@@ -1,5 +1,5 @@
 import { get } from '@/api/core';
-import { Exercise } from '@/types/exercise';
+import { Exercise } from '@/types';
 
 export const getExercises = (parts = ''): Promise<Exercise[]> => {
   return get({
