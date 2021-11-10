@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, useCallback } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import classNames from 'classnames';
 import styles from './age.module.scss';
 import NextButton from '@/components/common/NextButton/NextButton';
@@ -25,26 +25,26 @@ function Age({ nickname, age, setAge, setNextPage }: Props): JSX.Element {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const isDisabled = useMemo(() => !age || !!errorMessage, [age, errorMessage]);
 
-  const isValidAge = useCallback(() => {
-    if (Number.isNaN(age)) {
-      return '나이에는 숫자만 입력이 가능합니다.';
-    }
-    if (age > 200) {
-      return `정말 ${age}살이 맞으신가요?`;
-    }
-
-    return null;
-  }, [age]);
-
   useEffect(() => {
-    const ageError = isValidAge();
+    const isValidAge = (userAge: number) => {
+      if (Number.isNaN(userAge)) {
+        return '나이에는 숫자만 입력이 가능합니다.';
+      }
+      if (userAge > 200) {
+        return `정말 ${userAge}살이 맞으신가요?`;
+      }
+
+      return null;
+    };
+
+    const ageError = isValidAge(age);
 
     if (ageError) {
       setErrorMessage(ageError);
     } else {
       setErrorMessage('');
     }
-  }, [isValidAge]);
+  }, [age]);
 
   const handleChangeAge = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value }: { value: string } = e.target;

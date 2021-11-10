@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 import styles from './weight.module.scss';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
@@ -25,26 +25,25 @@ const Weight = ({ nickname, weight, setWeight, setNextPage }: Props) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const isDisabled = useMemo(() => !weight || !!errorMessage, [weight, errorMessage]);
 
-  const isValidWeight = useCallback(() => {
-    if (Number.isNaN(weight)) {
-      return '몸무게는 숫자만 입력 가능합니다.';
-    }
-    if (weight > 1000) {
-      return `정말 ${weight}kg 맞으신가요!?🤔`;
-    }
-
-    return null;
-  }, [weight]);
-
   useEffect(() => {
-    const weightError = isValidWeight();
+    const isValidWeight = (userWeight: number) => {
+      if (Number.isNaN(userWeight)) {
+        return '몸무게는 숫자만 입력 가능합니다.';
+      }
+      if (userWeight > 1000) {
+        return `정말 ${userWeight}kg 맞으신가요!?🤔`;
+      }
+      return null;
+    };
+
+    const weightError = isValidWeight(weight);
 
     if (weightError) {
       setErrorMessage(weightError);
     } else {
       setErrorMessage('');
     }
-  }, [isValidWeight]);
+  }, [weight]);
 
   const handleChangeWeight = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value }: { value: string } = e.target;
