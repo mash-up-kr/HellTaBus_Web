@@ -1,82 +1,124 @@
 @use '@/styles/color';
 
 .s_deem {
-  background: linear-gradient(107.56deg, #2b2d31 0%, #404853 100%);
+  background-image: linear-gradient(107.56deg, #2b2d31 0%, #404853 100%);
   border-radius: 3rem 3rem 0 0;
   flex-grow: 1;
+  position: relative;
   text-align: left;
+  z-index: 0;
+
+  .s_backImages {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -5;
+
+    .s_dumbbell {
+      position: absolute;
+      right: -11.907rem;
+      top: 0.033rem;
+      transform: rotate(4.72deg);
+    }
+
+    .s_gripper {
+      position: absolute;
+      right: -5.644rem;
+      top: -3.3rem;
+      transform: rotate(-26.28deg);
+    }
+
+    .s_skippingRope {
+      left: -6.9rem;
+      position: absolute;
+      top: 16.923rem;
+      transform: rotate(15deg);
+    }
+  }
 
   .s_recommendSection {
     background: linear-gradient(180deg, rgba(96, 29, 206, 0.8) 0%, rgba(96, 29, 206, 0.4) 100%);
     border-radius: 3rem 3rem 0 0;
+    display: flex;
+    flex-flow: column nowrap;
     height: 100%;
     padding: 3.6rem 0 4.7rem;
   }
 
   .s_exerciseStart {
-    background: linear-gradient(90.53deg, #6c26de 0.46%, #863dff 99.63%);
+    background: linear-gradient(93.99deg, #601dce 4.39%, #8f57eb 95.27%);
     border: 0;
     border-radius: 3rem;
-    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08);
     color: color.$onPrimary;
     font-size: 1.6rem;
     font-weight: 700;
     height: 5.4rem;
     line-height: 2.1rem;
-    margin-bottom: 3.2rem;
-    margin-left: 2.4rem;
+    margin: 0 auto;
+    order: 3;
     text-align: center;
-    width: 17.1rem;
+    width: 23rem;
   }
 
-  .s_carouselSection {
-    .s_routineMessage {
-      color: color.$onPrimary;
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 1.6rem;
-      padding: 0 2.4rem;
-      text-align: left;
-      span {
-        line-height: 3.2rem;
-      }
-      em {
-        font-style: normal;
-      }
-
-      .s_split_number {
-        align-items: center;
-        background: rgba(249, 247, 252, 0.2);
-        border: 0.1px solid rgba(249, 247, 252, 0.5);
-        border-radius: 0.8rem;
-        color: color.$primaryVariant1;
-        display: flex;
-        font-size: 1.4rem;
-        height: 2.4rem;
-        justify-content: center;
-        margin-bottom: 0.8rem;
-        width: 5.5rem;
-      }
+  .s_routineMessage {
+    color: color.$onPrimary;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    order: 0;
+    padding: 0 2.4rem;
+    text-align: left;
+    span {
+      line-height: 3.2rem;
     }
+    em {
+      font-style: normal;
+    }
+
+    .s_split_number {
+      align-items: center;
+      background: rgba(249, 247, 252, 0.2);
+      border: 0.1px solid rgba(249, 247, 252, 0.5);
+      border-radius: 0.8rem;
+      color: color.$primaryVariant1;
+      display: flex;
+      font-size: 1.4rem;
+      height: 2.4rem;
+      justify-content: center;
+      margin-bottom: 0.8rem;
+      width: 5.5rem;
+    }
+  }
+
+  .s_recommendCarousel {
+    margin: 3.4rem 0 4.4rem 0;
+    order: 2;
   }
 
   .s_otherExercise {
-    background: transparent;
-    border: 0;
-    color: color.$onPrimary;
-    display: block;
-    font-size: 1.4rem;
-    font-weight: 700;
-    line-height: 1.9rem;
-    margin: 0 auto;
-    margin-top: 2.4rem;
+    order: 1;
+    padding-left: 2.4rem;
 
-    .s_rightArrow {
-      margin-left: 0.9rem;
-    }
+    button {
+      background: transparent;
+      border: 0;
+      color: color.$primaryVariant1;
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 1.9rem;
+      opacity: 0.8;
+      padding: 0;
 
-    & * {
-      vertical-align: middle;
+      .s_rightArrow {
+        margin-left: 0.9rem;
+      }
+
+      & * {
+        vertical-align: middle;
+      }
     }
   }
 }
