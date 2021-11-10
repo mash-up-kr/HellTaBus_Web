@@ -33,43 +33,42 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, setNextPage }: Props) 
         </p>
         운동 하길 원하시나요?
       </h2>
-      {/* TODO: 오디오 코치 쪽에서 필요한 보조 메세지가 입력됨 -> 다음 commit 시에 수정 할 것! */}
-      <h3>목소리를 들어보면 선택이 더 쉬울거에요!</h3>
+      <h3>운동 경험이 적을수록 천천히 해보세요</h3>
       <div className={classNames(s_buttonWrapper)}>
-        <label htmlFor="slow">
-          <input type="radio" value="slow" id="slow" className={classNames(s_a11yHidden)} />
+        <label htmlFor="SLOW">
+          <input type="radio" value="SLOW" id="SLOW" className={classNames(s_a11yHidden)} />
           <button
             type="button"
             className={classNames(s_exerciseSpeedButton, {
-              [s_selectedExerciseSpeed]: exerciseSpeed === 'slow',
+              [s_selectedExerciseSpeed]: exerciseSpeed === 'SLOW',
             })}
-            onClick={handleClickExerciseSpeedButton('slow')}
+            onClick={handleClickExerciseSpeedButton('SLOW')}
             aria-hidden="true"
           >
             천천히
           </button>
         </label>
-        <label htmlFor="middle">
-          <input type="radio" value="middle" id="middle" className={classNames(s_a11yHidden)} />
+        <label htmlFor="MIDDLE">
+          <input type="radio" value="MIDDLE" id="MIDDLE" className={classNames(s_a11yHidden)} />
           <button
             type="button"
             className={classNames(s_exerciseSpeedButton, {
-              [s_selectedExerciseSpeed]: exerciseSpeed === 'middle',
+              [s_selectedExerciseSpeed]: exerciseSpeed === 'MIDDLE',
             })}
-            onClick={handleClickExerciseSpeedButton('middle')}
+            onClick={handleClickExerciseSpeedButton('MIDDLE')}
             aria-hidden="true"
           >
             보통
           </button>
         </label>
-        <label htmlFor="fast">
-          <input type="radio" value="fast" id="fast" className={classNames(s_a11yHidden)} />
+        <label htmlFor="FAST">
+          <input type="radio" value="FAST" id="FAST" className={classNames(s_a11yHidden)} />
           <button
             type="button"
             className={classNames(s_exerciseSpeedButton, {
-              [s_selectedExerciseSpeed]: exerciseSpeed === 'fast',
+              [s_selectedExerciseSpeed]: exerciseSpeed === 'FAST',
             })}
-            onClick={handleClickExerciseSpeedButton('fast')}
+            onClick={handleClickExerciseSpeedButton('FAST')}
             aria-hidden="true"
           >
             빠르게
