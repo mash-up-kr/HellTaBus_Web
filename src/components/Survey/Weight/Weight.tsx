@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import classNames from 'classnames';
 import styles from './weight.module.scss';
-import Coolicon from '@/assets/coolicon.svg';
+import ErrorIcon from '@/assets/error-icon.svg';
 import NextButton from '@/components/common/NextButton/NextButton';
 
 const {
@@ -67,7 +67,7 @@ const Weight = ({ nickname, weight, setWeight, setNextPage }: Props) => {
           value={weight || ''}
           onChange={handleChangeWeight}
         />
-        {weight !== 0 && errorMessage && <Coolicon className={classNames(s_errorIcon)} />}
+        {weight !== 0 && errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
       {weight !== 0 && errorMessage && (
         <span className={classNames(s_errorMsg)}>{errorMessage}</span>

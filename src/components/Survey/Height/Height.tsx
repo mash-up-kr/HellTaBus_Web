@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import classNames from 'classnames';
 import styles from './height.module.scss';
 import NextButton from '@/components/common/NextButton/NextButton';
-import Coolicon from '@/assets/coolicon.svg';
+import ErrorIcon from '@/assets/error-icon.svg';
 
 const {
   s_container,
@@ -67,7 +67,7 @@ function Height({ nickname, height, setHeight, setNextPage }: Props): JSX.Elemen
           value={height || ''}
           onChange={handleChangeHeight}
         />
-        {height !== 0 && errorMessage && <Coolicon className={classNames(s_errorIcon)} />}
+        {height !== 0 && errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
       {height !== 0 && errorMessage && (
         <span className={classNames(s_errorMsg)}>{errorMessage}</span>

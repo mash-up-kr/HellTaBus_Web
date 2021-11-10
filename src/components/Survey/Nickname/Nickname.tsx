@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import classNames from 'classnames';
 import styles from './nickname.module.scss';
-import Coolicon from '@/assets/coolicon.svg';
+import ErrorIcon from '@/assets/error-icon.svg';
 import NextButton from '@/components/common/NextButton/NextButton';
 
 const {
@@ -66,7 +66,7 @@ function Nickname({ nickname, setNickname, setNextPage }: Props) {
           value={nickname}
           onChange={handleChangeNickname}
         />
-        {nickname !== '' && errorMessage && <Coolicon className={classNames(s_errorIcon)} />}
+        {nickname !== '' && errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
       {nickname !== '' && errorMessage && (
         <span className={classNames(s_errorMsg)}>{errorMessage}</span>
