@@ -9,18 +9,17 @@
 }
 
 .s_navigator {
+  align-items: center;
+  display: flex;
   height: 5.6rem;
-  position: relative;
+  justify-content: flex-end;
+  padding-right: 1.6rem;
 
   button {
     background-color: transparent;
     border: 0;
     height: 4rem;
     padding: 1rem;
-    position: absolute;
-    right: 1.6rem;
-    top: 50%;
-    transform: translate3d(0, -50%, 0);
     width: 4rem;
   }
 }
