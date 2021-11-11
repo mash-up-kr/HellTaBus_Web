@@ -6,7 +6,7 @@ import {
   Age,
   Gender,
   Nickname,
-  Split,
+  HealthStyle,
   SurveyComplete,
   Intro,
   BodyInfo,
@@ -25,7 +25,7 @@ const SURVEY_STATE_KEY = {
   GENDER: 'gender',
   HEIGHT: 'height',
   WEIGHT: 'weight',
-  SPLIT: 'split',
+  HEALTHSTYLE: 'healthStyle',
   AUDIOCOACH: 'audioCoach',
   EXCERCISESPEED: 'exerciseSpeed',
   AUDIOSPEED: 'audioSpeed',
@@ -74,9 +74,9 @@ const Survey = () => {
       setWeight={setSurveyStateByKey(SURVEY_STATE_KEY.WEIGHT)}
       setNextPage={setNextPage}
     />,
-    <Split
-      split={surveyState.split}
-      setSplit={setSurveyStateByKey(SURVEY_STATE_KEY.SPLIT)}
+    <HealthStyle
+      healthStyle={surveyState.healthStyle}
+      setHealthStyle={setSurveyStateByKey(SURVEY_STATE_KEY.HEALTHSTYLE)}
       setNextPage={setNextPage}
     />,
     <AudioCoach
@@ -97,24 +97,22 @@ const Survey = () => {
   ];
 
   if (step === 0) return <Intro handleClickStartButton={setNextPage} />;
-  if (step === MAX_STEP) return <SurveyComplete nickname={surveyState.nickname} />;
+  if (step > MAX_STEP) return <SurveyComplete nickname={surveyState.nickname} />;
 
   return (
-    <>
-      <form className={classNames(s_container)}>
-        <div>
-          <h1 className={classNames(s_a11yHidden)}>회원 정보 설문조사</h1>
-          <Header handleClickBackButton={setPreviousPage} />
-          <ProgressBar step={step} />
-          {components.map((component, page) => {
-            if (step === page) {
-              return <Fragment key={`component-${page}`}>{component}</Fragment>;
-            }
-            return null;
-          })}
-        </div>
-      </form>
-    </>
+    <form className={classNames(s_container)}>
+      <div>
+        <h1 className={classNames(s_a11yHidden)}>회원 정보 설문조사</h1>
+        <Header handleClickBackButton={setPreviousPage} />
+        <ProgressBar step={step} />
+        {components.map((component, page) => {
+          if (step === page) {
+            return <Fragment key={`component-${page}`}>{component}</Fragment>;
+          }
+          return null;
+        })}
+      </div>
+    </form>
   );
 };
 

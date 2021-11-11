@@ -1,32 +1,34 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
-import style from './splitWorking.module.scss';
+import style from './workout.module.scss';
 
 const { s_container, s_selectedContainer, s_content, s_title, s_description } = style;
 
 interface Props {
-  selectedSplit: number;
-  currentSplit: number;
+  selectedHealthStyle: string;
+  currentHealthStyle: string;
   imageComponent: JSX.Element;
   title: string;
-  handleClickSplit: (splitNumber: number) => void;
+  handleClickHealthStyle: (healthStyle: string) => void;
   children: ReactNode;
 }
 
-const SplitWorking = ({
-  selectedSplit,
-  currentSplit,
+const Workout = ({
+  selectedHealthStyle,
+  currentHealthStyle,
   imageComponent,
   title,
-  handleClickSplit,
+  handleClickHealthStyle,
   children,
 }: Props) => {
   return (
     <button
       type="button"
-      className={classNames(s_container, { [s_selectedContainer]: selectedSplit === currentSplit })}
+      className={classNames(s_container, {
+        [s_selectedContainer]: selectedHealthStyle === currentHealthStyle,
+      })}
       onClick={() => {
-        handleClickSplit(currentSplit);
+        handleClickHealthStyle(currentHealthStyle);
       }}
     >
       <div className={classNames(s_content)}>
@@ -38,4 +40,4 @@ const SplitWorking = ({
   );
 };
 
-export default SplitWorking;
+export default Workout;

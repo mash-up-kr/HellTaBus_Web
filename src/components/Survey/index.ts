@@ -4,7 +4,7 @@ export { default as SurveyComplete } from './SurveyComplete/SurveyComplete';
 export { default as BodyInfo } from './BodyInfo/BodyInfo';
 export { default as Nickname } from './Nickname/Nickname';
 export { default as Gender } from './Gender/Gender';
-export { default as Split } from './Split/Split';
+export { default as HealthStyle } from './HealthStyle/HealthStyle';
 export { default as AudioCoach } from './AudioCoach/AudioCoach';
 export { default as ExerciseSpeed } from './ExerciseSpeed/ExerciseSpeed';
 export { default as AudioSpeed } from './AudioSpeed/AudioSpeed';
