@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './gender.module.scss';
 
-const { s_a11yHidden, s_container, s_title, s_genderButton, s_selectedGender, s_nextButton } =
-  style;
+const { s_container, s_title, s_genderButton, s_selectedGender, s_nextButton } = style;
 
 interface Props {
   nickname: string;
@@ -27,7 +26,7 @@ function Gender({ nickname, gender, setGender, setNextPage }: Props) {
       </h2>
       <div>
         <label htmlFor="male">
-          <input type="radio" value="male" id="male" className={classNames(s_a11yHidden)} />
+          <input type="radio" value="male" id="male" className={classNames('s_a11yHidden')} />
           <button
             type="button"
             className={classNames(s_genderButton, { [s_selectedGender]: gender === 'male' })}
@@ -38,7 +37,7 @@ function Gender({ nickname, gender, setGender, setNextPage }: Props) {
           </button>
         </label>
         <label htmlFor="female">
-          <input type="radio" value="male" id="female" className={classNames(s_a11yHidden)} />
+          <input type="radio" value="male" id="female" className={classNames('s_a11yHidden')} />
           <button
             type="button"
             className={classNames(s_genderButton, { [s_selectedGender]: gender === 'female' })}

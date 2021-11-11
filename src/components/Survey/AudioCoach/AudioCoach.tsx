@@ -2,14 +2,8 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './audioCoach.module.scss';
 
-const {
-  s_a11yHidden,
-  s_container,
-  s_buttonWrapper,
-  s_audioCoachButton,
-  s_selectedAudioCoach,
-  s_nextButton,
-} = style;
+const { s_container, s_buttonWrapper, s_audioCoachButton, s_selectedAudioCoach, s_nextButton } =
+  style;
 
 interface Props {
   audioCoach: string;
@@ -36,7 +30,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, setNextPage }: Props) => {
       <h3>목소리를 들어보면 선택이 더 쉬울거에요!</h3>
       <div className={classNames(s_buttonWrapper)}>
         <label htmlFor="SCARY">
-          <input type="radio" value="SCARY" id="SCARY" className={classNames(s_a11yHidden)} />
+          <input type="radio" value="SCARY" id="SCARY" className={classNames('s_a11yHidden')} />
           <button
             type="button"
             className={classNames(s_audioCoachButton, {
@@ -53,7 +47,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, setNextPage }: Props) => {
             type="radio"
             value="COMFORTABLE"
             id="COMFORTABLE"
-            className={classNames(s_a11yHidden)}
+            className={classNames('s_a11yHidden')}
           />
           <button
             type="button"
@@ -67,7 +61,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, setNextPage }: Props) => {
           </button>
         </label>
         <label htmlFor="FUNNY">
-          <input type="radio" value="FUNNY" id="FUNNY" className={classNames(s_a11yHidden)} />
+          <input type="radio" value="FUNNY" id="FUNNY" className={classNames('s_a11yHidden')} />
           <button
             type="button"
             className={classNames(s_audioCoachButton, {

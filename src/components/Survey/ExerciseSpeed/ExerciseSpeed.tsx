@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import style from './exerciseSpeed.module.scss';
 
 const {
-  s_a11yHidden,
   s_container,
   s_buttonWrapper,
   s_exerciseSpeedButton,
@@ -36,7 +35,7 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, setNextPage }: Props) 
       <h3>운동 경험이 적을수록 천천히 해보세요</h3>
       <div className={classNames(s_buttonWrapper)}>
         <label htmlFor="SLOW">
-          <input type="radio" value="SLOW" id="SLOW" className={classNames(s_a11yHidden)} />
+          <input type="radio" value="SLOW" id="SLOW" className={classNames('s_a11yHidden')} />
           <button
             type="button"
             className={classNames(s_exerciseSpeedButton, {
@@ -49,7 +48,7 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, setNextPage }: Props) 
           </button>
         </label>
         <label htmlFor="MIDDLE">
-          <input type="radio" value="MIDDLE" id="MIDDLE" className={classNames(s_a11yHidden)} />
+          <input type="radio" value="MIDDLE" id="MIDDLE" className={classNames('s_a11yHidden')} />
           <button
             type="button"
             className={classNames(s_exerciseSpeedButton, {
@@ -62,7 +61,7 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, setNextPage }: Props) 
           </button>
         </label>
         <label htmlFor="FAST">
-          <input type="radio" value="FAST" id="FAST" className={classNames(s_a11yHidden)} />
+          <input type="radio" value="FAST" id="FAST" className={classNames('s_a11yHidden')} />
           <button
             type="button"
             className={classNames(s_exerciseSpeedButton, {

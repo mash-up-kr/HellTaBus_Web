@@ -2,14 +2,8 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './audioSpeed.module.scss';
 
-const {
-  s_a11yHidden,
-  s_container,
-  s_buttonWrapper,
-  s_audioSpeedButton,
-  s_selectedAudioSpeed,
-  s_nextButton,
-} = style;
+const { s_container, s_buttonWrapper, s_audioSpeedButton, s_selectedAudioSpeed, s_nextButton } =
+  style;
 
 interface Props {
   audioSpeed: number;
@@ -36,7 +30,7 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, setNextPage }: Props) => {
       <h3>오디오 코치가 하는 설명의 길이가 달라져요</h3>
       <div className={classNames(s_buttonWrapper)}>
         <label htmlFor="0">
-          <input type="radio" value="0" id="0" className={classNames(s_a11yHidden)} />
+          <input type="radio" value="0" id="0" className={classNames('s_a11yHidden')} />
           <button
             type="button"
             className={classNames(s_audioSpeedButton, {
@@ -49,7 +43,7 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, setNextPage }: Props) => {
           </button>
         </label>
         <label htmlFor="1">
-          <input type="radio" value="1" id="1" className={classNames(s_a11yHidden)} />
+          <input type="radio" value="1" id="1" className={classNames('s_a11yHidden')} />
           <button
             type="button"
             className={classNames(s_audioSpeedButton, {
