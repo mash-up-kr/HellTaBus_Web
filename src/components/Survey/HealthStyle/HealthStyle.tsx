@@ -11,10 +11,10 @@ const { s_container, s_imagesContainer, s_title, s_nextButton } = style;
 interface Props {
   healthStyle: string;
   setHealthStyle: (value: string) => void;
-  setNextPage: () => void;
+  handleSetNextPage: () => void;
 }
 
-function HealthStyle({ healthStyle, setHealthStyle, setNextPage }: Props) {
+function HealthStyle({ healthStyle, setHealthStyle, handleSetNextPage }: Props) {
   const [isDisabled, setIsDisabled] = useState<boolean>(!healthStyle);
 
   const handleClickHealthStyle = (userHealthStyle: string) => {
@@ -57,7 +57,7 @@ function HealthStyle({ healthStyle, setHealthStyle, setNextPage }: Props) {
       <button
         className={classNames(s_nextButton)}
         type="button"
-        onClick={setNextPage}
+        onClick={handleSetNextPage}
         disabled={isDisabled}
       >
         다음

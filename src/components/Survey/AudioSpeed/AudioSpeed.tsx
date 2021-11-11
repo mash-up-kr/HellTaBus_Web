@@ -8,10 +8,10 @@ const { s_container, s_buttonWrapper, s_audioSpeedButton, s_selectedAudioSpeed, 
 interface Props {
   audioSpeed: number;
   setAudioSpeed: (value: number) => void;
-  setNextPage: () => void;
+  handleSetNextPage: () => void;
 }
 
-const AudioSpeed = ({ audioSpeed, setAudioSpeed, setNextPage }: Props) => {
+const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!audioSpeed);
 
   const handleClickaudioSpeedButton = (userAudioSpeed: number) => () => {
@@ -59,7 +59,7 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, setNextPage }: Props) => {
       <button
         className={classNames(s_nextButton)}
         type="button"
-        onClick={setNextPage}
+        onClick={handleSetNextPage}
         disabled={isDisabled}
       >
         다음

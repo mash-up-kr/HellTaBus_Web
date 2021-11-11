@@ -17,10 +17,10 @@ const {
 interface Props {
   nickname: string;
   setNickname: (value: string) => void;
-  setNextPage: () => void;
+  handleSetNextPage: () => void;
 }
 
-const Nickname = ({ nickname, setNickname, setNextPage }: Props) => {
+const Nickname = ({ nickname, setNickname, handleSetNextPage }: Props) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const isDisabled = useMemo(() => !nickname || !!errorMessage, [nickname, errorMessage]);
 
@@ -83,7 +83,7 @@ const Nickname = ({ nickname, setNickname, setNextPage }: Props) => {
       <button
         className={classNames(s_nextButton)}
         type="button"
-        onClick={setNextPage}
+        onClick={handleSetNextPage}
         disabled={isDisabled}
       >
         다음

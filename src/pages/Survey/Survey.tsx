@@ -38,33 +38,33 @@ const Survey = () => {
   const [step, setStep] = useState<number>(MIN_STEP);
   const { surveyState, setSurveyStateByKey } = useForm();
 
-  const setPreviousPage = () => {
+  const handleSetPreviousPage = () => {
     if (step <= MIN_STEP) return;
     setStep((previousStep) => previousStep - 1);
   };
-  const setNextPage = () => {
+  const handleSetNextPage = () => {
     if (step > MAX_STEP) return;
     setStep((previousStep) => previousStep + 1);
   };
 
   const components = [
-    <Intro handleClickStartButton={setNextPage} />,
+    <Intro handleClickStartButton={handleSetNextPage} />,
     <Nickname
       nickname={surveyState.nickname}
       setNickname={setSurveyStateByKey(SURVEY_STATE_KEY.NICKNAME)}
-      setNextPage={setNextPage}
+      handleSetNextPage={handleSetNextPage}
     />,
     <Gender
       nickname={surveyState.nickname}
       gender={surveyState.gender}
       setGender={setSurveyStateByKey(SURVEY_STATE_KEY.GENDER)}
-      setNextPage={setNextPage}
+      handleSetNextPage={handleSetNextPage}
     />,
     <Age
       nickname={surveyState.nickname}
       age={surveyState.age}
       setAge={setSurveyStateByKey(SURVEY_STATE_KEY.AGE)}
-      setNextPage={setNextPage}
+      handleSetNextPage={handleSetNextPage}
     />,
     <BodyInfo
       nickname={surveyState.nickname}
@@ -72,38 +72,38 @@ const Survey = () => {
       setHeight={setSurveyStateByKey(SURVEY_STATE_KEY.HEIGHT)}
       weight={surveyState.weight}
       setWeight={setSurveyStateByKey(SURVEY_STATE_KEY.WEIGHT)}
-      setNextPage={setNextPage}
+      handleSetNextPage={handleSetNextPage}
     />,
     <HealthStyle
       healthStyle={surveyState.healthStyle}
       setHealthStyle={setSurveyStateByKey(SURVEY_STATE_KEY.HEALTH_STYLE)}
-      setNextPage={setNextPage}
+      handleSetNextPage={handleSetNextPage}
     />,
     <AudioCoach
       audioCoach={surveyState.audioCoach}
       setAudioCoach={setSurveyStateByKey(SURVEY_STATE_KEY.AUDIO_COACH)}
-      setNextPage={setNextPage}
+      handleSetNextPage={handleSetNextPage}
     />,
     <ExerciseSpeed
       exerciseSpeed={surveyState.exerciseSpeed}
       setExerciseSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.EXCERCISE_SPEED)}
-      setNextPage={setNextPage}
+      handleSetNextPage={handleSetNextPage}
     />,
     <AudioSpeed
       audioSpeed={surveyState.audioSpeed}
       setAudioSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.AUDIO_SPEED)}
-      setNextPage={setNextPage}
+      handleSetNextPage={handleSetNextPage}
     />,
   ];
 
-  if (step === 0) return <Intro handleClickStartButton={setNextPage} />;
+  if (step === 0) return <Intro handleClickStartButton={handleSetNextPage} />;
   if (step > MAX_STEP) return <SurveyComplete nickname={surveyState.nickname} />;
 
   return (
     <form className={classNames(s_container)}>
       <div>
         <h1 className={classNames('s_a11yHidden')}>회원 정보 설문조사</h1>
-        <Header handleClickBackButton={setPreviousPage} />
+        <Header handleClickBackButton={handleSetPreviousPage} />
         <ProgressBar step={step} />
         {components.map((component, page) => {
           if (step === page) {

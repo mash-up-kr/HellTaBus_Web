@@ -8,10 +8,10 @@ const { s_container, s_buttonWrapper, s_audioCoachButton, s_selectedAudioCoach, 
 interface Props {
   audioCoach: string;
   setAudioCoach: (value: string) => void;
-  setNextPage: () => void;
+  handleSetNextPage: () => void;
 }
 
-const AudioCoach = ({ audioCoach, setAudioCoach, setNextPage }: Props) => {
+const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!audioCoach);
 
   const handleClickaudioCoachButton = (userAudioCoach: string) => () => {
@@ -77,7 +77,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, setNextPage }: Props) => {
       <button
         className={classNames(s_nextButton)}
         type="button"
-        onClick={setNextPage}
+        onClick={handleSetNextPage}
         disabled={isDisabled}
       >
         다음

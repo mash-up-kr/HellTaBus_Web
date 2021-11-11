@@ -18,10 +18,10 @@ interface Props {
   nickname: string;
   age: number;
   setAge: (value: number) => void;
-  setNextPage: () => void;
+  handleSetNextPage: () => void;
 }
 
-const Age = ({ nickname, age, setAge, setNextPage }: Props) => {
+const Age = ({ nickname, age, setAge, handleSetNextPage }: Props) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const isDisabled = useMemo(() => !age || !!errorMessage, [age, errorMessage]);
 
@@ -72,7 +72,7 @@ const Age = ({ nickname, age, setAge, setNextPage }: Props) => {
       <button
         className={classNames(s_nextButton)}
         type="button"
-        onClick={setNextPage}
+        onClick={handleSetNextPage}
         disabled={isDisabled}
       >
         다음
