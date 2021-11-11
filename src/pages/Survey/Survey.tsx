@@ -17,7 +17,7 @@ import {
 import ProgressBar from '@/components/Survey/ProgressBar/ProgressBar';
 import Header from '@/components/common/Header/Header';
 
-const { s_container, s_a11yHidden } = style;
+const { s_container } = style;
 
 const SURVEY_STATE_KEY = {
   NICKNAME: 'nickname',
@@ -25,10 +25,10 @@ const SURVEY_STATE_KEY = {
   GENDER: 'gender',
   HEIGHT: 'height',
   WEIGHT: 'weight',
-  HEALTHSTYLE: 'healthStyle',
-  AUDIOCOACH: 'audioCoach',
-  EXCERCISESPEED: 'exerciseSpeed',
-  AUDIOSPEED: 'audioSpeed',
+  HEALTH_STYLE: 'healthStyle',
+  AUDIO_COACH: 'audioCoach',
+  EXCERCISE_SPEED: 'exerciseSpeed',
+  AUDIO_SPEED: 'audioSpeed',
 };
 
 const MIN_STEP = 0;
@@ -76,22 +76,22 @@ const Survey = () => {
     />,
     <HealthStyle
       healthStyle={surveyState.healthStyle}
-      setHealthStyle={setSurveyStateByKey(SURVEY_STATE_KEY.HEALTHSTYLE)}
+      setHealthStyle={setSurveyStateByKey(SURVEY_STATE_KEY.HEALTH_STYLE)}
       setNextPage={setNextPage}
     />,
     <AudioCoach
       audioCoach={surveyState.audioCoach}
-      setAudioCoach={setSurveyStateByKey(SURVEY_STATE_KEY.AUDIOCOACH)}
+      setAudioCoach={setSurveyStateByKey(SURVEY_STATE_KEY.AUDIO_COACH)}
       setNextPage={setNextPage}
     />,
     <ExerciseSpeed
       exerciseSpeed={surveyState.exerciseSpeed}
-      setExerciseSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.EXCERCISESPEED)}
+      setExerciseSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.EXCERCISE_SPEED)}
       setNextPage={setNextPage}
     />,
     <AudioSpeed
       audioSpeed={surveyState.audioSpeed}
-      setAudioSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.AUDIOSPEED)}
+      setAudioSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.AUDIO_SPEED)}
       setNextPage={setNextPage}
     />,
   ];
@@ -102,7 +102,7 @@ const Survey = () => {
   return (
     <form className={classNames(s_container)}>
       <div>
-        <h1 className={classNames(s_a11yHidden)}>회원 정보 설문조사</h1>
+        <h1 className={classNames('s_a11yHidden')}>회원 정보 설문조사</h1>
         <Header handleClickBackButton={setPreviousPage} />
         <ProgressBar step={step} />
         {components.map((component, page) => {
