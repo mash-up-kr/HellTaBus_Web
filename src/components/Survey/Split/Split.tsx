@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './split.module.scss';
 import SplitWorking from '@/components/Survey/SplitWorking/SplitWorking';
-import Pizza0 from '@/assets/svg/pizza0.svg';
-import Pizza3 from '@/assets/svg/pizza3.svg';
-import Pizza5 from '@/assets/svg/pizza5.svg';
+import FullBodyWorkout from '@/assets/svg/full-body-workout.svg';
+import ThreeBodyWorkout from '@/assets/svg/three-body-workout.svg';
+import FiveBodyWorkout from '@/assets/svg/five-body-workout.svg';
 
 const { s_container, s_imagesContainer, s_title, s_nextButton } = style;
 
@@ -29,7 +29,7 @@ function Split({ split, setSplit, setNextPage }: Props) {
         <SplitWorking
           selectedSplit={split}
           currentSplit={1}
-          imageComponent={<Pizza0 />}
+          imageComponent={<FullBodyWorkout />}
           title="무분할"
           handleClickSplit={handleClickSplit}
         >
@@ -38,7 +38,7 @@ function Split({ split, setSplit, setNextPage }: Props) {
         <SplitWorking
           selectedSplit={split}
           currentSplit={3}
-          imageComponent={<Pizza3 />}
+          imageComponent={<ThreeBodyWorkout />}
           title="3분할"
           handleClickSplit={handleClickSplit}
         >
@@ -47,7 +47,7 @@ function Split({ split, setSplit, setNextPage }: Props) {
         <SplitWorking
           selectedSplit={split}
           currentSplit={5}
-          imageComponent={<Pizza5 />}
+          imageComponent={<FiveBodyWorkout />}
           title="5분할"
           handleClickSplit={handleClickSplit}
         >
