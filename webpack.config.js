@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const REGEX = {
   CSS: /\.css$/,
@@ -132,6 +133,7 @@ module.exports = (env, argv) => {
       new CleanWebpackPlugin({
         cleanStaleWebpackAssets: false,
       }),
+      new Dotenv(),
     ],
   };
 };

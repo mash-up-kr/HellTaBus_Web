@@ -1,13 +1,12 @@
 import axios, { AxiosInstance, AxiosRequestConfig, Method } from 'axios';
 import { HTTP_METHODS } from '@/consts';
-import { DUMMY_TOKEN, API_URL } from '@/config';
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: API_URL,
+  baseURL: 'http://3.38.153.230',
   timeout: 10000,
 });
 
-axiosInstance.defaults.headers.common.Authorization = DUMMY_TOKEN;
+axiosInstance.defaults.headers.common.Authorization = process.env.DUMMY_TOKEN ?? '';
 
 const createApiMethod =
   (_axiosInstance: AxiosInstance, methodType: Method) =>
