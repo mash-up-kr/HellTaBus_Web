@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import style from './bodyInfo.module.scss';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
@@ -47,29 +47,18 @@ const BodyInfo = ({ nickname, height, setHeight, weight, setWeight, setNextPage 
     setWeight(+value);
   };
 
-  const isValidHeight = useCallback(() => {
-    if (Number.isNaN(height)) {
-      return '키는 숫자만 입력 가능합니다.';
-    }
-    if (height > 300 || height < 0) {
-      return '다시 한 번 확인해 주세요';
-    }
-
-    return null;
-  }, [height]);
-
-  const isValidWeight = useCallback(() => {
-    if (Number.isNaN(weight)) {
-      return '몸무게는 숫자만 입력 가능합니다.';
-    }
-    if (weight > 1000 || weight < 0) {
-      return '다시 한 번 확인해 주세요';
-    }
-
-    return null;
-  }, [weight]);
-
   useEffect(() => {
+    const isValidHeight = () => {
+      if (Number.isNaN(height)) {
+        return '키는 숫자만 입력 가능합니다.';
+      }
+      if (height > 300 || height < 0) {
+        return '다시 한 번 확인해 주세요';
+      }
+
+      return null;
+    };
+
     const heightError = isValidHeight();
 
     if (heightError) {
@@ -77,9 +66,20 @@ const BodyInfo = ({ nickname, height, setHeight, weight, setWeight, setNextPage 
     } else {
       setHeightErrorMessage('');
     }
-  }, [height, isValidHeight]);
+  }, [height]);
 
   useEffect(() => {
+    const isValidWeight = () => {
+      if (Number.isNaN(weight)) {
+        return '몸무게는 숫자만 입력 가능합니다.';
+      }
+      if (weight > 1000 || weight < 0) {
+        return '다시 한 번 확인해 주세요';
+      }
+
+      return null;
+    };
+
     const weightError = isValidWeight();
 
     if (weightError) {
@@ -87,7 +87,7 @@ const BodyInfo = ({ nickname, height, setHeight, weight, setWeight, setNextPage 
     } else {
       setWeightErrorMessage('');
     }
-  }, [isValidWeight, weight]);
+  }, [weight]);
 
   return (
     <section className={classNames(s_container)}>
