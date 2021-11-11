@@ -8,6 +8,7 @@ const axiosInstance: AxiosInstance = axios.create({
 
 const createApiMethod =
   (_axiosInstance: AxiosInstance, methodType: Method) =>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (config: AxiosRequestConfig): Promise<any> => {
     _axiosInstance.interceptors.response.use((response) => response.data);
 
@@ -17,7 +18,9 @@ const createApiMethod =
     });
   };
 
-export const get = createApiMethod(axiosInstance, HTTP_METHODS.GET);
-export const post = createApiMethod(axiosInstance, HTTP_METHODS.POST);
-export const put = createApiMethod(axiosInstance, HTTP_METHODS.PUT);
-export const deleteMethod = createApiMethod(axiosInstance, HTTP_METHODS.DELETE);
+export default {
+  get: createApiMethod(axiosInstance, HTTP_METHODS.GET),
+  post: createApiMethod(axiosInstance, HTTP_METHODS.POST),
+  put: createApiMethod(axiosInstance, HTTP_METHODS.PUT),
+  delete: createApiMethod(axiosInstance, HTTP_METHODS.DELETE),
+};
