@@ -9,7 +9,7 @@ interface Props {
 const { s_container, s_stepContainer, s_stepComment, s_progress, s_currentStep } = style;
 
 const MIN_STEP = 1;
-const MAX_STEP = 7;
+const MAX_STEP = 8;
 const TOTAL_LENGTH = 312;
 
 const ProgressBar = ({ step }: Props) => {

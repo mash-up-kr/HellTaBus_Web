@@ -9,6 +9,7 @@ interface SurveyState {
   split: number;
   audioCoach: string;
   exerciseSpeed: string;
+  audioSpeed: number;
 }
 
 const useForm = () => {
@@ -21,6 +22,7 @@ const useForm = () => {
     split: 0,
     audioCoach: '',
     exerciseSpeed: '',
+    audioSpeed: 2,
   };
   const [surveyState, setSurveyState] = useState<SurveyState>(initialState);
 

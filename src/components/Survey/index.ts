@@ -7,3 +7,4 @@ export { default as Gender } from './Gender/Gender';
 export { default as Split } from './Split/Split';
 export { default as AudioCoach } from './AudioCoach/AudioCoach';
 export { default as ExerciseSpeed } from './ExerciseSpeed/ExerciseSpeed';
+export { default as AudioSpeed } from './AudioSpeed/AudioSpeed';
