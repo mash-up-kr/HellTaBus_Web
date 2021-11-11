@@ -1,0 +1,31 @@
+import React from 'react';
+import Lottie from 'react-lottie';
+import classNames from 'classnames';
+import style from './searchExercise.module.scss';
+import Search from '@/assets/lottie/search.json';
+
+const { s_container, s_lottieContainer } = style;
+
+interface Props {
+  nickname: string;
+}
+
+const SearchExercise = ({ nickname }: Props) => {
+  const lottieOptions = {
+    animationData: Search,
+  };
+
+  return (
+    <section className={classNames(s_container)}>
+      <div className={classNames(s_lottieContainer)}>
+        <Lottie options={lottieOptions} width={172} height={172} />
+      </div>
+      <h2>
+        <p>정보를 바탕으로 {nickname}님에게</p>
+        <span>딱 맞는 운동</span>을 찾고 있어요!
+      </h2>
+    </section>
+  );
+};
+
+export default SearchExercise;
