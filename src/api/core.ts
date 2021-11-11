@@ -3,7 +3,7 @@ import { HTTP_METHODS } from '@/consts';
 
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: 'http://3.38.153.230',
-  timeout: 30000,
+  timeout: 10000,
 });
 
 const createApiMethod =
