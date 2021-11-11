@@ -2,7 +2,7 @@ import React from 'react';
 import Lottie from 'react-lottie';
 import classNames from 'classnames';
 import style from './intro.module.scss';
-import Welcome from '@/assets/lottie/hand-habimetro.json';
+import welcome from '@/assets/lottie/hand-habimetro.json';
 
 interface Props {
   handleClickStartButton: () => void;
@@ -12,7 +12,7 @@ const { s_a11yHidden, s_container, s_lottieContainer, s_title, s_addendum, s_sta
 
 const Intro = ({ handleClickStartButton }: Props) => {
   const lottieOptions = {
-    animationData: Welcome,
+    animationData: welcome,
   };
 
   return (

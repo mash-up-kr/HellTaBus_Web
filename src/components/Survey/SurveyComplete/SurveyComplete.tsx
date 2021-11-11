@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import Lottie from 'react-lottie';
 import style from './surveyComplete.module.scss';
-import Complete from '@/assets/lottie/complete.json';
+import complete from '@/assets/lottie/complete.json';
 import SearchExercise from '../SearchExercise/SearchExercise';
 
 const { s_container, s_lottieContainer } = style;
@@ -15,7 +15,7 @@ const SurveyComplete = ({ nickname }: Props) => {
   const [loading, setLoading] = useState(true);
 
   const lottieOptions = {
-    animationData: Complete,
+    animationData: complete,
   };
 
   useEffect(() => {

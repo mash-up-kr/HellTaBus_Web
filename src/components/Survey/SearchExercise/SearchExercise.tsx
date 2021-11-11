@@ -2,7 +2,7 @@ import React from 'react';
 import Lottie from 'react-lottie';
 import classNames from 'classnames';
 import style from './searchExercise.module.scss';
-import Search from '@/assets/lottie/search.json';
+import search from '@/assets/lottie/search.json';
 
 const { s_container, s_lottieContainer } = style;
 
@@ -12,7 +12,7 @@ interface Props {
 
 const SearchExercise = ({ nickname }: Props) => {
   const lottieOptions = {
-    animationData: Search,
+    animationData: search,
   };
 
   return (
