@@ -30,7 +30,7 @@ const Age = ({ nickname, age, setAge, setNextPage }: Props) => {
       if (Number.isNaN(userAge)) {
         return '나이에는 숫자만 입력이 가능합니다.';
       }
-      if (userAge > 200) {
+      if (userAge > 200 || userAge < 0) {
         return `정말 ${userAge}살이 맞으신가요?`;
       }
 

@@ -51,7 +51,7 @@ const BodyInfo = ({ nickname, height, setHeight, weight, setWeight, setNextPage 
     if (Number.isNaN(height)) {
       return '키는 숫자만 입력 가능합니다.';
     }
-    if (height > 300) {
+    if (height > 300 || height < 0) {
       return '다시 한 번 확인해 주세요';
     }
 
@@ -62,7 +62,7 @@ const BodyInfo = ({ nickname, height, setHeight, weight, setWeight, setNextPage 
     if (Number.isNaN(weight)) {
       return '몸무게는 숫자만 입력 가능합니다.';
     }
-    if (weight > 1000) {
+    if (weight > 1000 || weight < 0) {
       return '다시 한 번 확인해 주세요';
     }
 
