@@ -22,6 +22,9 @@ const recommendExerciseList: Exercise[] = [
     changeWeight: 0,
     setBreakTime: 0,
     breakTime: 0,
+    createdAt: '',
+    updatedAt: '',
+    deletedAt: null,
   },
   {
     imageLink: dumbbellVentOverLow,
@@ -35,6 +38,9 @@ const recommendExerciseList: Exercise[] = [
     changeWeight: 0,
     setBreakTime: 0,
     breakTime: 0,
+    createdAt: '',
+    updatedAt: '',
+    deletedAt: null,
   },
   {
     imageLink: dumbbellVentOverLow,
@@ -48,6 +54,9 @@ const recommendExerciseList: Exercise[] = [
     changeWeight: 0,
     setBreakTime: 0,
     breakTime: 0,
+    createdAt: '',
+    updatedAt: '',
+    deletedAt: null,
   },
   {
     imageLink: dumbbellVentOverLow,
@@ -61,6 +70,9 @@ const recommendExerciseList: Exercise[] = [
     changeWeight: 0,
     setBreakTime: 0,
     breakTime: 0,
+    createdAt: '',
+    updatedAt: '',
+    deletedAt: null,
   },
   {
     imageLink: dumbbellVentOverLow,
@@ -74,6 +86,9 @@ const recommendExerciseList: Exercise[] = [
     changeWeight: 0,
     setBreakTime: 0,
     breakTime: 0,
+    createdAt: '',
+    updatedAt: '',
+    deletedAt: null,
   },
   {
     imageLink: dumbbellVentOverLow,
@@ -87,6 +102,9 @@ const recommendExerciseList: Exercise[] = [
     changeWeight: 0,
     setBreakTime: 0,
     breakTime: 0,
+    createdAt: '',
+    updatedAt: '',
+    deletedAt: null,
   },
   {
     imageLink: dumbbellVentOverLow,
@@ -100,6 +118,9 @@ const recommendExerciseList: Exercise[] = [
     changeWeight: 0,
     setBreakTime: 0,
     breakTime: 0,
+    createdAt: '',
+    updatedAt: '',
+    deletedAt: null,
   },
 ];
 

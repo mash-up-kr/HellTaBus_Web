@@ -10,4 +10,7 @@ export interface Exercise {
   setBreakTime: number;
   breakTime: number;
   imageLink: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
 }
