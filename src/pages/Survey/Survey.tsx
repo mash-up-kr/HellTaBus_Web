@@ -7,7 +7,7 @@ import {
   Gender,
   Nickname,
   Split,
-  Complete,
+  SurveyComplete,
   Intro,
   BodyInfo,
   AudioCoach,
@@ -48,6 +48,7 @@ const Survey = () => {
   };
 
   const components = [
+    <Intro handleClickStartButton={setNextPage} />,
     <Nickname
       nickname={surveyState.nickname}
       setNickname={setSurveyStateByKey(SURVEY_STATE_KEY.NICKNAME)}
@@ -96,26 +97,23 @@ const Survey = () => {
   ];
 
   if (step === 0) return <Intro handleClickStartButton={setNextPage} />;
+  if (step === MAX_STEP) return <SurveyComplete nickname={surveyState.nickname} />;
 
   return (
     <>
-      {step > MAX_STEP ? (
-        <Complete />
-      ) : (
-        <form className={classNames(s_container)}>
-          <div>
-            <h1 className={classNames(s_a11yHidden)}>회원 정보 설문조사</h1>
-            <Header handleClickBackButton={setPreviousPage} />
-            <ProgressBar step={step} />
-            {components.map((component, page) => {
-              if (step === page) {
-                return <Fragment key={`component-${page}`}>{component}</Fragment>;
-              }
-              return null;
-            })}
-          </div>
-        </form>
-      )}
+      <form className={classNames(s_container)}>
+        <div>
+          <h1 className={classNames(s_a11yHidden)}>회원 정보 설문조사</h1>
+          <Header handleClickBackButton={setPreviousPage} />
+          <ProgressBar step={step} />
+          {components.map((component, page) => {
+            if (step === page) {
+              return <Fragment key={`component-${page}`}>{component}</Fragment>;
+            }
+            return null;
+          })}
+        </div>
+      </form>
     </>
   );
 };
