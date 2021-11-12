@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import classNames from 'classnames';
 import styles from './survey.module.scss';
 import { Age, Gender, Height, Nickname, Split, Weight, Complete } from '@/components/Survey';
-import useForm from '@/hooks/useForm';
+import { useForm } from '@/hooks';
 import ProgressBar from '@/components/Survey/ProgressBar/ProgressBar';
 import Header from '@/components/common/Header/Header';
 
