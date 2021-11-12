@@ -20,14 +20,10 @@ const createApiMethod =
     });
   };
 
-const getMethod = createApiMethod(axiosInstance, HTTP_METHODS.GET);
-const postMethod = createApiMethod(axiosInstance, HTTP_METHODS.POST);
-const putMethod = createApiMethod(axiosInstance, HTTP_METHODS.PUT);
-const deleteMethod = createApiMethod(axiosInstance, HTTP_METHODS.DELETE);
-
 export default {
-  get: getMethod,
-  post: postMethod,
-  put: putMethod,
-  delete: deleteMethod,
+  get: createApiMethod(axiosInstance, HTTP_METHODS.GET),
+  post: createApiMethod(axiosInstance, HTTP_METHODS.POST),
+  patch: createApiMethod(axiosInstance, HTTP_METHODS.PATCH),
+  put: createApiMethod(axiosInstance, HTTP_METHODS.PUT),
+  delete: createApiMethod(axiosInstance, HTTP_METHODS.DELETE),
 };
