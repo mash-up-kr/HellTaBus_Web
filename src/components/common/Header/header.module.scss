@@ -8,8 +8,10 @@
   width: 100%;
 
   .s_previousButton {
-    background-color: color.$background;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
     height: 4rem;
+    padding: 0;
     width: 4rem;
   }
 }
