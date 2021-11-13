@@ -84,11 +84,15 @@
 }
 
 .s_exerciseSpeedButton {
+  align-items: center;
   background-color: color.$background;
   border: 0.1rem solid color.$disable;
   border-radius: 1.2rem;
   color: color.$disable;
+  display: flex;
+  font-size: 1.6rem;
   height: 5.4rem;
+  justify-content: center;
   margin: 0.2rem 0;
   outline: none;
   width: 29.6rem;
