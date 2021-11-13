@@ -4,7 +4,7 @@ import styles from './survey.module.scss';
 import { Age, Gender, Height, Nickname, Split, Weight, Complete } from '@/components/Survey';
 import { useForm } from '@/hooks';
 import ProgressBar from '@/components/Survey/ProgressBar/ProgressBar';
-import Header from '@/components/common/Header/Header';
+import { Header } from '@/components';
 
 const { s_container, s_a11yHidden } = styles;
 

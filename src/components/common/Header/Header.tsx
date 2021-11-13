@@ -3,13 +3,14 @@ import classNames from 'classnames';
 import styles from './header.module.scss';
 import Back from '@/assets/back.svg';
 
-const { s_header, s_previousButton } = styles;
+const { s_header, s_previousButton, s_title } = styles;
 
 interface Props {
   handleClickBackButton: () => void;
+  title?: string;
 }
 
-function Header({ handleClickBackButton }: Props) {
+function Header({ handleClickBackButton, title }: Props) {
   return (
     <header className={classNames(s_header)}>
       <button
@@ -19,6 +20,7 @@ function Header({ handleClickBackButton }: Props) {
       >
         <Back />
       </button>
+      <span className={classNames(s_title)}>{title}</span>
     </header>
   );
 }
