@@ -1,6 +1,8 @@
 @use '@/styles/color.scss';
-@use '@/styles/common.scss';
 
+.s_a11yHidden {
+  width: 20px;
+}
 .s_container {
   align-items: center;
   display: flex;

@@ -26,10 +26,10 @@ interface Props {
   setHeight: (value: number) => void;
   weight: number;
   setWeight: (value: number) => void;
-  setNextPage: () => void;
+  handleSetNextPage: () => void;
 }
 
-const BodyInfo = ({ nickname, height, setHeight, weight, setWeight, setNextPage }: Props) => {
+const BodyInfo = ({ nickname, height, setHeight, weight, setWeight, handleSetNextPage }: Props) => {
   const [heightErrorMessage, setHeightErrorMessage] = useState<string>('');
   const [weightErrorMessage, setWeightErrorMessage] = useState<string>('');
   const isDisabled = useMemo(
@@ -134,7 +134,7 @@ const BodyInfo = ({ nickname, height, setHeight, weight, setWeight, setNextPage 
       <button
         className={classNames(s_nextButton)}
         type="button"
-        onClick={setNextPage}
+        onClick={handleSetNextPage}
         disabled={isDisabled}
       >
         다음

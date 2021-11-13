@@ -8,7 +8,7 @@ interface Props {
   handleClickStartButton: () => void;
 }
 
-const { s_a11yHidden, s_container, s_lottieContainer, s_title, s_addendum, s_startButton } = style;
+const { s_container, s_lottieContainer, s_title, s_addendum, s_startButton } = style;
 
 const Intro = ({ handleClickStartButton }: Props) => {
   const lottieOptions = {
@@ -17,7 +17,7 @@ const Intro = ({ handleClickStartButton }: Props) => {
 
   return (
     <section className={classNames(s_container)}>
-      <h1 className={classNames(s_a11yHidden)}>설문조사 시작</h1>
+      <h1 className={classNames('s_a11yHidden')}>설문조사 시작</h1>
       <div className={classNames(s_lottieContainer)}>
         <Lottie options={lottieOptions} width={144} height={144} />
       </div>

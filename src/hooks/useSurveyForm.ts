@@ -6,20 +6,20 @@ interface SurveyState {
   age: number;
   height: number;
   weight: number;
-  split: number;
+  healthStyle: string;
   audioCoach: string;
   exerciseSpeed: string;
   audioSpeed: number;
 }
 
-const useForm = () => {
+const useSurveyForm = () => {
   const initialState = {
     nickname: '',
     gender: '',
     age: 0,
     height: 0,
     weight: 0,
-    split: 0,
+    healthStyle: '',
     audioCoach: '',
     exerciseSpeed: '',
     audioSpeed: 2,
@@ -36,4 +36,4 @@ const useForm = () => {
   return { surveyState, setSurveyStateByKey };
 };
 
-export default useForm;
+export default useSurveyForm;

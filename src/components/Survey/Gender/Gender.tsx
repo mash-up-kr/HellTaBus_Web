@@ -9,10 +9,10 @@ interface Props {
   nickname: string;
   gender: string;
   setGender: (value: string) => void;
-  setNextPage: () => void;
+  handleSetNextPage: () => void;
 }
 
-function Gender({ nickname, gender, setGender, setNextPage }: Props) {
+function Gender({ nickname, gender, setGender, handleSetNextPage }: Props) {
   const [isDisabled, setIsDisabled] = useState<boolean>(!gender);
 
   const handleClickGenderButton = (userGender: string) => () => {
@@ -58,7 +58,7 @@ function Gender({ nickname, gender, setGender, setNextPage }: Props) {
       <button
         className={classNames(s_nextButton)}
         type="button"
-        onClick={setNextPage}
+        onClick={handleSetNextPage}
         disabled={isDisabled}
       >
         다음

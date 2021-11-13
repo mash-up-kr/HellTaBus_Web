@@ -16,10 +16,10 @@ const {
 interface Props {
   exerciseSpeed: string;
   setExerciseSpeed: (value: string) => void;
-  setNextPage: () => void;
+  handleSetNextPage: () => void;
 }
 
-function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, setNextPage }: Props) {
+function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: Props) {
   const [isDisabled, setIsDisabled] = useState<boolean>(!exerciseSpeed);
 
   const handleClickExerciseSpeedButton = (userExerciseSpeed: string) => () => {
@@ -89,7 +89,7 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, setNextPage }: Props) 
       <button
         className={classNames(s_nextButton)}
         type="button"
-        onClick={setNextPage}
+        onClick={handleSetNextPage}
         disabled={isDisabled}
       >
         다음

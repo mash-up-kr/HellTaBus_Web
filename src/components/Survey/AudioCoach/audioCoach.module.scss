@@ -1,7 +1,7 @@
 @use '@/styles/color.scss';
-@use '@/styles/common';
 @use '@/pages/Survey/survey.module.scss';
 
+// TODO: h2, h3 네이밍 & mixin으로 분리 [2021.11.12 02:50]
 .s_container {
   align-items: center;
   display: flex;
