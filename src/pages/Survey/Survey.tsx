@@ -47,7 +47,7 @@ const Survey = () => {
     setStep((previousStep) => previousStep + 1);
   };
 
-  const components = [
+  const surveyComponents = [
     <Intro handleClickStartButton={handleSetNextPage} />,
     <Nickname
       nickname={surveyState.nickname}
@@ -105,9 +105,9 @@ const Survey = () => {
         <h1 className={classNames('s_a11yHidden')}>회원 정보 설문조사</h1>
         <Header handleClickBackButton={handleSetPreviousPage} />
         <ProgressBar step={step} />
-        {components.map((component, page) => {
+        {surveyComponents.map((surveyComponent, page) => {
           if (step === page) {
-            return <Fragment key={`component-${page}`}>{component}</Fragment>;
+            return <Fragment key={`surveySubComponent-${page}`}>{surveySubComponent}</Fragment>;
           }
           return null;
         })}
