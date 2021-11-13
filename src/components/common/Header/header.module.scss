@@ -3,14 +3,13 @@
 .s_header {
   align-items: center;
   display: flex;
-  margin-top: 3.2rem;
+  height: 5.6rem;
   padding: 0 1.6rem;
-  width: 36rem;
+  width: 100%;
 
   .s_previousButton {
     background-color: color.$background;
     height: 4rem;
-    margin-left: -1rem;
     width: 4rem;
   }
 }
