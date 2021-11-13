@@ -13,6 +13,7 @@ const {
   s_errorMsg,
   s_errorIcon,
   s_nextButton,
+  s_highlight,
 } = style;
 
 interface Props {
@@ -55,8 +56,10 @@ const Age = ({ nickname, age, setAge, setNextPage }: Props) => {
   return (
     <section className={classNames(s_container)}>
       <h2 className={classNames(s_title)}>
-        <p>{nickname}님의</p> <span>나이</span>를 알려주세요
+        <span className={classNames('s_whiteSpace')}>{nickname}님의</span>
+        <span className={classNames(s_highlight)}>나이</span>를 알려주세요
       </h2>
+
       <div className={classNames(s_inputContainer)}>
         <CustomLabel htmlFor="age" className={classNames('s_a11yHidden')}>
           나이

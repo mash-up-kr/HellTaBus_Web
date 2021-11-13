@@ -3,8 +3,15 @@ import classNames from 'classnames';
 import style from './audioSpeed.module.scss';
 import { CustomInput, CustomLabel } from '@/components/common';
 
-const { s_container, s_buttonWrapper, s_audioSpeedButton, s_selectedAudioSpeed, s_nextButton } =
-  style;
+const {
+  s_container,
+  s_buttonWrapper,
+  s_audioSpeedButton,
+  s_selectedAudioSpeed,
+  s_nextButton,
+  s_title,
+  s_highlight,
+} = style;
 
 interface Props {
   audioSpeed: number;
@@ -22,12 +29,13 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, setNextPage }: Props) => {
 
   return (
     <section className={classNames(s_container)}>
-      <h2>
-        <p>
-          <span>운동에 대한 설명</span>을
-        </p>
+      <h2 className={classNames(s_title)}>
+        <span className={classNames('s_whiteSpace')}>
+          <span className={classNames(s_highlight)}>운동에 대한 설명</span>을
+        </span>
         자세히 듣고 싶으신가요?
       </h2>
+
       <h3>오디오 코치가 하는 설명의 길이가 달라져요</h3>
       <div className={classNames(s_buttonWrapper)}>
         <CustomLabel

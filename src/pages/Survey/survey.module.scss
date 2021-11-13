@@ -25,11 +25,10 @@
       margin-top: 2.4rem;
       width: 100%;
 
-      p {
+      > span {
         margin-bottom: 1rem;
       }
-
-      span {
+      .s_highlight {
         color: color.$primary;
       }
     }

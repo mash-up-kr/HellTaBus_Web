@@ -18,6 +18,10 @@
       left: 2rem;
       top: 2.4rem;
     }
+
+    .s_highlight {
+      color: color.$primary;
+    }
   }
 
   h3 {
@@ -29,10 +33,6 @@
       bottom: 3.9rem;
       left: 2rem;
     }
-  }
-
-  span {
-    color: color.$primary;
   }
 
   input::placeholder {

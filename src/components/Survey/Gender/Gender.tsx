@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import style from './gender.module.scss';
 import { CustomInput, CustomLabel } from '@/components/common';
 
-const { s_container, s_title, s_genderButton, s_selectedGender, s_nextButton } = style;
+const { s_container, s_title, s_genderButton, s_selectedGender, s_nextButton, s_highlight } = style;
 
 interface Props {
   nickname: string;
@@ -23,8 +23,10 @@ function Gender({ nickname, gender, setGender, setNextPage }: Props) {
   return (
     <section className={classNames(s_container)}>
       <h2 className={classNames(s_title)}>
-        <p>{nickname}님의</p> <span>성별</span>은 무엇인가요?
+        <span className={classNames('s_whiteSpace')}>{nickname}님의</span>
+        <span className={classNames(s_highlight)}>성별</span>은 무엇인가요?
       </h2>
+
       <div>
         <CustomLabel
           htmlFor="male"
