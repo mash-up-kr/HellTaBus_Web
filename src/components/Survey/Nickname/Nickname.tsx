@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
 import style from './nickname.module.scss';
+import { CustomInput, CustomLabel } from '@/components/common';
 
 const {
   s_container,
@@ -68,15 +69,20 @@ const Nickname = ({ nickname, setNickname, setNextPage }: Props) => {
         <p>당신을</p> 뭐라고 불러드릴까요?
       </h2>
       <div className={classNames(s_inputContainer)}>
-        <input
+        <CustomLabel htmlFor="nickname" className={classNames('s_a11yHidden')}>
+          닉네임
+        </CustomLabel>
+        <CustomInput
+          id="nickname"
+          type="text"
+          value={nickname}
+          onChange={handleChangeNickname}
+          placeholder="닉네임 입력"
           className={classNames(s_commonInput, {
             [s_errorInput]: nickname !== '' && errorMessage,
           })}
-          type="text"
-          placeholder="닉네임 입력"
-          value={nickname}
-          onChange={handleChangeNickname}
         />
+
         {nickname !== '' && errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
       <span className={classNames(s_errorMsg)}>{nickname !== '' && errorMessage}</span>

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import classNames from 'classnames';
 import style from './age.module.scss';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
+import { CustomInput, CustomLabel } from '@/components/common';
 
 const {
   s_container,
@@ -57,15 +58,20 @@ const Age = ({ nickname, age, setAge, setNextPage }: Props) => {
         <p>{nickname}님의</p> <span>나이</span>를 알려주세요
       </h2>
       <div className={classNames(s_inputContainer)}>
-        <input
-          className={classNames(s_commonInput, {
-            [s_errorInput]: errorMessage,
-          })}
+        <CustomLabel htmlFor="age" className={classNames('s_a11yHidden')}>
+          나이
+        </CustomLabel>
+        <CustomInput
+          id="age"
           type="number"
           placeholder="나이 입력"
           value={age || ''}
           onChange={handleChangeAge}
+          className={classNames(s_commonInput, {
+            [s_errorInput]: errorMessage,
+          })}
         />
+
         {errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
       <span className={classNames(s_errorMsg)}>{errorMessage}</span>

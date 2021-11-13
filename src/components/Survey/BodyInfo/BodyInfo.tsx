@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import style from './bodyInfo.module.scss';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
+import { CustomInput, CustomLabel } from '@/components/common';
 
 const {
   s_container,
@@ -95,35 +96,35 @@ const BodyInfo = ({ nickname, height, setHeight, weight, setWeight, setNextPage 
         <p>{nickname}님의</p> <span>키와 몸무게</span>를 알려주세요
       </h2>
       <div className={classNames(s_inputContainer)}>
-        <label htmlFor="height" className={classNames(s_heightLabel)}>
+        <CustomLabel htmlFor="height" className={classNames(s_heightLabel)}>
           키
-          <input
-            className={classNames(s_input, {
-              [s_errorInput]: heightErrorMessage,
-            })}
-            type="number"
-            id="height"
-            placeholder="키 입력"
-            value={height || ''}
-            onChange={handleChangeHeight}
-          />
-        </label>
-        <label htmlFor="weight" className={classNames(s_weightLabel)}>
+        </CustomLabel>
+        <CustomInput
+          className={classNames(s_input, {
+            [s_errorInput]: heightErrorMessage,
+          })}
+          type="number"
+          id="height"
+          placeholder="키 입력"
+          value={height || ''}
+          onChange={handleChangeHeight}
+        />
+        <CustomLabel htmlFor="weight" className={classNames(s_weightLabel)}>
           몸무게
-          <input
-            className={classNames(s_input, {
-              [s_errorInput]: weightErrorMessage,
-            })}
-            type="number"
-            id="weight"
-            placeholder="몸무게 입력"
-            value={weight || ''}
-            onChange={handleChangeWeight}
-          />
-        </label>
+        </CustomLabel>
+        <CustomInput
+          className={classNames(s_input, {
+            [s_errorInput]: weightErrorMessage,
+          })}
+          type="number"
+          id="weight"
+          placeholder="몸무게 입력"
+          value={weight || ''}
+          onChange={handleChangeWeight}
+        />
 
-        {weightErrorMessage && <ErrorIcon className={classNames(s_weightError)} />}
         {heightErrorMessage && <ErrorIcon className={classNames(s_heightError)} />}
+        {weightErrorMessage && <ErrorIcon className={classNames(s_weightError)} />}
         <span className={classNames(s_heightErrorMsg)}>{heightErrorMessage}</span>
         <span className={classNames(s_weightErrorMsg)}>{weightErrorMessage}</span>
       </div>

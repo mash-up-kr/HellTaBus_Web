@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './gender.module.scss';
+import { CustomInput, CustomLabel } from '@/components/common';
 
-const { s_a11yHidden, s_container, s_title, s_genderButton, s_selectedGender, s_nextButton } =
-  style;
+const { s_container, s_title, s_genderButton, s_selectedGender, s_nextButton } = style;
 
 interface Props {
   nickname: string;
@@ -26,28 +26,32 @@ function Gender({ nickname, gender, setGender, setNextPage }: Props) {
         <p>{nickname}님의</p> <span>성별</span>은 무엇인가요?
       </h2>
       <div>
-        <label htmlFor="male">
-          <input type="radio" value="male" id="male" className={classNames(s_a11yHidden)} />
-          <button
-            type="button"
-            className={classNames(s_genderButton, { [s_selectedGender]: gender === 'male' })}
-            onClick={handleClickGenderButton('male')}
-            aria-hidden="true"
-          >
-            남성
-          </button>
-        </label>
-        <label htmlFor="female">
-          <input type="radio" value="male" id="female" className={classNames(s_a11yHidden)} />
-          <button
-            type="button"
-            className={classNames(s_genderButton, { [s_selectedGender]: gender === 'female' })}
-            onClick={handleClickGenderButton('female')}
-            aria-hidden="true"
-          >
-            여성
-          </button>
-        </label>
+        <CustomLabel
+          htmlFor="male"
+          className={classNames(s_genderButton, { [s_selectedGender]: gender === 'male' })}
+        >
+          남성
+        </CustomLabel>
+        <CustomInput
+          type="radio"
+          id="male"
+          value="male"
+          onChange={handleClickGenderButton('male')}
+          className={classNames('s_a11yHidden')}
+        />
+        <CustomLabel
+          htmlFor="female"
+          className={classNames(s_genderButton, { [s_selectedGender]: gender === 'female' })}
+        >
+          여성
+        </CustomLabel>
+        <CustomInput
+          type="radio"
+          id="female"
+          value="female"
+          onChange={handleClickGenderButton('female')}
+          className={classNames('s_a11yHidden')}
+        />
       </div>
       <button
         className={classNames(s_nextButton)}
