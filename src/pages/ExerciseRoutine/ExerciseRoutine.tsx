@@ -127,13 +127,13 @@ const recommendExerciseList: Exercise[] = [
 
 function ExerciseRoutine() {
   useEffect(() => {
-    function getServerToken() {
+    const getServerToken = () => {
       const options = {};
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       healthyup.getServerToken(options, (result_cd: any, result_msg: any, extra: any) => {
         console.log(result_cd + result_msg + JSON.stringify(extra));
       });
-    }
+    };
 
     getServerToken();
   }, []);

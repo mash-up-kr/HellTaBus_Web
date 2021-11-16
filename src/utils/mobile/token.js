@@ -13,7 +13,7 @@ healthyup.callNative = (functionName, options, callback) => {
   transactions[trx_id] = {};
   transactions[trx_id].call = callback;
   transactions[trx_id].options = options;
-  window.healthyup_native_api.call(functionName, JSON.stringify(options), trx_id);
+  window.healthyup_native_api?.call(functionName, JSON.stringify(options), trx_id);
 };
 
 healthyup.event = (_eventData) => {
@@ -25,7 +25,7 @@ healthyup.event = (_eventData) => {
 
 function pad(n, width) {
   const strN = n.toString();
-  return n.length >= width ? strN : new Array(width - n.length + 1).join('0') + strN;
+  return n.length >= width ? n : new Array(width - strN.length + 1).join('0') + n;
 }
 
 healthyup.getTransactionId = () => {
