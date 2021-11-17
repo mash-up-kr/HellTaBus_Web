@@ -51,7 +51,7 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
           value="SLOW"
           id="SLOW"
           className={classNames('s_a11yHidden')}
-          onChange={handleClickExerciseSpeedButton('SLOW')}
+          onClick={handleClickExerciseSpeedButton('SLOW')}
         />
 
         <CustomLabel
@@ -67,7 +67,7 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
           value="MIDDLE"
           id="MIDDLE"
           className={classNames('s_a11yHidden')}
-          onChange={handleClickExerciseSpeedButton('MIDDLE')}
+          onClick={handleClickExerciseSpeedButton('MIDDLE')}
         />
 
         <CustomLabel
@@ -83,7 +83,7 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
           value="FAST"
           id="FAST"
           className={classNames('s_a11yHidden')}
-          onChange={handleClickExerciseSpeedButton('FAST')}
+          onClick={handleClickExerciseSpeedButton('FAST')}
         />
       </div>
       <button

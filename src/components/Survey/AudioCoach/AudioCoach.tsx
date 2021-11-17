@@ -42,7 +42,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
           id="SCARY"
           type="radio"
           className={classNames('s_a11yHidden')}
-          onChange={handleClickaudioCoachButton('SCARY')}
+          onClick={handleClickaudioCoachButton('SCARY')}
         />
         <CustomLabel
           htmlFor="COMFORTABLE"
@@ -57,7 +57,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
           id="COMFORTABLE"
           type="radio"
           className={classNames('s_a11yHidden')}
-          onChange={handleClickaudioCoachButton('COMFORTABLE')}
+          onClick={handleClickaudioCoachButton('COMFORTABLE')}
         />
         <CustomLabel
           htmlFor="FUNNY"
@@ -71,7 +71,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
           id="FUNNY"
           type="radio"
           className={classNames('s_a11yHidden')}
-          onChange={handleClickaudioCoachButton('FUNNY')}
+          onClick={handleClickaudioCoachButton('FUNNY')}
         />
       </div>
       <button

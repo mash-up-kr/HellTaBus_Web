@@ -46,7 +46,7 @@ function Gender({ nickname, gender, setGender, handleSetNextPage }: Props) {
           type="radio"
           id="male"
           value="male"
-          onChange={handleClickGenderButton('male')}
+          onClick={handleClickGenderButton('male')}
           className={classNames('s_a11yHidden')}
         />
         <CustomLabel
@@ -59,7 +59,7 @@ function Gender({ nickname, gender, setGender, handleSetNextPage }: Props) {
           type="radio"
           id="female"
           value="female"
-          onChange={handleClickGenderButton('female')}
+          onClick={handleClickGenderButton('female')}
           className={classNames('s_a11yHidden')}
         />
       </div>

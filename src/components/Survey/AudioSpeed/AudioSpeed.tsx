@@ -51,7 +51,7 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => 
           value="0"
           id="0"
           className={classNames('s_a11yHidden')}
-          onChange={handleClickaudioSpeedButton(0)}
+          onClick={handleClickaudioSpeedButton(0)}
         />
         <CustomLabel
           htmlFor="1"
@@ -66,7 +66,7 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => 
           value="1"
           id="1"
           className={classNames('s_a11yHidden')}
-          onChange={handleClickaudioSpeedButton(1)}
+          onClick={handleClickaudioSpeedButton(1)}
         />
       </div>
       <button
