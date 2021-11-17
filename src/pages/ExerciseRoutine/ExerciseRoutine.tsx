@@ -5,7 +5,7 @@ import { Exercise } from '@/types';
 import Setting from '@/assets/svg/setting.svg';
 import Calendar from '@/assets/svg/calendar.svg';
 import dumbbellVentOverLow from '@/assets/images/dumbbell-vent-over-low.jpg';
-import { healthyup } from '@/utils/mobile/token';
+import { healthyup } from '@/utils/mobile/healthyup';
 
 const { s_exerciseRoutine, s_navigator } = style;
 
