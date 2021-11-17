@@ -1,10 +1,15 @@
 @use '@/styles/color';
 
-.s_container {
+.s_entireContainer {
+  width: 100%;
+}
+
+.s_componentContainer {
   align-items: center;
   display: flex;
   flex-direction: column;
   height: auto;
+  padding: 0 3.2rem;
   width: 100%;
 }
 
@@ -13,14 +18,12 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: auto;
     width: 100%;
 
     .s_title {
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 4.8rem;
-      margin-left: 2rem;
       margin-top: 2.4rem;
       width: 100%;
 
@@ -33,6 +36,7 @@
     }
     .s_inputContainer {
       position: relative;
+      width: 100%;
     }
 
     .s_errorIcon {
@@ -44,16 +48,16 @@
     .s_commonInput {
       background-color: #f8f8f8;
       border: none;
-      border-bottom: 1px solid color.$primary;
+      border-bottom: 0.2rem solid color.$primary;
       font-size: 1.5rem;
       font-weight: 700;
       height: 4.3rem;
       outline: none;
       padding-left: 1rem;
-      width: 30rem;
+      width: 100%;
       margin: {
-        bottom: 10px;
-        top: 20px;
+        bottom: 1rem;
+        top: 2rem;
       }
     }
 

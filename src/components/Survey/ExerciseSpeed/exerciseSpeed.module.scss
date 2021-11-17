@@ -1,7 +1,7 @@
 @use '@/styles/color.scss';
-@use '@/styles/common';
 @use '@/pages/Survey/survey.module.scss';
 
+// TODO: h2, h3 네이밍 & mixin으로 분리 [2021.11.12 02:50]
 .s_container {
   align-items: center;
   display: flex;
@@ -15,7 +15,6 @@
     width: 100%;
     margin : {
       bottom: 0.1rem;
-      left: 2rem;
       top: 2.4rem;
     }
 
@@ -31,7 +30,6 @@
     width: 100%;
     margin : {
       bottom: 3.9rem;
-      left: 2rem;
     }
   }
 
@@ -85,26 +83,25 @@
 .s_buttonWrapper {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .s_exerciseSpeedButton {
-  align-items: center;
   background-color: color.$background;
   border: 0.1rem solid color.$disable;
   border-radius: 1.2rem;
   color: color.$disable;
-  display: flex;
   font-size: 1.6rem;
   height: 5.4rem;
-  justify-content: center;
   margin: 0.2rem 0;
   outline: none;
-  width: 29.6rem;
+  padding-top: 2rem;
+  text-align: center;
+  width: 100%;
 }
 
 .s_selectedExerciseSpeed {
   background-color: color.$primaryVariant1;
-  border: 0.15rem solid color.$primary;
   color: color.$primary;
   font-weight: 700;
 }

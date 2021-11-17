@@ -3,6 +3,13 @@
 
 @include survey.survey-default-with-button;
 
+.s_buttonWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
 .s_genderButton {
   background-color: color.$background;
   border: 0.1rem solid color.$disable;

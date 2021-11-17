@@ -4,13 +4,13 @@ import style from './audioSpeed.module.scss';
 import { CustomInput, CustomLabel } from '@/components/common';
 
 const {
+  s_title,
+  s_highlight,
   s_container,
   s_buttonWrapper,
   s_audioSpeedButton,
   s_selectedAudioSpeed,
   s_nextButton,
-  s_title,
-  s_highlight,
 } = style;
 
 interface Props {

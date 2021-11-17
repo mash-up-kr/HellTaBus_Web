@@ -15,7 +15,6 @@
     width: 100%;
     margin : {
       bottom: 0.1rem;
-      left: 2rem;
       top: 2.4rem;
     }
 
@@ -31,8 +30,11 @@
     width: 100%;
     margin : {
       bottom: 3.9rem;
-      left: 2rem;
     }
+  }
+
+  span {
+    color: color.$primary;
   }
 
   input::placeholder {
@@ -81,21 +83,21 @@
 .s_buttonWrapper {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .s_audioCoachButton {
-  align-items: center;
   background-color: color.$background;
   border: 0.1rem solid color.$disable;
   border-radius: 1.2rem;
   color: color.$disable;
-  display: flex;
   font-size: 1.6rem;
   height: 5.4rem;
-  justify-content: center;
   margin: 0.2rem 0;
   outline: none;
-  width: 29.6rem;
+  padding-top: 2rem;
+  text-align: center;
+  width: 100%;
 }
 
 .s_selectedAudioCoach {

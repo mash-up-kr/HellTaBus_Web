@@ -4,11 +4,15 @@
   align-items: center;
   display: flex;
   height: 5.6rem;
-  margin-left: -1.5rem;
-  margin-top: 3.2rem;
   width: 100%;
 
   .s_previousButton {
     background-color: color.$background;
+    padding: 0.1rem 0.1rem;
+    margin: {
+      bottm: 0.8rem;
+      left: 1.6rem;
+      top: 0.8rem;
+    }
   }
 }

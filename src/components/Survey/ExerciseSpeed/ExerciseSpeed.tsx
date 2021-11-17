@@ -4,13 +4,13 @@ import style from './exerciseSpeed.module.scss';
 import { CustomInput, CustomLabel } from '@/components/common';
 
 const {
+  s_title,
   s_container,
+  s_highlight,
   s_buttonWrapper,
   s_exerciseSpeedButton,
   s_selectedExerciseSpeed,
   s_nextButton,
-  s_title,
-  s_highlight,
 } = style;
 
 interface Props {

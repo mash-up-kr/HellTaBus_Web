@@ -3,15 +3,8 @@ import classNames from 'classnames';
 import style from './audioCoach.module.scss';
 import { CustomInput, CustomLabel } from '@/components/common';
 
-const {
-  s_container,
-  s_title,
-  s_buttonWrapper,
-  s_audioCoachButton,
-  s_selectedAudioCoach,
-  s_nextButton,
-  s_highlight,
-} = style;
+const { s_container, s_buttonWrapper, s_audioCoachButton, s_selectedAudioCoach, s_nextButton } =
+  style;
 
 interface Props {
   audioCoach: string;
@@ -29,13 +22,12 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
 
   return (
     <section className={classNames(s_container)}>
-      <h2 className={classNames(s_title)}>
-        <span className={classNames('s_whiteSpace')}>
-          어떤 <span className={classNames(s_highlight)}>오디오 코치</span>와
-        </span>
+      <h2>
+        <p>
+          어떤 <span>오디오 코치</span>와
+        </p>
         함께 운동하고 싶으신가요?
       </h2>
-
       <h3>목소리를 들어보면 선택이 더 쉬울거에요!</h3>
       <div className={classNames(s_buttonWrapper)}>
         <CustomLabel
@@ -60,6 +52,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
         >
           편안하게 운동을 도와주는 코치
         </CustomLabel>
+
         <CustomInput
           id="COMFORTABLE"
           type="radio"

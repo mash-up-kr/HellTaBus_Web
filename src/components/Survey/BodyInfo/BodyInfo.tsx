@@ -6,18 +6,18 @@ import { CustomInput, CustomLabel } from '@/components/common';
 
 const {
   s_container,
-  s_inputContainer,
-  s_input,
-  s_heightLabel,
+  s_inputsContainer,
+  s_bodyInfoOption,
+  s_label,
+  s_errorMessageContainer,
   s_heightError,
-  s_heightErrorMsg,
+  s_errorMessage,
   s_weightError,
-  s_weightErrorMsg,
-  s_weightLabel,
   s_errorInput,
   s_title,
   s_nextButton,
   s_highlight,
+  s_labelContainer,
 } = style;
 
 interface Props {
@@ -98,38 +98,46 @@ const BodyInfo = ({ nickname, height, setHeight, weight, setWeight, handleSetNex
         <span className={classNames(s_highlight)}>키와 몸무게</span>를 알려주세요
       </h2>
 
-      <div className={classNames(s_inputContainer)}>
-        <CustomLabel htmlFor="height" className={classNames(s_heightLabel)}>
-          키
-        </CustomLabel>
-        <CustomInput
-          className={classNames(s_input, {
-            [s_errorInput]: heightErrorMessage,
-          })}
-          type="number"
-          id="height"
-          placeholder="키 입력"
-          value={height || ''}
-          onChange={handleChangeHeight}
-        />
-        <CustomLabel htmlFor="weight" className={classNames(s_weightLabel)}>
-          몸무게
-        </CustomLabel>
-        <CustomInput
-          className={classNames(s_input, {
-            [s_errorInput]: weightErrorMessage,
-          })}
-          type="number"
-          id="weight"
-          placeholder="몸무게 입력"
-          value={weight || ''}
-          onChange={handleChangeWeight}
-        />
+      <div className={classNames(s_inputsContainer)}>
+        <div className={classNames(s_labelContainer)}>
+          <CustomLabel htmlFor="height" className={classNames(s_label)}>
+            키
+          </CustomLabel>
+          <CustomInput
+            className={classNames(s_bodyInfoOption, {
+              [s_errorInput]: heightErrorMessage,
+            })}
+            type="number"
+            id="height"
+            placeholder="키 입력"
+            value={height || ''}
+            onChange={handleChangeHeight}
+          />
+          <div className={classNames(s_errorMessageContainer)}>
+            <span className={classNames(s_errorMessage)}>{heightErrorMessage}</span>
+          </div>
+          {heightErrorMessage && <ErrorIcon className={classNames(s_heightError)} />}
+        </div>
 
-        {heightErrorMessage && <ErrorIcon className={classNames(s_heightError)} />}
+        <div className={classNames(s_labelContainer)}>
+          <CustomLabel htmlFor="weight" className={classNames(s_label)}>
+            몸무게
+          </CustomLabel>
+          <CustomInput
+            className={classNames(s_bodyInfoOption, {
+              [s_errorInput]: weightErrorMessage,
+            })}
+            type="number"
+            id="weight"
+            placeholder="몸무게 입력"
+            value={weight || ''}
+            onChange={handleChangeWeight}
+          />
+          <div className={classNames(s_errorMessageContainer)}>
+            <span className={classNames(s_errorMessage)}>{weightErrorMessage}</span>
+          </div>
+        </div>
         {weightErrorMessage && <ErrorIcon className={classNames(s_weightError)} />}
-        <span className={classNames(s_heightErrorMsg)}>{heightErrorMessage}</span>
-        <span className={classNames(s_weightErrorMsg)}>{weightErrorMessage}</span>
       </div>
       <button
         className={classNames(s_nextButton)}
