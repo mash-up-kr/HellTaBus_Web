@@ -6,7 +6,7 @@ import FullBodyWorkout from '@/assets/svg/full-body-workout.svg';
 import ThreeBodyWorkout from '@/assets/svg/three-body-workout.svg';
 import FiveBodyWorkout from '@/assets/svg/five-body-workout.svg';
 
-const { s_container, s_imagesContainer, s_title, s_nextButton } = style;
+const { s_container, s_imagesContainer, s_title, s_nextButton, s_highlight } = style;
 
 interface Props {
   healthStyle: string;
@@ -24,7 +24,12 @@ function HealthStyle({ healthStyle, setHealthStyle, handleSetNextPage }: Props) 
 
   return (
     <section className={classNames(s_container)}>
-      <h2 className={classNames(s_title)}>몇 분할로 운동을 원하시나요?</h2>
+      <h2 className={classNames(s_title)}>
+        <span className={classNames('s_whiteSpace')}>
+          <span className={classNames(s_highlight)}>몇 분할</span>로
+        </span>
+        운동을 원하시나요?
+      </h2>
       <div className={classNames(s_imagesContainer)}>
         <Workout
           selectedHealthStyle={healthStyle}

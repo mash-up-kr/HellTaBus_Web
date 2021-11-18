@@ -1,7 +1,6 @@
 @use '@/styles/color.scss';
 @use '@/pages/Survey/survey.module.scss';
 
-// TODO: h2, h3 네이밍 & mixin으로 분리 [2021.11.12 02:50]
 .s_container {
   align-items: center;
   display: flex;
@@ -9,7 +8,7 @@
   height: auto;
   width: 100%;
 
-  h2 {
+  .s_mainTitle {
     font-size: 2rem;
     font-weight: 700;
     width: 100%;
@@ -23,7 +22,7 @@
     }
   }
 
-  h3 {
+  .s_subTitle {
     color: color.$primaryVariant4;
     font-size: 1.4rem;
     font-weight: 400;
@@ -31,10 +30,6 @@
     margin : {
       bottom: 3.9rem;
     }
-  }
-
-  span {
-    color: color.$primary;
   }
 
   input::placeholder {

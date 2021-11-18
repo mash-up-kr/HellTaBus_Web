@@ -4,10 +4,11 @@ import style from './exerciseSpeed.module.scss';
 import { CustomInput, CustomLabel } from '@/components/common';
 
 const {
-  s_title,
   s_container,
   s_highlight,
   s_buttonWrapper,
+  s_mainTitle,
+  s_subTitle,
   s_exerciseSpeedButton,
   s_selectedExerciseSpeed,
   s_nextButton,
@@ -29,14 +30,13 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
 
   return (
     <section className={classNames(s_container)}>
-      <h2 className={classNames(s_title)}>
+      <h2 className={classNames(s_mainTitle)}>
         <span className={classNames('s_whiteSpace')}>
           <span className={classNames(s_highlight)}>어떤 속도</span>로
         </span>
         운동 하길 원하시나요?
       </h2>
-
-      <h3>운동 경험이 적을수록 천천히 해보세요</h3>
+      <h3 className={classNames(s_subTitle)}>운동 경험이 적을수록 천천히 해보세요</h3>
       <div className={classNames(s_buttonWrapper)}>
         <CustomLabel
           htmlFor="SLOW"
