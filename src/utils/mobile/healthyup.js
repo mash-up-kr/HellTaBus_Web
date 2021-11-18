@@ -34,3 +34,5 @@ healthyup.getTransactionId = () => {
   trxcnt %= 10000;
   return trxId;
 };
+
+window.healthyup = healthyup;
