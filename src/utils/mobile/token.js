@@ -45,6 +45,7 @@ const getServerToken = (options = {}) => {
         reject(new Error());
       }
 
+      console.log(response);
       const responseObj = JSON.parse(response);
       resolve(responseObj.serverToken ?? '');
     });
