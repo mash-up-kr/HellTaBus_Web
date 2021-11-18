@@ -5,7 +5,7 @@ import { Exercise } from '@/types';
 import Setting from '@/assets/svg/setting.svg';
 import Calendar from '@/assets/svg/calendar.svg';
 import dumbbellVentOverLow from '@/assets/images/dumbbell-vent-over-low.jpg';
-import { healthyup } from '@/utils/mobile/healthyup';
+import getServerToken from '@/utils/mobile/token';
 
 const { s_exerciseRoutine, s_navigator } = style;
 
@@ -127,15 +127,11 @@ const recommendExerciseList: Exercise[] = [
 
 function ExerciseRoutine() {
   useEffect(() => {
-    const getServerToken = () => {
-      const options = {};
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      healthyup.getServerToken(options, (result_cd: any, result_msg: any, extra: any) => {
-        console.log(result_cd + result_msg + JSON.stringify(extra));
-      });
-    };
-
-    getServerToken();
+    const options = {};
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    getServerToken(options, (result_cd: number, result_msg: string, extra: any) => {
+      console.log(result_cd + result_msg + JSON.stringify(extra));
+    });
   }, []);
 
   return (
