@@ -24,12 +24,13 @@ function HealthStyle({ healthStyle, setHealthStyle, handleSetNextPage }: Props) 
 
   return (
     <section className={classNames(s_container)}>
-      <h2 className={classNames(s_title)}>
+      <h2 className={classNames('s_a11yHidden')}>분할 선택</h2>
+      <p className={classNames(s_title)}>
         <span className={classNames('s_whiteSpace')}>
           <span className={classNames(s_highlight)}>몇 분할</span>로
         </span>
         운동을 원하시나요?
-      </h2>
+      </p>
       <div className={classNames(s_imagesContainer)}>
         <Workout
           selectedHealthStyle={healthStyle}

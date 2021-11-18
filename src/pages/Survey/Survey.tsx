@@ -107,7 +107,7 @@ const Survey = () => {
         <ProgressBar step={step} />
         {surveyComponents.map((surveyComponent, page) => {
           if (step === page) {
-            return <Fragment key={`surveySubComponent-${page}`}>{surveyComponent}</Fragment>;
+            return <Fragment key={`surveyComponent-${page}`}>{surveyComponent}</Fragment>;
           }
           return null;
         })}

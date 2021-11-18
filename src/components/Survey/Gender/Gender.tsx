@@ -30,10 +30,11 @@ function Gender({ nickname, gender, setGender, handleSetNextPage }: Props) {
 
   return (
     <section className={classNames(s_container)}>
-      <h2 className={classNames(s_title)}>
+      <h2 className={classNames('s_a11yHidden')}>성별 선택</h2>
+      <p className={classNames(s_title)}>
         <span className={classNames('s_whiteSpace')}>{nickname}님의</span>
         <span className={classNames(s_highlight)}>성별</span>은 무엇인가요?
-      </h2>
+      </p>
 
       <div className={classNames(s_buttonWrapper)}>
         <CustomLabel

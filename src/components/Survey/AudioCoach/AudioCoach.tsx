@@ -30,10 +30,11 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
 
   return (
     <section className={classNames(s_container)}>
-      <h2 className={classNames(s_mainTitle)}>
+      <h2 className={classNames('s_a11yHidden')}>오디오 타입 선택</h2>
+      <p className={classNames(s_mainTitle)}>
         어떤 <span className={classNames(s_highlight)}> 오디오 코치</span>와
         <span className={classNames('s_whiteSpace')}>함께 운동하고 싶으세요?</span>
-      </h2>
+      </p>
       <h3 className={classNames(s_subTitle)}>목소리를 들어보면 선택이 더 쉬울거에요!</h3>
       <div className={classNames(s_buttonWrapper)}>
         <CustomLabel

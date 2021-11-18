@@ -55,10 +55,11 @@ const Age = ({ nickname, age, setAge, handleSetNextPage }: Props) => {
 
   return (
     <section className={classNames(s_container)}>
-      <h2 className={classNames(s_title)}>
+      <h2 className={classNames('s_a11yHidden')}>나이 입력</h2>
+      <p className={classNames(s_title)}>
         <span className={classNames('s_whiteSpace')}>{nickname}님의</span>
         <span className={classNames(s_highlight)}>나이</span>를 알려주세요
-      </h2>
+      </p>
 
       <div className={classNames(s_inputContainer)}>
         <CustomLabel htmlFor="age" className={classNames('s_a11yHidden')}>

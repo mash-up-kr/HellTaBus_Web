@@ -65,9 +65,10 @@ const Nickname = ({ nickname, setNickname, handleSetNextPage }: Props) => {
 
   return (
     <section className={classNames(s_container)}>
-      <h2 className={classNames(s_title)}>
+      <h2 className={classNames('s_a11yHidden')}>닉네임 입력</h2>
+      <p className={classNames(s_title)}>
         <span className={classNames('s_whiteSpace')}>당신을</span>뭐라고 불러드릴까요?
-      </h2>
+      </p>
       <div className={classNames(s_inputContainer)}>
         <CustomLabel htmlFor="nickname" className={classNames('s_a11yHidden')}>
           닉네임

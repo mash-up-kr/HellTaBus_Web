@@ -30,12 +30,13 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
 
   return (
     <section className={classNames(s_container)}>
-      <h2 className={classNames(s_mainTitle)}>
+      <h2 className={classNames('s_a11yHidden')}>운동 속도 선택</h2>
+      <p className={classNames(s_mainTitle)}>
         <span className={classNames('s_whiteSpace')}>
           <span className={classNames(s_highlight)}>어떤 속도</span>로
         </span>
         운동 하길 원하시나요?
-      </h2>
+      </p>
       <h3 className={classNames(s_subTitle)}>운동 경험이 적을수록 천천히 해보세요</h3>
       <div className={classNames(s_buttonWrapper)}>
         <CustomLabel
