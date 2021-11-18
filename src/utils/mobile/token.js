@@ -38,8 +38,17 @@ const healthyup = (() => {
 window.healthyup = healthyup;
 
 /** API * */
-const getServerToken = (options, callback) => {
-  healthyup?.callNative('getServerToken', options, callback);
+const getServerToken = (options = {}) => {
+  return new Promise((resolve, reject) => {
+    healthyup?.callNative('getServerToken', options, (statusCode, msg, response) => {
+      if (statusCode !== 200) {
+        reject(new Error());
+      }
+
+      const responseObj = JSON.parse(response);
+      resolve(responseObj.serverToken ?? '');
+    });
+  });
 };
 
 export default getServerToken;

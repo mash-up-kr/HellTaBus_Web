@@ -1,12 +1,17 @@
 import axios, { AxiosInstance, AxiosRequestConfig, Method } from 'axios';
 import { HTTP_METHODS } from '@/consts';
+import getServerToken from '@/utils/mobile/token';
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: 'http://3.38.153.230',
+  baseURL: 'https://api.helltabus.com',
   timeout: 10000,
 });
 
-axiosInstance.defaults.headers.common.Authorization = process.env.DUMMY_TOKEN ?? '';
+getServerToken().then((authToken) => {
+  console.log(authToken);
+
+  axiosInstance.defaults.headers.common.Authorization = authToken;
+});
 
 const createApiMethod =
   (_axiosInstance: AxiosInstance, methodType: Method) =>
