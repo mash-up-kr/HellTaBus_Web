@@ -8,8 +8,6 @@ const axiosInstance: AxiosInstance = axios.create({
 });
 
 getServerToken().then((authToken) => {
-  console.log(authToken);
-
   axiosInstance.defaults.headers.common.Authorization = authToken;
 });
 
