@@ -14,3 +14,10 @@ export interface Exercise {
   updatedAt: string;
   deletedAt: string | null;
 }
+
+export type ExercisePart = ['SHOULDER', 'ARM', 'CHEST', 'BACK', 'LOWER'];
+
+export interface Suggestion {
+  suggestionPartList: ExercisePart;
+  suggestionExerciseList: Exercise[];
+}
