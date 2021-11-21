@@ -47,15 +47,13 @@ const RecommendSection = ({ recommendExerciseList, partList }: Props) => {
       <div className={s_recommendSection}>
         <div className={s_routineMessage}>
           <strong className={s_split_number}>무분할</strong>
-          <span>
+          <em>
             오늘은{' '}
-            <em>
-              {partList?.map((part, index) => {
-                return `${EXERCISE_PART[part]}${index !== partList.length - 1 ? ', ' : ''}`;
-              })}
-            </em>{' '}
+            {partList?.map((part, index) => {
+              return `${EXERCISE_PART[part]}${index !== partList.length - 1 ? ', ' : ''}`;
+            })}{' '}
             하는 날 😄
-          </span>
+          </em>
           <span className="s_whiteSpace">이런 기구 어떠세요?</span>
         </div>
         <button type="button" className={s_exerciseStart}>
