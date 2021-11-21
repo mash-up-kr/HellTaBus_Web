@@ -1,4 +1,3 @@
-import { AxiosError } from 'axios';
 import api from '@/api/core';
 import { User } from '@/types';
 import { throwErrorMessage } from '@/utils';
