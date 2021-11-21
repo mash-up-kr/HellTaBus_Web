@@ -37,6 +37,10 @@ const RecommendSection = ({ recommendExerciseList, partList }: Props) => {
     };
   });
 
+  const todayPartList = partList?.map((part, index) => {
+    return `${EXERCISE_PART[part]}${index !== partList.length - 1 ? ', ' : ''}`;
+  });
+
   return (
     <section className={s_deem}>
       <div className={s_backImages} aria-hidden>
@@ -47,13 +51,7 @@ const RecommendSection = ({ recommendExerciseList, partList }: Props) => {
       <div className={s_recommendSection}>
         <div className={s_routineMessage}>
           <strong className={s_split_number}>무분할</strong>
-          <em>
-            오늘은{' '}
-            {partList?.map((part, index) => {
-              return `${EXERCISE_PART[part]}${index !== partList.length - 1 ? ', ' : ''}`;
-            })}{' '}
-            하는 날 😄
-          </em>
+          <em>오늘은 {todayPartList} 하는 날 😄</em>
           <span className="s_whiteSpace">이런 기구 어떠세요?</span>
         </div>
         <button type="button" className={s_exerciseStart}>
