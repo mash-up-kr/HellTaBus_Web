@@ -7,15 +7,21 @@ const axiosInstance: AxiosInstance = axios.create({
   timeout: 10000,
 });
 
-getServerToken().then((authToken) => {
-  axiosInstance.defaults.headers.common.Authorization = authToken;
-});
+if (process.env.NODE_ENV === 'production') {
+  getServerToken().then((authToken) => {
+    axiosInstance.defaults.headers.common.Authorization = authToken;
+  });
+}
+
+if (process.env.NODE_ENV === 'development') {
+  axiosInstance.defaults.headers.common.Authorization = process.env.DUMMY_TOKEN ?? '';
+}
 
 const createApiMethod =
   (_axiosInstance: AxiosInstance, methodType: Method) =>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (config: AxiosRequestConfig): Promise<any> => {
-    _axiosInstance.interceptors.response.use((response) => response.data);
+    _axiosInstance.interceptors.response.use((response) => response.data.data);
 
     return _axiosInstance({
       ...config,
