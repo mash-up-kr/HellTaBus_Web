@@ -11,7 +11,6 @@ const { s_exerciseRoutine, s_navigator } = style;
 function ExerciseRoutine() {
   const { suggestion } = useExerciseSuggestion();
   const exercisePartList = suggestion?.suggestionPartList as ExercisePart;
-
   const recommendExerciseList = suggestion?.suggestionExerciseList as Exercise[];
 
   return (
