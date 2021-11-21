@@ -30,7 +30,7 @@ const {
 
 const RecommendSection = ({ recommendExerciseList, partList }: Props) => {
   // TODO: api업데이트 되면 삭제
-  const dummyrecommendExerciseList = recommendExerciseList?.map((exercise) => {
+  const dummyRecommendExerciseList = recommendExerciseList?.map((exercise) => {
     return {
       ...exercise,
       imageLink: 'https://gif.helltabus.com/05861301/05861301-Lever-Lying-Leg-Curl_Thighs_360.gif',
@@ -63,7 +63,7 @@ const RecommendSection = ({ recommendExerciseList, partList }: Props) => {
         </button>
         <RecommendCarousel
           className={s_recommendCarousel}
-          recommendList={dummyrecommendExerciseList}
+          recommendList={dummyRecommendExerciseList}
         />
         <div className={s_otherExercise}>
           <button type="button">
