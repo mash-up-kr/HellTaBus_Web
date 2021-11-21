@@ -2,14 +2,14 @@ import React from 'react';
 import style from './exerciseRoutine.module.scss';
 import { HistorySection, RecommendSection } from '@/components';
 import { Exercise, ExercisePart } from '@/types';
-import { useExerciseSuggestion } from '@/hooks';
+import { useFetchExerciseSuggestion } from '@/hooks';
 import Setting from '@/assets/svg/setting.svg';
 import Calendar from '@/assets/svg/calendar.svg';
 
 const { s_exerciseRoutine, s_navigator } = style;
 
 function ExerciseRoutine() {
-  const { suggestion } = useExerciseSuggestion();
+  const { suggestion } = useFetchExerciseSuggestion();
   const exercisePartList = suggestion?.suggestionPartList as ExercisePart;
   const recommendExerciseList = suggestion?.suggestionExerciseList as Exercise[];
 
