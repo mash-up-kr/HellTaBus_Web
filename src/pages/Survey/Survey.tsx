@@ -6,7 +6,7 @@ import {
   Age,
   Gender,
   Nickname,
-  HealthStyle,
+  SplitType,
   SurveyComplete,
   Intro,
   BodyInfo,
@@ -25,7 +25,7 @@ const SURVEY_STATE_KEY = {
   GENDER: 'gender',
   HEIGHT: 'height',
   WEIGHT: 'weight',
-  HEALTH_STYLE: 'healthStyle',
+  SPLIT_TYPE: 'splitType',
   AUDIO_COACH: 'audioCoach',
   EXCERCISE_SPEED: 'exerciseSpeed',
   AUDIO_SPEED: 'audioSpeed',
@@ -74,9 +74,9 @@ const Survey = () => {
       setWeight={setSurveyStateByKey(SURVEY_STATE_KEY.WEIGHT)}
       handleSetNextPage={handleSetNextPage}
     />,
-    <HealthStyle
-      healthStyle={surveyState.healthStyle}
-      setHealthStyle={setSurveyStateByKey(SURVEY_STATE_KEY.HEALTH_STYLE)}
+    <SplitType
+      splitType={surveyState.splitType}
+      setSplitType={setSurveyStateByKey(SURVEY_STATE_KEY.SPLIT_TYPE)}
       handleSetNextPage={handleSetNextPage}
     />,
     <AudioCoach

@@ -5,30 +5,30 @@ import style from './workout.module.scss';
 const { s_container, s_selectedContainer, s_content, s_title, s_description } = style;
 
 interface Props {
-  selectedHealthStyle: string;
-  currentHealthStyle: string;
+  selectedSplitType: string;
+  currentSplitType: string;
   imageComponent: JSX.Element;
   title: string;
-  handleClickHealthStyle: (healthStyle: string) => void;
+  handleClickSplitType: (healthStyle: string) => void;
   children: ReactNode;
 }
 
 const Workout = ({
-  selectedHealthStyle,
-  currentHealthStyle,
+  selectedSplitType,
+  currentSplitType,
   imageComponent,
   title,
-  handleClickHealthStyle,
+  handleClickSplitType,
   children,
 }: Props) => {
   return (
     <button
       type="button"
       className={classNames(s_container, {
-        [s_selectedContainer]: selectedHealthStyle === currentHealthStyle,
+        [s_selectedContainer]: selectedSplitType === currentSplitType,
       })}
       onClick={() => {
-        handleClickHealthStyle(currentHealthStyle);
+        handleClickSplitType(currentSplitType);
       }}
     >
       <div className={classNames(s_content)}>
