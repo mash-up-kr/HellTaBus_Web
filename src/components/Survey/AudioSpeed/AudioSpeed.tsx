@@ -23,7 +23,7 @@ interface Props {
 const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!audioSpeed);
 
-  const handleClickaudioSpeedButton = (userAudioSpeed: number) => () => {
+  const createAudioSpeedStateChangeHandler = (userAudioSpeed: number) => () => {
     setAudioSpeed(userAudioSpeed);
     setIsDisabled(false);
   };
@@ -53,7 +53,7 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => 
           value="0"
           id="0"
           className={classNames('s_a11yHidden')}
-          onClick={handleClickaudioSpeedButton(0)}
+          onClick={createAudioSpeedStateChangeHandler(0)}
         />
         <CustomLabel
           htmlFor="1"
@@ -68,7 +68,7 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => 
           value="1"
           id="1"
           className={classNames('s_a11yHidden')}
-          onClick={handleClickaudioSpeedButton(1)}
+          onClick={createAudioSpeedStateChangeHandler(1)}
         />
       </div>
       <button

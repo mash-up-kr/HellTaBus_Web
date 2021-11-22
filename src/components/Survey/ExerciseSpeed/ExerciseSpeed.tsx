@@ -23,11 +23,10 @@ interface Props {
 function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: Props) {
   const [isDisabled, setIsDisabled] = useState<boolean>(!exerciseSpeed);
 
-  const handleClickExerciseSpeedButton = (userExerciseSpeed: string) => () => {
+  const createExerciseSpeedStateChangeHandler = (userExerciseSpeed: string) => () => {
     setExerciseSpeed(userExerciseSpeed);
     setIsDisabled(false);
   };
-
   return (
     <section className={classNames(s_container)}>
       <h2 className={classNames('s_a11yHidden')}>운동 속도 선택</h2>
@@ -52,7 +51,7 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
           value="SLOW"
           id="SLOW"
           className={classNames('s_a11yHidden')}
-          onClick={handleClickExerciseSpeedButton('SLOW')}
+          onClick={createExerciseSpeedStateChangeHandler('SLOW')}
         />
 
         <CustomLabel
@@ -68,7 +67,7 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
           value="MIDDLE"
           id="MIDDLE"
           className={classNames('s_a11yHidden')}
-          onClick={handleClickExerciseSpeedButton('MIDDLE')}
+          onClick={createExerciseSpeedStateChangeHandler('MIDDLE')}
         />
 
         <CustomLabel
@@ -84,7 +83,7 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
           value="FAST"
           id="FAST"
           className={classNames('s_a11yHidden')}
-          onClick={handleClickExerciseSpeedButton('FAST')}
+          onClick={createExerciseSpeedStateChangeHandler('FAST')}
         />
       </div>
       <button

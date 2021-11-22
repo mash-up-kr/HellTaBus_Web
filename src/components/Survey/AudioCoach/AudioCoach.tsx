@@ -23,7 +23,7 @@ interface Props {
 const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!audioCoach);
 
-  const handleClickaudioCoachButton = (userAudioCoach: string) => () => {
+  const createAudioCoachStateChangeHandler = (userAudioCoach: string) => () => {
     setAudioCoach(userAudioCoach);
     setIsDisabled(false);
   };
@@ -49,7 +49,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
           id="SCARY"
           type="radio"
           className={classNames('s_a11yHidden')}
-          onClick={handleClickaudioCoachButton('SCARY')}
+          onClick={createAudioCoachStateChangeHandler('SCARY')}
         />
         <CustomLabel
           htmlFor="COMFORTABLE"
@@ -64,7 +64,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
           id="COMFORTABLE"
           type="radio"
           className={classNames('s_a11yHidden')}
-          onClick={handleClickaudioCoachButton('COMFORTABLE')}
+          onClick={createAudioCoachStateChangeHandler('COMFORTABLE')}
         />
         <CustomLabel
           htmlFor="FUNNY"
@@ -78,7 +78,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
           id="FUNNY"
           type="radio"
           className={classNames('s_a11yHidden')}
-          onClick={handleClickaudioCoachButton('FUNNY')}
+          onClick={createAudioCoachStateChangeHandler('FUNNY')}
         />
       </div>
       <button
