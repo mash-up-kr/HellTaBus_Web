@@ -5,8 +5,9 @@ import Workout from '@/components/Survey/Workout/Workout';
 import FullBodyWorkout from '@/assets/svg/full-body-workout.svg';
 import ThreeBodyWorkout from '@/assets/svg/three-body-workout.svg';
 import FiveBodyWorkout from '@/assets/svg/five-body-workout.svg';
+import { Carousel } from '@/components/common';
 
-const { s_container, s_imagesContainer, s_title, s_nextButton, s_highlight } = style;
+const { s_container, s_title, s_nextButton, s_highlight } = style;
 
 interface Props {
   healthStyle: string;
@@ -31,7 +32,7 @@ function HealthStyle({ healthStyle, setHealthStyle, handleSetNextPage }: Props) 
         </span>
         운동을 원하시나요?
       </p>
-      <div className={classNames(s_imagesContainer)}>
+      <Carousel>
         <Workout
           selectedHealthStyle={healthStyle}
           currentHealthStyle="FullBodyWorkout"
@@ -59,7 +60,7 @@ function HealthStyle({ healthStyle, setHealthStyle, handleSetNextPage }: Props) 
         >
           가슴 / 등/ 삼두 / 하체 / 어깨로 5개 부위로 나눠서 운동하는 방법입니다.
         </Workout>
-      </div>
+      </Carousel>
       <button
         className={classNames(s_nextButton)}
         type="button"

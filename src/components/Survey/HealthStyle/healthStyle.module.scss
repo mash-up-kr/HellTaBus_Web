@@ -2,18 +2,3 @@
 @use '@/pages/Survey/survey.module.scss';
 
 @include survey.survey-default-with-button;
-
-.s_imagesContainer {
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 1.2rem;
-  overflow: hidden;
-  -ms-overflow-style: none;
-  overflow-x: scroll;
-  padding-left: 2.3rem;
-  scrollbar-width: none;
-  width: 36rem;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
