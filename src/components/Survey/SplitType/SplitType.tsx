@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import style from './healthStyle.module.scss';
+import style from './splitType.module.scss';
 import Workout from '@/components/Survey/Workout/Workout';
 import FullBodyWorkout from '@/assets/svg/full-body-workout.svg';
 import ThreeBodyWorkout from '@/assets/svg/three-body-workout.svg';
@@ -10,16 +10,16 @@ import { Carousel } from '@/components/common';
 const { s_container, s_title, s_nextButton, s_highlight } = style;
 
 interface Props {
-  healthStyle: string;
-  setHealthStyle: (value: string) => void;
+  splitType: string;
+  setSplitType: (value: string) => void;
   handleSetNextPage: () => void;
 }
 
-function HealthStyle({ healthStyle, setHealthStyle, handleSetNextPage }: Props) {
-  const [isDisabled, setIsDisabled] = useState<boolean>(!healthStyle);
+function SplitType({ splitType, setSplitType, handleSetNextPage }: Props) {
+  const [isDisabled, setIsDisabled] = useState<boolean>(!splitType);
 
-  const handleClickHealthStyle = (userHealthStyle: string) => {
-    setHealthStyle(userHealthStyle);
+  const handleClickSplitType = (userSplitType: string) => {
+    setSplitType(userSplitType);
     setIsDisabled(false);
   };
 
@@ -34,29 +34,29 @@ function HealthStyle({ healthStyle, setHealthStyle, handleSetNextPage }: Props) 
       </p>
       <Carousel>
         <Workout
-          selectedHealthStyle={healthStyle}
-          currentHealthStyle="FullBodyWorkout"
+          selectedSplitType={splitType}
+          currentSplitType="FullBodyWorkout"
           imageComponent={<FullBodyWorkout />}
           title="무분할"
-          handleClickHealthStyle={handleClickHealthStyle}
+          handleClickSplitType={handleClickSplitType}
         >
           가슴, 어깨, 팔, 등, 하체를 하루에 운동하는 방법으로 초보자에게 추천합니다.
         </Workout>
         <Workout
-          selectedHealthStyle={healthStyle}
-          currentHealthStyle="ThreeBodyWorkout"
+          selectedSplitType={splitType}
+          currentSplitType="ThreeBodyWorkout"
           imageComponent={<ThreeBodyWorkout />}
           title="3분할"
-          handleClickHealthStyle={handleClickHealthStyle}
+          handleClickSplitType={handleClickSplitType}
         >
           가슴, 이두 / 등, 삼두/ 하체, 어깨로 3개 부위로 나눠서 운동하는 방법입니다.
         </Workout>
         <Workout
-          selectedHealthStyle={healthStyle}
-          currentHealthStyle="FiveBodyWorkout"
+          selectedSplitType={splitType}
+          currentSplitType="FiveBodyWorkout"
           imageComponent={<FiveBodyWorkout />}
           title="5분할"
-          handleClickHealthStyle={handleClickHealthStyle}
+          handleClickSplitType={handleClickSplitType}
         >
           가슴 / 등/ 삼두 / 하체 / 어깨로 5개 부위로 나눠서 운동하는 방법입니다.
         </Workout>
@@ -73,4 +73,4 @@ function HealthStyle({ healthStyle, setHealthStyle, handleSetNextPage }: Props) 
   );
 }
 
-export default HealthStyle;
+export default SplitType;
