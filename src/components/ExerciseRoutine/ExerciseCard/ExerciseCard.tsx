@@ -2,22 +2,22 @@ import React from 'react';
 import style from './exerciseCard.module.scss';
 
 interface Props {
-  img: string;
+  imageLink: string;
   exerciseName: string;
 }
 
-const { s_exercise, s_exerciseNameWraper } = style;
+const { s_exercise, s_exerciseNameWraper, s_exerciseImage } = style;
 
-const ExerciseCard = ({ img, exerciseName }: Props) => {
+const ExerciseCard = ({ imageLink, exerciseName }: Props) => {
   return (
-    <li className={s_exercise}>
+    <article className={s_exercise}>
       <div>
-        <img src={img} alt={exerciseName} />
+        <img src={imageLink} alt={exerciseName} className={s_exerciseImage} />
       </div>
       <div className={s_exerciseNameWraper}>
         <span>{exerciseName}</span>
       </div>
-    </li>
+    </article>
   );
 };
 

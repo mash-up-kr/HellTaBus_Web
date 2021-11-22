@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import classNames from 'classnames';
-import useForm from '@/hooks/useSurveyForm';
+import useSurveyForm from '@/hooks/page/useSurveyForm';
 import style from './survey.module.scss';
 import {
   Age,
@@ -36,7 +36,7 @@ const MAX_STEP = 8;
 
 const Survey = () => {
   const [step, setStep] = useState<number>(MIN_STEP);
-  const { surveyState, setSurveyStateByKey } = useForm();
+  const { surveyState, setSurveyStateByKey } = useSurveyForm();
 
   const handleSetPreviousPage = () => {
     if (step <= MIN_STEP) return;

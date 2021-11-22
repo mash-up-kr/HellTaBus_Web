@@ -1,23 +1,25 @@
 @use '@/styles/color';
 
 .s_exercise {
-  margin: 0 0.4rem 0 0;
-  margin: 0 0.4rem;
   div:first-child {
     align-items: center;
     background: color.$onPrimary;
     border-radius: 1.6rem;
     display: flex;
-    height: 14rem;
+    height: 42.7777777771vw;
     justify-content: center;
     margin-bottom: 0.8rem;
-    width: 12rem;
+    max-height: 21.3230769228rem;
+    max-width: 18rem;
+    min-height: 15.4rem;
+    min-width: 13rem;
+    padding: 22px 10px;
+    width: 36.1111111115vw;
   }
-  &:first-child {
-    margin: 0 0.4rem 0 0;
-  }
-  &:last-child {
-    margin: 0 0 0 0.4rem;
+
+  .s_exerciseImage {
+    height: 100%;
+    width: 100%;
   }
 
   .s_exerciseNameWraper {
