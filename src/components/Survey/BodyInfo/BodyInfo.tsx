@@ -137,8 +137,8 @@ const BodyInfo = ({ nickname, height, setHeight, weight, setWeight, handleSetNex
           <div className={classNames(s_errorMessageContainer)}>
             <span className={classNames(s_errorMessage)}>{weightErrorMessage}</span>
           </div>
+          {weightErrorMessage && <ErrorIcon className={classNames(s_weightError)} />}
         </div>
-        {weightErrorMessage && <ErrorIcon className={classNames(s_weightError)} />}
       </div>
       <button
         className={classNames(s_nextButton)}
