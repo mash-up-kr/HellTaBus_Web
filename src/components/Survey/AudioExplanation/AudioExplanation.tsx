@@ -15,8 +15,8 @@ const {
 } = style;
 
 interface Props {
-  needDetailExplanation: number | null;
-  setNeedDetailExplanation: (audioExplanation: number) => void;
+  needDetailExplanation: boolean | null;
+  setNeedDetailExplanation: (audioExplanation: boolean) => void;
   handleSetNextPage: () => void;
 }
 
@@ -27,7 +27,7 @@ const AudioExplanation = ({
 }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(needDetailExplanation === null);
 
-  const createAudioExplanationStateChangeHandler = (userExplanationType: number) => () => {
+  const createAudioExplanationStateChangeHandler = (userExplanationType: boolean) => () => {
     setNeedDetailExplanation(userExplanationType);
     setIsDisabled(false);
   };
@@ -47,7 +47,7 @@ const AudioExplanation = ({
         <CustomLabel
           htmlFor="detailExplanation"
           className={classNames(s_audioSpeedButton, {
-            [s_selectedAudioSpeed]: needDetailExplanation === 1,
+            [s_selectedAudioSpeed]: needDetailExplanation,
           })}
         >
           네, 차근차근 설명해주세요
@@ -57,12 +57,12 @@ const AudioExplanation = ({
           value="detailExplanation"
           id="detailExplanation"
           className={classNames('s_a11yHidden')}
-          onClick={createAudioExplanationStateChangeHandler(1)}
+          onClick={createAudioExplanationStateChangeHandler(true)}
         />
         <CustomLabel
           htmlFor="simpleExplanation"
           className={classNames(s_audioSpeedButton, {
-            [s_selectedAudioSpeed]: needDetailExplanation === 0,
+            [s_selectedAudioSpeed]: needDetailExplanation === false,
           })}
         >
           아니요, 자세한 설명은 안들을래요
@@ -72,7 +72,7 @@ const AudioExplanation = ({
           value="simpleExplanation"
           id="simpleExplanation"
           className={classNames('s_a11yHidden')}
-          onClick={createAudioExplanationStateChangeHandler(0)}
+          onClick={createAudioExplanationStateChangeHandler(false)}
         />
       </div>
       <button

@@ -16,7 +16,7 @@ const useSurveyForm = () => {
 
   const [surveyState, setSurveyState] = useState<SurveyState>(initialState);
 
-  const setSurveyStateByKey = (key: string) => (value: string | number) => {
+  const setSurveyStateByKey = (key: string) => (value: string | number | boolean) => {
     setSurveyState((prev) => ({
       ...prev,
       [key]: value,

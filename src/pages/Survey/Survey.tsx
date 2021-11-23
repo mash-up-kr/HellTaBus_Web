@@ -99,8 +99,6 @@ const Survey = () => {
   if (step === 0) return <Intro handleClickStartButton={handleSetNextPage} />;
   if (step > MAX_STEP) return <SurveyComplete surveyState={surveyState} />;
 
-  console.log(surveyState);
-
   return (
     <>
       <Header handleClickBackButton={handleSetPreviousPage} />
