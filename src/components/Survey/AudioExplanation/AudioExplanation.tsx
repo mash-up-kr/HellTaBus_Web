@@ -16,14 +16,14 @@ const {
 
 interface Props {
   audioExplanation: number;
-  setAudioExplanation: (audioExplanation: boolean) => void;
+  setAudioExplanation: (audioExplanation: number) => void;
   handleSetNextPage: () => void;
 }
 
 const AudioExplanation = ({ audioExplanation, setAudioExplanation, handleSetNextPage }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!audioExplanation);
 
-  const handleClickaudioSpeedButton = (userAudioSpeed: boolean) => () => {
+  const handleClickaudioSpeedButton = (userAudioSpeed: number) => () => {
     setAudioExplanation(userAudioSpeed);
     setIsDisabled(false);
   };
@@ -43,7 +43,7 @@ const AudioExplanation = ({ audioExplanation, setAudioExplanation, handleSetNext
         <CustomLabel
           htmlFor="slowAudioButton"
           className={classNames(s_audioSpeedButton, {
-            [s_selectedAudioSpeed]: audioExplanation,
+            [s_selectedAudioSpeed]: audioExplanation === 1,
           })}
         >
           네, 차근차근 설명해주세요
@@ -53,12 +53,12 @@ const AudioExplanation = ({ audioExplanation, setAudioExplanation, handleSetNext
           value="slowAudioButton"
           id="slowAudioButton"
           className={classNames('s_a11yHidden')}
-          onClick={handleClickaudioSpeedButton(true)}
+          onClick={handleClickaudioSpeedButton(1)}
         />
         <CustomLabel
           htmlFor="fastAudioButton"
           className={classNames(s_audioSpeedButton, {
-            [s_selectedAudioSpeed]: audioExplanation,
+            [s_selectedAudioSpeed]: audioExplanation === 0,
           })}
         >
           아니요, 자세한 설명은 안들을래요
@@ -68,7 +68,7 @@ const AudioExplanation = ({ audioExplanation, setAudioExplanation, handleSetNext
           value="fastAudioButton"
           id="fastAudioButton"
           className={classNames('s_a11yHidden')}
-          onClick={handleClickaudioSpeedButton(false)}
+          onClick={handleClickaudioSpeedButton(0)}
         />
       </div>
       <button
