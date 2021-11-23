@@ -25,7 +25,7 @@ const HistorySection = ({ exerciseHistory }: Props) => {
         const dateInstance = new Date(currentYear, currentMonth - 1, dateOfWeek);
         return {
           date: dateInstance.getDate(),
-          didExercise: exerciseHistory.some(({ startTime }) => {
+          didExercised: exerciseHistory.some(({ startTime }) => {
             const startDate = new Date(startTime);
             return startDate.toDateString() === dateInstance.toDateString();
           }),

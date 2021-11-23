@@ -5,7 +5,7 @@ import style from './weekHistory.module.scss';
 interface Props {
   currentWeekHistory: Array<{
     date: number;
-    didExercise: boolean;
+    didExercised: boolean;
   }>;
 }
 
@@ -16,11 +16,11 @@ const DAYS = ['일', '월', '화', '수', '목', '금', '토'];
 const WeekHistory = ({ currentWeekHistory }: Props) => {
   return (
     <ol className={s_calendar}>
-      {currentWeekHistory.map(({ date, didExercise }, day) => (
+      {currentWeekHistory.map(({ date, didExercised }, day) => (
         <CalendarDay
           date={date}
           day={DAYS[day]}
-          didExercise={didExercise}
+          didExercised={didExercised}
           key={`calendarDay-${day}`}
         />
       ))}
