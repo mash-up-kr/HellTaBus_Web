@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import style from './audioExplanation.module.scss';
 import { CustomInput, CustomLabel } from '@/components/common';
@@ -27,6 +27,12 @@ const AudioExplanation = ({ audioExplanation, setAudioExplanation, handleSetNext
     setAudioExplanation(userAudioSpeed);
     setIsDisabled(false);
   };
+
+  useEffect(() => {
+    if (audioExplanation !== null) {
+      setIsDisabled(false);
+    }
+  }, [audioExplanation]);
 
   return (
     <section className={classNames(s_container)}>
