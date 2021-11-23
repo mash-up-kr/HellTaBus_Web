@@ -100,19 +100,21 @@ const Survey = () => {
   if (step > MAX_STEP) return <SurveyComplete nickname={surveyState.nickname} />;
 
   return (
-    <form className={classNames(s_entireContainer)}>
+    <>
       <Header handleClickBackButton={handleSetPreviousPage} />
-      <div className={classNames(s_componentContainer)}>
-        <h1 className={classNames('s_a11yHidden')}>회원 정보 설문조사</h1>
-        <ProgressBar step={step} />
-        {surveyComponents.map((surveyComponent, page) => {
-          if (step === page) {
-            return <Fragment key={`surveyComponent-${page}`}>{surveyComponent}</Fragment>;
-          }
-          return null;
-        })}
-      </div>
-    </form>
+      <form>
+        <div className={classNames(s_componentContainer)}>
+          <h1 className={classNames('s_a11yHidden')}>회원 정보 설문조사</h1>
+          <ProgressBar step={step} />
+          {surveyComponents.map((surveyComponent, page) => {
+            if (step === page) {
+              return <Fragment key={`surveyComponent-${page}`}>{surveyComponent}</Fragment>;
+            }
+            return null;
+          })}
+        </div>
+      </form>
+    </>
   );
 };
 
