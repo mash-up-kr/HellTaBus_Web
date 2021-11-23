@@ -23,9 +23,9 @@ const {
 interface Props {
   nickname: string;
   height: number;
-  setHeight: (value: number) => void;
+  setHeight: (height: number) => void;
   weight: number;
-  setWeight: (value: number) => void;
+  setWeight: (weight: number) => void;
   handleSetNextPage: () => void;
 }
 

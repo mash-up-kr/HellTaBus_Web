@@ -4,14 +4,15 @@ import Lottie from 'react-lottie';
 import style from './surveyComplete.module.scss';
 import complete from '@/assets/lottie/complete.json';
 import SearchExercise from '../SearchExercise/SearchExercise';
+import { SurveyState } from '@/types';
 
 const { s_container, s_lottieContainer } = style;
 
 interface Props {
-  nickname: string;
+  surveyState: SurveyState;
 }
 
-const SurveyComplete = ({ nickname }: Props) => {
+const SurveyComplete = ({ surveyState }: Props) => {
   const [loading, setLoading] = useState(true);
 
   const lottieOptions = {
@@ -31,7 +32,7 @@ const SurveyComplete = ({ nickname }: Props) => {
   return (
     <>
       {loading ? (
-        <SearchExercise nickname={nickname} />
+        <SearchExercise nickname={surveyState.nickname} />
       ) : (
         <section className={classNames(s_container)}>
           <div className={classNames(s_lottieContainer)}>
@@ -39,7 +40,7 @@ const SurveyComplete = ({ nickname }: Props) => {
           </div>
           <h2>
             <p>
-              <span>{nickname}님</span>을 위한
+              <span>{surveyState.nickname}님</span>을 위한
             </p>
             운동이 준비됐어요! <p>시작해 볼까요?</p>
           </h2>

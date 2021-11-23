@@ -8,7 +8,7 @@ const {
   s_container,
   s_subTitle,
   s_highlight,
-  s_buttonWrapper,
+  s_radioButtonContainer,
   s_audioCoachButton,
   s_selectedAudioCoach,
   s_nextButton,
@@ -16,7 +16,7 @@ const {
 
 interface Props {
   audioCoach: string;
-  setAudioCoach: (value: string) => void;
+  setAudioCoach: (audioCoach: string) => void;
   handleSetNextPage: () => void;
 }
 
@@ -35,10 +35,10 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
         어떤 <span className={classNames(s_highlight)}> 오디오 코치</span>와
         <span className={classNames('s_whiteSpace')}>함께 운동하고 싶으세요?</span>
       </p>
-      <h3 className={classNames(s_subTitle)}>목소리를 들어보면 선택이 더 쉬울거에요!</h3>
-      <div className={classNames(s_buttonWrapper)}>
+      <p className={classNames(s_subTitle)}>목소리를 들어보면 선택이 더 쉬울거에요!</p>
+      <div className={classNames(s_radioButtonContainer)}>
         <CustomLabel
-          htmlFor="SCARY"
+          htmlFor="scary"
           className={classNames(s_audioCoachButton, {
             [s_selectedAudioCoach]: audioCoach === 'SCARY',
           })}
@@ -46,13 +46,13 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
           교관같이 무서운 코치
         </CustomLabel>
         <CustomInput
-          id="SCARY"
+          id="scary"
           type="radio"
           className={classNames('s_a11yHidden')}
           onClick={createAudioCoachStateChangeHandler('SCARY')}
         />
         <CustomLabel
-          htmlFor="COMFORTABLE"
+          htmlFor="comfortable"
           className={classNames(s_audioCoachButton, {
             [s_selectedAudioCoach]: audioCoach === 'COMFORTABLE',
           })}
@@ -61,13 +61,13 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
         </CustomLabel>
 
         <CustomInput
-          id="COMFORTABLE"
+          id="comfortable"
           type="radio"
           className={classNames('s_a11yHidden')}
           onClick={createAudioCoachStateChangeHandler('COMFORTABLE')}
         />
         <CustomLabel
-          htmlFor="FUNNY"
+          htmlFor="funny"
           className={classNames(s_audioCoachButton, {
             [s_selectedAudioCoach]: audioCoach === 'FUNNY',
           })}
@@ -75,7 +75,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
           운동을 잘아는 잼민이 코치
         </CustomLabel>
         <CustomInput
-          id="FUNNY"
+          id="funny"
           type="radio"
           className={classNames('s_a11yHidden')}
           onClick={createAudioCoachStateChangeHandler('FUNNY')}

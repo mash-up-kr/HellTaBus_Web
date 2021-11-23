@@ -8,3 +8,4 @@ export { default as SplitType } from './SplitType/SplitType';
 export { default as AudioCoach } from './AudioCoach/AudioCoach';
 export { default as ExerciseSpeed } from './ExerciseSpeed/ExerciseSpeed';
 export { default as AudioSpeed } from './AudioSpeed/AudioSpeed';
+export { default as ProgressBar } from './ProgressBar/ProgressBar';

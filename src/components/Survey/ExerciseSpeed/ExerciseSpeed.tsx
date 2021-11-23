@@ -6,7 +6,7 @@ import { CustomInput, CustomLabel } from '@/components/common';
 const {
   s_container,
   s_highlight,
-  s_buttonWrapper,
+  s_radioButtonContainer,
   s_mainTitle,
   s_subTitle,
   s_exerciseSpeedButton,
@@ -16,7 +16,7 @@ const {
 
 interface Props {
   exerciseSpeed: string;
-  setExerciseSpeed: (value: string) => void;
+  setExerciseSpeed: (exerciseSpeed: string) => void;
   handleSetNextPage: () => void;
 }
 
@@ -36,10 +36,10 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
         </span>
         운동 하길 원하시나요?
       </p>
-      <h3 className={classNames(s_subTitle)}>운동 경험이 적을수록 천천히 해보세요</h3>
-      <div className={classNames(s_buttonWrapper)}>
+      <p className={classNames(s_subTitle)}>운동 경험이 적을수록 천천히 해보세요</p>
+      <div className={classNames(s_radioButtonContainer)}>
         <CustomLabel
-          htmlFor="SLOW"
+          htmlFor="slowExerciseSpeed"
           className={classNames(s_exerciseSpeedButton, {
             [s_selectedExerciseSpeed]: exerciseSpeed === 'SLOW',
           })}
@@ -48,14 +48,14 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
         </CustomLabel>
         <CustomInput
           type="radio"
-          value="SLOW"
-          id="SLOW"
+          value="slowExerciseSpeed"
+          id="slowExerciseSpeed"
           className={classNames('s_a11yHidden')}
           onClick={createExerciseSpeedStateChangeHandler('SLOW')}
         />
 
         <CustomLabel
-          htmlFor="MIDDLE"
+          htmlFor="middleExerciseSpeed"
           className={classNames(s_exerciseSpeedButton, {
             [s_selectedExerciseSpeed]: exerciseSpeed === 'MIDDLE',
           })}
@@ -64,14 +64,14 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
         </CustomLabel>
         <CustomInput
           type="radio"
-          value="MIDDLE"
-          id="MIDDLE"
+          value="middleExerciseSpeed"
+          id="middleExerciseSpeed"
           className={classNames('s_a11yHidden')}
           onClick={createExerciseSpeedStateChangeHandler('MIDDLE')}
         />
 
         <CustomLabel
-          htmlFor="FAST"
+          htmlFor="fastExerciseSpeed"
           className={classNames(s_exerciseSpeedButton, {
             [s_selectedExerciseSpeed]: exerciseSpeed === 'FAST',
           })}
@@ -80,8 +80,8 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
         </CustomLabel>
         <CustomInput
           type="radio"
-          value="FAST"
-          id="FAST"
+          value="fastExerciseSpeed"
+          id="fastExerciseSpeed"
           className={classNames('s_a11yHidden')}
           onClick={createExerciseSpeedStateChangeHandler('FAST')}
         />

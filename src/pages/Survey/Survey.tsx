@@ -13,8 +13,8 @@ import {
   AudioCoach,
   ExerciseSpeed,
   AudioSpeed,
+  ProgressBar,
 } from '@/components/Survey';
-import ProgressBar from '@/components/Survey/ProgressBar/ProgressBar';
 import Header from '@/components/common/Header/Header';
 
 const { s_entireContainer, s_componentContainer } = style;
@@ -90,15 +90,14 @@ const Survey = () => {
       handleSetNextPage={handleSetNextPage}
     />,
     <AudioSpeed
-      explanation={surveyState.explanation}
-      setAudioSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.EXPLANATION)}
+      audioExplanation={surveyState.explanation}
+      setAudioExplanation={setSurveyStateByKey(SURVEY_STATE_KEY.EXPLANATION)}
       handleSetNextPage={handleSetNextPage}
     />,
   ];
 
   if (step === 0) return <Intro handleClickStartButton={handleSetNextPage} />;
-  if (step > MAX_STEP)
-    return <SurveyComplete surveyState={surveyState} nickname={surveyState.nickname} />;
+  if (step > MAX_STEP) return <SurveyComplete surveyState={surveyState} />;
 
   return (
     <form className={classNames(s_entireContainer)}>

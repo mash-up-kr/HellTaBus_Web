@@ -8,23 +8,23 @@ const {
   s_subTitle,
   s_highlight,
   s_container,
-  s_buttonWrapper,
+  s_radioButtonContainer,
   s_audioSpeedButton,
   s_selectedAudioSpeed,
   s_nextButton,
 } = style;
 
 interface Props {
-  explanation: number;
-  setAudioSpeed: (value: number) => void;
+  audioExplanation: boolean | null;
+  setAudioExplanation: (audioExplanation: boolean) => void;
   handleSetNextPage: () => void;
 }
 
-const AudioSpeed = ({ explanation, setAudioSpeed, handleSetNextPage }: Props) => {
-  const [isDisabled, setIsDisabled] = useState<boolean>(!explanation);
+const AudioSpeed = ({ audioExplanation, setAudioExplanation, handleSetNextPage }: Props) => {
+  const [isDisabled, setIsDisabled] = useState<boolean>(!audioExplanation);
 
-  const createAudioSpeedStateChangeHandler = (userAudioSpeed: number) => () => {
-    setAudioSpeed(userAudioSpeed);
+  const handleClickaudioSpeedButton = (userAudioSpeed: boolean) => () => {
+    setAudioExplanation(userAudioSpeed);
     setIsDisabled(false);
   };
 
@@ -38,37 +38,37 @@ const AudioSpeed = ({ explanation, setAudioSpeed, handleSetNextPage }: Props) =>
         자세히 듣고 싶으신가요?
       </p>
 
-      <h3 className={classNames(s_subTitle)}>오디오 코치가 하는 설명의 길이가 달라져요</h3>
-      <div className={classNames(s_buttonWrapper)}>
+      <p className={classNames(s_subTitle)}>오디오 코치가 하는 설명의 길이가 달라져요</p>
+      <div className={classNames(s_radioButtonContainer)}>
         <CustomLabel
-          htmlFor="0"
+          htmlFor="slowAudioButton"
           className={classNames(s_audioSpeedButton, {
-            [s_selectedAudioSpeed]: explanation === 0,
+            [s_selectedAudioSpeed]: audioExplanation,
           })}
         >
           네, 차근차근 설명해주세요
         </CustomLabel>
         <CustomInput
           type="radio"
-          value="0"
-          id="0"
+          value="slowAudioButton"
+          id="slowAudioButton"
           className={classNames('s_a11yHidden')}
-          onClick={createAudioSpeedStateChangeHandler(0)}
+          onClick={handleClickaudioSpeedButton(true)}
         />
         <CustomLabel
-          htmlFor="1"
+          htmlFor="fastAudioButton"
           className={classNames(s_audioSpeedButton, {
-            [s_selectedAudioSpeed]: explanation === 1,
+            [s_selectedAudioSpeed]: audioExplanation,
           })}
         >
           아니요, 자세한 설명은 안들을래요
         </CustomLabel>
         <CustomInput
           type="radio"
-          value="1"
-          id="1"
+          value="fastAudioButton"
+          id="fastAudioButton"
           className={classNames('s_a11yHidden')}
-          onClick={createAudioSpeedStateChangeHandler(1)}
+          onClick={handleClickaudioSpeedButton(false)}
         />
       </div>
       <button
