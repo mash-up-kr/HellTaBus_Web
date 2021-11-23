@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import style from './audioSpeed.module.scss';
+import style from './audioExplanation.module.scss';
 import { CustomInput, CustomLabel } from '@/components/common';
 
 const {
