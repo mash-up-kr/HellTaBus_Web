@@ -17,7 +17,7 @@ import {
 } from '@/components/Survey';
 import { Header } from '@/components/common';
 
-const { s_entireContainer, s_componentContainer } = style;
+const { s_componentContainer } = style;
 
 const SURVEY_STATE_KEY = {
   NICKNAME: 'nickname',
@@ -100,19 +100,21 @@ const Survey = () => {
   if (step > MAX_STEP) return <SurveyComplete surveyState={surveyState} />;
 
   return (
-    <form className={classNames(s_entireContainer)}>
+    <>
       <Header handleClickBackButton={handleSetPreviousPage} />
-      <div className={classNames(s_componentContainer)}>
-        <h1 className={classNames('s_a11yHidden')}>회원 정보 설문조사</h1>
-        <ProgressBar step={step} />
-        {surveyComponents.map((surveyComponent, page) => {
-          if (step === page) {
-            return <Fragment key={`surveyComponent-${page}`}>{surveyComponent}</Fragment>;
-          }
-          return null;
-        })}
-      </div>
-    </form>
+      <form>
+        <div className={classNames(s_componentContainer)}>
+          <h1 className={classNames('s_a11yHidden')}>회원 정보 설문조사</h1>
+          <ProgressBar step={step} />
+          {surveyComponents.map((surveyComponent, page) => {
+            if (step === page) {
+              return <Fragment key={`surveyComponent-${page}`}>{surveyComponent}</Fragment>;
+            }
+            return null;
+          })}
+        </div>
+      </form>
+    </>
   );
 };
 
