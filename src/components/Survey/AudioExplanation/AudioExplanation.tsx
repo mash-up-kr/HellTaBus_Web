@@ -30,7 +30,7 @@ const AudioExplanation = ({ audioExplanation, setAudioExplanation, handleSetNext
 
   return (
     <section className={classNames(s_container)}>
-      <h2 className={classNames('s_a11yHidden')}>오디오 속도 선택</h2>
+      <h2 className={classNames('s_a11yHidden')}>운동 설명 길이 선택</h2>
       <p className={classNames(s_mainTitle)}>
         <span className={classNames('s_whiteSpace')}>
           <span className={classNames(s_highlight)}>운동에 대한 설명</span>을
