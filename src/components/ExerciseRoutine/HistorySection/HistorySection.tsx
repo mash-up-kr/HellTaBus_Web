@@ -9,13 +9,15 @@ interface Props {
 
 const { s_historySection, s_calendarSection } = style;
 
+const LAST_DAY_OF_WEEK = 6;
+
 const HistorySection = ({ exerciseHistory }: Props) => {
   const today = new Date();
   const currentYear = today.getFullYear();
   const currentMonth = today.getMonth() + 1;
   const currentDate = today.getDate();
   const currentDay = today.getDay();
-  const currentWeek = Math.ceil((currentDate + (6 - currentDay)) / 7);
+  const currentWeek = Math.ceil((currentDate + (LAST_DAY_OF_WEEK - currentDay)) / 7);
 
   const currentWeekHistory = useMemo(
     () =>
