@@ -21,18 +21,12 @@ interface Props {
 }
 
 const AudioExplanation = ({ audioExplanation, setAudioExplanation, handleSetNextPage }: Props) => {
-  const [isDisabled, setIsDisabled] = useState<boolean>(!audioExplanation);
+  const [isDisabled, setIsDisabled] = useState<boolean>(audioExplanation === null);
 
   const createAudioExplanationStateChangeHandler = (userAudioSpeed: number) => () => {
     setAudioExplanation(userAudioSpeed);
     setIsDisabled(false);
   };
-
-  useEffect(() => {
-    if (audioExplanation !== null) {
-      setIsDisabled(false);
-    }
-  }, [audioExplanation]);
 
   return (
     <section className={classNames(s_container)}>
