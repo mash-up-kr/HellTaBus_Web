@@ -31,7 +31,7 @@ const SURVEY_STATE_KEY = {
   AUDIO_SPEED: 'audioSpeed',
 };
 
-const MIN_STEP = 0;
+const MIN_STEP = 8;
 const MAX_STEP = 8;
 
 const Survey = () => {

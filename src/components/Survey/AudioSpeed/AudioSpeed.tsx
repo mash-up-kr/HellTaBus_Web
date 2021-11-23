@@ -15,15 +15,15 @@ const {
 } = style;
 
 interface Props {
-  audioSpeed: number;
-  setAudioSpeed: (value: number) => void;
+  audioSpeed: boolean | null;
+  setAudioSpeed: (audioSpeed: boolean) => void;
   handleSetNextPage: () => void;
 }
 
 const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!audioSpeed);
 
-  const handleClickaudioSpeedButton = (userAudioSpeed: number) => () => {
+  const handleClickaudioSpeedButton = (userAudioSpeed: boolean) => () => {
     setAudioSpeed(userAudioSpeed);
     setIsDisabled(false);
   };
@@ -43,7 +43,7 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => 
         <CustomLabel
           htmlFor="0"
           className={classNames(s_audioSpeedButton, {
-            [s_selectedAudioSpeed]: audioSpeed === 0,
+            [s_selectedAudioSpeed]: audioSpeed === true,
           })}
         >
           네, 차근차근 설명해주세요
@@ -53,12 +53,12 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => 
           value="0"
           id="0"
           className={classNames('s_a11yHidden')}
-          onClick={handleClickaudioSpeedButton(0)}
+          onClick={handleClickaudioSpeedButton(true)}
         />
         <CustomLabel
           htmlFor="1"
           className={classNames(s_audioSpeedButton, {
-            [s_selectedAudioSpeed]: audioSpeed === 1,
+            [s_selectedAudioSpeed]: audioSpeed === false,
           })}
         >
           아니요, 자세한 설명은 안들을래요
@@ -68,7 +68,7 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => 
           value="1"
           id="1"
           className={classNames('s_a11yHidden')}
-          onClick={handleClickaudioSpeedButton(1)}
+          onClick={handleClickaudioSpeedButton(false)}
         />
       </div>
       <button
