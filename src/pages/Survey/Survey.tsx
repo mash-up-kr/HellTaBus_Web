@@ -17,7 +17,7 @@ import {
 import ProgressBar from '@/components/Survey/ProgressBar/ProgressBar';
 import Header from '@/components/common/Header/Header';
 
-const { s_entireContainer, s_componentContainer } = style;
+const { s_componentContainer } = style;
 
 const SURVEY_STATE_KEY = {
   NICKNAME: 'nickname',
