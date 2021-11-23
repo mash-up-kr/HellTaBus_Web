@@ -90,14 +90,16 @@ const Survey = () => {
       handleSetNextPage={handleSetNextPage}
     />,
     <AudioExplanation
-      audioExplanation={surveyState.explanation}
-      setAudioExplanation={setSurveyStateByKey(SURVEY_STATE_KEY.EXPLANATION)}
+      needDetailExplanation={surveyState.explanation}
+      setNeedDetailExplanation={setSurveyStateByKey(SURVEY_STATE_KEY.EXPLANATION)}
       handleSetNextPage={handleSetNextPage}
     />,
   ];
 
   if (step === 0) return <Intro handleClickStartButton={handleSetNextPage} />;
   if (step > MAX_STEP) return <SurveyComplete surveyState={surveyState} />;
+
+  console.log(surveyState);
 
   return (
     <>
