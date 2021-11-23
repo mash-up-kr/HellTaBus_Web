@@ -15,13 +15,13 @@ const {
 } = style;
 
 interface Props {
-  audioSpeed: number;
+  explanation: number;
   setAudioSpeed: (value: number) => void;
   handleSetNextPage: () => void;
 }
 
-const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => {
-  const [isDisabled, setIsDisabled] = useState<boolean>(!audioSpeed);
+const AudioSpeed = ({ explanation, setAudioSpeed, handleSetNextPage }: Props) => {
+  const [isDisabled, setIsDisabled] = useState<boolean>(!explanation);
 
   const createAudioSpeedStateChangeHandler = (userAudioSpeed: number) => () => {
     setAudioSpeed(userAudioSpeed);
@@ -43,7 +43,7 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => 
         <CustomLabel
           htmlFor="0"
           className={classNames(s_audioSpeedButton, {
-            [s_selectedAudioSpeed]: audioSpeed === 0,
+            [s_selectedAudioSpeed]: explanation === 0,
           })}
         >
           네, 차근차근 설명해주세요
@@ -58,7 +58,7 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => 
         <CustomLabel
           htmlFor="1"
           className={classNames(s_audioSpeedButton, {
-            [s_selectedAudioSpeed]: audioSpeed === 1,
+            [s_selectedAudioSpeed]: explanation === 1,
           })}
         >
           아니요, 자세한 설명은 안들을래요

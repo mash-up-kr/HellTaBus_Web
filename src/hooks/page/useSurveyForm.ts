@@ -1,16 +1,5 @@
 import { useState } from 'react';
-
-interface SurveyState {
-  nickname: string;
-  gender: string;
-  age: number;
-  height: number;
-  weight: number;
-  splitType: string;
-  audioCoach: string;
-  exerciseSpeed: string;
-  audioSpeed: number;
-}
+import { SurveyState } from '@/types';
 
 const useSurveyForm = () => {
   const initialState = {
@@ -21,9 +10,10 @@ const useSurveyForm = () => {
     weight: 0,
     splitType: '',
     audioCoach: '',
-    exerciseSpeed: '',
-    audioSpeed: 2,
+    speed: '',
+    explanation: 2,
   };
+
   const [surveyState, setSurveyState] = useState<SurveyState>(initialState);
 
   const setSurveyStateByKey = (key: string) => (value: string | number) => {

@@ -27,8 +27,8 @@ const SURVEY_STATE_KEY = {
   WEIGHT: 'weight',
   SPLIT_TYPE: 'splitType',
   AUDIO_COACH: 'audioCoach',
-  EXCERCISE_SPEED: 'exerciseSpeed',
-  AUDIO_SPEED: 'audioSpeed',
+  SPEED: 'speed',
+  EXPLANATION: 'explanation',
 };
 
 const MIN_STEP = 0;
@@ -85,19 +85,20 @@ const Survey = () => {
       handleSetNextPage={handleSetNextPage}
     />,
     <ExerciseSpeed
-      exerciseSpeed={surveyState.exerciseSpeed}
-      setExerciseSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.EXCERCISE_SPEED)}
+      exerciseSpeed={surveyState.speed}
+      setExerciseSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.SPEED)}
       handleSetNextPage={handleSetNextPage}
     />,
     <AudioSpeed
-      audioSpeed={surveyState.audioSpeed}
-      setAudioSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.AUDIO_SPEED)}
+      explanation={surveyState.explanation}
+      setAudioSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.EXPLANATION)}
       handleSetNextPage={handleSetNextPage}
     />,
   ];
 
   if (step === 0) return <Intro handleClickStartButton={handleSetNextPage} />;
-  if (step > MAX_STEP) return <SurveyComplete nickname={surveyState.nickname} />;
+  if (step > MAX_STEP)
+    return <SurveyComplete surveyState={surveyState} nickname={surveyState.nickname} />;
 
   return (
     <form className={classNames(s_entireContainer)}>
