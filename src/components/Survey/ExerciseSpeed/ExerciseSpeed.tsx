@@ -37,7 +37,7 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
         </span>
         운동 하길 원하시나요?
       </p>
-      <h3 className={classNames(s_subTitle)}>운동 경험이 적을수록 천천히 해보세요</h3>
+      <p className={classNames(s_subTitle)}>운동 경험이 적을수록 천천히 해보세요</p>
       <div className={classNames(s_buttonWrapper)}>
         <CustomLabel
           htmlFor="SLOW"

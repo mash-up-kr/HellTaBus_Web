@@ -35,7 +35,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
         어떤 <span className={classNames(s_highlight)}> 오디오 코치</span>와
         <span className={classNames('s_whiteSpace')}>함께 운동하고 싶으세요?</span>
       </p>
-      <h3 className={classNames(s_subTitle)}>목소리를 들어보면 선택이 더 쉬울거에요!</h3>
+      <p className={classNames(s_subTitle)}>목소리를 들어보면 선택이 더 쉬울거에요!</p>
       <div className={classNames(s_buttonWrapper)}>
         <CustomLabel
           htmlFor="SCARY"

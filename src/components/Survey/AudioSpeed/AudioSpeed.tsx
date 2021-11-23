@@ -38,7 +38,7 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => 
         자세히 듣고 싶으신가요?
       </p>
 
-      <h3 className={classNames(s_subTitle)}>오디오 코치가 하는 설명의 길이가 달라져요</h3>
+      <p className={classNames(s_subTitle)}>오디오 코치가 하는 설명의 길이가 달라져요</p>
       <div className={classNames(s_buttonWrapper)}>
         <CustomLabel
           htmlFor="0"
