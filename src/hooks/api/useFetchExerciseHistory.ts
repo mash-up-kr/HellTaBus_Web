@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query';
 import { getExerciseHistory } from '@/api';
-import { ExerciseHistory } from '@/types';
+import { ExerciseLog } from '@/types';
 
 const useFetchExerciseHistory = (from: string, to: string) => {
-  const { isLoading, error, isError, data } = useQuery<ExerciseHistory[], Error>(
+  const { isLoading, error, isError, data } = useQuery<ExerciseLog[], Error>(
     'exerciseHistory',
     () => getExerciseHistory(from, to),
     {

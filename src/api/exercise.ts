@@ -1,5 +1,5 @@
 import api from '@/api/core';
-import { Exercise, ExerciseHistory, Suggestion } from '@/types';
+import { Exercise, ExerciseLog, Suggestion } from '@/types';
 import { throwErrorMessage } from '@/utils';
 
 export const getExercises = (parts = ''): Promise<Exercise[]> =>
@@ -21,7 +21,7 @@ export const getSuggestionExercise = (from = '', to = ''): Promise<Suggestion> =
     })
     .catch(throwErrorMessage);
 
-export const getExerciseHistory = (from: string, to: string): Promise<ExerciseHistory[]> =>
+export const getExerciseHistory = (from: string, to: string): Promise<ExerciseLog[]> =>
   api
     .get({
       url: '/exercise-history',

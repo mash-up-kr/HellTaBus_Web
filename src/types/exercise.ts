@@ -43,7 +43,7 @@ export interface Feedback {
   deletedAt: string | null;
 }
 
-export interface ExerciseHistory {
+export interface ExerciseLog {
   id: number;
   startTime: string;
   finishTime: string;

@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
 import style from './historySection.module.scss';
 import { WeekHistory } from '@/components';
-import { ExerciseHistory } from '@/types';
+import { ExerciseLog } from '@/types';
 
 interface Props {
-  exerciseHistory: ExerciseHistory[];
+  exerciseHistory: ExerciseLog[];
 }
 
 const { s_historySection, s_calendarSection } = style;
