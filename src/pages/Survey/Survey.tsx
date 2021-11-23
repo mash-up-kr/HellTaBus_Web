@@ -12,7 +12,7 @@ import {
   BodyInfo,
   AudioCoach,
   ExerciseSpeed,
-  AudioSpeed,
+  AudioExplanation,
   ProgressBar,
 } from '@/components/Survey';
 import Header from '@/components/common/Header/Header';
@@ -89,7 +89,7 @@ const Survey = () => {
       setExerciseSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.SPEED)}
       handleSetNextPage={handleSetNextPage}
     />,
-    <AudioSpeed
+    <AudioExplanation
       audioExplanation={surveyState.explanation}
       setAudioExplanation={setSurveyStateByKey(SURVEY_STATE_KEY.EXPLANATION)}
       handleSetNextPage={handleSetNextPage}

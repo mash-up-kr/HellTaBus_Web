@@ -20,7 +20,7 @@ interface Props {
   handleSetNextPage: () => void;
 }
 
-const AudioSpeed = ({ audioExplanation, setAudioExplanation, handleSetNextPage }: Props) => {
+const AudioExplanation = ({ audioExplanation, setAudioExplanation, handleSetNextPage }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!audioExplanation);
 
   const handleClickaudioSpeedButton = (userAudioSpeed: boolean) => () => {
@@ -83,4 +83,4 @@ const AudioSpeed = ({ audioExplanation, setAudioExplanation, handleSetNextPage }
   );
 };
 
-export default AudioSpeed;
+export default AudioExplanation;
