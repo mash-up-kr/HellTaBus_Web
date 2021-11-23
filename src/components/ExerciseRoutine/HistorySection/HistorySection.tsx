@@ -15,19 +15,20 @@ const HistorySection = ({ exerciseHistory }: Props) => {
   const currentMonth = today.getMonth() + 1;
   const currentDate = today.getDate();
   const currentDay = today.getDay();
-  const currentWeek = Math.ceil((currentDate + (6 - currentDay - 1)) / 7);
+  const currentWeek = Math.ceil((currentDate + (6 - currentDay)) / 7);
 
   const currentWeekHistory = useMemo(
     () =>
       new Array(7).fill(0).map((_, dayOfWeek) => {
         const diffDate = currentDay - dayOfWeek;
         const dateOfWeek = currentDate - diffDate;
-        const date = new Date(currentYear, currentMonth, dateOfWeek).getDate();
+        const dateInstance = new Date(currentYear, currentMonth - 1, dateOfWeek);
         return {
-          date,
-          didExercise: exerciseHistory.some(
-            ({ startTime }) => new Date(startTime).getDate() === date
-          ),
+          date: dateInstance.getDate(),
+          didExercise: exerciseHistory.some(({ startTime }) => {
+            const startDate = new Date(startTime);
+            return startDate.toDateString() === dateInstance.toDateString();
+          }),
         };
       }),
     [currentDate, currentDay, currentMonth, currentYear, exerciseHistory]
