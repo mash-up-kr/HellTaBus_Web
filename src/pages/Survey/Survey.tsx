@@ -15,7 +15,7 @@ import {
   AudioExplanation,
   ProgressBar,
 } from '@/components/Survey';
-import Header from '@/components/common/Header/Header';
+import { Header } from '@/components/common';
 
 const { s_entireContainer, s_componentContainer } = style;
 
