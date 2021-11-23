@@ -15,7 +15,7 @@ const {
 } = style;
 
 interface Props {
-  audioExplanation: number;
+  audioExplanation: number | null;
   setAudioExplanation: (audioExplanation: number) => void;
   handleSetNextPage: () => void;
 }

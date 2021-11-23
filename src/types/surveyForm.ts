@@ -7,5 +7,5 @@ export interface SurveyState {
   splitType: string;
   audioCoach: string;
   speed: string;
-  explanation: number;
+  explanation: number | null;
 }

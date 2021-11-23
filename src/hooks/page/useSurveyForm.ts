@@ -11,12 +11,12 @@ const useSurveyForm = () => {
     splitType: '',
     audioCoach: '',
     speed: '',
-    explanation: 2,
+    explanation: null,
   };
 
   const [surveyState, setSurveyState] = useState<SurveyState>(initialState);
 
-  const setSurveyStateByKey = (key: string) => (value: string | number | boolean) => {
+  const setSurveyStateByKey = (key: string) => (value: string | number) => {
     setSurveyState((prev) => ({
       ...prev,
       [key]: value,
