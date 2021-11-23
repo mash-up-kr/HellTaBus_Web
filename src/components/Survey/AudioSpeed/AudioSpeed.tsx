@@ -8,7 +8,7 @@ const {
   s_subTitle,
   s_highlight,
   s_container,
-  s_buttonWrapper,
+  s_radioButtonContainer,
   s_audioSpeedButton,
   s_selectedAudioSpeed,
   s_nextButton,
@@ -39,7 +39,7 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => 
       </p>
 
       <p className={classNames(s_subTitle)}>오디오 코치가 하는 설명의 길이가 달라져요</p>
-      <div className={classNames(s_buttonWrapper)}>
+      <div className={classNames(s_radioButtonContainer)}>
         <CustomLabel
           htmlFor="0"
           className={classNames(s_audioSpeedButton, {

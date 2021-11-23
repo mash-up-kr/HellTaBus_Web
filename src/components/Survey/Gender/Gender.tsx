@@ -10,7 +10,7 @@ const {
   s_selectedGender,
   s_nextButton,
   s_highlight,
-  s_buttonWrapper,
+  s_radioButtonContainer,
 } = style;
 
 interface Props {
@@ -36,7 +36,7 @@ function Gender({ nickname, gender, setGender, handleSetNextPage }: Props) {
         <span className={classNames(s_highlight)}>성별</span>은 무엇인가요?
       </p>
 
-      <div className={classNames(s_buttonWrapper)}>
+      <div className={classNames(s_radioButtonContainer)}>
         <CustomLabel
           htmlFor="male"
           className={classNames(s_genderButton, { [s_selectedGender]: gender === 'male' })}

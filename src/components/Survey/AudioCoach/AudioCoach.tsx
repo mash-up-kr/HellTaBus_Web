@@ -8,7 +8,7 @@ const {
   s_container,
   s_subTitle,
   s_highlight,
-  s_buttonWrapper,
+  s_radioButtonContainer,
   s_audioCoachButton,
   s_selectedAudioCoach,
   s_nextButton,
@@ -36,7 +36,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
         <span className={classNames('s_whiteSpace')}>함께 운동하고 싶으세요?</span>
       </p>
       <p className={classNames(s_subTitle)}>목소리를 들어보면 선택이 더 쉬울거에요!</p>
-      <div className={classNames(s_buttonWrapper)}>
+      <div className={classNames(s_radioButtonContainer)}>
         <CustomLabel
           htmlFor="SCARY"
           className={classNames(s_audioCoachButton, {

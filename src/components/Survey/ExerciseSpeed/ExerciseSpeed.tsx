@@ -6,7 +6,7 @@ import { CustomInput, CustomLabel } from '@/components/common';
 const {
   s_container,
   s_highlight,
-  s_buttonWrapper,
+  s_radioButtonContainer,
   s_mainTitle,
   s_subTitle,
   s_exerciseSpeedButton,
@@ -38,7 +38,7 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
         운동 하길 원하시나요?
       </p>
       <p className={classNames(s_subTitle)}>운동 경험이 적을수록 천천히 해보세요</p>
-      <div className={classNames(s_buttonWrapper)}>
+      <div className={classNames(s_radioButtonContainer)}>
         <CustomLabel
           htmlFor="SLOW"
           className={classNames(s_exerciseSpeedButton, {
