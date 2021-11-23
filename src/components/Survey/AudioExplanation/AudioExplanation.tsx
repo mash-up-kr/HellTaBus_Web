@@ -23,7 +23,7 @@ interface Props {
 const AudioExplanation = ({ audioExplanation, setAudioExplanation, handleSetNextPage }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!audioExplanation);
 
-  const handleClickaudioSpeedButton = (userAudioSpeed: number) => () => {
+  const createAudioExplanationStateChangeHandler = (userAudioSpeed: number) => () => {
     setAudioExplanation(userAudioSpeed);
     setIsDisabled(false);
   };
@@ -53,7 +53,7 @@ const AudioExplanation = ({ audioExplanation, setAudioExplanation, handleSetNext
           value="slowAudioButton"
           id="slowAudioButton"
           className={classNames('s_a11yHidden')}
-          onClick={handleClickaudioSpeedButton(1)}
+          onClick={createAudioExplanationStateChangeHandler(1)}
         />
         <CustomLabel
           htmlFor="fastAudioButton"
@@ -68,7 +68,7 @@ const AudioExplanation = ({ audioExplanation, setAudioExplanation, handleSetNext
           value="fastAudioButton"
           id="fastAudioButton"
           className={classNames('s_a11yHidden')}
-          onClick={handleClickaudioSpeedButton(0)}
+          onClick={createAudioExplanationStateChangeHandler(0)}
         />
       </div>
       <button
