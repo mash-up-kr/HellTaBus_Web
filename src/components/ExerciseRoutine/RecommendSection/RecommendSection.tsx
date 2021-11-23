@@ -1,7 +1,7 @@
 import React from 'react';
 import { RecommendCarousel } from '@/components';
 import style from './recommendSection.module.scss';
-import { Exercise, ExercisePart } from '@/types';
+import { Exercise, ExercisePartList } from '@/types';
 import RightArrow from '@/assets/svg/right-arrow.svg';
 import dumbbell from '@/assets/images/dumbbell.png';
 import gripper from '@/assets/images/gripper.png';
@@ -10,7 +10,7 @@ import { EXERCISE_PART } from '@/consts';
 
 interface Props {
   suggestionExerciseList: Exercise[];
-  suggestionPartList: ExercisePart;
+  suggestionPartList: ExercisePartList;
 }
 
 const {

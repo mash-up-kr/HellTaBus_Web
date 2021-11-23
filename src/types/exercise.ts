@@ -15,12 +15,12 @@ export interface Exercise {
   deletedAt: string | null;
 }
 
-export type ExercisePart = Partial<
+export type ExercisePartList = Partial<
   ['SHOULDER', 'ARM', 'CHEST', 'BACK', 'LOWER', 'TRICEPS', 'BICEPS']
 >;
 
 export interface Suggestion {
-  suggestionPartList: ExercisePart;
+  suggestionPartList: ExercisePartList;
   suggestionExerciseList: Exercise[];
 }
 
