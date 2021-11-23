@@ -41,7 +41,7 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => 
       <p className={classNames(s_subTitle)}>오디오 코치가 하는 설명의 길이가 달라져요</p>
       <div className={classNames(s_radioButtonContainer)}>
         <CustomLabel
-          htmlFor="0"
+          htmlFor="slowAudioButton"
           className={classNames(s_audioSpeedButton, {
             [s_selectedAudioSpeed]: audioSpeed === true,
           })}
@@ -50,13 +50,13 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => 
         </CustomLabel>
         <CustomInput
           type="radio"
-          value="0"
-          id="0"
+          value="slowAudioButton"
+          id="slowAudioButton"
           className={classNames('s_a11yHidden')}
           onClick={handleClickaudioSpeedButton(true)}
         />
         <CustomLabel
-          htmlFor="1"
+          htmlFor="fastAudioButton"
           className={classNames(s_audioSpeedButton, {
             [s_selectedAudioSpeed]: audioSpeed === false,
           })}
@@ -65,8 +65,8 @@ const AudioSpeed = ({ audioSpeed, setAudioSpeed, handleSetNextPage }: Props) => 
         </CustomLabel>
         <CustomInput
           type="radio"
-          value="1"
-          id="1"
+          value="fastAudioButton"
+          id="fastAudioButton"
           className={classNames('s_a11yHidden')}
           onClick={handleClickaudioSpeedButton(false)}
         />

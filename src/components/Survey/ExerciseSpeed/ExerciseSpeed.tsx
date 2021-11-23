@@ -40,7 +40,7 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
       <p className={classNames(s_subTitle)}>운동 경험이 적을수록 천천히 해보세요</p>
       <div className={classNames(s_radioButtonContainer)}>
         <CustomLabel
-          htmlFor="SLOW"
+          htmlFor="slowExerciseSpeed"
           className={classNames(s_exerciseSpeedButton, {
             [s_selectedExerciseSpeed]: exerciseSpeed === 'SLOW',
           })}
@@ -49,14 +49,14 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
         </CustomLabel>
         <CustomInput
           type="radio"
-          value="SLOW"
-          id="SLOW"
+          value="slowExerciseSpeed"
+          id="slowExerciseSpeed"
           className={classNames('s_a11yHidden')}
           onClick={handleClickExerciseSpeedButton('SLOW')}
         />
 
         <CustomLabel
-          htmlFor="MIDDLE"
+          htmlFor="middleExerciseSpeed"
           className={classNames(s_exerciseSpeedButton, {
             [s_selectedExerciseSpeed]: exerciseSpeed === 'MIDDLE',
           })}
@@ -65,14 +65,14 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
         </CustomLabel>
         <CustomInput
           type="radio"
-          value="MIDDLE"
-          id="MIDDLE"
+          value="middleExerciseSpeed"
+          id="middleExerciseSpeed"
           className={classNames('s_a11yHidden')}
           onClick={handleClickExerciseSpeedButton('MIDDLE')}
         />
 
         <CustomLabel
-          htmlFor="FAST"
+          htmlFor="fastExerciseSpeed"
           className={classNames(s_exerciseSpeedButton, {
             [s_selectedExerciseSpeed]: exerciseSpeed === 'FAST',
           })}
@@ -81,8 +81,8 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
         </CustomLabel>
         <CustomInput
           type="radio"
-          value="FAST"
-          id="FAST"
+          value="fastExerciseSpeed"
+          id="fastExerciseSpeed"
           className={classNames('s_a11yHidden')}
           onClick={handleClickExerciseSpeedButton('FAST')}
         />

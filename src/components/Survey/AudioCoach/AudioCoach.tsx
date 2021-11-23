@@ -38,7 +38,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
       <p className={classNames(s_subTitle)}>목소리를 들어보면 선택이 더 쉬울거에요!</p>
       <div className={classNames(s_radioButtonContainer)}>
         <CustomLabel
-          htmlFor="SCARY"
+          htmlFor="scary"
           className={classNames(s_audioCoachButton, {
             [s_selectedAudioCoach]: audioCoach === 'SCARY',
           })}
@@ -46,13 +46,13 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
           교관같이 무서운 코치
         </CustomLabel>
         <CustomInput
-          id="SCARY"
+          id="scary"
           type="radio"
           className={classNames('s_a11yHidden')}
           onClick={handleClickaudioCoachButton('SCARY')}
         />
         <CustomLabel
-          htmlFor="COMFORTABLE"
+          htmlFor="comfortable"
           className={classNames(s_audioCoachButton, {
             [s_selectedAudioCoach]: audioCoach === 'COMFORTABLE',
           })}
@@ -61,13 +61,13 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
         </CustomLabel>
 
         <CustomInput
-          id="COMFORTABLE"
+          id="comfortable"
           type="radio"
           className={classNames('s_a11yHidden')}
           onClick={handleClickaudioCoachButton('COMFORTABLE')}
         />
         <CustomLabel
-          htmlFor="FUNNY"
+          htmlFor="funny"
           className={classNames(s_audioCoachButton, {
             [s_selectedAudioCoach]: audioCoach === 'FUNNY',
           })}
@@ -75,7 +75,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
           운동을 잘아는 잼민이 코치
         </CustomLabel>
         <CustomInput
-          id="FUNNY"
+          id="funny"
           type="radio"
           className={classNames('s_a11yHidden')}
           onClick={handleClickaudioCoachButton('FUNNY')}
