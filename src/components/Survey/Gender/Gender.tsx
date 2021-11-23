@@ -16,7 +16,7 @@ const {
 interface Props {
   nickname: string;
   gender: string;
-  setGender: (value: string) => void;
+  setGender: (gender: string) => void;
   handleSetNextPage: () => void;
 }
 

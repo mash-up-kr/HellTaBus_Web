@@ -16,7 +16,7 @@ const {
 
 interface Props {
   audioCoach: string;
-  setAudioCoach: (value: string) => void;
+  setAudioCoach: (audioCoach: string) => void;
   handleSetNextPage: () => void;
 }
 

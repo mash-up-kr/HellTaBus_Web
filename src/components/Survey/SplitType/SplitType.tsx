@@ -11,7 +11,7 @@ const { s_container, s_title, s_nextButton, s_highlight } = style;
 
 interface Props {
   splitType: string;
-  setSplitType: (value: string) => void;
+  setSplitType: (splitType: string) => void;
   handleSetNextPage: () => void;
 }
 

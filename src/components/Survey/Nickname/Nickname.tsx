@@ -17,7 +17,7 @@ const {
 
 interface Props {
   nickname: string;
-  setNickname: (value: string) => void;
+  setNickname: (nickname: string) => void;
   handleSetNextPage: () => void;
 }
 

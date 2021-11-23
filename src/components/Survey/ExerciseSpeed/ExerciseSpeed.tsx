@@ -16,7 +16,7 @@ const {
 
 interface Props {
   exerciseSpeed: string;
-  setExerciseSpeed: (value: string) => void;
+  setExerciseSpeed: (exerciseSpeed: string) => void;
   handleSetNextPage: () => void;
 }
 
