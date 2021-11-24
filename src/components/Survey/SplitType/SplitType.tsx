@@ -35,7 +35,7 @@ function SplitType({ splitType, setSplitType, handleSetNextPage }: Props) {
       <Carousel>
         <Workout
           selectedSplitType={splitType}
-          currentSplitType="FullBodyWorkout"
+          currentSplitType="FULL_BODY_WORKOUT"
           imageComponent={<FullBodyWorkout />}
           title="무분할"
           handleClickSplitType={handleClickSplitType}
@@ -44,7 +44,7 @@ function SplitType({ splitType, setSplitType, handleSetNextPage }: Props) {
         </Workout>
         <Workout
           selectedSplitType={splitType}
-          currentSplitType="ThreeBodyWorkout"
+          currentSplitType="SPLIT_3_DAY_WORKOUT"
           imageComponent={<ThreeBodyWorkout />}
           title="3분할"
           handleClickSplitType={handleClickSplitType}
@@ -53,7 +53,7 @@ function SplitType({ splitType, setSplitType, handleSetNextPage }: Props) {
         </Workout>
         <Workout
           selectedSplitType={splitType}
-          currentSplitType="FiveBodyWorkout"
+          currentSplitType="SPLIT_5_DAY_WORKOUT"
           imageComponent={<FiveBodyWorkout />}
           title="5분할"
           handleClickSplitType={handleClickSplitType}
