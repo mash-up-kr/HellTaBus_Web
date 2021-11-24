@@ -3,11 +3,7 @@ import classNames from 'classnames';
 import { Keyboard } from '@/components';
 import style from './tabs.module.scss';
 import { useTabs } from '@/hooks';
-
-export interface Tab {
-  id: string;
-  title: string;
-}
+import { Tab } from '@/types';
 
 interface TabsProps {
   children: ReactNode;
