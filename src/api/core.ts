@@ -1,18 +1,27 @@
 import axios, { AxiosInstance, AxiosRequestConfig, Method } from 'axios';
 import { HTTP_METHODS } from '@/consts';
+import getServerToken from '@/utils/mobile/token';
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: 'http://3.38.153.230',
+  baseURL: 'https://api.helltabus.com',
   timeout: 10000,
 });
 
-axiosInstance.defaults.headers.common.Authorization = process.env.DUMMY_TOKEN ?? '';
+if (process.env.NODE_ENV === 'production') {
+  getServerToken().then((authToken) => {
+    axiosInstance.defaults.headers.common.Authorization = authToken;
+  });
+}
+
+if (process.env.NODE_ENV === 'development') {
+  axiosInstance.defaults.headers.common.Authorization = process.env.DUMMY_TOKEN ?? '';
+}
 
 const createApiMethod =
   (_axiosInstance: AxiosInstance, methodType: Method) =>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (config: AxiosRequestConfig): Promise<any> => {
-    _axiosInstance.interceptors.response.use((response) => response.data);
+    _axiosInstance.interceptors.response.use((response) => response.data.data);
 
     return _axiosInstance({
       ...config,
