@@ -1,7 +1,7 @@
 import React from 'react';
 import { RecommendCarousel } from '@/components';
 import style from './recommendSection.module.scss';
-import { Exercise, ExercisePart } from '@/types';
+import { Exercise, ExercisePartList } from '@/types';
 import RightArrow from '@/assets/svg/right-arrow.svg';
 import dumbbell from '@/assets/images/dumbbell.png';
 import gripper from '@/assets/images/gripper.png';
@@ -9,8 +9,8 @@ import skippingRope from '@/assets/images/skipping-rope.png';
 import { EXERCISE_PART } from '@/consts';
 
 interface Props {
-  recommendExerciseList: Exercise[];
-  partList: ExercisePart;
+  suggestionExerciseList: Exercise[];
+  suggestionPartList: ExercisePartList;
 }
 
 const {
@@ -28,18 +28,18 @@ const {
   s_rightArrow,
 } = style;
 
-const RecommendSection = ({ recommendExerciseList, partList }: Props) => {
+const RecommendSection = ({ suggestionExerciseList, suggestionPartList }: Props) => {
   // TODO: api업데이트 되면 삭제
-  const dummyRecommendExerciseList = recommendExerciseList?.map((exercise) => {
+  const dummyRecommendExerciseList = suggestionExerciseList?.map((exercise) => {
     return {
       ...exercise,
       imageLink: 'https://gif.helltabus.com/05861301/05861301-Lever-Lying-Leg-Curl_Thighs_360.gif',
     };
   });
 
-  const todayPartList = partList?.map((part, index) => {
-    return `${EXERCISE_PART[part]}${index !== partList.length - 1 ? ', ' : ''}`;
-  });
+  const todayPartList = suggestionPartList.map((part, index) =>
+    part ? `${EXERCISE_PART[part]}${index !== suggestionPartList.length - 1 ? ', ' : ''}` : ''
+  );
 
   return (
     <section className={s_deem}>
