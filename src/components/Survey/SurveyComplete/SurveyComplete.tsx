@@ -4,12 +4,12 @@ import Lottie from 'react-lottie';
 import style from './surveyComplete.module.scss';
 import complete from '@/assets/lottie/complete.json';
 import SearchExercise from '../SearchExercise/SearchExercise';
-import { SurveyState } from '@/types';
+import { UserInfo } from '@/types';
 
 const { s_container, s_lottieContainer, s_content } = style;
 
 interface Props {
-  surveyState: SurveyState;
+  surveyState: UserInfo;
 }
 
 const SurveyComplete = ({ surveyState }: Props) => {

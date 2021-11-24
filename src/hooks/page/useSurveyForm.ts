@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SurveyState } from '@/types';
+import { UserInfo } from '@/types';
 
 const useSurveyForm = () => {
   const initialState = {
@@ -14,7 +14,7 @@ const useSurveyForm = () => {
     explanation: null,
   };
 
-  const [surveyState, setSurveyState] = useState<SurveyState>(initialState);
+  const [surveyState, setSurveyState] = useState<UserInfo>(initialState);
 
   const setSurveyStateByKey = (key: string) => (value: string | number | boolean) => {
     setSurveyState((prev) => ({
