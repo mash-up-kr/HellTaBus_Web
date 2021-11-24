@@ -36,7 +36,7 @@ function Tabs({ children, headers }: TabsProps) {
           {headers.map((tab, index) => (
             <div key={`tab-${index}`} className={classNames(s_tabButtonWrapper)}>
               <button
-                ref={tabListRefs.current[index]}
+                ref={tabListRefs[index]}
                 className={classNames(s_tabButton, {
                   [s_selcted]: isSelected(index),
                 })}
