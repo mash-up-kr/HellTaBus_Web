@@ -7,12 +7,12 @@ import { Tab } from '@/types';
 
 interface TabsProps {
   children: ReactNode;
-  tabList: Tab[];
+  headers: Tab[];
 }
 
 const { s_tabList, s_tabButtonWrapper, s_tabButton, s_selcted, s_circle } = style;
 
-function Tabs({ children, tabList }: TabsProps) {
+function Tabs({ children, headers }: TabsProps) {
   const {
     tabListRefs,
     isSelected,
@@ -20,7 +20,7 @@ function Tabs({ children, tabList }: TabsProps) {
     handleEnterSpaceKey,
     handleLeftKey,
     handleRightKey,
-  } = useTabs(tabList.length);
+  } = useTabs(headers.length);
 
   const getPanelId = (id: string) => `${id}-tab`;
 
@@ -33,7 +33,7 @@ function Tabs({ children, tabList }: TabsProps) {
         onSpace={handleEnterSpaceKey}
       >
         <div className={classNames(s_tabList)} role="tablist">
-          {tabList.map((tab, index) => (
+          {headers.map((tab, index) => (
             <div key={`tab-${index}`} className={classNames(s_tabButtonWrapper)}>
               <button
                 ref={tabListRefs.current[index]}
@@ -56,13 +56,13 @@ function Tabs({ children, tabList }: TabsProps) {
         </div>
       </Keyboard>
 
-      {Array.isArray(children) && children.length === tabList.length
+      {Array.isArray(children) && children.length === headers.length
         ? children.map((child, index) => (
             <div
               key={`tabpanel-${index}`}
               role="tabpanel"
-              id={getPanelId(tabList[index].id)}
-              aria-labelledby={tabList[index].id}
+              id={getPanelId(headers[index].id)}
+              aria-labelledby={headers[index].id}
               tabIndex={0}
               hidden={!isSelected(index)}
             >
