@@ -6,7 +6,7 @@ import complete from '@/assets/lottie/complete.json';
 import SearchExercise from '../SearchExercise/SearchExercise';
 import { SurveyState } from '@/types';
 
-const { s_container, s_lottieContainer } = style;
+const { s_container, s_lottieContainer, s_content } = style;
 
 interface Props {
   surveyState: SurveyState;
@@ -38,12 +38,12 @@ const SurveyComplete = ({ surveyState }: Props) => {
           <div className={classNames(s_lottieContainer)}>
             <Lottie options={lottieOptions} width={184} height={190} />
           </div>
-          <h2>
-            <p>
+          <div className={classNames(s_content)}>
+            <span className={classNames('s_whiteSpace')}>
               <span>{surveyState.nickname}님</span>을 위한
-            </p>
-            운동이 준비됐어요! <p>시작해 볼까요?</p>
-          </h2>
+            </span>
+            운동이 준비됐어요! <span className={classNames('s_whiteSpace')}>시작해 볼까요?</span>
+          </div>
           <button type="button">렛츠고!👉</button>
         </section>
       )}
