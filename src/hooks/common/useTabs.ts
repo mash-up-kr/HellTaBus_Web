@@ -1,8 +1,8 @@
 import { createRef, useMemo, useState } from 'react';
 
 const useTabs = (length: number) => {
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
-  const [focusIndex, setFocusIndex] = useState<number>(0);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [focusIndex, setFocusIndex] = useState(0);
   const tabListRefs = useMemo(
     () => Array.from({ length }, () => createRef<HTMLButtonElement>()),
     [length]
