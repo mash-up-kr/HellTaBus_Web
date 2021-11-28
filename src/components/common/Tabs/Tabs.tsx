@@ -27,10 +27,10 @@ function Tabs({ children, headers }: TabsProps) {
   return (
     <div>
       <Keyboard
-        onLeft={handleLeftKey}
-        onRight={handleRightKey}
-        onEnter={handleEnterSpaceKey}
-        onSpace={handleEnterSpaceKey}
+        handleLeft={handleLeftKey}
+        handleRight={handleRightKey}
+        handleEnter={handleEnterSpaceKey}
+        handleSpace={handleEnterSpaceKey}
       >
         <div className={classNames(s_tabList)} role="tablist">
           {headers.map((tab, index) => (
