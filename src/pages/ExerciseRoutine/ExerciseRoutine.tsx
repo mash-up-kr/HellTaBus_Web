@@ -22,7 +22,7 @@ function ExerciseRoutine() {
           <Setting width="20" height="20" />
         </button>
       </nav>
-      <HistorySection exerciseHistory={exerciseHistory} />
+      <HistorySection exerciseHistory={exerciseHistory} nickname={userInfo?.nickname ?? ''} />
       <RecommendSection
         // TODO: SpitTypeKey consts객체가 merge되면 상수값으로 수정
         splitType={userInfo?.splitType ?? 'FULL_BODY_WORKOUT'}
