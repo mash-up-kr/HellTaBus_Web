@@ -52,6 +52,6 @@ export interface ExerciseLog {
   deletedAt: string | null;
   exercise: Exercise;
   setList: ExerciseSet[];
-  // TODO: /exercise-history api 변경 예정, 변경 후 feedback 프로퍼티 삭제
-  feedback: Feedback;
 }
+
+export type SplitType = 'FULL_BODY_WORKOUT' | 'SPLIT_3_DAY_WORKOUT' | 'SPLIT_5_DAY_WORKOUT';

@@ -8,7 +8,7 @@ import Calendar from '@/assets/svg/calendar.svg';
 const { s_exerciseRoutine, s_navigator } = style;
 
 function ExerciseRoutine() {
-  const { suggestion, exerciseHistory } = useExerciseRoutine();
+  const { suggestion, exerciseHistory, userInfo } = useExerciseRoutine();
   const { suggestionExerciseList, suggestionPartList } = suggestion;
 
   return (
@@ -24,6 +24,8 @@ function ExerciseRoutine() {
       </nav>
       <HistorySection exerciseHistory={exerciseHistory} />
       <RecommendSection
+        // TODO: SpitTypeKey consts객체가 merge되면 상수값으로 수정
+        splitType={userInfo?.splitType ?? 'FULL_BODY_WORKOUT'}
         suggestionExerciseList={suggestionExerciseList}
         suggestionPartList={suggestionPartList}
       />
