@@ -1,3 +1,5 @@
+import { SplitType } from '@/types';
+
 export interface User {
   id: number;
   nickname: string;
@@ -7,7 +9,7 @@ export interface User {
   age: number;
   height: number;
   weight: number;
-  splitType: string;
+  splitType: SplitType;
   audioCoach: string;
   speed: string;
   explanation: boolean;
