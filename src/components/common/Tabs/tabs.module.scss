@@ -34,7 +34,7 @@
       background-color: color.$primary;
       border-radius: 50%;
       height: 0.5rem;
-      left: 50%;
+      left: calc(50% - 0.25rem);
       position: absolute;
       top: 4.3rem;
       width: 0.5rem;
