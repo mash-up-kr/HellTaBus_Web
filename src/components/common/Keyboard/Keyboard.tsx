@@ -38,7 +38,7 @@ interface KeyboardProps {
   handleDown?: Function;
 }
 
-function Keyboard({ capture, target, children, handleKeyDown, ...restProps }: KeyboardProps) {
+const Keyboard = ({ capture, target, children, handleKeyDown, ...restProps }: KeyboardProps) => {
   const handleKeysDown = useCallback(
     (event, ...rest) => {
       let callbackName: string;
@@ -78,6 +78,6 @@ function Keyboard({ capture, target, children, handleKeyDown, ...restProps }: Ke
     : cloneElement(Children.only(children), {
         onKeyDown: handleKeysDown,
       });
-}
+};
 
 export default Keyboard;

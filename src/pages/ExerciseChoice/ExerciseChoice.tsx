@@ -6,7 +6,7 @@ import style from './exerciseChoice.module.scss';
 
 const { s_exerciseChoice } = style;
 
-function ExerciseChoice() {
+const ExerciseChoice = () => {
   const { isExerciseLoading, error, isError, tabHeaders } = useExerciseChoice();
 
   if (isError) {
@@ -25,6 +25,6 @@ function ExerciseChoice() {
       </Tabs>
     </div>
   );
-}
+};
 
 export default ExerciseChoice;

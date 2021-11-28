@@ -10,7 +10,7 @@ interface Props {
   title?: string;
 }
 
-function Header({ handleClickBackButton, title }: Props) {
+const Header = ({ handleClickBackButton, title }: Props) => {
   return (
     <header className={classNames(s_header)}>
       <button
@@ -23,6 +23,6 @@ function Header({ handleClickBackButton, title }: Props) {
       <span className={classNames(s_title)}>{title}</span>
     </header>
   );
-}
+};
 
 export default Header;

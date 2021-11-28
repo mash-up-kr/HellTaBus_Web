@@ -12,7 +12,7 @@ interface TabsProps {
 
 const { s_tabList, s_tabButtonWrapper, s_tabButton, s_selcted, s_circle } = style;
 
-function Tabs({ children, headers }: TabsProps) {
+const Tabs = ({ children, headers }: TabsProps) => {
   const {
     tabListRefs,
     isSelected,
@@ -72,6 +72,6 @@ function Tabs({ children, headers }: TabsProps) {
         : null}
     </div>
   );
-}
+};
 
 export default Tabs;
