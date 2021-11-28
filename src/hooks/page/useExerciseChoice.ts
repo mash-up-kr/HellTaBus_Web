@@ -18,11 +18,11 @@ const useExerciseChoice = () => {
       userInfo?.splitType
         ? (reduceObject(
             EXERCISE_PART_BY_SPLIT_TYPE[userInfo?.splitType],
-            (accumulated, value, key) => {
-              if (value === EXERCISE_PART.BICEPS || value === EXERCISE_PART.TRICEPS) {
+            (accumulated, exercisePart, key) => {
+              if (exercisePart === EXERCISE_PART.BICEPS || exercisePart === EXERCISE_PART.TRICEPS) {
                 return accumulated;
               }
-              return [...(accumulated as []), { id: key, title: value }];
+              return [...(accumulated as Tab[]), { id: key, title: exercisePart }];
             },
             []
           ) as Tab[])
