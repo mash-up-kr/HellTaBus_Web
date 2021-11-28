@@ -20,7 +20,7 @@ const ExerciseChoice = () => {
         {isExerciseLoading ? (
           <div>로딩중</div>
         ) : (
-          tabHeaders.map((tab, index) => <p key={index}>{tab.title}</p>)
+          tabHeaders.map((tab, index) => <p key={`tab-${index}`}>{tab.title}</p>)
         )}
       </Tabs>
     </div>
