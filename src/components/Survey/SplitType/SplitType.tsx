@@ -15,7 +15,7 @@ interface Props {
   handleSetNextPage: () => void;
 }
 
-function SplitType({ splitType, setSplitType, handleSetNextPage }: Props) {
+const SplitType = ({ splitType, setSplitType, handleSetNextPage }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!splitType);
 
   const handleClickSplitType = (userSplitType: string) => {
@@ -71,6 +71,6 @@ function SplitType({ splitType, setSplitType, handleSetNextPage }: Props) {
       </button>
     </section>
   );
-}
+};
 
 export default SplitType;
