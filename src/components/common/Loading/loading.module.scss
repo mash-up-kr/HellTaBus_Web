@@ -1,0 +1,16 @@
+@use '@/styles/color';
+
+.s_loadingBackground {
+  align-items: center;
+  background-color: color.$primaryVariant1;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+
+  .s_loadingIndicator {
+    border-radius: 2rem;
+    height: 50px;
+    width: 50px;
+  }
+}
