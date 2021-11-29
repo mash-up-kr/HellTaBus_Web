@@ -1,7 +1,11 @@
+export { default as Intro } from './Intro/Intro';
 export { default as Age } from './Age/Age';
-export { default as Complete } from './Complete/Complete';
-export { default as Height } from './Height/Height';
-export { default as Weight } from './Weight/Weight';
+export { default as SurveyComplete } from './SurveyComplete/SurveyComplete';
+export { default as BodyInfo } from './BodyInfo/BodyInfo';
 export { default as Nickname } from './Nickname/Nickname';
 export { default as Gender } from './Gender/Gender';
-export { default as Split } from './Split/Split';
+export { default as SplitType } from './SplitType/SplitType';
+export { default as AudioCoach } from './AudioCoach/AudioCoach';
+export { default as ExerciseSpeed } from './ExerciseSpeed/ExerciseSpeed';
+export { default as AudioExplanation } from './AudioExplanation/AudioExplanation';
+export { default as ProgressBar } from './ProgressBar/ProgressBar';

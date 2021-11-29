@@ -13,5 +13,6 @@
   &:disabled {
     background-color: color.$disable;
     color: color.$onBackground;
+    cursor: not-allowed;
   }
 }

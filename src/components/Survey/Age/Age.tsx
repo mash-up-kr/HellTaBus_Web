@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import classNames from 'classnames';
-import styles from './age.module.scss';
-import NextButton from '@/components/common/NextButton/NextButton';
-import Coolicon from '@/assets/coolicon.svg';
+import style from './age.module.scss';
+import ErrorIcon from '@/assets/svg/error-icon.svg';
+import { CustomInput, CustomLabel } from '@/components/common';
 
 const {
   s_container,
@@ -12,63 +12,83 @@ const {
   s_inputContainer,
   s_errorMsg,
   s_errorIcon,
-} = styles;
+  s_nextButton,
+  s_highlight,
+} = style;
 
 interface Props {
   nickname: string;
   age: number;
   setAge: (value: number) => void;
-  setNextPage: () => void;
+  handleSetNextPage: () => void;
 }
 
-function Age({ nickname, age, setAge, setNextPage }: Props): JSX.Element {
-  const [isDisabled, setIsDisabled] = useState<boolean>(!age);
+const Age = ({ nickname, age, setAge, handleSetNextPage }: Props) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const isDisabled = useMemo(() => !age || !!errorMessage, [age, errorMessage]);
 
-  const checkAgeValidation = (userAge: number) => {
-    if (!userAge) {
-      setErrorMessage('정보를 입력해주세요.');
-      setIsDisabled(true);
-    } else if (Number.isNaN(userAge)) {
-      setErrorMessage('나이에는 숫자만 입력 가능합니다.');
-      setIsDisabled(true);
-    } else if (userAge < 5 || userAge > 200) {
-      setErrorMessage(`정말 ${userAge}살이 맞으신가요?`);
-      setIsDisabled(true);
+  useEffect(() => {
+    const isValidAge = (userAge: number) => {
+      if (Number.isNaN(userAge)) {
+        return '나이에는 숫자만 입력이 가능합니다.';
+      }
+      if (userAge > 200 || userAge < 0) {
+        return `정말 ${userAge}살이 맞으신가요?`;
+      }
+
+      return null;
+    };
+
+    const ageError = isValidAge(age);
+
+    if (ageError) {
+      setErrorMessage(ageError);
     } else {
       setErrorMessage('');
-      setIsDisabled(false);
     }
-  };
+  }, [age]);
 
   const handleChangeAge = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value }: { value: string } = e.target;
-
     setAge(+value);
-    checkAgeValidation(+value);
   };
 
   return (
     <section className={classNames(s_container)}>
-      <h2 className={classNames(s_title)}>
-        {nickname}님의 <span>나이</span>를 알려주세요
-      </h2>
+      <h2 className={classNames('s_a11yHidden')}>나이 입력</h2>
+      <p className={classNames(s_title)}>
+        <span className={classNames('s_whiteSpace')}>{nickname}님의</span>
+        <span className={classNames(s_highlight)}>나이</span>를 알려주세요
+      </p>
+
       <div className={classNames(s_inputContainer)}>
-        <input
-          className={classNames(s_commonInput, {
-            [s_errorInput]: errorMessage,
-          })}
-          type="text"
+        <CustomLabel htmlFor="age" className={classNames('s_a11yHidden')}>
+          나이
+        </CustomLabel>
+        <CustomInput
+          id="age"
+          type="number"
           placeholder="나이 입력"
           value={age || ''}
           onChange={handleChangeAge}
+          className={classNames(s_commonInput, {
+            [s_errorInput]: errorMessage,
+          })}
         />
-        {errorMessage && <Coolicon className={classNames(s_errorIcon)} />}
+
+        {errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
       <span className={classNames(s_errorMsg)}>{errorMessage}</span>
-      <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
+      <button
+        className={classNames(s_nextButton)}
+        type="button"
+        onClick={handleSetNextPage}
+        disabled={isDisabled}
+      >
+        다음
+      </button>
     </section>
   );
-}
+};
 
 export default Age;

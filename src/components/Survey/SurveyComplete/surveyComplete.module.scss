@@ -1,5 +1,4 @@
 @use '@/styles/color.scss';
-@use '@/styles/common.scss';
 
 .s_container {
   align-items: center;
@@ -9,14 +8,20 @@
   margin-top: 10.9rem;
   width: 100%;
 
-  .s_imgContainer {
-    width: 20.8rem;
+  .s_lottieContainer {
+    display: flex;
+    justify-content: center;
   }
 
-  h2 {
-    font-size: 1.6rem;
-    font-weight: 400;
-    margin-top: 4.4rem;
+  .s_content {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-top: 6rem;
+    text-align: center;
+
+    span {
+      color: color.$primary;
+    }
   }
 
   button {
@@ -24,6 +29,8 @@
     border-radius: 3rem;
     bottom: 3.6rem;
     color: color.$onPrimary;
+    font-size: 1.6rem;
+    font-weight: 700;
     height: 5.4rem;
     position: absolute;
     width: 23rem;

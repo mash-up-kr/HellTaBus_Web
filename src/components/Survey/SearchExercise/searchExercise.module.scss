@@ -1,0 +1,26 @@
+@use '@/styles/color.scss';
+
+.s_container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin-top: 18rem;
+  width: 100%;
+
+  .s_lottieContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .s_content {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 4rem;
+    text-align: center;
+
+    .s_highlight {
+      color: color.$primary;
+    }
+  }
+}

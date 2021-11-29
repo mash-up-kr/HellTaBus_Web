@@ -1,4 +1,4 @@
-@use '@/styles/common';
+@use '@/styles/color.scss';
 @use '@/pages/Survey/survey.module.scss';
 
 @include survey.survey-default-with-button;

@@ -1,0 +1,44 @@
+@use '@/styles/color.scss';
+
+.s_container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.s_lottieContainer {
+  margin-top: 11.2rem;
+}
+
+.s_title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  width: 25.7rem;
+
+  .s_highlight {
+    color: color.$primary;
+  }
+
+  .s_addendum {
+    bottom: 12rem;
+    color: color.$onSecondary;
+    font-size: 1.2rem;
+    font-weight: 400;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+  }
+}
+
+.s_startButton {
+  background-color: color.$primary;
+  border-radius: 2.7rem;
+  bottom: 5rem;
+  color: color.$onPrimary;
+  font-size: 1.6rem;
+  font-weight: 700;
+  height: 5.4rem;
+  position: absolute;
+  width: 23rem;
+}

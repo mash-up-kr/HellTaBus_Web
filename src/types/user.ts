@@ -1,18 +1,22 @@
 import { SplitType } from '@/types';
 
-export interface User {
-  id: number;
+export interface SurveyFields {
   nickname: string;
-  email: string;
-  googleAccount: string;
   gender: string;
   age: number;
   height: number;
   weight: number;
-  splitType: SplitType;
+  splitType: SplitType | '';
   audioCoach: string;
   speed: string;
-  explanation: boolean;
+  explanation: boolean | null;
+}
+
+export interface User extends SurveyFields {
+  id: number;
+  email: string;
+  googleAccount: string;
+  splitType: SplitType;
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;
