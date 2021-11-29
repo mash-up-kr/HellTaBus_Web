@@ -15,9 +15,43 @@ export interface Exercise {
   deletedAt: string | null;
 }
 
-export type ExercisePart = ['SHOULDER', 'ARM', 'CHEST', 'BACK', 'LOWER'];
+export type ExercisePartList = Partial<
+  ['SHOULDER', 'ARM', 'CHEST', 'BACK', 'LOWER', 'TRICEPS', 'BICEPS']
+>;
 
 export interface Suggestion {
-  suggestionPartList: ExercisePart;
+  suggestionPartList: ExercisePartList;
   suggestionExerciseList: Exercise[];
 }
+
+export interface ExerciseSet {
+  id: number;
+  index: number;
+  weight: number;
+  startTime: string;
+  finishTime: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
+
+export interface Feedback {
+  id: number;
+  difficulty: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
+
+export interface ExerciseLog {
+  id: number;
+  startTime: string;
+  finishTime: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+  exercise: Exercise;
+  setList: ExerciseSet[];
+}
+
+export type SplitType = 'FULL_BODY_WORKOUT' | 'SPLIT_3_DAY_WORKOUT' | 'SPLIT_5_DAY_WORKOUT';

@@ -1,17 +1,15 @@
 import React from 'react';
 import style from './exerciseRoutine.module.scss';
 import { HistorySection, RecommendSection } from '@/components';
-import { Exercise, ExercisePart } from '@/types';
-import { useFetchExerciseSuggestion } from '@/hooks';
+import { useExerciseRoutine } from '@/hooks';
 import Setting from '@/assets/svg/setting.svg';
 import Calendar from '@/assets/svg/calendar.svg';
 
 const { s_exerciseRoutine, s_navigator } = style;
 
 function ExerciseRoutine() {
-  const { suggestion } = useFetchExerciseSuggestion();
-  const exercisePartList = suggestion?.suggestionPartList as ExercisePart;
-  const recommendExerciseList = suggestion?.suggestionExerciseList as Exercise[];
+  const { suggestion, exerciseHistory, userInfo } = useExerciseRoutine();
+  const { suggestionExerciseList, suggestionPartList } = suggestion;
 
   return (
     <section className={s_exerciseRoutine}>
@@ -24,8 +22,13 @@ function ExerciseRoutine() {
           <Setting width="20" height="20" />
         </button>
       </nav>
-      <HistorySection />
-      <RecommendSection recommendExerciseList={recommendExerciseList} partList={exercisePartList} />
+      <HistorySection exerciseHistory={exerciseHistory} nickname={userInfo?.nickname ?? ''} />
+      <RecommendSection
+        // TODO: SpitTypeKey consts객체가 merge되면 상수값으로 수정
+        splitType={userInfo?.splitType ?? 'FULL_BODY_WORKOUT'}
+        suggestionExerciseList={suggestionExerciseList}
+        suggestionPartList={suggestionPartList}
+      />
     </section>
   );
 }
