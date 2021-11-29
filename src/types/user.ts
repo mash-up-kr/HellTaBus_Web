@@ -1,23 +1,5 @@
 import { SplitType } from '@/types';
 
-export interface User {
-  id: number;
-  nickname: string;
-  email: string;
-  googleAccount: string;
-  gender: string;
-  age: number;
-  height: number;
-  weight: number;
-  splitType: SplitType;
-  audioCoach: string;
-  speed: string;
-  explanation: boolean;
-  createdAt: string;
-  updatedAt: string;
-  deletedAt: string | null;
-}
-
 export interface UserInfo {
   nickname: string;
   gender: string;
@@ -28,4 +10,15 @@ export interface UserInfo {
   audioCoach: string;
   speed: string;
   explanation: boolean | null;
+}
+
+export interface User extends UserInfo {
+  id: number;
+  email: string;
+  googleAccount: string;
+  splitType: SplitType;
+  explanation: boolean;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
 }
