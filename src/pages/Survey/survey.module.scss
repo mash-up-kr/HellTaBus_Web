@@ -1,4 +1,117 @@
-@use '@/styles/common';
 @use '@/styles/color';
 
-@include common.survey-default-with-button;
+.s_entireContainer {
+  width: 100%;
+}
+
+.s_componentContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  padding: 0 3.2rem;
+  width: 100%;
+}
+
+@mixin survey-default-with-button {
+  .s_container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .s_title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 4.8rem;
+      margin-top: 2.4rem;
+      width: 100%;
+
+      > span {
+        margin-bottom: 1rem;
+      }
+      .s_highlight {
+        color: color.$primary;
+      }
+    }
+    .s_inputContainer {
+      position: relative;
+      width: 100%;
+    }
+
+    .s_errorIcon {
+      bottom: 2.5rem;
+      position: absolute;
+      right: 1rem;
+    }
+
+    .s_commonInput {
+      background-color: #f8f8f8;
+      border: none;
+      border-bottom: 0.2rem solid color.$primary;
+      font-size: 1.5rem;
+      font-weight: 700;
+      height: 4.3rem;
+      outline: none;
+      padding-left: 1rem;
+      width: 100%;
+      margin: {
+        bottom: 1rem;
+        top: 2rem;
+      }
+    }
+
+    input::placeholder {
+      color: color.$onBackground3;
+      font-size: 2.2rem;
+      font-weight: 500;
+      opacity: 1; /* 파이어폭스에서 뿌옇게 나오는 현상을 방지하기 위한 css */
+    }
+    input::-webkit-input-placeholder {
+      color: color.$onBackground3;
+      font-size: 2.2rem;
+      font-weight: 500;
+    }
+
+    /* IE */
+    input:-ms-input-placeholder {
+      color: color.$onBackground3;
+      font-size: 2.2rem;
+      font-weight: 500;
+    }
+
+    /* Firefox */
+    input:-mos-input-placeholder {
+      color: color.$onBackground3;
+      font-size: 2.2rem;
+      font-weight: 500;
+    }
+
+    .s_errorInput {
+      border-bottom: 1px solid color.$error;
+    }
+  }
+
+  .s_errorMsg {
+    color: color.$error;
+    font-size: 1.2rem;
+    margin-left: 2.5rem;
+    width: 100%;
+  }
+
+  .s_nextButton {
+    background-color: color.$primary;
+    bottom: 0;
+    color: color.$onPrimary;
+    font-size: 1.6rem;
+    font-weight: 700;
+    height: 5.4rem;
+    position: absolute;
+    width: 100%;
+
+    &:disabled {
+      background-color: color.$disable;
+      color: color.$onBackground;
+    }
+  }
+}

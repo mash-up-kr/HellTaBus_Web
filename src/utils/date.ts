@@ -11,7 +11,7 @@ export const getFirstAndLastDateStringFromCurrentWeek = () => {
   const sundayDateString = `${sunday.getFullYear()}-${sunday.getMonth() + 1}-${sunday.getDate()}`;
   const saturdayDateString = `${saturday.getFullYear()}-${
     saturday.getMonth() + 1
-  }-${saturday.getDate()}`;
+  }-${saturday.getDate()} 23:59:59`;
 
   return { sundayDateString, saturdayDateString };
 };

@@ -1,4 +1,4 @@
-import { useFetchExerciseHistory, useFetchExerciseSuggestion } from '@/hooks/api';
+import { useFetchExerciseHistory, useFetchExerciseSuggestion, useFetchUserInfo } from '@/hooks/api';
 import { getFirstAndLastDateStringFromCurrentWeek } from '@/utils';
 
 const useExerciseRoutine = () => {
@@ -18,14 +18,23 @@ const useExerciseRoutine = () => {
     isLoading: isLoadingExerciseHistory,
   } = useFetchExerciseHistory(sundayDateString, saturdayDateString);
 
-  const error = suggestionError || exerciseHistoryError;
-  const isError = isSuggestionError || isExerciseHistoryError;
+  const {
+    userInfo,
+    error: userInfoError,
+    isError: isUserInfoError,
+    isLoading: isLoadingUserInfo,
+  } = useFetchUserInfo();
+
+  const error = suggestionError || exerciseHistoryError || userInfoError;
+  const isError = isSuggestionError || isExerciseHistoryError || isUserInfoError;
 
   return {
     suggestion,
     exerciseHistory,
+    userInfo,
     isLoadingSuggestion,
     isLoadingExerciseHistory,
+    isLoadingUserInfo,
     error,
     isError,
   };
