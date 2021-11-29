@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { SurveyFields } from '@/types';
 
 const useSurveyForm = () => {
-  const initialState = {
+  const initialState: SurveyFields = {
     nickname: '',
     gender: '',
     age: 0,
