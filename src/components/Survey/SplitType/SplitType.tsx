@@ -35,12 +35,12 @@ function SplitType({ splitType, setSplitType, handleSetNextPage }: Props) {
       <Carousel className={classNames(s_spiltCarousel)}>
         <Workout
           selectedSplitType={splitType}
-          currentSplitType="FULL_BODY_WORKOUT"
-          imageComponent={<FullBodyWorkout />}
-          title="무분할"
+          currentSplitType="SPLIT_5_DAY_WORKOUT"
+          imageComponent={<FiveBodyWorkout />}
+          title="5분할"
           handleClickSplitType={handleClickSplitType}
         >
-          가슴, 어깨, 팔, 등, 하체를 하루에 운동하는 방법으로 초보자에게 추천합니다.
+          가슴 / 등/ 삼두 / 하체 / 어깨로 5개 부위로 나눠서 운동하는 방법입니다.
         </Workout>
         <Workout
           selectedSplitType={splitType}
@@ -53,12 +53,12 @@ function SplitType({ splitType, setSplitType, handleSetNextPage }: Props) {
         </Workout>
         <Workout
           selectedSplitType={splitType}
-          currentSplitType="SPLIT_5_DAY_WORKOUT"
-          imageComponent={<FiveBodyWorkout />}
-          title="5분할"
+          currentSplitType="FULL_BODY_WORKOUT"
+          imageComponent={<FullBodyWorkout />}
+          title="무분할"
           handleClickSplitType={handleClickSplitType}
         >
-          가슴 / 등/ 삼두 / 하체 / 어깨로 5개 부위로 나눠서 운동하는 방법입니다.
+          가슴, 어깨, 팔, 등, 하체를 하루에 운동하는 방법으로 초보자에게 추천합니다.
         </Workout>
       </Carousel>
       <button
