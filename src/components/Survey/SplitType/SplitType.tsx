@@ -40,7 +40,7 @@ const SplitType = ({ splitType, setSplitType, handleSetNextPage }: Props) => {
           title="5분할"
           handleClickSplitType={handleClickSplitType}
         >
-          가슴 / 등/ 삼두 / 하체 / 어깨로 5개 부위로 나눠서 운동하는 방법입니다.
+          가슴/어깨/팔/등/하체로 5개의 부위로 나눠서 운동 하는 방법입니다
         </Workout>
         <Workout
           selectedSplitType={splitType}
@@ -49,7 +49,7 @@ const SplitType = ({ splitType, setSplitType, handleSetNextPage }: Props) => {
           title="3분할"
           handleClickSplitType={handleClickSplitType}
         >
-          가슴, 이두 / 등, 삼두/ 하체, 어깨로 3개 부위로 나눠서 운동하는 방법입니다.
+          가슴,이두/등,삼두/어깨, 하체로 3개 부위로 나눠서 운동하는 방법입니다
         </Workout>
         <Workout
           selectedSplitType={splitType}
