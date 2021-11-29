@@ -8,6 +8,7 @@ const useFetchExercises = () => {
     () => getExercises(),
     {
       keepPreviousData: true,
+      suspense: true,
     }
   );
 

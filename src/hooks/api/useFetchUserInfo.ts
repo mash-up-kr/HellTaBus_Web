@@ -10,6 +10,7 @@ const useFetchUserInfo = () => {
       staleTime: 1000 * 60 * 60 * 6, // 6시간
       retry: 1,
       keepPreviousData: true,
+      suspense: true,
     }
   );
 
