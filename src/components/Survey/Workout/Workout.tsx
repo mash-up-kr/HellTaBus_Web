@@ -2,7 +2,8 @@ import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import style from './workout.module.scss';
 
-const { s_container, s_selectedContainer, s_content, s_title, s_description } = style;
+const { s_container, s_selectedContainer, s_content, s_imageContainer, s_title, s_description } =
+  style;
 
 interface Props {
   selectedSplitType: string;
@@ -32,7 +33,7 @@ const Workout = ({
       }}
     >
       <div className={classNames(s_content)}>
-        {imageComponent}
+        <div className={classNames(s_imageContainer)}>{imageComponent}</div>
         <div className={classNames(s_title)}>{title}</div>
         <div className={classNames(s_description)}>{children}</div>
       </div>

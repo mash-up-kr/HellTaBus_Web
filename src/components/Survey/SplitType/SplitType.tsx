@@ -7,7 +7,7 @@ import ThreeBodyWorkout from '@/assets/svg/three-body-workout.svg';
 import FiveBodyWorkout from '@/assets/svg/five-body-workout.svg';
 import { Carousel } from '@/components/common';
 
-const { s_container, s_title, s_nextButton, s_highlight } = style;
+const { s_container, s_title, s_nextButton, s_highlight, s_spiltCarousel } = style;
 
 interface Props {
   splitType: string;
@@ -32,7 +32,7 @@ function SplitType({ splitType, setSplitType, handleSetNextPage }: Props) {
         </span>
         운동을 원하시나요?
       </p>
-      <Carousel>
+      <Carousel className={classNames(s_spiltCarousel)}>
         <Workout
           selectedSplitType={splitType}
           currentSplitType="FULL_BODY_WORKOUT"

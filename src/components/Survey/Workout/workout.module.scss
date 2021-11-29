@@ -4,10 +4,9 @@
   background-color: color.$onPrimary;
   border-radius: 2rem;
   font-weight: 600;
-  height: 26.2rem;
-  margin-right: 1.2rem;
-  padding: 2rem;
-  width: 21.4rem;
+  height: 29rem;
+  padding: 2.4rem 2rem;
+  width: 21rem;
 }
 
 .s_selectedContainer {
@@ -18,13 +17,20 @@
   text-align: left;
 }
 
+.s_imageContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.4rem;
+}
+
 .s_title {
+  color: color.$onBackground;
   font-size: 1.6rem;
-  margin-bottom: 0.6rem;
-  margin-top: 0.5rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
 }
 
 .s_description {
+  color: color.$onBackground1;
   font-size: 1.4rem;
-  margin-bottom: 1.7rem;
 }
