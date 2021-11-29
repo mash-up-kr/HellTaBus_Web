@@ -10,7 +10,6 @@ const { s_container, s_stepContainer, s_stepComment, s_progress, s_currentStep }
 
 const MIN_STEP = 1;
 const MAX_STEP = 8;
-const TOTAL_LENGTH = 312;
 
 const ProgressBar = ({ step }: Props) => {
   const message = useMemo(() => {
@@ -21,12 +20,12 @@ const ProgressBar = ({ step }: Props) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    setProgress((step * TOTAL_LENGTH) / MAX_STEP);
+    setProgress((step / MAX_STEP) * 100);
   }, [step]);
 
   return (
     <div className={classNames(s_container)}>
-      <div style={{ width: `${progress}px` }} className={classNames(s_progress)} />
+      <div style={{ width: `${progress}%` }} className={classNames(s_progress)} />
       <div className={classNames(s_stepContainer)}>
         <span className={classNames(s_stepComment)}>{message}</span>
         <div className={classNames(s_currentStep)}>

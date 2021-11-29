@@ -6,7 +6,7 @@
   height: 1rem;
   margin-bottom: 5.3rem;
   text-align: right;
-  width: 31.2rem;
+  width: calc(100% + 1.6rem);
 
   .s_progress {
     background-color: color.$primary;

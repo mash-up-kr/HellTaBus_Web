@@ -4,15 +4,23 @@
   align-items: center;
   display: flex;
   height: 5.6rem;
+  padding: 0 1.6rem;
   width: 100%;
 
   .s_previousButton {
-    background-color: color.$background;
-    padding: 0.1rem 0.1rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    height: 4rem;
+    padding: 0;
+    width: 4rem;
+  }
+
+  .s_title {
+    font-size: 2.2rem;
+    font-weight: 500;
     margin: {
-      bottm: 0.8rem;
-      left: 1.6rem;
-      top: 0.8rem;
+      left: 0.8rem;
+      top: 0.11rem;
     }
   }
 }
