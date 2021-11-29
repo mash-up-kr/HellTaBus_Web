@@ -1,6 +1,6 @@
 import { SplitType } from '@/types';
 
-export interface UserInfo {
+export interface SurveyFields {
   nickname: string;
   gender: string;
   age: number;
@@ -12,7 +12,7 @@ export interface UserInfo {
   explanation: boolean | null;
 }
 
-export interface User extends UserInfo {
+export interface User extends SurveyFields {
   id: number;
   email: string;
   googleAccount: string;
