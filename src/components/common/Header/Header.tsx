@@ -1,4 +1,4 @@
-import React, { ReactChild } from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import Back from '@/assets/svg/back.svg';
 import style from './header.module.scss';
@@ -8,7 +8,7 @@ const { s_header, s_previousButton } = style;
 interface Props {
   handleClickBackButton: () => void;
   className?: string;
-  children?: ReactChild;
+  children?: ReactNode;
 }
 
 const Header = ({ handleClickBackButton, className, children }: Props) => {
