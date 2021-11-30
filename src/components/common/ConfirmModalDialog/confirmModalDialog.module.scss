@@ -1,0 +1,44 @@
+@use '@/styles/color';
+
+.s_alertDialog {
+  background-color: #fff;
+  border-radius: 1.6rem;
+  border-bottom-right-radius: 1.9rem;
+  filter:
+    drop-shadow(0 3px 13px rgba(0, 0, 0, 0.039))
+    drop-shadow(0 10.5px 36px rgba(0, 0, 0, 0.19));
+  height: 22.8rem;
+  left: 50%;
+  padding: 4rem 2.4rem 0 2.4rem;
+  position: relative;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 31.2rem;
+
+  .s_confirmButtons {
+    bottom: 0;
+    height: 54px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+
+    .s_cancelButton {
+      background-color: color.$onBackground4;
+      border-bottom-left-radius: 1.6rem;
+      height: 100%;
+      padding: 0;
+      width: 50%;
+    }
+
+    .s_approvalButton {
+      background-color: color.$primary;
+      border-bottom-right-radius: 1.6rem;
+      color: color.$onPrimary;
+      height: 100%;
+      padding: 0;
+      width: 50%;
+    }
+  }
+}
