@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { RecommendCarousel } from '@/components';
 import style from './recommendSection.module.scss';
 import { Exercise, ExercisePartList, SplitType } from '@/types';
@@ -6,7 +7,7 @@ import RightArrow from '@/assets/svg/right-arrow.svg';
 import dumbbell from '@/assets/images/dumbbell.png';
 import gripper from '@/assets/images/gripper.png';
 import skippingRope from '@/assets/images/skipping-rope.png';
-import { EXERCISE_PART, SPLIT_TYPE } from '@/consts';
+import { EXERCISE_CHOICE_PAGE, EXERCISE_PART, SPLIT_TYPE } from '@/consts';
 
 interface Props {
   suggestionExerciseList: Exercise[];
@@ -56,10 +57,10 @@ const RecommendSection = ({ suggestionExerciseList, suggestionPartList, splitTyp
         </button>
         <RecommendCarousel className={s_recommendCarousel} recommendList={suggestionExerciseList} />
         <div className={s_otherExercise}>
-          <button type="button">
-            <span>다른 운동 선택</span>
+          <Link to={EXERCISE_CHOICE_PAGE}>
+            다른 운동 선택
             <RightArrow className={s_rightArrow} />
-          </button>
+          </Link>
         </div>
       </div>
     </section>
