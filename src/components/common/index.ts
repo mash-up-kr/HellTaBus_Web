@@ -6,3 +6,4 @@ export { default as CustomLabel } from './CustomLabel/CustomLabel';
 export { default as CustomInput } from './CustomInput/CustomInput';
 export { default as Loading } from './Loading/Loading';
 export { default as Portal } from './Portal/Portal';
+export { default as Modal } from './Modal/Modal';
