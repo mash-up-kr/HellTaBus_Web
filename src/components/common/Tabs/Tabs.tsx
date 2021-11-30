@@ -56,13 +56,13 @@ const Tabs = ({ children, headers }: TabsProps) => {
         </div>
       </Keyboard>
 
-      {Array.isArray(children) && children.length === headers.length
+      {Array.isArray(children)
         ? children.map((child, index) => (
             <div
               key={`tabpanel-${index}`}
               role="tabpanel"
-              id={getPanelId(headers[index].id)}
-              aria-labelledby={headers[index].id}
+              id={getPanelId(headers[index]?.id)}
+              aria-labelledby={headers[index]?.id}
               tabIndex={0}
               hidden={!isSelected(index)}
             >
