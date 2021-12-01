@@ -5,6 +5,7 @@ import style from './surveyComplete.module.scss';
 import complete from '@/assets/lottie/complete.json';
 import SearchExercise from '../SearchExercise/SearchExercise';
 import { SurveyFields } from '@/types';
+import usePatchUserInfo from '@/hooks/api/usePatchUserInfo';
 
 const { s_container, s_lottieContainer, s_content } = style;
 
@@ -13,25 +14,28 @@ interface Props {
 }
 
 const SurveyComplete = ({ surveyState }: Props) => {
-  const [loading, setLoading] = useState(true);
+  const { mutate, isPatchSuccess } = usePatchUserInfo();
+  const [dataAnalysisLoading, setDataAnalysisLoading] = useState(true);
 
   const lottieOptions = {
     animationData: complete,
   };
 
   useEffect(() => {
-    const loadingTimer = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+    mutate(surveyState);
+
+    const dataAnalysisTimer = setTimeout(() => {
+      setDataAnalysisLoading(false);
+    }, 2500);
 
     return () => {
-      clearTimeout(loadingTimer);
+      clearTimeout(dataAnalysisTimer);
     };
-  });
+  }, [mutate, surveyState]);
 
   return (
     <>
-      {loading ? (
+      {dataAnalysisLoading || !isPatchSuccess ? (
         <SearchExercise nickname={surveyState.nickname} />
       ) : (
         <section className={classNames(s_container)}>
