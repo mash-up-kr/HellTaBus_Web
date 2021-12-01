@@ -1,0 +1,15 @@
+@use '@/styles/color';
+
+.s_title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.05rem;
+  line-height: 3.1rem;
+  margin-bottom: 1.6rem;
+}
+
+.s_description {
+  color: color.$primaryVariant4;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
