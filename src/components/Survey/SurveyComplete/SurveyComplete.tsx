@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import classNames from 'classnames';
 import Lottie from 'react-lottie';
 import style from './surveyComplete.module.scss';
@@ -14,6 +15,8 @@ interface Props {
 }
 
 const SurveyComplete = ({ surveyState }: Props) => {
+  const history = useHistory();
+
   const { mutate, isPatchSuccess } = usePatchUserInfo();
   const [dataAnalysisLoading, setDataAnalysisLoading] = useState(true);
 
@@ -33,6 +36,10 @@ const SurveyComplete = ({ surveyState }: Props) => {
     };
   }, [mutate, surveyState]);
 
+  const handleClickSubmitButton = () => {
+    history.push('/exercise-routine');
+  };
+
   return (
     <>
       {dataAnalysisLoading || !isPatchSuccess ? (
@@ -48,7 +55,9 @@ const SurveyComplete = ({ surveyState }: Props) => {
             </span>
             운동이 준비됐어요! <span className={classNames('s_whiteSpace')}>시작해 볼까요?</span>
           </div>
-          <button type="button">렛츠고!👉</button>
+          <button type="button" onClick={handleClickSubmitButton}>
+            렛츠고!👉
+          </button>
         </section>
       )}
     </>
