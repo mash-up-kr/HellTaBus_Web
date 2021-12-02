@@ -1,0 +1,11 @@
+@use '@/styles/color';
+
+.s_modal {
+  background: rgba(0, 0, 0, 0.6);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 10000;
+}
