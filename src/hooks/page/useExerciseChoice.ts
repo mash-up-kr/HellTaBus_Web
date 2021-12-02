@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { EXERCISE_PART, EXERCISE_PART_BY_SPLIT_TYPE, SPLIT_TYPE } from '@/consts';
+import { EXERCISE_PART, EXERCISE_PART_OF_TAB_BY_SPLIT_TYPE, SPLIT_TYPE } from '@/consts';
 import { useFetchExercises, useFetchUserInfo } from '@/hooks';
 import { Exercise, ExercisePanel, IndexableType, Tab } from '@/types';
 import { reduceObject } from '@/utils';
@@ -16,7 +16,7 @@ const toTabHeaders = (exerciseParts: IndexableType<string>) =>
     []
   ) as Tab[];
 
-const filterFullBodyWorkout = (exercises: Exercise[]) => {
+const toTabPanelsOfFullBodyWorkout = (exercises: Exercise[]) => {
   return [
     reduceObject(
       EXERCISE_PART,
@@ -40,7 +40,7 @@ const filterFullBodyWorkout = (exercises: Exercise[]) => {
   ] as ExercisePanel[];
 };
 
-const filterSplit3DayWorkout = (exercises: Exercise[], tabHeaders: Tab[]) => {
+const toTabPanelsOfSplit3DayWorkout = (exercises: Exercise[], tabHeaders: Tab[]) => {
   const tabPanels = tabHeaders.reduce((accumulated, { id, title }) => {
     const exercisePartKeysOfTab = id.split('_AND_');
     const exercisePartsOfTab = title.split('/');
@@ -66,7 +66,7 @@ const filterSplit3DayWorkout = (exercises: Exercise[], tabHeaders: Tab[]) => {
   return Array.from(tabPanels.values());
 };
 
-const filterSplit5DayWorkout = (exercises: Exercise[], tabHeaders: Tab[]) => {
+const toTabPanelsOfSplit5DayWorkout = (exercises: Exercise[], tabHeaders: Tab[]) => {
   const tabPanels = tabHeaders.reduce(
     (accumulated, { id: exercisePartKeyOfTab, title: exercisePartOfTab }) => {
       const exercisesByPart = exercises.filter((exercise) => {
@@ -93,12 +93,7 @@ const filterSplit5DayWorkout = (exercises: Exercise[], tabHeaders: Tab[]) => {
 };
 
 const useExerciseChoice = () => {
-  const {
-    isLoading: isExerciseLoading,
-    error: exerciseError,
-    isError: isExerciseError,
-    exercises,
-  } = useFetchExercises();
+  const { error: exerciseError, isError: isExerciseError, exercises } = useFetchExercises();
   const { error: userInfoError, isError: isUserInfoError, userInfo } = useFetchUserInfo();
 
   const exerciseTabHeaders: Tab[] | null = useMemo(() => {
@@ -107,7 +102,7 @@ const useExerciseChoice = () => {
     const { splitType: splitTypeKey } = userInfo;
     const splitType = SPLIT_TYPE[splitTypeKey];
 
-    return toTabHeaders(EXERCISE_PART_BY_SPLIT_TYPE[splitType]);
+    return toTabHeaders(EXERCISE_PART_OF_TAB_BY_SPLIT_TYPE[splitType]);
   }, [userInfo]);
 
   const exerciseTabPanels: ExercisePanel[] = useMemo(() => {
@@ -118,20 +113,19 @@ const useExerciseChoice = () => {
     const isSplit5DayWorkout = exerciseTabHeaders.length === 5;
 
     if (isFullBodyWorkout) {
-      return filterFullBodyWorkout(exercises);
+      return toTabPanelsOfFullBodyWorkout(exercises);
     }
     if (isSplit3DayWorkout) {
-      return filterSplit3DayWorkout(exercises, exerciseTabHeaders);
+      return toTabPanelsOfSplit3DayWorkout(exercises, exerciseTabHeaders);
     }
     if (isSplit5DayWorkout) {
-      return filterSplit5DayWorkout(exercises, exerciseTabHeaders);
+      return toTabPanelsOfSplit5DayWorkout(exercises, exerciseTabHeaders);
     }
 
     return [];
   }, [exercises, exerciseTabHeaders]);
 
   return {
-    isExerciseLoading,
     error: exerciseError || userInfoError,
     isError: isExerciseError || isUserInfoError,
     exercises,
