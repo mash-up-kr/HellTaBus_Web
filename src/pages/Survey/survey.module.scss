@@ -114,4 +114,22 @@
       color: color.$onBackground;
     }
   }
+
+  .s_submitButton {
+    background-color: color.$primary;
+    border-radius: 2.7rem;
+    bottom: 5rem;
+    color: color.$onPrimary;
+    font-size: 1.6rem;
+    font-weight: 700;
+    height: 5.4rem;
+    position: absolute;
+    width: 23rem;
+
+    &:disabled {
+      background-color: color.$disable;
+      color: color.$onBackground;
+      cursor: not-allowed;
+    }
+  }
 }
