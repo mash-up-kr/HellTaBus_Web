@@ -21,7 +21,7 @@ const ConfirmModalDialog = ({ handleCancel, handleApprove, children }: Props) =>
             취소
           </button>
           <button type="button" className={classNames(s_approvalButton)} onClick={handleApprove}>
-            확인
+            변경
           </button>
         </div>
       </div>

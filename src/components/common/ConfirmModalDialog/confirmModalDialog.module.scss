@@ -27,6 +27,9 @@
     .s_cancelButton {
       background-color: color.$onBackground4;
       border-bottom-left-radius: 1.6rem;
+      color: color.$primaryVariant4;
+      font-size: 1.6rem;
+      font-weight: 700;
       height: 100%;
       padding: 0;
       width: 50%;
@@ -36,6 +39,8 @@
       background-color: color.$primary;
       border-bottom-right-radius: 1.6rem;
       color: color.$onPrimary;
+      font-size: 1.6rem;
+      font-weight: 700;
       height: 100%;
       padding: 0;
       width: 50%;
