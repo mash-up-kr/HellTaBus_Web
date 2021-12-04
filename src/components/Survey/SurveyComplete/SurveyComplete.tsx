@@ -37,7 +37,7 @@ const SurveyComplete = ({ surveyState }: Props) => {
     };
   }, [mutate, surveyState]);
 
-  const handleClickSubmitButton: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+  const handleClickSubmitButton: React.MouseEventHandler<HTMLButtonElement> = () => {
     history.push(EXERCISE_ROUTINE_PAGE);
   };
 
