@@ -1,0 +1,48 @@
+@use '@/styles/color';
+
+.s_errorPage {
+  background-color: color.$onPrimary;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100vw;
+}
+
+.s_errorIcon {
+  margin: 8rem auto 6rem;
+}
+
+.s_errorTitle {
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.05rem;
+  line-height: 3.1rem;
+
+  & > span {
+    color: color.$primary;
+  }
+}
+
+.s_errorMessage {
+  color: color.$primaryVariant4;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  margin-top: 2.3rem;
+}
+
+.s_reloadButton {
+  background-color: color.$primary;
+  border: 0;
+  border-radius: 3rem;
+  color: color.$onPrimary;
+  font-size: 1.6rem;
+  font-weight: 700;
+  height: 5.4rem;
+  margin-top: 8.3rem;
+  padding: 1.7rem, 0 1.6rem;
+  text-align: center;
+  width: 23rem;
+}
