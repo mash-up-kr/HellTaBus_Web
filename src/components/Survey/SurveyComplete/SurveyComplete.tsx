@@ -7,6 +7,7 @@ import complete from '@/assets/lottie/complete.json';
 import SearchExercise from '../SearchExercise/SearchExercise';
 import { SurveyFields } from '@/types';
 import usePatchUserInfo from '@/hooks/api/usePatchUserInfo';
+import { EXERCISE_ROUTINE_PAGE } from '@/consts';
 
 const { s_container, s_lottieContainer, s_content } = style;
 
@@ -36,8 +37,8 @@ const SurveyComplete = ({ surveyState }: Props) => {
     };
   }, [mutate, surveyState]);
 
-  const handleClickSubmitButton = () => {
-    history.push('/exercise-routine');
+  const handleClickSubmitButton = (e: React.MouseEvent<HTMLElement>) => {
+    history.push(EXERCISE_ROUTINE_PAGE);
   };
 
   return (
