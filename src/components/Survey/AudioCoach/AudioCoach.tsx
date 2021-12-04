@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import classNames from 'classnames';
 import style from './audioCoach.module.scss';
 import { CustomInput, CustomLabel } from '@/components/common';
+import scary from '@/assets/audio/scary.mp3';
+import funny from '@/assets/audio/funny.mp3';
+import comfortable from '@/assets/audio/comfortable.mp3';
 
 const {
   s_mainTitle,
@@ -11,6 +14,9 @@ const {
   s_radioButtonContainer,
   s_audioCoachButton,
   s_selectedAudioCoach,
+  s_selectedScaryAudioCoach,
+  s_selectedFunnyAudioCoach,
+  s_selectedComfortableAudioCoach,
   s_nextButton,
 } = style;
 
@@ -20,12 +26,32 @@ interface Props {
   handleSetNextPage: () => void;
 }
 
+const SCARY = new Audio(scary);
+const FUNNY = new Audio(funny);
+const COMFORTABLE = new Audio(comfortable);
+
 const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!audioCoach);
+  const [currentlyPlayingAudio, setCurrentlyPlayingAudio] = useState('');
+  const audios = { SCARY, FUNNY, COMFORTABLE };
 
   const createAudioCoachStateChangeHandler = (userAudioCoach: string) => () => {
     setAudioCoach(userAudioCoach);
     setIsDisabled(false);
+    setCurrentlyPlayingAudio(() => userAudioCoach);
+
+    Object.entries(audios).forEach(([audioKey, audioSound]) => {
+      if (audioKey === userAudioCoach) {
+        audioSound.play();
+        setTimeout(() => {
+          setCurrentlyPlayingAudio('');
+        }, audioSound.duration * 1000);
+      } else {
+        audioSound.pause();
+        // eslint-disable-next-line no-param-reassign
+        audioSound.currentTime = 0;
+      }
+    });
   };
 
   return (
@@ -41,6 +67,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
           htmlFor="scary"
           className={classNames(s_audioCoachButton, {
             [s_selectedAudioCoach]: audioCoach === 'SCARY',
+            [s_selectedScaryAudioCoach]: currentlyPlayingAudio === 'SCARY',
           })}
         >
           교관같이 무서운 코치
@@ -51,25 +78,33 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
           className={classNames('s_a11yHidden')}
           onClick={createAudioCoachStateChangeHandler('SCARY')}
         />
+
         <CustomLabel
           htmlFor="comfortable"
+          // style={
+          //   currentlyPlayingAudio === 'COMFORTABLE'
+          //     ? { animationDuration: audios.COMFORTABLE.duration }
+          //     : {}
+          // }
           className={classNames(s_audioCoachButton, {
             [s_selectedAudioCoach]: audioCoach === 'COMFORTABLE',
+            [s_selectedComfortableAudioCoach]: currentlyPlayingAudio === 'COMFORTABLE',
           })}
         >
           편안하게 운동을 도와주는 코치
         </CustomLabel>
-
         <CustomInput
           id="comfortable"
           type="radio"
           className={classNames('s_a11yHidden')}
           onClick={createAudioCoachStateChangeHandler('COMFORTABLE')}
         />
+
         <CustomLabel
           htmlFor="funny"
           className={classNames(s_audioCoachButton, {
             [s_selectedAudioCoach]: audioCoach === 'FUNNY',
+            [s_selectedFunnyAudioCoach]: currentlyPlayingAudio === 'FUNNY',
           })}
         >
           운동을 잘아는 잼민이 코치
