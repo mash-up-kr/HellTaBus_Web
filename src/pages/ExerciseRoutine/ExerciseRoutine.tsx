@@ -35,10 +35,10 @@ function ExerciseRoutine() {
     <section className={s_exerciseRoutine}>
       <h2 className="s_a11yHidden">헬스 루틴 추천</h2>
       <nav className={s_navigator}>
-        <button type="button" onClick={handleOpenSettingActivity}>
+        <button type="button" onClick={handleOpenHistoryActivity}>
           <Calendar width="20" height="20" />
         </button>
-        <button type="button" onClick={handleOpenHistoryActivity}>
+        <button type="button" onClick={handleOpenSettingActivity}>
           <Setting width="20" height="20" />
         </button>
       </nav>
