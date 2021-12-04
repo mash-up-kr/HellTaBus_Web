@@ -6,7 +6,7 @@ import style from './surveyComplete.module.scss';
 import complete from '@/assets/lottie/complete.json';
 import SearchExercise from '../SearchExercise/SearchExercise';
 import { SurveyFields } from '@/types';
-import usePatchUserInfo from '@/hooks/api/usePatchUserInfo';
+import { usePatchUserInfo } from '@/hooks/api';
 import { EXERCISE_ROUTINE_PAGE } from '@/consts';
 
 const { s_container, s_lottieContainer, s_content } = style;
