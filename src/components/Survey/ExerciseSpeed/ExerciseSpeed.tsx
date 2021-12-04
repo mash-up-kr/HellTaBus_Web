@@ -16,11 +16,16 @@ const {
 interface Props {
   exerciseSpeed: string;
   setExerciseSpeed: (exerciseSpeed: string) => void;
-  handleSetNextPage: () => void;
+  handleClickCustomEvent: () => void;
   buttonType: 'button' | 'submit';
 }
 
-function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage, buttonType }: Props) {
+function ExerciseSpeed({
+  exerciseSpeed,
+  setExerciseSpeed,
+  handleClickCustomEvent,
+  buttonType,
+}: Props) {
   const [isDisabled, setIsDisabled] = useState<boolean>(!exerciseSpeed);
 
   const createExerciseSpeedStateChangeHandler = (userExerciseSpeed: string) => () => {
@@ -86,11 +91,7 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage, but
           onClick={createExerciseSpeedStateChangeHandler('FAST')}
         />
       </div>
-      <CustomButton
-        CustomButtonType={buttonType}
-        handleClickCustomEvent={handleSetNextPage}
-        isDisabled={isDisabled}
-      >
+      <CustomButton type={buttonType} onClick={handleClickCustomEvent} isDisabled={isDisabled}>
         다음
       </CustomButton>
     </section>

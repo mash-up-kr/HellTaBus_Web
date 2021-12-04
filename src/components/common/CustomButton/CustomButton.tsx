@@ -4,27 +4,22 @@ import classNames from 'classnames';
 import style from './customButton.module.scss';
 
 interface Props {
-  CustomButtonType: 'button' | 'submit';
-  handleClickCustomEvent: () => void;
+  type: 'button' | 'submit';
+  onClick: () => void;
   isDisabled?: boolean;
   children: ReactNode;
 }
 
 const { s_nextButton, s_submitButton } = style;
 
-const CustomButton = ({
-  CustomButtonType,
-  handleClickCustomEvent,
-  isDisabled,
-  children,
-}: Props) => {
+const CustomButton = ({ type, onClick, isDisabled, children }: Props) => {
   return (
     <button
-      type={CustomButtonType}
-      onClick={handleClickCustomEvent}
+      type={type}
+      onClick={onClick}
       disabled={isDisabled}
       className={classNames(s_nextButton, {
-        [s_submitButton]: CustomButtonType === 'submit',
+        [s_submitButton]: type === 'submit',
       })}
     >
       {children}

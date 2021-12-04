@@ -25,7 +25,7 @@ interface Props {
   setHeight: (height: number) => void;
   weight: number;
   setWeight: (weight: number) => void;
-  handleSetNextPage: () => void;
+  handleClickCustomEvent: () => void;
   buttonType: 'button' | 'submit';
 }
 
@@ -35,7 +35,7 @@ const BodyInfo = ({
   setHeight,
   weight,
   setWeight,
-  handleSetNextPage,
+  handleClickCustomEvent,
   buttonType,
 }: Props) => {
   const [heightErrorMessage, setHeightErrorMessage] = useState<string>('');
@@ -148,11 +148,7 @@ const BodyInfo = ({
           {weightErrorMessage && <ErrorIcon className={classNames(s_weightError)} />}
         </div>
       </div>
-      <CustomButton
-        CustomButtonType={buttonType}
-        handleClickCustomEvent={handleSetNextPage}
-        isDisabled={isDisabled}
-      >
+      <CustomButton type={buttonType} onClick={handleClickCustomEvent} isDisabled={isDisabled}>
         다음
       </CustomButton>
     </section>

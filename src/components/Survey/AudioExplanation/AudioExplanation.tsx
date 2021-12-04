@@ -16,14 +16,14 @@ const {
 interface Props {
   needDetailExplanation: boolean | null;
   setNeedDetailExplanation: (audioExplanation: boolean) => void;
-  handleSetNextPage: () => void;
+  handleClickCustomEvent: () => void;
   buttonType: 'button' | 'submit';
 }
 
 const AudioExplanation = ({
   needDetailExplanation,
   setNeedDetailExplanation,
-  handleSetNextPage,
+  handleClickCustomEvent,
   buttonType,
 }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(needDetailExplanation === null);
@@ -76,11 +76,7 @@ const AudioExplanation = ({
           onClick={createAudioExplanationStateChangeHandler(false)}
         />
       </div>
-      <CustomButton
-        CustomButtonType={buttonType}
-        handleClickCustomEvent={handleSetNextPage}
-        isDisabled={isDisabled}
-      >
+      <CustomButton type={buttonType} onClick={handleClickCustomEvent} isDisabled={isDisabled}>
         다음
       </CustomButton>
     </section>

@@ -31,7 +31,7 @@ const Setting = () => {
             <SplitType
               splitType={surveyState.splitType}
               setSplitType={setSurveyStateByKey(SURVEY_STATE_KEY.SPLIT_TYPE)}
-              handleSetNextPage={handleCloseCurrentPage}
+              handleClickCustomEvent={handleCloseCurrentPage}
               buttonType="submit"
               hasProgressBar={false}
             />

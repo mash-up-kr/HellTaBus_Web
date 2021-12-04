@@ -20,11 +20,11 @@ interface Props {
   nickname: string;
   age: number;
   setAge: (value: number) => void;
-  handleSetNextPage: () => void;
+  handleClickCustomEvent: () => void;
   buttonType: 'button' | 'submit';
 }
 
-const Age = ({ nickname, age, setAge, handleSetNextPage, buttonType }: Props) => {
+const Age = ({ nickname, age, setAge, handleClickCustomEvent, buttonType }: Props) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const isDisabled = useMemo(() => !age || !!errorMessage, [age, errorMessage]);
 
@@ -79,11 +79,7 @@ const Age = ({ nickname, age, setAge, handleSetNextPage, buttonType }: Props) =>
         {errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
       <span className={classNames(s_errorMsg)}>{errorMessage}</span>
-      <CustomButton
-        CustomButtonType={buttonType}
-        handleClickCustomEvent={handleSetNextPage}
-        isDisabled={isDisabled}
-      >
+      <CustomButton type={buttonType} onClick={handleClickCustomEvent} isDisabled={isDisabled}>
         다음
       </CustomButton>
     </section>

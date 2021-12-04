@@ -31,7 +31,7 @@ const Intro = ({ handleClickStartButton, buttonType }: Props) => {
         <span>잠시만 시간을 내주시겠어요?</span>
         <span className={classNames(s_addendum)}>3분이면 충분해요!</span>
       </div>
-      <CustomButton CustomButtonType={buttonType} handleClickCustomEvent={handleClickStartButton}>
+      <CustomButton type={buttonType} onClick={handleClickStartButton}>
         다음
       </CustomButton>
     </section>

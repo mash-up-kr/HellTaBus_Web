@@ -16,11 +16,11 @@ const {
 interface Props {
   audioCoach: string;
   setAudioCoach: (audioCoach: string) => void;
-  handleSetNextPage: () => void;
+  handleClickCustomEvent: () => void;
   buttonType: 'button' | 'submit';
 }
 
-const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage, buttonType }: Props) => {
+const AudioCoach = ({ audioCoach, setAudioCoach, handleClickCustomEvent, buttonType }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!audioCoach);
 
   const createAudioCoachStateChangeHandler = (userAudioCoach: string) => () => {
@@ -81,11 +81,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage, buttonType }
           onClick={createAudioCoachStateChangeHandler('FUNNY')}
         />
       </div>
-      <CustomButton
-        CustomButtonType={buttonType}
-        handleClickCustomEvent={handleSetNextPage}
-        isDisabled={isDisabled}
-      >
+      <CustomButton type={buttonType} onClick={handleClickCustomEvent} isDisabled={isDisabled}>
         다음
       </CustomButton>
     </section>

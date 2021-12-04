@@ -53,21 +53,21 @@ const Survey = () => {
     <Nickname
       nickname={surveyState.nickname}
       setNickname={setSurveyStateByKey(SURVEY_STATE_KEY.NICKNAME)}
-      handleSetNextPage={handleSetNextPage}
+      handleClickCustomEvent={handleSetNextPage}
       buttonType="button"
     />,
     <Gender
       nickname={surveyState.nickname}
       gender={surveyState.gender}
       setGender={setSurveyStateByKey(SURVEY_STATE_KEY.GENDER)}
-      handleSetNextPage={handleSetNextPage}
+      handleClickCustomEvent={handleSetNextPage}
       buttonType="button"
     />,
     <Age
       nickname={surveyState.nickname}
       age={surveyState.age}
       setAge={setSurveyStateByKey(SURVEY_STATE_KEY.AGE)}
-      handleSetNextPage={handleSetNextPage}
+      handleClickCustomEvent={handleSetNextPage}
       buttonType="button"
     />,
     <BodyInfo
@@ -76,31 +76,31 @@ const Survey = () => {
       setHeight={setSurveyStateByKey(SURVEY_STATE_KEY.HEIGHT)}
       weight={surveyState.weight}
       setWeight={setSurveyStateByKey(SURVEY_STATE_KEY.WEIGHT)}
-      handleSetNextPage={handleSetNextPage}
+      handleClickCustomEvent={handleSetNextPage}
       buttonType="button"
     />,
     <SplitType
       splitType={surveyState.splitType}
       setSplitType={setSurveyStateByKey(SURVEY_STATE_KEY.SPLIT_TYPE)}
-      handleSetNextPage={handleSetNextPage}
+      handleClickCustomEvent={handleSetNextPage}
       buttonType="button"
     />,
     <AudioCoach
       audioCoach={surveyState.audioCoach}
       setAudioCoach={setSurveyStateByKey(SURVEY_STATE_KEY.AUDIO_COACH)}
-      handleSetNextPage={handleSetNextPage}
+      handleClickCustomEvent={handleSetNextPage}
       buttonType="button"
     />,
     <ExerciseSpeed
       exerciseSpeed={surveyState.speed}
       setExerciseSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.SPEED)}
-      handleSetNextPage={handleSetNextPage}
+      handleClickCustomEvent={handleSetNextPage}
       buttonType="button"
     />,
     <AudioExplanation
       needDetailExplanation={surveyState.explanation}
       setNeedDetailExplanation={setSurveyStateByKey(SURVEY_STATE_KEY.EXPLANATION)}
-      handleSetNextPage={handleSetNextPage}
+      handleClickCustomEvent={handleSetNextPage}
       buttonType="button"
     />,
   ];

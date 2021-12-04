@@ -12,7 +12,7 @@ const { s_container, s_title, s_highlight, s_spiltCarousel, s_noProgressBarTitle
 interface Props {
   splitType: string;
   setSplitType: (splitType: string) => void;
-  handleSetNextPage: () => void;
+  handleClickCustomEvent: () => void;
   buttonType: 'button' | 'submit';
   hasProgressBar?: boolean;
 }
@@ -20,7 +20,7 @@ interface Props {
 const SplitType = ({
   splitType,
   setSplitType,
-  handleSetNextPage,
+  handleClickCustomEvent,
   buttonType,
   hasProgressBar,
 }: Props) => {
@@ -73,11 +73,7 @@ const SplitType = ({
           가슴, 어깨, 팔, 등, 하체를 하루에 운동하는 방법으로 초보자에게 추천합니다.
         </Workout>
       </Carousel>
-      <CustomButton
-        CustomButtonType={buttonType}
-        handleClickCustomEvent={handleSetNextPage}
-        isDisabled={isDisabled}
-      >
+      <CustomButton type={buttonType} onClick={handleClickCustomEvent} isDisabled={isDisabled}>
         다음
       </CustomButton>
     </section>

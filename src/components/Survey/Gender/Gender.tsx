@@ -16,11 +16,11 @@ interface Props {
   nickname: string;
   gender: string;
   setGender: (gender: string) => void;
-  handleSetNextPage: () => void;
+  handleClickCustomEvent: () => void;
   buttonType: 'button' | 'submit';
 }
 
-const Gender = ({ nickname, gender, setGender, handleSetNextPage, buttonType }: Props) => {
+const Gender = ({ nickname, gender, setGender, handleClickCustomEvent, buttonType }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!gender);
 
   const handleClickGenderButton = (userGender: string) => () => {
@@ -64,11 +64,7 @@ const Gender = ({ nickname, gender, setGender, handleSetNextPage, buttonType }: 
           className={classNames('s_a11yHidden')}
         />
       </div>
-      <CustomButton
-        CustomButtonType={buttonType}
-        handleClickCustomEvent={handleSetNextPage}
-        isDisabled={isDisabled}
-      >
+      <CustomButton type={buttonType} onClick={handleClickCustomEvent} isDisabled={isDisabled}>
         다음
       </CustomButton>
     </section>
