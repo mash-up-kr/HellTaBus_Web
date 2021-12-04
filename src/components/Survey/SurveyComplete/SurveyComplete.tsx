@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import classNames from 'classnames';
 import Lottie from 'react-lottie';
 import style from './surveyComplete.module.scss';
@@ -7,7 +6,8 @@ import complete from '@/assets/lottie/complete.json';
 import SearchExercise from '../SearchExercise/SearchExercise';
 import { SurveyFields } from '@/types';
 import { usePatchUserInfo } from '@/hooks/api';
-import { EXERCISE_ROUTINE_PAGE } from '@/consts';
+import { HOME_ACTIVITY } from '@/consts';
+import { startActivity } from '@/utils/mobile/token';
 
 const { s_container, s_lottieContainer, s_content } = style;
 
@@ -16,8 +16,6 @@ interface Props {
 }
 
 const SurveyComplete = ({ surveyState }: Props) => {
-  const history = useHistory();
-
   const { mutate, isPatchSuccess } = usePatchUserInfo();
   const [dataAnalysisLoading, setDataAnalysisLoading] = useState(true);
 
@@ -38,7 +36,14 @@ const SurveyComplete = ({ surveyState }: Props) => {
   }, [mutate, surveyState]);
 
   const handleClickSubmitButton: React.MouseEventHandler<HTMLButtonElement> = () => {
-    history.push(EXERCISE_ROUTINE_PAGE);
+    const option = {
+      target: HOME_ACTIVITY,
+      loadUrl: 'https://helltabus-dev.netlify.app/exercise-routine',
+    };
+
+    startActivity(option, (resCodes: string, resMsg: string, resData: JSON) => {
+      console.log(resCodes + resMsg + JSON.stringify(resData));
+    });
   };
 
   return (

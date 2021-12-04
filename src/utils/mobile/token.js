@@ -48,10 +48,10 @@ const getServerToken = (options = {}) => {
       }
 
       const responseObj = JSON.parse(JSON.stringify(response));
-      const serverToken = resolve(responseObj.serverToken ?? '');
-      logJwtToken(serverToken);
+      const accessToken = resolve(responseObj.accessToken ?? '');
+      logJwtToken(accessToken);
 
-      return serverToken;
+      return accessToken;
     });
   });
 };
