@@ -56,4 +56,8 @@ const getServerToken = (options = {}) => {
   });
 };
 
+export const startActivity = (options, callback) => {
+  healthyup.callNative('startActivity', options, callback);
+};
+
 export default getServerToken;
