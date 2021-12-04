@@ -20,7 +20,7 @@ interface Props {
   handleSetNextPage: () => void;
 }
 
-function Gender({ nickname, gender, setGender, handleSetNextPage }: Props) {
+const Gender = ({ nickname, gender, setGender, handleSetNextPage }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!gender);
 
   const handleClickGenderButton = (userGender: string) => () => {
@@ -74,6 +74,6 @@ function Gender({ nickname, gender, setGender, handleSetNextPage }: Props) {
       </button>
     </section>
   );
-}
+};
 
 export default Gender;

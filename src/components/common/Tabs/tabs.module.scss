@@ -1,0 +1,43 @@
+@use '@/styles/color';
+
+.s_tabList {
+  align-items: center;
+  background-color: color.$onPrimary;
+  display: flex;
+  padding: 0 1.3rem;
+  margin: {
+    bottom: 0.3rem;
+  }
+
+  .s_tabButtonWrapper {
+    height: 5.6rem;
+    position: relative;
+
+    .s_tabButton {
+      background-color: color.$onPrimary;
+      color: color.$onBackground3;
+      font-size: 2.2rem;
+      font-weight: 700;
+      height: 100%;
+      padding: 0 1rem;
+
+      &:active {
+        background-color: color.$primaryVariant1;
+      }
+    }
+
+    .s_selcted {
+      color: color.$primary;
+    }
+
+    .s_circle {
+      background-color: color.$primary;
+      border-radius: 50%;
+      height: 0.5rem;
+      left: calc(50% - 0.25rem);
+      position: absolute;
+      top: 4.3rem;
+      width: 0.5rem;
+    }
+  }
+}

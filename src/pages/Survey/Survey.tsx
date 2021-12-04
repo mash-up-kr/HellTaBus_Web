@@ -1,8 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import classNames from 'classnames';
-import useSurveyForm from '@/hooks/page/useSurveyForm';
-import style from './survey.module.scss';
 import {
+  Header,
   Age,
   Gender,
   Nickname,
@@ -14,8 +13,9 @@ import {
   ExerciseSpeed,
   AudioExplanation,
   ProgressBar,
-} from '@/components/Survey';
-import { Header } from '@/components/common';
+} from '@/components';
+import { useSurveyForm } from '@/hooks';
+import style from './survey.module.scss';
 
 const { s_componentContainer } = style;
 

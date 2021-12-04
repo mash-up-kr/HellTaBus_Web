@@ -1,17 +1,17 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import Back from '@/assets/svg/back.svg';
 import style from './header.module.scss';
 
-const { s_header, s_previousButton } = style;
+const { s_header, s_previousButton, s_title } = style;
 
 interface Props {
   handleClickBackButton: () => void;
   className?: string;
-  children?: ReactNode;
+  title?: string;
 }
 
-const Header = ({ handleClickBackButton, className, children }: Props) => {
+const Header = ({ handleClickBackButton, className, title }: Props) => {
   return (
     <header className={classNames(s_header, className)}>
       <button
@@ -21,7 +21,7 @@ const Header = ({ handleClickBackButton, className, children }: Props) => {
       >
         <Back />
       </button>
-      <span>{children}</span>
+      <span className={classNames(s_title)}>{title}</span>
     </header>
   );
 };

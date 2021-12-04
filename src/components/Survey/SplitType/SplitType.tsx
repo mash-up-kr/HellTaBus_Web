@@ -7,7 +7,7 @@ import ThreeBodyWorkout from '@/assets/svg/three-body-workout.svg';
 import FiveBodyWorkout from '@/assets/svg/five-body-workout.svg';
 import { Carousel } from '@/components/common';
 
-const { s_container, s_title, s_nextButton, s_highlight } = style;
+const { s_container, s_title, s_nextButton, s_highlight, s_spiltCarousel } = style;
 
 interface Props {
   splitType: string;
@@ -15,7 +15,7 @@ interface Props {
   handleSetNextPage: () => void;
 }
 
-function SplitType({ splitType, setSplitType, handleSetNextPage }: Props) {
+const SplitType = ({ splitType, setSplitType, handleSetNextPage }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!splitType);
 
   const handleClickSplitType = (userSplitType: string) => {
@@ -32,15 +32,15 @@ function SplitType({ splitType, setSplitType, handleSetNextPage }: Props) {
         </span>
         운동을 원하시나요?
       </p>
-      <Carousel>
+      <Carousel className={classNames(s_spiltCarousel)}>
         <Workout
           selectedSplitType={splitType}
-          currentSplitType="FULL_BODY_WORKOUT"
-          imageComponent={<FullBodyWorkout />}
-          title="무분할"
+          currentSplitType="SPLIT_5_DAY_WORKOUT"
+          imageComponent={<FiveBodyWorkout />}
+          title="5분할"
           handleClickSplitType={handleClickSplitType}
         >
-          가슴, 어깨, 팔, 등, 하체를 하루에 운동하는 방법으로 초보자에게 추천합니다.
+          가슴/어깨/팔/등/하체로 5개의 부위로 나눠서 운동 하는 방법입니다
         </Workout>
         <Workout
           selectedSplitType={splitType}
@@ -49,16 +49,16 @@ function SplitType({ splitType, setSplitType, handleSetNextPage }: Props) {
           title="3분할"
           handleClickSplitType={handleClickSplitType}
         >
-          가슴, 이두 / 등, 삼두/ 하체, 어깨로 3개 부위로 나눠서 운동하는 방법입니다.
+          가슴,이두/등,삼두/어깨, 하체로 3개 부위로 나눠서 운동하는 방법입니다
         </Workout>
         <Workout
           selectedSplitType={splitType}
-          currentSplitType="SPLIT_5_DAY_WORKOUT"
-          imageComponent={<FiveBodyWorkout />}
-          title="5분할"
+          currentSplitType="FULL_BODY_WORKOUT"
+          imageComponent={<FullBodyWorkout />}
+          title="무분할"
           handleClickSplitType={handleClickSplitType}
         >
-          가슴 / 등/ 삼두 / 하체 / 어깨로 5개 부위로 나눠서 운동하는 방법입니다.
+          가슴, 어깨, 팔, 등, 하체를 하루에 운동하는 방법으로 초보자에게 추천합니다.
         </Workout>
       </Carousel>
       <button
@@ -71,6 +71,6 @@ function SplitType({ splitType, setSplitType, handleSetNextPage }: Props) {
       </button>
     </section>
   );
-}
+};
 
 export default SplitType;

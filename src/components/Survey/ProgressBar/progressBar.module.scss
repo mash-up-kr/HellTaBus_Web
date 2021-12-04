@@ -6,14 +6,13 @@
   height: 1rem;
   margin-bottom: 5.3rem;
   text-align: right;
-  width: 31.2rem;
+  width: calc(100% + 1.6rem);
 
   .s_progress {
     background-color: color.$primary;
     border-radius: 1rem;
     height: 1rem;
     transition: width 1s ease;
-    transition-delay: 0.5s;
   }
 
   .s_stepContainer {

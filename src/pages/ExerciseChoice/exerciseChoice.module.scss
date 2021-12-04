@@ -1,0 +1,5 @@
+@use '@/styles/color';
+
+.s_exerciseChoice {
+  background-color: color.$onPrimary;
+}
