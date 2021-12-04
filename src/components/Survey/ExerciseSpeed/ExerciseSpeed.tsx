@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './exerciseSpeed.module.scss';
-import { CustomInput, CustomLabel } from '@/components/common';
+import { CustomInput, CustomLabel, CustomButton } from '@/components/common';
 
 const {
   s_container,
@@ -11,16 +11,16 @@ const {
   s_subTitle,
   s_exerciseSpeedButton,
   s_selectedExerciseSpeed,
-  s_nextButton,
 } = style;
 
 interface Props {
   exerciseSpeed: string;
   setExerciseSpeed: (exerciseSpeed: string) => void;
   handleSetNextPage: () => void;
+  buttonType: 'button' | 'submit';
 }
 
-function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: Props) {
+function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage, buttonType }: Props) {
   const [isDisabled, setIsDisabled] = useState<boolean>(!exerciseSpeed);
 
   const createExerciseSpeedStateChangeHandler = (userExerciseSpeed: string) => () => {
@@ -86,14 +86,13 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
           onClick={createExerciseSpeedStateChangeHandler('FAST')}
         />
       </div>
-      <button
-        className={classNames(s_nextButton)}
-        type="button"
-        onClick={handleSetNextPage}
-        disabled={isDisabled}
+      <CustomButton
+        CustomButtonType={buttonType}
+        handleClickCustomEvent={handleSetNextPage}
+        isDisabled={isDisabled}
       >
         다음
-      </button>
+      </CustomButton>
     </section>
   );
 }

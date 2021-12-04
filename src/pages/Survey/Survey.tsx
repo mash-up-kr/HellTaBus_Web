@@ -48,23 +48,27 @@ const Survey = () => {
   };
 
   const surveyComponents = [
-    <Intro handleClickStartButton={handleSetNextPage} />,
+    // TODO: 버튼타입을 범용적으로 쓸 수 있도록 변경 예정
+    <Intro handleClickStartButton={handleSetNextPage} buttonType="submit" />,
     <Nickname
       nickname={surveyState.nickname}
       setNickname={setSurveyStateByKey(SURVEY_STATE_KEY.NICKNAME)}
       handleSetNextPage={handleSetNextPage}
+      buttonType="button"
     />,
     <Gender
       nickname={surveyState.nickname}
       gender={surveyState.gender}
       setGender={setSurveyStateByKey(SURVEY_STATE_KEY.GENDER)}
       handleSetNextPage={handleSetNextPage}
+      buttonType="button"
     />,
     <Age
       nickname={surveyState.nickname}
       age={surveyState.age}
       setAge={setSurveyStateByKey(SURVEY_STATE_KEY.AGE)}
       handleSetNextPage={handleSetNextPage}
+      buttonType="button"
     />,
     <BodyInfo
       nickname={surveyState.nickname}
@@ -73,30 +77,35 @@ const Survey = () => {
       weight={surveyState.weight}
       setWeight={setSurveyStateByKey(SURVEY_STATE_KEY.WEIGHT)}
       handleSetNextPage={handleSetNextPage}
+      buttonType="button"
     />,
     <SplitType
       splitType={surveyState.splitType}
       setSplitType={setSurveyStateByKey(SURVEY_STATE_KEY.SPLIT_TYPE)}
       handleSetNextPage={handleSetNextPage}
+      buttonType="button"
     />,
     <AudioCoach
       audioCoach={surveyState.audioCoach}
       setAudioCoach={setSurveyStateByKey(SURVEY_STATE_KEY.AUDIO_COACH)}
       handleSetNextPage={handleSetNextPage}
+      buttonType="button"
     />,
     <ExerciseSpeed
       exerciseSpeed={surveyState.speed}
       setExerciseSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.SPEED)}
       handleSetNextPage={handleSetNextPage}
+      buttonType="button"
     />,
     <AudioExplanation
       needDetailExplanation={surveyState.explanation}
       setNeedDetailExplanation={setSurveyStateByKey(SURVEY_STATE_KEY.EXPLANATION)}
       handleSetNextPage={handleSetNextPage}
+      buttonType="button"
     />,
   ];
 
-  if (step === 0) return <Intro handleClickStartButton={handleSetNextPage} />;
+  if (step === 0) return <Intro handleClickStartButton={handleSetNextPage} buttonType="submit" />;
   if (step > MAX_STEP) return <SurveyComplete surveyState={surveyState} />;
 
   return (

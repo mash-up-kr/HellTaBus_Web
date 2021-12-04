@@ -5,17 +5,18 @@ import Workout from '@/components/Survey/Workout/Workout';
 import FullBodyWorkout from '@/assets/svg/full-body-workout.svg';
 import ThreeBodyWorkout from '@/assets/svg/three-body-workout.svg';
 import FiveBodyWorkout from '@/assets/svg/five-body-workout.svg';
-import { Carousel } from '@/components/common';
+import { Carousel, CustomButton } from '@/components/common';
 
-const { s_container, s_title, s_nextButton, s_highlight, s_spiltCarousel } = style;
+const { s_container, s_title, s_highlight, s_spiltCarousel } = style;
 
 interface Props {
   splitType: string;
   setSplitType: (splitType: string) => void;
   handleSetNextPage: () => void;
+  buttonType: 'button' | 'submit';
 }
 
-const SplitType = ({ splitType, setSplitType, handleSetNextPage }: Props) => {
+const SplitType = ({ splitType, setSplitType, handleSetNextPage, buttonType }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!splitType);
 
   const handleClickSplitType = (userSplitType: string) => {
@@ -61,14 +62,13 @@ const SplitType = ({ splitType, setSplitType, handleSetNextPage }: Props) => {
           가슴, 어깨, 팔, 등, 하체를 하루에 운동하는 방법으로 초보자에게 추천합니다.
         </Workout>
       </Carousel>
-      <button
-        className={classNames(s_nextButton)}
-        type="button"
-        onClick={handleSetNextPage}
-        disabled={isDisabled}
+      <CustomButton
+        CustomButtonType={buttonType}
+        handleClickCustomEvent={handleSetNextPage}
+        isDisabled={isDisabled}
       >
         다음
-      </button>
+      </CustomButton>
     </section>
   );
 };

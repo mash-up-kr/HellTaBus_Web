@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import style from './age.module.scss';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
 import { CustomInput, CustomLabel } from '@/components/common';
+import CustomButton from '@/components/common/CustomButton/CustomButton';
 
 const {
   s_container,
@@ -12,7 +13,6 @@ const {
   s_inputContainer,
   s_errorMsg,
   s_errorIcon,
-  s_nextButton,
   s_highlight,
 } = style;
 
@@ -21,9 +21,10 @@ interface Props {
   age: number;
   setAge: (value: number) => void;
   handleSetNextPage: () => void;
+  buttonType: 'button' | 'submit';
 }
 
-const Age = ({ nickname, age, setAge, handleSetNextPage }: Props) => {
+const Age = ({ nickname, age, setAge, handleSetNextPage, buttonType }: Props) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const isDisabled = useMemo(() => !age || !!errorMessage, [age, errorMessage]);
 
@@ -75,18 +76,16 @@ const Age = ({ nickname, age, setAge, handleSetNextPage }: Props) => {
             [s_errorInput]: errorMessage,
           })}
         />
-
         {errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
       <span className={classNames(s_errorMsg)}>{errorMessage}</span>
-      <button
-        className={classNames(s_nextButton)}
-        type="button"
-        onClick={handleSetNextPage}
-        disabled={isDisabled}
+      <CustomButton
+        CustomButtonType={buttonType}
+        handleClickCustomEvent={handleSetNextPage}
+        isDisabled={isDisabled}
       >
         다음
-      </button>
+      </CustomButton>
     </section>
   );
 };

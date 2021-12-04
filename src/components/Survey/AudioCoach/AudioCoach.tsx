@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './audioCoach.module.scss';
-import { CustomInput, CustomLabel } from '@/components/common';
+import { CustomInput, CustomLabel, CustomButton } from '@/components/common';
 
 const {
   s_mainTitle,
@@ -11,16 +11,16 @@ const {
   s_radioButtonContainer,
   s_audioCoachButton,
   s_selectedAudioCoach,
-  s_nextButton,
 } = style;
 
 interface Props {
   audioCoach: string;
   setAudioCoach: (audioCoach: string) => void;
   handleSetNextPage: () => void;
+  buttonType: 'button' | 'submit';
 }
 
-const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => {
+const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage, buttonType }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!audioCoach);
 
   const createAudioCoachStateChangeHandler = (userAudioCoach: string) => () => {
@@ -81,14 +81,13 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
           onClick={createAudioCoachStateChangeHandler('FUNNY')}
         />
       </div>
-      <button
-        className={classNames(s_nextButton)}
-        type="button"
-        onClick={handleSetNextPage}
-        disabled={isDisabled}
+      <CustomButton
+        CustomButtonType={buttonType}
+        handleClickCustomEvent={handleSetNextPage}
+        isDisabled={isDisabled}
       >
         다음
-      </button>
+      </CustomButton>
     </section>
   );
 };
