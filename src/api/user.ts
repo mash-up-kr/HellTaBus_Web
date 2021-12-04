@@ -12,7 +12,6 @@ export const getUserInfo = (): Promise<User> =>
 export const patchUserInfo = (userInfo: SurveyFields) =>
   api
     .patch({
-      headers: { 'Content-Type': 'application/json' },
       url: '/user/my/base-information',
       data: userInfo,
     })
