@@ -7,16 +7,23 @@ import ThreeBodyWorkout from '@/assets/svg/three-body-workout.svg';
 import FiveBodyWorkout from '@/assets/svg/five-body-workout.svg';
 import { Carousel, CustomButton } from '@/components/common';
 
-const { s_container, s_title, s_highlight, s_spiltCarousel } = style;
+const { s_container, s_title, s_highlight, s_spiltCarousel, s_noProgressBarTitle } = style;
 
 interface Props {
   splitType: string;
   setSplitType: (splitType: string) => void;
   handleSetNextPage: () => void;
   buttonType: 'button' | 'submit';
+  hasProgressBar?: boolean;
 }
 
-const SplitType = ({ splitType, setSplitType, handleSetNextPage, buttonType }: Props) => {
+const SplitType = ({
+  splitType,
+  setSplitType,
+  handleSetNextPage,
+  buttonType,
+  hasProgressBar,
+}: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!splitType);
 
   const handleClickSplitType = (userSplitType: string) => {
@@ -27,7 +34,11 @@ const SplitType = ({ splitType, setSplitType, handleSetNextPage, buttonType }: P
   return (
     <section className={classNames(s_container)}>
       <h2 className={classNames('s_a11yHidden')}>분할 선택</h2>
-      <p className={classNames(s_title)}>
+      <p
+        className={classNames(s_title, {
+          [s_noProgressBarTitle]: hasProgressBar === false,
+        })}
+      >
         <span className={classNames('s_whiteSpace')}>
           <span className={classNames(s_highlight)}>몇 분할</span>로
         </span>
