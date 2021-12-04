@@ -7,7 +7,8 @@ import RightArrow from '@/assets/svg/right-arrow.svg';
 import dumbbell from '@/assets/images/dumbbell.png';
 import gripper from '@/assets/images/gripper.png';
 import skippingRope from '@/assets/images/skipping-rope.png';
-import { EXERCISE_CHOICE_PAGE, EXERCISE_PART, SPLIT_TYPE } from '@/consts';
+import { EXERCISE_ACTIVITY, EXERCISE_CHOICE_PAGE, EXERCISE_PART, SPLIT_TYPE } from '@/consts';
+import { startActivity } from '@/utils/mobile/token';
 
 interface Props {
   suggestionExerciseList: Exercise[];
@@ -35,6 +36,16 @@ const RecommendSection = ({ suggestionExerciseList, suggestionPartList, splitTyp
     part ? `${EXERCISE_PART[part]}${index !== suggestionPartList.length - 1 ? ', ' : ''}` : ''
   );
 
+  const handleOpenExerciseActivity: React.MouseEventHandler<HTMLButtonElement> = () => {
+    const option = {
+      target: EXERCISE_ACTIVITY,
+      exerciseList: JSON.stringify(suggestionExerciseList),
+    };
+    startActivity(option, (resCodes: string, resMsg: string, resData: JSON) => {
+      console.log(resCodes + resMsg + JSON.stringify(resData));
+    });
+  };
+
   return (
     <section className={s_deem}>
       <div className={s_backImages} aria-hidden>
@@ -52,7 +63,7 @@ const RecommendSection = ({ suggestionExerciseList, suggestionPartList, splitTyp
           </em>
           <span className="s_whiteSpace">이런 운동 어떠세요?</span>
         </div>
-        <button type="button" className={s_exerciseStart}>
+        <button type="button" className={s_exerciseStart} onClick={handleOpenExerciseActivity}>
           운동시작 GO!
         </button>
         <RecommendCarousel className={s_recommendCarousel} recommendList={suggestionExerciseList} />
