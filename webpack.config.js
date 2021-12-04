@@ -81,7 +81,7 @@ module.exports = (env, argv) => {
           loader: 'babel-loader',
         },
         {
-          test: /\.(png|jpe?g|gif|woff|woff2|ttf|ico)$/i,
+          test: /\.(png|jpe?g|gif|woff|woff2|ttf|ico|mp3)$/i,
           use: [
             {
               loader: 'file-loader',
