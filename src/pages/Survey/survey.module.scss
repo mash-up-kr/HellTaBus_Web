@@ -1,9 +1,5 @@
 @use '@/styles/color';
 
-.s_entireContainer {
-  width: 100%;
-}
-
 .s_componentContainer {
   align-items: center;
   display: flex;
@@ -34,6 +30,22 @@
         color: color.$primary;
       }
     }
+
+    .s_noProgressBarTitle {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 4.8rem;
+      margin-top: 5.5rem;
+      width: 100%;
+
+      > span {
+        margin-bottom: 1rem;
+      }
+      .s_highlight {
+        color: color.$primary;
+      }
+    }
+
     .s_inputContainer {
       position: relative;
       width: 100%;
