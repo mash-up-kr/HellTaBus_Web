@@ -7,6 +7,9 @@ const usePatchUserInfo = () => {
   const { mutate, isLoading, error, isError } = useMutation((surveyState: SurveyFields) =>
     patchUserInfo(surveyState)
   );
+
+  console.log(error);
+
   return {
     mutate,
     isLoading,

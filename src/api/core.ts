@@ -10,6 +10,8 @@ const axiosInstance: AxiosInstance = axios.create({
 
 if (process.env.NODE_ENV === 'production') {
   getServerToken().then((authToken) => {
+    console.log(authToken);
+
     axiosInstance.defaults.headers.common.Authorization = authToken;
   });
 }
