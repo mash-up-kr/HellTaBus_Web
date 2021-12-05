@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import style from './bodyInfo.module.scss';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
-import { CustomInput, CustomLabel, CustomButton } from '@/components/common';
+import { CustomInput, CustomLabel, CustomButton } from '@/components';
 
 const {
   s_container,

@@ -2,8 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import classNames from 'classnames';
 import style from './age.module.scss';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
-import { CustomInput, CustomLabel } from '@/components/common';
-import CustomButton from '@/components/common/CustomButton/CustomButton';
+import { CustomInput, CustomLabel, CustomButton } from '@/components';
 
 const {
   s_container,

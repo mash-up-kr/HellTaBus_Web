@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './gender.module.scss';
-import { CustomInput, CustomLabel, CustomButton } from '@/components/common';
+import { CustomInput, CustomLabel, CustomButton } from '@/components';
 
 const {
   s_container,
