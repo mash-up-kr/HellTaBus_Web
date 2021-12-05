@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { EXERCISE_PART, EXERCISE_PART_OF_TAB_BY_SPLIT_TYPE, SPLIT_TYPE } from '@/consts';
 import { useFetchExercises, useFetchUserInfo } from '@/hooks';
 import { Exercise, ExercisePanel, IndexableType, Tab } from '@/types';
@@ -125,12 +125,17 @@ const useExerciseChoice = () => {
     return [];
   }, [exercises, exerciseTabHeaders]);
 
+  const [selectedExercises, setSelectedExercises] = useState<Map<string, Exercise[]>>(new Map());
+
   return {
     error: exerciseError || userInfoError,
     isError: isExerciseError || isUserInfoError,
     exercises,
     tabHeaders: exerciseTabHeaders,
     tabPanels: exerciseTabPanels,
+    splitType: SPLIT_TYPE[userInfo?.splitType as string],
+    selectedExercises,
+    setSelectedExercises,
   };
 };
 
