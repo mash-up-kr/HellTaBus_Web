@@ -5,10 +5,13 @@ import getServerToken from '@/utils/mobile/token';
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: 'https://api.helltabus.com',
   timeout: 10000,
+  headers: { 'Content-Type': 'application/json' },
 });
 
 if (process.env.NODE_ENV === 'production') {
   getServerToken().then((authToken) => {
+    console.log(authToken);
+
     axiosInstance.defaults.headers.common.Authorization = authToken;
   });
 }

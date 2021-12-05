@@ -5,6 +5,9 @@ import style from './surveyComplete.module.scss';
 import complete from '@/assets/lottie/complete.json';
 import SearchExercise from '../SearchExercise/SearchExercise';
 import { SurveyFields } from '@/types';
+import { usePatchUserInfo } from '@/hooks/api';
+import { HOME_ACTIVITY } from '@/consts';
+import { startActivity } from '@/utils/mobile/token';
 
 const { s_container, s_lottieContainer, s_content } = style;
 
@@ -13,25 +16,39 @@ interface Props {
 }
 
 const SurveyComplete = ({ surveyState }: Props) => {
-  const [loading, setLoading] = useState(true);
+  const { mutate, isPatchSuccess } = usePatchUserInfo();
+  const [dataAnalysisLoading, setDataAnalysisLoading] = useState(true);
 
   const lottieOptions = {
     animationData: complete,
   };
 
   useEffect(() => {
-    const loadingTimer = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+    mutate(surveyState);
+
+    const dataAnalysisTimer = setTimeout(() => {
+      setDataAnalysisLoading(false);
+    }, 2500);
 
     return () => {
-      clearTimeout(loadingTimer);
+      clearTimeout(dataAnalysisTimer);
     };
-  });
+  }, [mutate, surveyState]);
+
+  const handleClickSubmitButton: React.MouseEventHandler<HTMLButtonElement> = () => {
+    const option = {
+      target: HOME_ACTIVITY,
+      loadUrl: 'https://helltabus-dev.netlify.app/exercise-routine',
+    };
+
+    startActivity(option, (resCodes: string, resMsg: string, resData: JSON) => {
+      console.log(resCodes + resMsg + JSON.stringify(resData));
+    });
+  };
 
   return (
     <>
-      {loading ? (
+      {dataAnalysisLoading || !isPatchSuccess ? (
         <SearchExercise nickname={surveyState.nickname} />
       ) : (
         <section className={classNames(s_container)}>
@@ -44,7 +61,9 @@ const SurveyComplete = ({ surveyState }: Props) => {
             </span>
             운동이 준비됐어요! <span className={classNames('s_whiteSpace')}>시작해 볼까요?</span>
           </div>
-          <button type="button">렛츠고!👉</button>
+          <button type="button" onClick={handleClickSubmitButton}>
+            렛츠고!👉
+          </button>
         </section>
       )}
     </>
