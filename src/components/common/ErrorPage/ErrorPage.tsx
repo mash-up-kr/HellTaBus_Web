@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import style from './errorPage.module.scss';
-import requestError from '@/assets/images/request-error.png';
+import requestError from '@/assets/images/request-error.gif';
 
 interface Props {
   handleReload: React.MouseEventHandler<HTMLButtonElement>;
