@@ -48,27 +48,26 @@ const Survey = () => {
   };
 
   const surveyComponents = [
-    // TODO: 버튼타입을 범용적으로 쓸 수 있도록 변경 예정
-    <Intro handleClickStartButton={handleSetNextPage} buttonType="submit" />,
+    <Intro handleClickStartButton={handleSetNextPage} buttonType="start" />,
     <Nickname
       nickname={surveyState.nickname}
       setNickname={setSurveyStateByKey(SURVEY_STATE_KEY.NICKNAME)}
       handleClickCustomEvent={handleSetNextPage}
-      buttonType="button"
+      buttonType="next"
     />,
     <Gender
       nickname={surveyState.nickname}
       gender={surveyState.gender}
       setGender={setSurveyStateByKey(SURVEY_STATE_KEY.GENDER)}
       handleClickCustomEvent={handleSetNextPage}
-      buttonType="button"
+      buttonType="next"
     />,
     <Age
       nickname={surveyState.nickname}
       age={surveyState.age}
       setAge={setSurveyStateByKey(SURVEY_STATE_KEY.AGE)}
       handleClickCustomEvent={handleSetNextPage}
-      buttonType="button"
+      buttonType="next"
     />,
     <BodyInfo
       nickname={surveyState.nickname}
@@ -77,36 +76,36 @@ const Survey = () => {
       weight={surveyState.weight}
       setWeight={setSurveyStateByKey(SURVEY_STATE_KEY.WEIGHT)}
       handleClickCustomEvent={handleSetNextPage}
-      buttonType="button"
+      buttonType="next"
     />,
     <SplitType
       splitType={surveyState.splitType}
       setSplitType={setSurveyStateByKey(SURVEY_STATE_KEY.SPLIT_TYPE)}
       handleClickCustomEvent={handleSetNextPage}
-      buttonType="button"
+      buttonType="next"
     />,
     <AudioCoach
       audioCoach={surveyState.audioCoach}
       setAudioCoach={setSurveyStateByKey(SURVEY_STATE_KEY.AUDIO_COACH)}
       handleClickCustomEvent={handleSetNextPage}
-      buttonType="button"
+      buttonType="next"
     />,
     <ExerciseSpeed
       exerciseSpeed={surveyState.speed}
       setExerciseSpeed={setSurveyStateByKey(SURVEY_STATE_KEY.SPEED)}
       handleClickCustomEvent={handleSetNextPage}
-      buttonType="button"
+      buttonType="next"
     />,
     <AudioExplanation
       needDetailExplanation={surveyState.explanation}
       setNeedDetailExplanation={setSurveyStateByKey(SURVEY_STATE_KEY.EXPLANATION)}
       handleClickCustomEvent={handleSetNextPage}
-      buttonType="button"
+      buttonType="complete"
     />,
   ];
 
-  if (step === 0) return <Intro handleClickStartButton={handleSetNextPage} buttonType="submit" />;
-  if (step > MAX_STEP) return <SurveyComplete surveyState={surveyState} />;
+  if (step === 0) return <Intro handleClickStartButton={handleSetNextPage} buttonType="start" />;
+  if (step > MAX_STEP) return <SurveyComplete surveyState={surveyState} buttonType="lets_go" />;
 
   return (
     <>

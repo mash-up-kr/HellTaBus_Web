@@ -21,7 +21,7 @@ interface Props {
   age: number;
   setAge: (value: number) => void;
   handleClickCustomEvent: () => void;
-  buttonType: 'button' | 'submit';
+  buttonType: string;
 }
 
 const Age = ({ nickname, age, setAge, handleClickCustomEvent, buttonType }: Props) => {
@@ -79,9 +79,11 @@ const Age = ({ nickname, age, setAge, handleClickCustomEvent, buttonType }: Prop
         {errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
       <span className={classNames(s_errorMsg)}>{errorMessage}</span>
-      <CustomButton type={buttonType} onClick={handleClickCustomEvent} isDisabled={isDisabled}>
-        다음
-      </CustomButton>
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
 };

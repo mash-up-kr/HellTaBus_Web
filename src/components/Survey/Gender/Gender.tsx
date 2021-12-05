@@ -17,7 +17,7 @@ interface Props {
   gender: string;
   setGender: (gender: string) => void;
   handleClickCustomEvent: () => void;
-  buttonType: 'button' | 'submit';
+  buttonType: string;
 }
 
 const Gender = ({ nickname, gender, setGender, handleClickCustomEvent, buttonType }: Props) => {
@@ -64,9 +64,11 @@ const Gender = ({ nickname, gender, setGender, handleClickCustomEvent, buttonTyp
           className={classNames('s_a11yHidden')}
         />
       </div>
-      <CustomButton type={buttonType} onClick={handleClickCustomEvent} isDisabled={isDisabled}>
-        다음
-      </CustomButton>
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
 };

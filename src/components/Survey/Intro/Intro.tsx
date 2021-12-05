@@ -3,11 +3,11 @@ import Lottie from 'react-lottie';
 import classNames from 'classnames';
 import style from './intro.module.scss';
 import welcome from '@/assets/lottie/hand-habimetro.json';
-import { CustomButton } from '@/components/common';
+import { CustomButton } from '@/components';
 
 interface Props {
-  buttonType: 'button' | 'submit';
   handleClickStartButton: () => void;
+  buttonType: string;
 }
 
 const { s_container, s_lottieContainer, s_title, s_addendum, s_highlight } = style;
@@ -31,9 +31,8 @@ const Intro = ({ handleClickStartButton, buttonType }: Props) => {
         <span>잠시만 시간을 내주시겠어요?</span>
         <span className={classNames(s_addendum)}>3분이면 충분해요!</span>
       </div>
-      <CustomButton type={buttonType} onClick={handleClickStartButton}>
-        다음
-      </CustomButton>
+
+      <CustomButton buttonType={buttonType} onClick={handleClickStartButton} />
     </section>
   );
 };

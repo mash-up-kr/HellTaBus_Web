@@ -17,7 +17,7 @@ interface Props {
   exerciseSpeed: string;
   setExerciseSpeed: (exerciseSpeed: string) => void;
   handleClickCustomEvent: () => void;
-  buttonType: 'button' | 'submit';
+  buttonType: string;
 }
 
 function ExerciseSpeed({
@@ -91,9 +91,11 @@ function ExerciseSpeed({
           onClick={createExerciseSpeedStateChangeHandler('FAST')}
         />
       </div>
-      <CustomButton type={buttonType} onClick={handleClickCustomEvent} isDisabled={isDisabled}>
-        다음
-      </CustomButton>
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
 }

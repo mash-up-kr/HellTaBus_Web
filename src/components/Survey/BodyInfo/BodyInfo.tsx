@@ -26,7 +26,7 @@ interface Props {
   weight: number;
   setWeight: (weight: number) => void;
   handleClickCustomEvent: () => void;
-  buttonType: 'button' | 'submit';
+  buttonType: string;
 }
 
 const BodyInfo = ({
@@ -148,9 +148,11 @@ const BodyInfo = ({
           {weightErrorMessage && <ErrorIcon className={classNames(s_weightError)} />}
         </div>
       </div>
-      <CustomButton type={buttonType} onClick={handleClickCustomEvent} isDisabled={isDisabled}>
-        다음
-      </CustomButton>
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
 };

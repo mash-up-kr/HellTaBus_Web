@@ -18,7 +18,7 @@ interface Props {
   nickname: string;
   setNickname: (nickname: string) => void;
   handleClickCustomEvent: () => void;
-  buttonType: 'button' | 'submit';
+  buttonType: string;
 }
 
 const Nickname = ({ nickname, setNickname, handleClickCustomEvent, buttonType }: Props) => {
@@ -87,9 +87,11 @@ const Nickname = ({ nickname, setNickname, handleClickCustomEvent, buttonType }:
         {nickname !== '' && errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
       <span className={classNames(s_errorMsg)}>{nickname !== '' && errorMessage}</span>
-      <CustomButton type={buttonType} onClick={handleClickCustomEvent} isDisabled={isDisabled}>
-        다음
-      </CustomButton>
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
 };

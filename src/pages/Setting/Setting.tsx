@@ -32,7 +32,7 @@ const Setting = () => {
               splitType={surveyState.splitType}
               setSplitType={setSurveyStateByKey(SURVEY_STATE_KEY.SPLIT_TYPE)}
               handleClickCustomEvent={handleCloseCurrentPage}
-              buttonType="submit"
+              buttonType="save"
               hasProgressBar={false}
             />
           </Route>

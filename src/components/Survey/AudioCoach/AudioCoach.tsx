@@ -17,7 +17,7 @@ interface Props {
   audioCoach: string;
   setAudioCoach: (audioCoach: string) => void;
   handleClickCustomEvent: () => void;
-  buttonType: 'button' | 'submit';
+  buttonType: string;
 }
 
 const AudioCoach = ({ audioCoach, setAudioCoach, handleClickCustomEvent, buttonType }: Props) => {
@@ -81,9 +81,11 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleClickCustomEvent, buttonT
           onClick={createAudioCoachStateChangeHandler('FUNNY')}
         />
       </div>
-      <CustomButton type={buttonType} onClick={handleClickCustomEvent} isDisabled={isDisabled}>
-        다음
-      </CustomButton>
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
 };

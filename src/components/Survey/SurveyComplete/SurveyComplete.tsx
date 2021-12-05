@@ -10,9 +10,10 @@ const { s_container, s_lottieContainer, s_content } = style;
 
 interface Props {
   surveyState: SurveyFields;
+  buttonType: string;
 }
 
-const SurveyComplete = ({ surveyState }: Props) => {
+const SurveyComplete = ({ surveyState, buttonType }: Props) => {
   const [loading, setLoading] = useState(true);
 
   const lottieOptions = {
@@ -45,6 +46,8 @@ const SurveyComplete = ({ surveyState }: Props) => {
             운동이 준비됐어요! <span className={classNames('s_whiteSpace')}>시작해 볼까요?</span>
           </div>
           <button type="button">렛츠고!👉</button>
+          {/* TODO: 브런치 병합 후, API 연결 예정 */}
+          {/* <CustomButton buttonType="lets_go" onClick={} />  */}
         </section>
       )}
     </>
