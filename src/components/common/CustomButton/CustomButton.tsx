@@ -1,28 +1,46 @@
 /* eslint-disable react/button-has-type */
-import React, { ReactNode } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import style from './customButton.module.scss';
 
 interface Props {
-  type: 'button' | 'submit';
+  buttonType: string;
   onClick: () => void;
   isDisabled?: boolean;
-  children: ReactNode;
 }
 
 const { s_nextButton, s_submitButton } = style;
 
-const CustomButton = ({ type, onClick, isDisabled, children }: Props) => {
+const BUTTON_STYLE: Record<string, string> = {
+  start: 'round',
+  save: 'round',
+  next: 'fullSize',
+  finish: 'fullSize',
+  lets_go: 'round',
+};
+
+const BUTTON_TEXT: Record<string, string> = {
+  start: '시작',
+  save: '저장',
+  next: '다음',
+  finish: '완료',
+  lets_go: '렛츠고!👉🏻',
+};
+
+const CustomButton = ({ buttonType, onClick, isDisabled }: Props) => {
+  const buttonText = BUTTON_TEXT[buttonType];
+  const buttonStyle = BUTTON_STYLE[buttonType];
+
   return (
     <button
-      type={type}
+      type="button"
       onClick={onClick}
       disabled={isDisabled}
       className={classNames(s_nextButton, {
-        [s_submitButton]: type === 'submit',
+        [s_submitButton]: buttonStyle === 'round',
       })}
     >
-      {children}
+      {buttonText}
     </button>
   );
 };
