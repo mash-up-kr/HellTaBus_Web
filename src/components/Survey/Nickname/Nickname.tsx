@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
 import style from './nickname.module.scss';
 import { CustomInput, CustomLabel, CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
 const {
   s_container,
@@ -18,7 +19,7 @@ interface Props {
   nickname: string;
   setNickname: (nickname: string) => void;
   handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
-  buttonType: string;
+  buttonType: CustomButtonType;
 }
 
 const Nickname = ({ nickname, setNickname, handleClickCustomEvent, buttonType }: Props) => {

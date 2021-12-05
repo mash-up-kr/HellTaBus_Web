@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import style from './bodyInfo.module.scss';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
 import { CustomInput, CustomLabel, CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
 const {
   s_container,
@@ -26,7 +27,7 @@ interface Props {
   weight: number;
   setWeight: (weight: number) => void;
   handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
-  buttonType: string;
+  buttonType: CustomButtonType;
 }
 
 const BodyInfo = ({

@@ -6,6 +6,7 @@ import FullBodyWorkout from '@/assets/svg/full-body-workout.svg';
 import ThreeBodyWorkout from '@/assets/svg/three-body-workout.svg';
 import FiveBodyWorkout from '@/assets/svg/five-body-workout.svg';
 import { Carousel, CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
 const { s_container, s_title, s_highlight, s_spiltCarousel, s_noProgressBarTitle } = style;
 
@@ -13,7 +14,7 @@ interface Props {
   splitType: string;
   setSplitType: (splitType: string) => void;
   handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
-  buttonType: string;
+  buttonType: CustomButtonType;
   hasProgressBar?: boolean;
 }
 

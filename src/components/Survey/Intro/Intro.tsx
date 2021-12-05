@@ -4,10 +4,11 @@ import classNames from 'classnames';
 import style from './intro.module.scss';
 import welcome from '@/assets/lottie/hand-habimetro.json';
 import { CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
 interface Props {
   handleClickStartButton: () => void;
-  buttonType: string;
+  buttonType: CustomButtonType;
 }
 
 const { s_container, s_lottieContainer, s_title, s_addendum, s_highlight } = style;

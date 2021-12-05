@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import style from './age.module.scss';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
 import { CustomInput, CustomLabel, CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
 const {
   s_container,
@@ -20,7 +21,7 @@ interface Props {
   age: number;
   setAge: (value: number) => void;
   handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
-  buttonType: string;
+  buttonType: CustomButtonType;
 }
 
 const Age = ({ nickname, age, setAge, handleClickCustomEvent, buttonType }: Props) => {

@@ -4,7 +4,7 @@ import Lottie from 'react-lottie';
 import style from './surveyComplete.module.scss';
 import complete from '@/assets/lottie/complete.json';
 import SearchExercise from '../SearchExercise/SearchExercise';
-import { SurveyFields } from '@/types';
+import { SurveyFields, CustomButtonType } from '@/types';
 import { usePatchUserInfo } from '@/hooks/api';
 import { HOME_ACTIVITY } from '@/consts';
 import { startActivity } from '@/utils/mobile/token';
@@ -14,7 +14,7 @@ const { s_container, s_lottieContainer, s_content } = style;
 
 interface Props {
   surveyState: SurveyFields;
-  buttonType: string;
+  buttonType: CustomButtonType;
 }
 
 const SurveyComplete = ({ surveyState, buttonType }: Props) => {

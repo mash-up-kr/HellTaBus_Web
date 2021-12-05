@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './exerciseSpeed.module.scss';
 import { CustomInput, CustomLabel, CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
 const {
   s_container,
@@ -17,7 +18,7 @@ interface Props {
   exerciseSpeed: string;
   setExerciseSpeed: (exerciseSpeed: string) => void;
   handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
-  buttonType: string;
+  buttonType: CustomButtonType;
 }
 
 function ExerciseSpeed({

@@ -1,9 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 import style from './customButton.module.scss';
+import { CustomButtonType } from '@/types';
 
 interface Props {
-  buttonType: string;
+  buttonType: CustomButtonType;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   isDisabled?: boolean;
 }
