@@ -1,9 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Route } from 'react-router-dom';
 import { Header, SplitType } from '@/components';
 import { useSurveyForm } from '@/hooks';
-import style from './setting.module.scss';
+import style from './splitTypeChange.module.scss';
 
 const SURVEY_STATE_KEY = {
   SPLIT_TYPE: 'splitType',
@@ -14,7 +13,7 @@ const SURVEY_STATE_KEY = {
 
 const { s_componentContainer } = style;
 
-const Setting = () => {
+const SplitTypeChange = () => {
   const { surveyState, setSurveyStateByKey } = useSurveyForm();
 
   const handleCloseCurrentPage = () => {
@@ -27,19 +26,17 @@ const Setting = () => {
       <form>
         <div className={classNames(s_componentContainer)}>
           <h1 className={classNames('s_a11yHidden')}>분할타입 변경</h1>
-          <Route path="/setting/split-type">
-            <SplitType
-              splitType={surveyState.splitType}
-              setSplitType={setSurveyStateByKey(SURVEY_STATE_KEY.SPLIT_TYPE)}
-              handleClickCustomEvent={handleCloseCurrentPage}
-              buttonType="save"
-              hasProgressBar={false}
-            />
-          </Route>
+          <SplitType
+            splitType={surveyState.splitType}
+            setSplitType={setSurveyStateByKey(SURVEY_STATE_KEY.SPLIT_TYPE)}
+            handleClickCustomEvent={handleCloseCurrentPage}
+            buttonType="save"
+            hasProgressBar={false}
+          />
         </div>
       </form>
     </>
   );
 };
 
-export default Setting;
+export default SplitTypeChange;
