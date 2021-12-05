@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './exerciseSpeed.module.scss';
-import { CustomInput, CustomLabel } from '@/components/common';
+import { CustomInput, CustomLabel, CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
 const {
   s_container,
@@ -11,16 +12,21 @@ const {
   s_subTitle,
   s_exerciseSpeedButton,
   s_selectedExerciseSpeed,
-  s_nextButton,
 } = style;
 
 interface Props {
   exerciseSpeed: string;
   setExerciseSpeed: (exerciseSpeed: string) => void;
-  handleSetNextPage: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
+  buttonType: CustomButtonType;
 }
 
-function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: Props) {
+function ExerciseSpeed({
+  exerciseSpeed,
+  setExerciseSpeed,
+  handleClickCustomEvent,
+  buttonType,
+}: Props) {
   const [isDisabled, setIsDisabled] = useState<boolean>(!exerciseSpeed);
 
   const createExerciseSpeedStateChangeHandler = (userExerciseSpeed: string) => () => {
@@ -86,14 +92,11 @@ function ExerciseSpeed({ exerciseSpeed, setExerciseSpeed, handleSetNextPage }: P
           onClick={createExerciseSpeedStateChangeHandler('FAST')}
         />
       </div>
-      <button
-        className={classNames(s_nextButton)}
-        type="button"
-        onClick={handleSetNextPage}
-        disabled={isDisabled}
-      >
-        다음
-      </button>
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
 }

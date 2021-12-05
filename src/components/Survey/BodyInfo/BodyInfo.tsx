@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import style from './bodyInfo.module.scss';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
-import { CustomInput, CustomLabel } from '@/components/common';
+import { CustomInput, CustomLabel, CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
 const {
   s_container,
@@ -15,7 +16,6 @@ const {
   s_weightError,
   s_errorInput,
   s_title,
-  s_nextButton,
   s_highlight,
   s_labelContainer,
 } = style;
@@ -26,10 +26,19 @@ interface Props {
   setHeight: (height: number) => void;
   weight: number;
   setWeight: (weight: number) => void;
-  handleSetNextPage: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
+  buttonType: CustomButtonType;
 }
 
-const BodyInfo = ({ nickname, height, setHeight, weight, setWeight, handleSetNextPage }: Props) => {
+const BodyInfo = ({
+  nickname,
+  height,
+  setHeight,
+  weight,
+  setWeight,
+  handleClickCustomEvent,
+  buttonType,
+}: Props) => {
   const [heightErrorMessage, setHeightErrorMessage] = useState<string>('');
   const [weightErrorMessage, setWeightErrorMessage] = useState<string>('');
   const isDisabled = useMemo(
@@ -140,14 +149,11 @@ const BodyInfo = ({ nickname, height, setHeight, weight, setWeight, handleSetNex
           {weightErrorMessage && <ErrorIcon className={classNames(s_weightError)} />}
         </div>
       </div>
-      <button
-        className={classNames(s_nextButton)}
-        type="button"
-        onClick={handleSetNextPage}
-        disabled={isDisabled}
-      >
-        다음
-      </button>
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
 };

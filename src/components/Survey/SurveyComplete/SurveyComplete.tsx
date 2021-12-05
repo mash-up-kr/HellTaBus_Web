@@ -4,18 +4,20 @@ import Lottie from 'react-lottie';
 import style from './surveyComplete.module.scss';
 import complete from '@/assets/lottie/complete.json';
 import SearchExercise from '../SearchExercise/SearchExercise';
-import { SurveyFields } from '@/types';
+import { SurveyFields, CustomButtonType } from '@/types';
 import { usePatchUserInfo } from '@/hooks/api';
 import { HOME_ACTIVITY } from '@/consts';
 import { startActivity } from '@/utils/mobile/token';
+import { CustomButton } from '@/components';
 
 const { s_container, s_lottieContainer, s_content } = style;
 
 interface Props {
   surveyState: SurveyFields;
+  buttonType: CustomButtonType;
 }
 
-const SurveyComplete = ({ surveyState }: Props) => {
+const SurveyComplete = ({ surveyState, buttonType }: Props) => {
   const { mutate, isPatchSuccess } = usePatchUserInfo();
   const [dataAnalysisLoading, setDataAnalysisLoading] = useState(true);
 
@@ -61,9 +63,7 @@ const SurveyComplete = ({ surveyState }: Props) => {
             </span>
             운동이 준비됐어요! <span className={classNames('s_whiteSpace')}>시작해 볼까요?</span>
           </div>
-          <button type="button" onClick={handleClickSubmitButton}>
-            렛츠고!👉
-          </button>
+          <CustomButton buttonType={buttonType} onClick={handleClickSubmitButton} />
         </section>
       )}
     </>

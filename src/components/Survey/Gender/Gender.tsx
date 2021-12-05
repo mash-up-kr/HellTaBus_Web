@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './gender.module.scss';
-import { CustomInput, CustomLabel } from '@/components/common';
+import { CustomInput, CustomLabel, CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
 const {
   s_container,
   s_title,
   s_genderButton,
   s_selectedGender,
-  s_nextButton,
   s_highlight,
   s_radioButtonContainer,
 } = style;
@@ -17,10 +17,11 @@ interface Props {
   nickname: string;
   gender: string;
   setGender: (gender: string) => void;
-  handleSetNextPage: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
+  buttonType: CustomButtonType;
 }
 
-const Gender = ({ nickname, gender, setGender, handleSetNextPage }: Props) => {
+const Gender = ({ nickname, gender, setGender, handleClickCustomEvent, buttonType }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!gender);
 
   const handleClickGenderButton = (userGender: string) => () => {
@@ -64,14 +65,11 @@ const Gender = ({ nickname, gender, setGender, handleSetNextPage }: Props) => {
           className={classNames('s_a11yHidden')}
         />
       </div>
-      <button
-        className={classNames(s_nextButton)}
-        type="button"
-        onClick={handleSetNextPage}
-        disabled={isDisabled}
-      >
-        다음
-      </button>
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
 };
