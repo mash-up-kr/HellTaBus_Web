@@ -16,7 +16,7 @@ const BUTTON_STYLE: Record<string, string> = {
   save: 'round',
   next: 'fullSize',
   complete: 'fullSize',
-  lets_go: 'round',
+  letsGo: 'round',
 };
 
 const BUTTON_TEXT: Record<string, string> = {
@@ -24,7 +24,7 @@ const BUTTON_TEXT: Record<string, string> = {
   save: '저장',
   next: '다음',
   complete: '완료',
-  lets_go: '렛츠고! 👉🏻',
+  letsGo: '렛츠고! 👉🏻',
 };
 
 const CustomButton = ({ buttonType, onClick, isDisabled }: Props) => {

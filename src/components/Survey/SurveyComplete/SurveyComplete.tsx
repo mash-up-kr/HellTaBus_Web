@@ -63,7 +63,7 @@ const SurveyComplete = ({ surveyState, buttonType }: Props) => {
             </span>
             운동이 준비됐어요! <span className={classNames('s_whiteSpace')}>시작해 볼까요?</span>
           </div>
-          <CustomButton buttonType="lets_go" onClick={handleClickSubmitButton} />
+          <CustomButton buttonType="letsGo" onClick={handleClickSubmitButton} />
         </section>
       )}
     </>

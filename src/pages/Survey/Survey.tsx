@@ -105,7 +105,7 @@ const Survey = () => {
   ];
 
   if (step === 0) return <Intro handleClickStartButton={handleSetNextPage} buttonType="start" />;
-  if (step > MAX_STEP) return <SurveyComplete surveyState={surveyState} buttonType="lets_go" />;
+  if (step > MAX_STEP) return <SurveyComplete surveyState={surveyState} buttonType="letsGo" />;
 
   return (
     <>
