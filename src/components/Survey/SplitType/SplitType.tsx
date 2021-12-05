@@ -5,17 +5,26 @@ import Workout from '@/components/Survey/Workout/Workout';
 import FullBodyWorkout from '@/assets/svg/full-body-workout.svg';
 import ThreeBodyWorkout from '@/assets/svg/three-body-workout.svg';
 import FiveBodyWorkout from '@/assets/svg/five-body-workout.svg';
-import { Carousel } from '@/components/common';
+import { Carousel, CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
-const { s_container, s_title, s_nextButton, s_highlight, s_spiltCarousel } = style;
+const { s_container, s_title, s_highlight, s_spiltCarousel, s_noProgressBarTitle } = style;
 
 interface Props {
   splitType: string;
   setSplitType: (splitType: string) => void;
-  handleSetNextPage: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
+  buttonType: CustomButtonType;
+  hasProgressBar?: boolean;
 }
 
-const SplitType = ({ splitType, setSplitType, handleSetNextPage }: Props) => {
+const SplitType = ({
+  splitType,
+  setSplitType,
+  handleClickCustomEvent,
+  buttonType,
+  hasProgressBar,
+}: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!splitType);
 
   const handleClickSplitType = (userSplitType: string) => {
@@ -26,7 +35,11 @@ const SplitType = ({ splitType, setSplitType, handleSetNextPage }: Props) => {
   return (
     <section className={classNames(s_container)}>
       <h2 className={classNames('s_a11yHidden')}>분할 선택</h2>
-      <p className={classNames(s_title)}>
+      <p
+        className={classNames(s_title, {
+          [s_noProgressBarTitle]: hasProgressBar === false,
+        })}
+      >
         <span className={classNames('s_whiteSpace')}>
           <span className={classNames(s_highlight)}>몇 분할</span>로
         </span>
@@ -61,14 +74,11 @@ const SplitType = ({ splitType, setSplitType, handleSetNextPage }: Props) => {
           가슴, 어깨, 팔, 등, 하체를 하루에 운동하는 방법으로 초보자에게 추천합니다.
         </Workout>
       </Carousel>
-      <button
-        className={classNames(s_nextButton)}
-        type="button"
-        onClick={handleSetNextPage}
-        disabled={isDisabled}
-      >
-        다음
-      </button>
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
 };

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './audioCoach.module.scss';
-import { CustomInput, CustomLabel } from '@/components/common';
+import { CustomInput, CustomLabel, CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
 const {
   s_mainTitle,
@@ -11,16 +12,16 @@ const {
   s_radioButtonContainer,
   s_audioCoachButton,
   s_selectedAudioCoach,
-  s_nextButton,
 } = style;
 
 interface Props {
   audioCoach: string;
   setAudioCoach: (audioCoach: string) => void;
-  handleSetNextPage: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
+  buttonType: CustomButtonType;
 }
 
-const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => {
+const AudioCoach = ({ audioCoach, setAudioCoach, handleClickCustomEvent, buttonType }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!audioCoach);
 
   const createAudioCoachStateChangeHandler = (userAudioCoach: string) => () => {
@@ -81,14 +82,11 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
           onClick={createAudioCoachStateChangeHandler('FUNNY')}
         />
       </div>
-      <button
-        className={classNames(s_nextButton)}
-        type="button"
-        onClick={handleSetNextPage}
-        disabled={isDisabled}
-      >
-        다음
-      </button>
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
 };

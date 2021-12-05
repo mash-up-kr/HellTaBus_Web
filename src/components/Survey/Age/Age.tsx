@@ -2,7 +2,8 @@ import React, { useEffect, useState, useMemo } from 'react';
 import classNames from 'classnames';
 import style from './age.module.scss';
 import ErrorIcon from '@/assets/svg/error-icon.svg';
-import { CustomInput, CustomLabel } from '@/components/common';
+import { CustomInput, CustomLabel, CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
 const {
   s_container,
@@ -12,7 +13,6 @@ const {
   s_inputContainer,
   s_errorMsg,
   s_errorIcon,
-  s_nextButton,
   s_highlight,
 } = style;
 
@@ -20,10 +20,11 @@ interface Props {
   nickname: string;
   age: number;
   setAge: (value: number) => void;
-  handleSetNextPage: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
+  buttonType: CustomButtonType;
 }
 
-const Age = ({ nickname, age, setAge, handleSetNextPage }: Props) => {
+const Age = ({ nickname, age, setAge, handleClickCustomEvent, buttonType }: Props) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const isDisabled = useMemo(() => !age || !!errorMessage, [age, errorMessage]);
 
@@ -75,18 +76,14 @@ const Age = ({ nickname, age, setAge, handleSetNextPage }: Props) => {
             [s_errorInput]: errorMessage,
           })}
         />
-
         {errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
       <span className={classNames(s_errorMsg)}>{errorMessage}</span>
-      <button
-        className={classNames(s_nextButton)}
-        type="button"
-        onClick={handleSetNextPage}
-        disabled={isDisabled}
-      >
-        다음
-      </button>
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
 };

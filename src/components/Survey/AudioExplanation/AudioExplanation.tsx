@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './audioExplanation.module.scss';
-import { CustomInput, CustomLabel } from '@/components/common';
+import { CustomInput, CustomLabel, CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
 const {
   s_mainTitle,
@@ -11,19 +12,20 @@ const {
   s_radioButtonContainer,
   s_audioSpeedButton,
   s_selectedAudioSpeed,
-  s_nextButton,
 } = style;
 
 interface Props {
   needDetailExplanation: boolean | null;
   setNeedDetailExplanation: (audioExplanation: boolean) => void;
-  handleSetNextPage: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
+  buttonType: CustomButtonType;
 }
 
 const AudioExplanation = ({
   needDetailExplanation,
   setNeedDetailExplanation,
-  handleSetNextPage,
+  handleClickCustomEvent,
+  buttonType,
 }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(needDetailExplanation === null);
 
@@ -75,14 +77,11 @@ const AudioExplanation = ({
           onClick={createAudioExplanationStateChangeHandler(false)}
         />
       </div>
-      <button
-        className={classNames(s_nextButton)}
-        type="button"
-        onClick={handleSetNextPage}
-        disabled={isDisabled}
-      >
-        다음
-      </button>
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
 };
