@@ -16,7 +16,7 @@ interface Props {
   nickname: string;
   gender: string;
   setGender: (gender: string) => void;
-  handleClickCustomEvent: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
   buttonType: string;
 }
 

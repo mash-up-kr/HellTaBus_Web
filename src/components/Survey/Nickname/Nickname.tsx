@@ -17,7 +17,7 @@ const {
 interface Props {
   nickname: string;
   setNickname: (nickname: string) => void;
-  handleClickCustomEvent: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
   buttonType: string;
 }
 

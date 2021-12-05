@@ -16,7 +16,7 @@ const {
 interface Props {
   needDetailExplanation: boolean | null;
   setNeedDetailExplanation: (audioExplanation: boolean) => void;
-  handleClickCustomEvent: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
   buttonType: string;
 }
 

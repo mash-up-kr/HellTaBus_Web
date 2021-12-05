@@ -20,7 +20,7 @@ interface Props {
   nickname: string;
   age: number;
   setAge: (value: number) => void;
-  handleClickCustomEvent: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
   buttonType: string;
 }
 

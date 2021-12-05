@@ -16,7 +16,7 @@ const {
 interface Props {
   audioCoach: string;
   setAudioCoach: (audioCoach: string) => void;
-  handleClickCustomEvent: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
   buttonType: string;
 }
 

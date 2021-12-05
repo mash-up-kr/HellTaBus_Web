@@ -5,7 +5,7 @@ import style from './customButton.module.scss';
 
 interface Props {
   buttonType: string;
-  onClick: () => void;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
   isDisabled?: boolean;
 }
 

@@ -12,7 +12,7 @@ const { s_container, s_title, s_highlight, s_spiltCarousel, s_noProgressBarTitle
 interface Props {
   splitType: string;
   setSplitType: (splitType: string) => void;
-  handleClickCustomEvent: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
   buttonType: string;
   hasProgressBar?: boolean;
 }

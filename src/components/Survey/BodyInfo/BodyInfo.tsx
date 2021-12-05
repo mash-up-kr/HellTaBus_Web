@@ -25,7 +25,7 @@ interface Props {
   setHeight: (height: number) => void;
   weight: number;
   setWeight: (weight: number) => void;
-  handleClickCustomEvent: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
   buttonType: string;
 }
 

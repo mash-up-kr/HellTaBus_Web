@@ -16,7 +16,7 @@ const {
 interface Props {
   exerciseSpeed: string;
   setExerciseSpeed: (exerciseSpeed: string) => void;
-  handleClickCustomEvent: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
   buttonType: string;
 }
 
