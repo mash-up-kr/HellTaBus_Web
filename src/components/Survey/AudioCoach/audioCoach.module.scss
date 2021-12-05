@@ -96,8 +96,8 @@
 }
 
 .s_selectedAudioCoach {
-  animation-name: slidein;
-  animation-timing-function: ease;
+  // animation-name: slidein;
+  animation-timing-function: linear;
   background-size: 200% 100%;
   border: 0.15rem solid color.$primary;
   color: color.$primary;
@@ -105,15 +105,22 @@
 }
 
 .s_selectedScaryAudioCoach {
-  animation-duration: 4.14s;
+  // animation-duration: 4.14s;
+  animation-name: slidein;
 }
 
 .s_selectedFunnyAudioCoach {
-  animation-duration: 5.76s;
+  // animation-duration: 5.76s;
+  animation-name: slidein;
 }
 
 .s_selectedComfortableAudioCoach {
-  animation-duration: 2.376s;
+  // animation-duration: 2.376s;
+  animation-name: slidein;
+}
+
+.s_pauseAnimation {
+  animation-play-state: paused;
 }
 
 @keyframes slidein {

@@ -18,6 +18,7 @@ const {
   s_selectedFunnyAudioCoach,
   s_selectedComfortableAudioCoach,
   s_nextButton,
+  s_pauseAnimation,
 } = style;
 
 interface Props {
@@ -33,15 +34,55 @@ const COMFORTABLE = new Audio(comfortable);
 const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!audioCoach);
   const [currentlyPlayingAudio, setCurrentlyPlayingAudio] = useState('');
+  const [durationTime, setDurationTime] = useState('0s');
+  const [animationTimerId, setAnimationTimerId] = useState<NodeJS.Timeout | null>(null);
   const audios = { SCARY, FUNNY, COMFORTABLE };
+
+  // const createAudioCoachStateChangeHandler = (userAudioCoach: string) => () => {
+  //   setAudioCoach(userAudioCoach);
+  //   setIsDisabled(false);
+  //   setCurrentlyPlayingAudio(userAudioCoach);
+
+  //   Object.entries(audios).forEach(([audioKey, audioSound]) => {
+  //     if (audioKey === userAudioCoach) {
+  //       if (animationTimerId) {
+  //         audioSound.pause();
+  //         // eslint-disable-next-line no-param-reassign
+  //         audioSound.currentTime = 0;
+  //         setCurrentlyPlayingAudio(() => '');
+  //         console.log('sdfdsf', currentlyPlayingAudio);
+  //         clearTimeout(animationTimerId);
+  //         setAnimationTimerId(null);
+  //       }
+  //       console.log(animationTimerId);
+
+  //       setCurrentlyPlayingAudio(audioKey);
+  //       setDurationTime(`${audioSound.duration}s`);
+
+  //       audioSound.play();
+  //       const timerId = setTimeout(() => {
+  //         setCurrentlyPlayingAudio('');
+  //       }, audioSound.duration * 1000);
+  //       console.log('tiemrID', timerId);
+
+  //       setAnimationTimerId(timerId);
+  //     } else {
+  //       audioSound.pause();
+  //       // eslint-disable-next-line no-param-reassign
+  //       audioSound.currentTime = 0;
+  //     }
+  //   });
+  // };
 
   const createAudioCoachStateChangeHandler = (userAudioCoach: string) => () => {
     setAudioCoach(userAudioCoach);
     setIsDisabled(false);
-    setCurrentlyPlayingAudio(() => userAudioCoach);
 
+    setCurrentlyPlayingAudio(userAudioCoach);
     Object.entries(audios).forEach(([audioKey, audioSound]) => {
       if (audioKey === userAudioCoach) {
+        setDurationTime(`${audioSound.duration}s`);
+
         audioSound.play();
         setTimeout(() => {
           setCurrentlyPlayingAudio('');
@@ -65,6 +106,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
       <div className={classNames(s_radioButtonContainer)}>
         <CustomLabel
           htmlFor="scary"
+          style={currentlyPlayingAudio === 'SCARY' ? { animationDuration: durationTime } : {}}
           className={classNames(s_audioCoachButton, {
             [s_selectedAudioCoach]: audioCoach === 'SCARY',
             [s_selectedScaryAudioCoach]: currentlyPlayingAudio === 'SCARY',
@@ -81,11 +123,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
 
         <CustomLabel
           htmlFor="comfortable"
-          // style={
-          //   currentlyPlayingAudio === 'COMFORTABLE'
-          //     ? { animationDuration: audios.COMFORTABLE.duration }
-          //     : {}
-          // }
+          style={currentlyPlayingAudio === 'COMFORTABLE' ? { animationDuration: durationTime } : {}}
           className={classNames(s_audioCoachButton, {
             [s_selectedAudioCoach]: audioCoach === 'COMFORTABLE',
             [s_selectedComfortableAudioCoach]: currentlyPlayingAudio === 'COMFORTABLE',
@@ -102,6 +140,7 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
 
         <CustomLabel
           htmlFor="funny"
+          style={currentlyPlayingAudio === 'FUNNY' ? { animationDuration: durationTime } : {}}
           className={classNames(s_audioCoachButton, {
             [s_selectedAudioCoach]: audioCoach === 'FUNNY',
             [s_selectedFunnyAudioCoach]: currentlyPlayingAudio === 'FUNNY',
