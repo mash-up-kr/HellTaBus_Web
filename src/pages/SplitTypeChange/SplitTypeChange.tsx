@@ -17,7 +17,7 @@ const SplitTypeChange = () => {
   const { surveyState, setSurveyStateByKey } = useSurveyForm();
 
   const handleCloseCurrentPage = () => {
-    window.close();
+    // TODO: 안드로이드랑 협의 후 삭제 예정
   };
 
   return (
