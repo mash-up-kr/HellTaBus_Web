@@ -5,7 +5,10 @@
 .s_customCarousel {
   background-color: rgba(0, 0, 0, 0);
   margin-bottom: 2.8rem;
-  padding-left: 2.4rem;
+  padding: {
+    left: 2.4rem;
+    right: 1.4rem;
+  }
 }
 
 .s_notSelectedExerciseCard {
