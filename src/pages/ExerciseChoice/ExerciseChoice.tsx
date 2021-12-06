@@ -4,12 +4,19 @@ import { useExerciseChoice } from '@/hooks';
 import { Tabs, Header, ExercisePartCarousel, ExerciseChoiceBottom } from '@/components';
 import style from './exerciseChoice.module.scss';
 import { EXERCISE_SUGGESTION_SIZE_BY_SPLIT_TYPE } from '@/consts';
+import { Exercise } from '@/types';
 
 const { s_exerciseChoice, s_exerciseChoiceHeader, s_exerciseTabPanel } = style;
 
 const ExerciseChoice = () => {
-  const { tabHeaders, tabPanels, splitType, selectedExercises, setSelectedExercises } =
-    useExerciseChoice();
+  const {
+    tabHeaders,
+    tabPanels,
+    splitType,
+    selectedExercises,
+    setSelectedExercises,
+    sortExercisesByPriority,
+  } = useExerciseChoice();
   const maxSizeOfSelectableExercise =
     EXERCISE_SUGGESTION_SIZE_BY_SPLIT_TYPE[splitType] * tabPanels[0].length;
 
@@ -41,6 +48,7 @@ const ExerciseChoice = () => {
       <ExerciseChoiceBottom
         selectedExercises={selectedExercises}
         maxSizeOfselectableExercise={maxSizeOfSelectableExercise}
+        sortExercisesByPriority={sortExercisesByPriority}
       />
     </div>
   );

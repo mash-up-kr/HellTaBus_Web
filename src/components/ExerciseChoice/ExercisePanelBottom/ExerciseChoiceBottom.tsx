@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import style from './exerciseChoiceBottom.module.scss';
 import { Exercise } from '@/types';
@@ -7,28 +7,29 @@ import { EXERCISE_ACTIVITY } from '@/consts';
 import { startActivity } from '@/utils/mobile/token';
 
 interface Props {
-  selectedExercises: Map<string, Exercise[]>;
+  selectedExercises: Map<string, Set<Exercise>>;
   maxSizeOfselectableExercise: number;
+  sortExercisesByPriority: (exercises: Map<string, Set<Exercise>>) => Exercise[];
 }
 
 const { s_exerciseChoiceBottom, s_sheetOpenButtonWrapper, s_submitButtonWrapper } = style;
 
-const ExerciseChoiceBottom = ({ selectedExercises, maxSizeOfselectableExercise }: Props) => {
+const ExerciseChoiceBottom = ({
+  selectedExercises,
+  maxSizeOfselectableExercise,
+  sortExercisesByPriority,
+}: Props) => {
   const selectedExerciseCount = Array.from(selectedExercises.values()).reduce(
-    (accumulated, selectedExercisesByPart) => accumulated + selectedExercisesByPart.length,
+    (accumulated, selectedExercisesByPart) => accumulated + selectedExercisesByPart.size,
     0
   );
   const disabledOfSubmitButton = selectedExerciseCount < maxSizeOfselectableExercise;
 
   const handleOpenExerciseActivity: React.MouseEventHandler<HTMLButtonElement> = () => {
-    const exerciseList = Array.from(selectedExercises.values()).reduce(
-      (accumulated, selectedExercisesByPart) => [...accumulated, ...selectedExercisesByPart],
-      []
-    );
-
+    const orderedSelectedExercises = sortExercisesByPriority(selectedExercises);
     const option = {
       target: EXERCISE_ACTIVITY,
-      exerciseList: JSON.stringify(exerciseList),
+      exerciseList: JSON.stringify(orderedSelectedExercises),
     };
 
     startActivity(option, (resCodes: string, resMsg: string, resData: JSON) => {
