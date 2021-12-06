@@ -10,6 +10,8 @@ const { s_exerciseChoice, s_exerciseChoiceHeader, s_exerciseTabPanel } = style;
 const ExerciseChoice = () => {
   const { tabHeaders, tabPanels, splitType, selectedExercises, setSelectedExercises } =
     useExerciseChoice();
+  const maxSizeOfSelectableExercise =
+    EXERCISE_SUGGESTION_SIZE_BY_SPLIT_TYPE[splitType] * tabPanels[0].length;
 
   return (
     <div className={classNames(s_exerciseChoice)}>
@@ -36,7 +38,10 @@ const ExerciseChoice = () => {
           ))}
         </Tabs>
       ) : null}
-      <ExerciseChoiceBottom selectedExercises={selectedExercises} />
+      <ExerciseChoiceBottom
+        selectedExercises={selectedExercises}
+        maxSizeOfselectableExercise={maxSizeOfSelectableExercise}
+      />
     </div>
   );
 };
