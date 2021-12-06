@@ -20,11 +20,11 @@ const ExerciseChoice = () => {
       />
       {tabHeaders && tabPanels ? (
         <Tabs headers={tabHeaders}>
-          {tabPanels.map((exerciseParts) => (
-            <div className={classNames(s_exerciseTabPanel)}>
-              {exerciseParts.map(({ part, exercises }, index) => (
+          {tabPanels.map((exerciseParts, index) => (
+            <div className={classNames(s_exerciseTabPanel)} key={`tabPanel-${index}`}>
+              {exerciseParts.map(({ part, exercises }) => (
                 <ExercisePartCarousel
-                  key={`exercisePartCarousel-${index}`}
+                  key={`exercisePartCarousel-${part}`}
                   partName={part}
                   exercises={exercises}
                   selectedExercises={selectedExercises}
