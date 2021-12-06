@@ -1,5 +1,11 @@
 @use '@/styles/color';
 
-.s_exerciseChoice {
+.s_exerciseChoiceHeader {
   background-color: color.$onPrimary;
+}
+
+.s_exerciseTabPanel {
+  padding: {
+    top: 3.2rem;
+  }
 }

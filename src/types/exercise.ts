@@ -55,3 +55,10 @@ export interface ExerciseLog {
 }
 
 export type SplitType = 'FULL_BODY_WORKOUT' | 'SPLIT_3_DAY_WORKOUT' | 'SPLIT_5_DAY_WORKOUT';
+
+interface ExercisePartInTabPanel {
+  part: string;
+  exercises: Exercise[];
+}
+
+export type ExercisePanel = ExercisePartInTabPanel[];

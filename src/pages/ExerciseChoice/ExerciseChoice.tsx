@@ -1,28 +1,41 @@
 import React from 'react';
 import classNames from 'classnames';
 import { useExerciseChoice } from '@/hooks';
-import { Tabs, Header } from '@/components';
+import { Tabs, Header, ExercisePartCarousel } from '@/components';
 import style from './exerciseChoice.module.scss';
+import { EXERCISE_SUGGESTION_SIZE_BY_SPLIT_TYPE } from '@/consts';
 
-const { s_exerciseChoice } = style;
+const { s_exerciseChoiceHeader, s_exerciseTabPanel } = style;
 
 const ExerciseChoice = () => {
-  const { isExerciseLoading, error, isError, tabHeaders } = useExerciseChoice();
-
-  if (isError) {
-    return <div>{error?.message}</div>;
-  }
+  const { tabHeaders, tabPanels, splitType, selectedExercises, setSelectedExercises } =
+    useExerciseChoice();
 
   return (
-    <div className={classNames(s_exerciseChoice)}>
-      <Header title="운동변경" handleClickBackButton={() => {}} />
-      <Tabs headers={tabHeaders}>
-        {isExerciseLoading ? (
-          <div>로딩중</div>
-        ) : (
-          tabHeaders.map((tab, index) => <p key={`tab-${index}`}>{tab.title}</p>)
-        )}
-      </Tabs>
+    <div>
+      <Header
+        className={classNames(s_exerciseChoiceHeader)}
+        title="운동변경"
+        handleClickBackButton={() => {}}
+      />
+      {tabHeaders && tabPanels ? (
+        <Tabs headers={tabHeaders}>
+          {tabPanels.map((exerciseParts) => (
+            <div className={classNames(s_exerciseTabPanel)}>
+              {exerciseParts.map(({ part, exercises }, index) => (
+                <ExercisePartCarousel
+                  key={`exercisePartCarousel-${index}`}
+                  partName={part}
+                  exercises={exercises}
+                  selectedExercises={selectedExercises}
+                  setSelectedExercises={setSelectedExercises}
+                  suggestionSize={EXERCISE_SUGGESTION_SIZE_BY_SPLIT_TYPE[splitType]}
+                />
+              ))}
+            </div>
+          ))}
+        </Tabs>
+      ) : null}
     </div>
   );
 };
