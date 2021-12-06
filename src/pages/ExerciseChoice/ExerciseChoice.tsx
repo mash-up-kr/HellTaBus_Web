@@ -6,7 +6,7 @@ import { Tabs, Header, ExercisePartCarousel, ExerciseChoiceBottom } from '@/comp
 import style from './exerciseChoice.module.scss';
 import { EXERCISE_SUGGESTION_SIZE_BY_SPLIT_TYPE } from '@/consts';
 
-const { s_exerciseChoice, s_exerciseChoiceHeader, s_exerciseTabPanel } = style;
+const { s_exerciseChoice, s_exerciseChoiceHeader, s_exerciseTabs, s_exerciseTabPanel } = style;
 
 const ExerciseChoice = () => {
   const history = useHistory();
@@ -32,7 +32,7 @@ const ExerciseChoice = () => {
         handleClickBackButton={handleClickBackButton}
       />
       {tabHeaders && tabPanels ? (
-        <Tabs headers={tabHeaders}>
+        <Tabs headers={tabHeaders} className={classNames(s_exerciseTabs)}>
           {tabPanels.map((exerciseParts, index) => (
             <div className={classNames(s_exerciseTabPanel)} key={`tabPanel-${index}`}>
               {exerciseParts.map(({ part, exercises }) => (

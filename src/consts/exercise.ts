@@ -16,8 +16,8 @@ export const EXERCISE_PART: IndexableType<string> = {
   LOWER: '하체',
   BACK: '등',
   CHEST: '가슴',
-  ARM: '팔', // 이두 + 삼두
   SHOULDER: '어깨',
+  ARM: '팔', // 이두 + 삼두
   BICEPS: '이두',
   TRICEPS: '삼두',
 };
