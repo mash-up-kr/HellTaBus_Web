@@ -81,7 +81,7 @@ module.exports = (env, argv) => {
           loader: 'babel-loader',
         },
         {
-          test: /\.(png|jpe?g|gif|woff|woff2|ttf|ico)$/i,
+          test: /\.(png|jpe?g|gif|ico)$/i,
           use: [
             {
               loader: 'file-loader',
@@ -91,6 +91,10 @@ module.exports = (env, argv) => {
         {
           test: /\.svg$/,
           use: ['@svgr/webpack'],
+        },
+        {
+          test: /\.(woff|woff2|eot|ttf|otf)$/i,
+          type: 'asset/resource',
         },
         getStyleRule({
           test: REGEX.CSS,
