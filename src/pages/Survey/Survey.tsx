@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Route, useHistory } from 'react-router-dom';
 import { SURVEY_PAGE } from '@/consts';
