@@ -44,14 +44,17 @@ const ExercisePartCarousel = ({
           const isSelected = (_exercise: Exercise) =>
             selectedExercises?.get(partName)?.has(_exercise);
           const handleClick = (_exercise: Exercise) => {
-            if (!setSelectedExercises) return;
+            if (!setSelectedExercises || !suggestionSize) return;
 
             const selectedExercisesByPartName = selectedExercises?.get(partName) as Set<Exercise>;
+            const isSelectedExercise = isSelected(_exercise);
+
+            if (selectedExercisesByPartName?.size >= suggestionSize && !isSelectedExercise) return;
 
             setSelectedExercises((prev) => {
               const newSelectedExercisesByPartName = new Set(selectedExercisesByPartName);
 
-              const action = isSelected(_exercise) ? 'delete' : 'add';
+              const action = isSelectedExercise ? 'delete' : 'add';
               newSelectedExercisesByPartName[action](_exercise);
 
               return new Map(prev).set(partName, newSelectedExercisesByPartName);
