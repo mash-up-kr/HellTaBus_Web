@@ -1,6 +1,6 @@
 @use './color';
 
-@import url(./_font.scss);
+// @import url(./_font.scss);
 
 /**
  * 사용자 정의 초기화
@@ -144,7 +144,7 @@ table {
 body {
   background-color: color.$background;
   color: color.$onBackground;
-  font-family: 'Spoqa Han Sans Neo', sans-serif;
+  font-family: 'Spoqa Han Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1;
