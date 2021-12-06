@@ -1,14 +1,18 @@
 import React from 'react';
 import classNames from 'classnames';
+import { useHistory } from 'react-router-dom';
 import { useExerciseChoice } from '@/hooks';
 import { Tabs, Header, ExercisePartCarousel, ExerciseChoiceBottom } from '@/components';
 import style from './exerciseChoice.module.scss';
 import { EXERCISE_SUGGESTION_SIZE_BY_SPLIT_TYPE } from '@/consts';
-import { Exercise } from '@/types';
 
 const { s_exerciseChoice, s_exerciseChoiceHeader, s_exerciseTabPanel } = style;
 
 const ExerciseChoice = () => {
+  const history = useHistory();
+  const handleClickBackButton = () => {
+    history.goBack();
+  };
   const {
     tabHeaders,
     tabPanels,
@@ -25,7 +29,7 @@ const ExerciseChoice = () => {
       <Header
         className={classNames(s_exerciseChoiceHeader)}
         title="운동변경"
-        handleClickBackButton={() => {}}
+        handleClickBackButton={handleClickBackButton}
       />
       {tabHeaders && tabPanels ? (
         <Tabs headers={tabHeaders}>
