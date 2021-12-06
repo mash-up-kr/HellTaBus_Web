@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Route, useHistory } from 'react-router-dom';
 import { SURVEY_PAGE } from '@/consts';
@@ -55,10 +55,9 @@ const Survey = () => {
   const { surveyState, setSurveyStateByKey } = useSurveyForm();
 
   const handleSetPreviousPage = () => {
-    if (step <= MIN_STEP) return;
-    setStep((previousStep) => previousStep - 1);
     history.goBack();
   };
+
   const handleSetNextPage = (nextPageUrl: string) => () => {
     if (step > MAX_STEP) return;
 
@@ -66,15 +65,24 @@ const Survey = () => {
     history.push(nextPageUrl);
   };
 
-  if (step === 0)
+  useEffect(() => {
+    const handleDecreaseStep = () => {
+      setStep((previousStep) => previousStep - 1);
+    };
+    window.addEventListener('popstate', handleDecreaseStep);
+    return () => {
+      window.removeEventListener('popstate', handleDecreaseStep);
+    };
+  }, []);
+
+  if (step === 0) {
     return (
-      <Route path={SURVEY_PAGE_COLLECTION.INTRO}>
-        <Intro
-          handleClickStartButton={handleSetNextPage(SURVEY_PAGE_COLLECTION.NICKNAME)}
-          buttonType="start"
-        />
-      </Route>
+      <Intro
+        handleClickStartButton={handleSetNextPage(SURVEY_PAGE_COLLECTION.NICKNAME)}
+        buttonType="start"
+      />
     );
+  }
 
   if (step > MAX_STEP) {
     return (
