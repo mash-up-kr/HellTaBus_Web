@@ -8,7 +8,7 @@ import { Tab } from '@/types';
 interface TabsProps {
   children: ReactNode;
   headers: Tab[];
-  className: string;
+  className?: string;
 }
 
 const { s_tabs, s_tabList, s_tabButtonWrapper, s_tabButton, s_selcted, s_circle, s_tabPanel } =
