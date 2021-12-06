@@ -9,7 +9,7 @@ import { HISTORY_ACTIVITY, SETTING_ACTIVITY } from '@/consts';
 
 const { s_exerciseRoutine, s_navigator } = style;
 
-function ExerciseRoutine() {
+const ExerciseRoutine = () => {
   const { suggestion, exerciseHistory, userInfo } = useExerciseRoutine();
   const { suggestionExerciseList, suggestionPartList } = suggestion;
 
@@ -51,6 +51,6 @@ function ExerciseRoutine() {
       />
     </section>
   );
-}
+};
 
 export default ExerciseRoutine;
