@@ -125,7 +125,26 @@ const useExerciseChoice = () => {
     return [];
   }, [exercises, exerciseTabHeaders]);
 
-  const [selectedExercises, setSelectedExercises] = useState<Map<string, Exercise[]>>(new Map());
+  const [selectedExercises, setSelectedExercises] = useState<Map<string, Set<Exercise>>>(new Map());
+
+  const sortExercisesByPriority = (_selectedExercises: Map<string, Set<Exercise>>) =>
+    exerciseTabPanels.reduce(
+      (accumulatedOfPanel, exerciseParts) =>
+        exerciseParts.reduce((accumulatedOfExercisePart, { exercises: _exercises }) => {
+          const accumulatedOfExercise = _exercises.reduce((_accumulatedOfExercise, exercise) => {
+            const ordered: Exercise[] = [];
+
+            _selectedExercises.forEach((selectedExercisesByPart) => {
+              if (selectedExercisesByPart.has(exercise)) ordered.push(exercise);
+            });
+
+            return [..._accumulatedOfExercise, ...ordered];
+          }, [] as Exercise[]);
+
+          return [...accumulatedOfExercisePart, ...accumulatedOfExercise];
+        }, accumulatedOfPanel as Exercise[]),
+      [] as Exercise[]
+    );
 
   return {
     error: exerciseError || userInfoError,
@@ -136,6 +155,7 @@ const useExerciseChoice = () => {
     splitType: SPLIT_TYPE[userInfo?.splitType as string],
     selectedExercises,
     setSelectedExercises,
+    sortExercisesByPriority,
   };
 };
 

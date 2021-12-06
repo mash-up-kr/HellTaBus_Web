@@ -1,22 +1,35 @@
 import React from 'react';
 import classNames from 'classnames';
+import { useHistory } from 'react-router-dom';
 import { useExerciseChoice } from '@/hooks';
-import { Tabs, Header, ExercisePartCarousel } from '@/components';
+import { Tabs, Header, ExercisePartCarousel, ExerciseChoiceBottom } from '@/components';
 import style from './exerciseChoice.module.scss';
 import { EXERCISE_SUGGESTION_SIZE_BY_SPLIT_TYPE } from '@/consts';
 
-const { s_exerciseChoiceHeader, s_exerciseTabPanel } = style;
+const { s_exerciseChoice, s_exerciseChoiceHeader, s_exerciseTabPanel } = style;
 
 const ExerciseChoice = () => {
-  const { tabHeaders, tabPanels, splitType, selectedExercises, setSelectedExercises } =
-    useExerciseChoice();
+  const history = useHistory();
+  const handleClickBackButton = () => {
+    history.goBack();
+  };
+  const {
+    tabHeaders,
+    tabPanels,
+    splitType,
+    selectedExercises,
+    setSelectedExercises,
+    sortExercisesByPriority,
+  } = useExerciseChoice();
+  const maxSizeOfSelectableExercise =
+    EXERCISE_SUGGESTION_SIZE_BY_SPLIT_TYPE[splitType] * tabPanels[0].length;
 
   return (
-    <div>
+    <div className={classNames(s_exerciseChoice)}>
       <Header
         className={classNames(s_exerciseChoiceHeader)}
         title="운동변경"
-        handleClickBackButton={() => {}}
+        handleClickBackButton={handleClickBackButton}
       />
       {tabHeaders && tabPanels ? (
         <Tabs headers={tabHeaders}>
@@ -36,6 +49,11 @@ const ExerciseChoice = () => {
           ))}
         </Tabs>
       ) : null}
+      <ExerciseChoiceBottom
+        selectedExercises={selectedExercises}
+        maxSizeOfselectableExercise={maxSizeOfSelectableExercise}
+        sortExercisesByPriority={sortExercisesByPriority}
+      />
     </div>
   );
 };

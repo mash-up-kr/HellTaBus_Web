@@ -13,8 +13,8 @@ import { Exercise } from '@/types';
 interface Props {
   partName: string;
   exercises: Exercise[];
-  selectedExercises?: Map<string, Exercise[]>;
-  setSelectedExercises?: React.Dispatch<React.SetStateAction<Map<string, Exercise[]>>>;
+  selectedExercises?: Map<string, Set<Exercise>>;
+  setSelectedExercises?: React.Dispatch<React.SetStateAction<Map<string, Set<Exercise>>>>;
   suggestionSize?: number;
 }
 
@@ -27,7 +27,7 @@ const ExercisePartCarousel = ({
   setSelectedExercises,
   suggestionSize,
 }: Props) => {
-  const selectedCount = selectedExercises?.get(partName)?.length || 0;
+  const selectedCount = selectedExercises?.get(partName)?.size || 0;
 
   return (
     <div className={classNames(s_exercisePartCarousel)}>
@@ -42,26 +42,23 @@ const ExercisePartCarousel = ({
             exercise;
           const exerciseCardId = `exerciseCard-${id}`;
           const isSelected = (_exercise: Exercise) =>
-            selectedExercises?.get(partName)?.includes(_exercise);
+            selectedExercises?.get(partName)?.has(_exercise);
           const handleClick = (_exercise: Exercise) => {
-            if (!setSelectedExercises) return;
+            if (!setSelectedExercises || !suggestionSize) return;
 
-            const selectedExercisesByPartName = selectedExercises?.get(partName) as Exercise[];
+            const selectedExercisesByPartName = selectedExercises?.get(partName) as Set<Exercise>;
+            const isSelectedExercise = isSelected(_exercise);
 
-            setSelectedExercises((prev) =>
-              isSelected(_exercise)
-                ? new Map(prev).set(partName, [
-                    ...selectedExercisesByPartName.filter(
-                      (selectedExercise) => selectedExercise !== _exercise
-                    ),
-                  ])
-                : new Map(prev).set(
-                    partName,
-                    selectedExercisesByPartName
-                      ? [...selectedExercisesByPartName, _exercise]
-                      : [_exercise]
-                  )
-            );
+            if (selectedExercisesByPartName?.size >= suggestionSize && !isSelectedExercise) return;
+
+            setSelectedExercises((prev) => {
+              const newSelectedExercisesByPartName = new Set(selectedExercisesByPartName);
+
+              const action = isSelectedExercise ? 'delete' : 'add';
+              newSelectedExercisesByPartName[action](_exercise);
+
+              return new Map(prev).set(partName, newSelectedExercisesByPartName);
+            });
           };
 
           return (

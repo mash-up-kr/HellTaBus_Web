@@ -1,5 +1,9 @@
 @use '@/styles/color';
 
+.s_exerciseChoice {
+  width: 100vw;
+}
+
 .s_exerciseChoiceHeader {
   background-color: color.$onPrimary;
 }
