@@ -9,3 +9,4 @@ export { default as Loading } from './Loading/Loading';
 export { default as Portal } from './Portal/Portal';
 export { default as Modal } from './Modal/Modal';
 export { default as ConfirmModalDialog } from './ConfirmModalDialog/ConfirmModalDialog';
+export { default as ErrorPage } from './ErrorPage/ErrorPage';
