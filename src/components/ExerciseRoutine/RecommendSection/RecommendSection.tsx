@@ -70,7 +70,7 @@ const RecommendSection = ({ suggestionExerciseList, suggestionPartList, splitTyp
         <div className={s_otherExercise}>
           <Link to={EXERCISE_CHOICE_PAGE}>
             다른 운동 선택
-            <RightArrow className={s_rightArrow} />
+            <RightArrow className={s_rightArrow} width="8" height="12" />
           </Link>
         </div>
       </div>

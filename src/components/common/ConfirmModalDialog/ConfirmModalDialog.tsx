@@ -13,7 +13,7 @@ const { s_alertDialog, s_confirmButtons, s_cancelButton, s_approvalButton } = st
 
 const ConfirmModalDialog = ({ handleCancel, handleApprove, children }: Props) => {
   return (
-    <Modal>
+    <Modal deemBackground="rgba(0, 0, 0, 0.6)">
       <div className={classNames(s_alertDialog)}>
         {children}
         <div className={classNames(s_confirmButtons)}>

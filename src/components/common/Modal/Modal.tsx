@@ -5,11 +5,12 @@ import style from './modal.module.scss';
 
 interface Props {
   children: ReactNode;
+  deemBackground: string;
 }
 
 const { s_modal } = style;
 
-const Modal = ({ children }: Props) => {
+const Modal = ({ children, deemBackground }: Props) => {
   useEffect(() => {
     const $rootNode = document.getElementById('app');
     $rootNode?.setAttribute('aria-hidden', 'true');
@@ -24,7 +25,9 @@ const Modal = ({ children }: Props) => {
 
   return (
     <Portal elementId="modal-root">
-      <div className={classNames(s_modal)}>{children}</div>
+      <div className={classNames(s_modal)} style={{ background: deemBackground }}>
+        {children}
+      </div>
     </Portal>
   );
 };
