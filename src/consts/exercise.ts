@@ -1,3 +1,5 @@
+import { IndexableType } from '@/types';
+
 export const SPLIT_TYPE_KEY = {
   FULL_BODY_WORKOUT: 'FULL_BODY_WORKOUT',
   SPLIT_3_DAY_WORKOUT: 'SPLIT_3_DAY_WORKOUT',
@@ -10,14 +12,14 @@ export const SPLIT_TYPE = {
   [SPLIT_TYPE_KEY.SPLIT_5_DAY_WORKOUT]: '5분할',
 };
 
-export const EXERCISE_PART = {
-  SHOULDER: '어깨',
-  ARM: '팔', // 이두 + 삼두
-  CHEST: '가슴',
-  BACK: '등',
+export const EXERCISE_PART: IndexableType<string> = {
   LOWER: '하체',
-  TRICEPS: '삼두',
+  BACK: '등',
+  CHEST: '가슴',
+  ARM: '팔', // 이두 + 삼두
+  SHOULDER: '어깨',
   BICEPS: '이두',
+  TRICEPS: '삼두',
 };
 
 export const SPLIT_3DAY_EXERCISE_PART = {
@@ -26,8 +28,14 @@ export const SPLIT_3DAY_EXERCISE_PART = {
   BACK_AND_TRICEPS: '등/삼두',
 };
 
-export const EXERCISE_PART_BY_SPLIT_TYPE = {
-  [SPLIT_TYPE_KEY.FULL_BODY_WORKOUT]: {},
-  [SPLIT_TYPE_KEY.SPLIT_3_DAY_WORKOUT]: SPLIT_3DAY_EXERCISE_PART,
-  [SPLIT_TYPE_KEY.SPLIT_5_DAY_WORKOUT]: EXERCISE_PART,
+export const EXERCISE_PART_OF_TAB_BY_SPLIT_TYPE = {
+  [SPLIT_TYPE.FULL_BODY_WORKOUT]: {},
+  [SPLIT_TYPE.SPLIT_3_DAY_WORKOUT]: SPLIT_3DAY_EXERCISE_PART,
+  [SPLIT_TYPE.SPLIT_5_DAY_WORKOUT]: EXERCISE_PART,
+};
+
+export const EXERCISE_SUGGESTION_SIZE_BY_SPLIT_TYPE = {
+  [SPLIT_TYPE.FULL_BODY_WORKOUT]: 1,
+  [SPLIT_TYPE.SPLIT_3_DAY_WORKOUT]: 2,
+  [SPLIT_TYPE.SPLIT_5_DAY_WORKOUT]: 3,
 };

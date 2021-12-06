@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { Children, cloneElement, ReactElement, useCallback, useEffect } from 'react';
+import React, { Children, cloneElement, ReactElement, useCallback, useEffect } from 'react';
 
 const KEY_EVENTS_BY_KEY: Record<string, string> = {
   Enter: 'handleEnter',
@@ -80,4 +80,4 @@ const Keyboard = ({ capture, target, children, handleKeyDown, ...restProps }: Ke
       });
 };
 
-export default Keyboard;
+export default React.memo(Keyboard);
