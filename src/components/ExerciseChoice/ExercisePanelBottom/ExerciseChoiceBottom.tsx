@@ -4,7 +4,7 @@ import style from './exerciseChoiceBottom.module.scss';
 import { Exercise } from '@/types';
 import Open from '@/assets/svg/open.svg';
 import { EXERCISE_ACTIVITY } from '@/consts';
-import { startActivity } from '@/utils/mobile/token';
+import { startActivity } from '@/utils/mobile/activity';
 
 interface Props {
   selectedExercises: Map<string, Set<Exercise>>;
