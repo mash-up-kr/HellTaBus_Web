@@ -15,10 +15,7 @@ const getTransactionId = (() => {
   };
 })();
 
-let onBackButtonPressed = (result_cd, result_msg, extra) => {
-  console.log(result_cd + result_msg + JSON.stringify(extra));
-  console.log('뒤로가기 버튼 웹에서 작동 커스텀 전 상태');
-};
+let onBackButtonPressed = () => {};
 
 export const customOnBackButtonPressed = (customFunction) => {
   onBackButtonPressed = customFunction;

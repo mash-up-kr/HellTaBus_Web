@@ -34,13 +34,26 @@ const ExerciseDescriptionModalDialog = ({
 
   useEffect(() => {
     customOnBackButtonPressed(() => {
-      console.log('custom버튼 적용됨');
       setIsDescriptionModalOpen(false);
     });
+
+    setBackButtonReceive(
+      { target: 'web' },
+      (result_cd: string, result_msg: string, extra: JSON) => {
+        console.log(result_cd + result_msg + JSON.stringify(extra));
+      }
+    );
     return () => {
-      customOnBackButtonPressed(() => {
-        console.log('custom버튼 적용 해제됨');
-      });
+      customOnBackButtonPressed(() => {});
+
+      setBackButtonReceive(
+        {
+          target: 'android',
+        },
+        (result_cd: string, result_msg: string, extra: JSON) => {
+          console.log(result_cd + result_msg + JSON.stringify(extra));
+        }
+      );
     };
   });
 

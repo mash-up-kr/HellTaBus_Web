@@ -31,16 +31,6 @@ const ExerciseRoutine = () => {
     });
   };
 
-  useEffect(() => {
-    const options = {
-      target: 'web',
-    };
-
-    setBackButtonReceive(options, (result_cd: string, result_msg: string, extra: JSON) => {
-      console.log(result_cd + result_msg + JSON.stringify(extra));
-    });
-  });
-
   return (
     <section className={s_exerciseRoutine}>
       <h2 className="s_a11yHidden">헬스 루틴 추천</h2>
