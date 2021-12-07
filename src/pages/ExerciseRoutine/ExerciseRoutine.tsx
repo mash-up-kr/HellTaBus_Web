@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import style from './exerciseRoutine.module.scss';
 import { HistorySection, RecommendSection } from '@/components';
 import { useExerciseRoutine } from '@/hooks';
 import Setting from '@/assets/svg/setting.svg';
 import Calendar from '@/assets/svg/calendar.svg';
-import { startActivity } from '@/utils/mobile/action';
+import { setBackButtonReceive, startActivity } from '@/utils/mobile/action';
 import { HISTORY_ACTIVITY, SETTING_ACTIVITY } from '@/consts';
 
 const { s_exerciseRoutine, s_navigator } = style;
@@ -30,6 +30,16 @@ const ExerciseRoutine = () => {
       console.log(resCodes + resMsg + JSON.stringify(resData));
     });
   };
+
+  useEffect(() => {
+    const options = {
+      target: 'web',
+    };
+
+    setBackButtonReceive(options, (result_cd: string, result_msg: string, extra: JSON) => {
+      console.log(result_cd + result_msg + JSON.stringify(extra));
+    });
+  });
 
   return (
     <section className={s_exerciseRoutine}>

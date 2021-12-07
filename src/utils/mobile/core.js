@@ -15,6 +15,15 @@ const getTransactionId = (() => {
   };
 })();
 
+let onBackButtonPressed = (result_cd, result_msg, extra) => {
+  console.log(result_cd + result_msg + JSON.stringify(extra));
+  console.log('뒤로가기 버튼 웹에서 작동 커스텀 전 상태');
+};
+
+export const customOnBackButtonPressed = (customFunction) => {
+  onBackButtonPressed = customFunction;
+};
+
 const healthyup = (() => {
   const transactions = {};
 
@@ -35,7 +44,7 @@ const healthyup = (() => {
           transactions[trx_id].call(eventData.result_cd, eventData.result_msg, eventData.extra);
           break;
         case 'BACK_BUTTON_EVENT':
-          healthyup.onBackButtonPressed(eventData.result_cd, eventData.result_msg, eventData.extra);
+          onBackButtonPressed(eventData.result_cd, eventData.result_msg, eventData.extra);
           break;
         default:
           break;
