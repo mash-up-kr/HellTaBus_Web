@@ -4,7 +4,7 @@ import { HistorySection, RecommendSection } from '@/components';
 import { useExerciseRoutine } from '@/hooks';
 import Setting from '@/assets/svg/setting.svg';
 import Calendar from '@/assets/svg/calendar.svg';
-import { startActivity } from '@/utils/mobile/activity';
+import { startActivity } from '@/utils/mobile/action';
 import { HISTORY_ACTIVITY, SETTING_ACTIVITY } from '@/consts';
 
 const { s_exerciseRoutine, s_navigator } = style;
