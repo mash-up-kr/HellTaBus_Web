@@ -8,7 +8,7 @@ import dumbbell from '@/assets/images/dumbbell.png';
 import gripper from '@/assets/images/gripper.png';
 import skippingRope from '@/assets/images/skipping-rope.png';
 import { EXERCISE_ACTIVITY, EXERCISE_CHOICE_PAGE, EXERCISE_PART, SPLIT_TYPE } from '@/consts';
-import { startActivity } from '@/utils/mobile/token';
+import { startActivity } from '@/utils/mobile/action';
 
 interface Props {
   suggestionExerciseList: Exercise[];

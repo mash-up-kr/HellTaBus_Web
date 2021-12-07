@@ -7,7 +7,7 @@ import SearchExercise from '../SearchExercise/SearchExercise';
 import { SurveyFields, CustomButtonType } from '@/types';
 import { usePatchUserInfo } from '@/hooks/api';
 import { HOME_ACTIVITY } from '@/consts';
-import { startActivity } from '@/utils/mobile/token';
+import { startActivity } from '@/utils/mobile/action';
 import { CustomButton } from '@/components';
 
 const { s_container, s_lottieContainer, s_content } = style;

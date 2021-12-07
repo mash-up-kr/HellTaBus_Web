@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { Modal } from '@/components';
 import Arrow from '@/assets/svg/right-arrow.svg';
 import style from './exerciseDescriptionModalDialog.module.scss';
+import { setBackButtonReceive } from '@/utils/mobile/action';
+import { customOnBackButtonPressed } from '@/utils/mobile/core';
 
 interface Props {
   setIsDescriptionModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -29,6 +31,18 @@ const ExerciseDescriptionModalDialog = ({
   };
 
   const { caution, how, what, where } = exerciseDescription;
+
+  useEffect(() => {
+    customOnBackButtonPressed(() => {
+      console.log('custom버튼 적용됨');
+      setIsDescriptionModalOpen(false);
+    });
+    return () => {
+      customOnBackButtonPressed(() => {
+        console.log('custom버튼 적용 해제됨');
+      });
+    };
+  });
 
   return (
     <Modal deemBackground="rgba(0, 0, 0, 0.9)">
