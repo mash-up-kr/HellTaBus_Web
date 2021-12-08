@@ -11,3 +11,4 @@ export { default as Modal } from './Modal/Modal';
 export { default as ConfirmModalDialog } from './ConfirmModalDialog/ConfirmModalDialog';
 export { default as ErrorPage } from './ErrorPage/ErrorPage';
 export { default as ExerciseDescriptionModalDialog } from './ExerciseDescriptionModalDialog/ExerciseDescriptionModalDialog';
+export { default as ResponsiveImage } from './ResponsiveImage/ResponsiveImage';
