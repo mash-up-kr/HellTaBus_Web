@@ -29,12 +29,13 @@ const dummyExerciseDescription = {
 const RecommendCarousel = ({ recommendList, className }: Props) => {
   return (
     <Carousel className={classNames(className, s_routineCarousel)}>
-      {recommendList?.map(({ imageLink, name }, index) => (
+      {recommendList?.map(({ imageLink, name, placeHolderImage }, index) => (
         <ExerciseCard
           imageLink={imageLink}
           exerciseName={name}
           key={`exerciseCard-${index}`}
           exerciseDescription={dummyExerciseDescription}
+          placeHolderImage={placeHolderImage}
         />
       ))}
     </Carousel>
