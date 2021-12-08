@@ -1,3 +1,10 @@
+export interface ExerciseDescription {
+  what: string;
+  where: string;
+  how: string[];
+  caution: string;
+}
+
 export interface Exercise {
   id: number;
   name: string;
@@ -10,6 +17,8 @@ export interface Exercise {
   setBreakTime: number;
   breakTime: number;
   imageLink: string;
+  placeHolderImage: string;
+  description: ExerciseDescription;
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;
