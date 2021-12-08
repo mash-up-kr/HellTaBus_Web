@@ -11,17 +11,19 @@
 }
 
 .s_genderButton {
+  align-items: center;
   background-color: color.$background;
   border: 0.1rem solid color.$disable;
   border-radius: 1.2rem;
   color: color.$disable;
-  display: inline-block;
+  display: flex;
   font-size: 1.6rem;
   font-weight: 700;
   height: 5.4rem;
+  justify-content: center;
+  line-height: 5.4rem;
   margin: 0 0.2rem;
   padding: 1.6rem 0;
-  text-align: center;
   width: 14.6rem;
 }
 

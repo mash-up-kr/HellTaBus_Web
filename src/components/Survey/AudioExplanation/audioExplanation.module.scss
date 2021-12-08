@@ -11,11 +11,9 @@
   .s_mainTitle {
     font-size: 2rem;
     font-weight: 700;
+    line-height: 3.2rem;
+    margin-top: 4.8rem;
     width: 100%;
-    margin : {
-      bottom: 0.1rem;
-      top: 2.4rem;
-    }
 
     .s_highlight {
       color: color.$primary;
@@ -26,10 +24,9 @@
     color: color.$primaryVariant4;
     font-size: 1.4rem;
     font-weight: 400;
+    line-height: 1.9rem;
+    margin-bottom: 4rem;
     width: 100%;
-    margin : {
-      bottom: 3.9rem;
-    }
   }
 
   input::placeholder {
@@ -97,6 +94,7 @@
 
 .s_selectedAudioSpeed {
   background-color: color.$primaryVariant1;
+  border: 0.1rem solid color.$primary;
   color: color.$primary;
   font-weight: 700;
 }
