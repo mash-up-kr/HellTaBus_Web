@@ -18,7 +18,6 @@ const {
   s_selectedFunnyAudioCoach,
   s_selectedComfortableAudioCoach,
   s_nextButton,
-  s_pauseAnimation,
 } = style;
 
 interface Props {
@@ -38,55 +37,33 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
   const [animationTimerId, setAnimationTimerId] = useState<NodeJS.Timeout | null>(null);
   const audios = { SCARY, FUNNY, COMFORTABLE };
 
-  // const createAudioCoachStateChangeHandler = (userAudioCoach: string) => () => {
-  //   setAudioCoach(userAudioCoach);
-  //   setIsDisabled(false);
-  //   setCurrentlyPlayingAudio(userAudioCoach);
-
-  //   Object.entries(audios).forEach(([audioKey, audioSound]) => {
-  //     if (audioKey === userAudioCoach) {
-  //       if (animationTimerId) {
-  //         audioSound.pause();
-  //         // eslint-disable-next-line no-param-reassign
-  //         audioSound.currentTime = 0;
-  //         setCurrentlyPlayingAudio(() => '');
-  //         console.log('sdfdsf', currentlyPlayingAudio);
-  //         clearTimeout(animationTimerId);
-  //         setAnimationTimerId(null);
-  //       }
-  //       console.log(animationTimerId);
-
-  //       setCurrentlyPlayingAudio(audioKey);
-  //       setDurationTime(`${audioSound.duration}s`);
-
-  //       audioSound.play();
-  //       const timerId = setTimeout(() => {
-  //         setCurrentlyPlayingAudio('');
-  //       }, audioSound.duration * 1000);
-  //       console.log('tiemrID', timerId);
-
-  //       setAnimationTimerId(timerId);
-  //     } else {
-  //       audioSound.pause();
-  //       // eslint-disable-next-line no-param-reassign
-  //       audioSound.currentTime = 0;
-  //     }
-  //   });
-  // };
-
   const createAudioCoachStateChangeHandler = (userAudioCoach: string) => () => {
     setAudioCoach(userAudioCoach);
     setIsDisabled(false);
-
     setCurrentlyPlayingAudio(userAudioCoach);
+
     Object.entries(audios).forEach(([audioKey, audioSound]) => {
       if (audioKey === userAudioCoach) {
+        if (animationTimerId) {
+          audioSound.pause();
+          // eslint-disable-next-line no-param-reassign
+          audioSound.currentTime = 0;
+          setCurrentlyPlayingAudio(() => '');
+          clearTimeout(animationTimerId);
+          setAnimationTimerId(null);
+        }
+        console.log(animationTimerId);
+
+        setCurrentlyPlayingAudio(audioKey);
         setDurationTime(`${audioSound.duration}s`);
 
         audioSound.play();
-        setTimeout(() => {
+        const timerId = setTimeout(() => {
           setCurrentlyPlayingAudio('');
         }, audioSound.duration * 1000);
+        console.log('tiemrID', timerId);
+
+        setAnimationTimerId(timerId);
       } else {
         audioSound.pause();
         // eslint-disable-next-line no-param-reassign
@@ -94,6 +71,27 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
       }
     });
   };
+
+  // const createAudioCoachStateChangeHandler = (userAudioCoach: string) => () => {
+  //   setAudioCoach(userAudioCoach);
+  //   setIsDisabled(false);
+
+  //   setCurrentlyPlayingAudio(userAudioCoach);
+  //   Object.entries(audios).forEach(([audioKey, audioSound]) => {
+  //     if (audioKey === userAudioCoach) {
+  //       setDurationTime(`${audioSound.duration}s`);
+
+  //       audioSound.play();
+  //       setTimeout(() => {
+  //         setCurrentlyPlayingAudio('');
+  //       }, audioSound.duration * 1000);
+  //     } else {
+  //       audioSound.pause();
+  //       // eslint-disable-next-line no-param-reassign
+  //       audioSound.currentTime = 0;
+  //     }
+  //   });
+  // };
 
   return (
     <section className={classNames(s_container)}>

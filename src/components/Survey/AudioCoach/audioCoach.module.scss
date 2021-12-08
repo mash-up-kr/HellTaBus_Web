@@ -119,10 +119,6 @@
   animation-name: slidein;
 }
 
-.s_pauseAnimation {
-  animation-play-state: paused;
-}
-
 @keyframes slidein {
   0% {
     /* stylelint-disable-next-line declaration-colon-newline-after */
