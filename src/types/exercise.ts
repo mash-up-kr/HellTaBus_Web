@@ -18,7 +18,7 @@ export interface Exercise {
   breakTime: number;
   imageLink: string;
   placeHolderImage: string;
-  description: ExerciseDescription;
+  description: string;
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;
