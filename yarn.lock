@@ -2126,6 +2126,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash-es@npm:^4.17.5":
+  version: 4.17.5
+  resolution: "@types/lodash-es@npm:4.17.5"
+  dependencies:
+    "@types/lodash": "*"
+  checksum: 8910f646310aa008bb45071619fe85abf917bbc2c7cc0af883a971de261723247695a58dd966bfa9defd946cef79811d8b075eb6f0af12343080ab0ae6614e12
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:*":
+  version: 4.14.177
+  resolution: "@types/lodash@npm:4.14.177"
+  checksum: 00f9eb300ed5219cfbabb3448d4a71744895edad60dcfda9f028c0808a50eb6ad1ca9f673b56a85f85668a4ea54b9870643625468a747039c435643e52253a75
+  languageName: node
+  linkType: hard
+
 "@types/mdast@npm:^3.0.0":
   version: 3.0.10
   resolution: "@types/mdast@npm:3.0.10"
@@ -5847,6 +5863,7 @@ __metadata:
     "@testing-library/react": ^12.1.2
     "@testing-library/user-event": ^13.5.0
     "@types/jest": ^27.0.2
+    "@types/lodash-es": ^4.17.5
     "@types/node": ^16.11.7
     "@types/react": ^17.0.19
     "@types/react-dom": ^17.0.9
@@ -5883,6 +5900,7 @@ __metadata:
     husky: ^7.0.2
     jest: ^27.0.6
     lint-staged: ^11.1.2
+    lodash-es: ^4.17.21
     mini-css-extract-plugin: ^2.3.0
     postcss: ^8.3.8
     postcss-fail-on-warn: ^0.2.1
@@ -5893,6 +5911,7 @@ __metadata:
     react: ^17.0.2
     react-dom: ^17.0.2
     react-lottie: ^1.2.3
+    react-progressive-image: ^0.6.0
     react-query: ^3.31.0
     react-router-dom: ^5.3.0
     sass: ^1.38.0
@@ -7636,6 +7655,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash-es@npm:^4.17.21":
+  version: 4.17.21
+  resolution: "lodash-es@npm:4.17.21"
+  checksum: 05cbffad6e2adbb331a4e16fbd826e7faee403a1a04873b82b42c0f22090f280839f85b95393f487c1303c8a3d2a010048bf06151a6cbe03eee4d388fb0a12d2
+  languageName: node
+  linkType: hard
+
 "lodash.debounce@npm:^4.0.8":
   version: 4.0.8
   resolution: "lodash.debounce@npm:4.0.8"
@@ -9346,6 +9372,16 @@ __metadata:
   peerDependencies:
     react: ^0.14.7 || ^15.0.0 || ^16.0.0
   checksum: 05326e40b45cb1f52efe324386875858cec4725392d98033f767566c2f101bdbf59111a42108596ef63c96c897f13cf8d3c612e7a288d0dee3e1b7fb1a7911a2
+  languageName: node
+  linkType: hard
+
+"react-progressive-image@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "react-progressive-image@npm:0.6.0"
+  peerDependencies:
+    react: ^15.0.0-0 || ^16.0.0-0
+    react-dom: ^15.0.0-0 || ^16.0.0-0
+  checksum: 9ed79d7ffd7ebc249109bce18a8058317718a03c207ca3c904fc114e2ebf62f7b23ecc959c7a7e13c91fa0cf7f5ac5eaceb42114240c3dd9c763b0d08275fa36
   languageName: node
   linkType: hard
 
