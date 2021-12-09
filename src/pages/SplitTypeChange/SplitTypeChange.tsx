@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Header, SplitType } from '@/components';
-import { useSurveyForm } from '@/hooks';
+import { useHistory } from 'react-router-dom';
+import { Header, Loading, SplitType } from '@/components';
+import { useSplitTypeChange, useSurveyForm } from '@/hooks';
 import style from './splitTypeChange.module.scss';
 
 const SURVEY_STATE_KEY = {
@@ -14,14 +15,22 @@ const SURVEY_STATE_KEY = {
 const { s_componentContainer } = style;
 
 const SplitTypeChange = () => {
-  const { surveyState, setSurveyStateByKey } = useSurveyForm();
+  const history = useHistory();
 
-  const handleCloseCurrentPage = () => {
-    // TODO: 안드로이드랑 협의 후 삭제 예정
+  const { surveyState, setSurveyStateByKey } = useSurveyForm();
+  const { patchUserInfo, isPatchUserInfoLoading } = useSplitTypeChange();
+
+  const handleCloseCurrentPage: React.MouseEventHandler<HTMLButtonElement> = () => {
+    history.goBack();
+  };
+
+  const handlePatchuserInfo: React.MouseEventHandler<HTMLButtonElement> = () => {
+    patchUserInfo(surveyState.splitType);
   };
 
   return (
     <>
+      {isPatchUserInfoLoading && <Loading />}
       <Header handleClickBackButton={handleCloseCurrentPage} />
       <form>
         <div className={classNames(s_componentContainer)}>
@@ -29,7 +38,7 @@ const SplitTypeChange = () => {
           <SplitType
             splitType={surveyState.splitType}
             setSplitType={setSurveyStateByKey(SURVEY_STATE_KEY.SPLIT_TYPE)}
-            handleClickCustomEvent={handleCloseCurrentPage}
+            handleClickCustomEvent={handlePatchuserInfo}
             buttonType="save"
             hasProgressBar={false}
           />
