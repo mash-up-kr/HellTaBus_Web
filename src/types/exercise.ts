@@ -17,6 +17,7 @@ export interface Exercise {
   setBreakTime: number;
   breakTime: number;
   imageLink: string;
+  placeHolderImage: string;
   description: string;
   createdAt: string;
   updatedAt: string;

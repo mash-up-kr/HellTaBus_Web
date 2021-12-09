@@ -14,7 +14,7 @@ const { s_routineCarousel } = style;
 const RecommendCarousel = ({ recommendList, className }: Props) => {
   return (
     <Carousel className={classNames(className, s_routineCarousel)}>
-      {recommendList?.map(({ imageLink, name, description }, index) => {
+      {recommendList?.map(({ imageLink, name, description, placeHolderImage }, index) => {
         const exerciseDescription: ExerciseDescription = JSON.parse(description);
         return (
           <ExerciseCard
@@ -22,6 +22,7 @@ const RecommendCarousel = ({ recommendList, className }: Props) => {
             exerciseName={name}
             key={`exerciseCard-${index}`}
             exerciseDescription={exerciseDescription}
+            placeHolderImage={placeHolderImage}
           />
         );
       })}

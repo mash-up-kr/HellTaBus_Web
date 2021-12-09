@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
-import { ExerciseDescriptionModalDialog } from '@/components';
+import { ExerciseDescriptionModalDialog, ResponsiveImage } from '@/components';
 import style from './exerciseCard.module.scss';
 
 interface Props {
   imageLink: string;
   exerciseName: string;
   exerciseDescription: { what: string; where: string; how: string[]; caution: string };
+  placeHolderImage: string;
 }
 
 const { s_exercise, s_exerciseNameWraper, s_exerciseImage } = style;
 
-const ExerciseCard = ({ imageLink, exerciseName, exerciseDescription }: Props) => {
+const ExerciseCard = ({
+  imageLink,
+  exerciseName,
+  exerciseDescription,
+  placeHolderImage,
+}: Props) => {
   const [isDescriptionModalOpen, setIsDescriptionModalOpen] = useState(false);
 
   const handleOpenDescriptionModal: React.MouseEventHandler<HTMLButtonElement> = () => {
@@ -20,7 +26,12 @@ const ExerciseCard = ({ imageLink, exerciseName, exerciseDescription }: Props) =
     <>
       <article className={s_exercise}>
         <button type="button" onClick={handleOpenDescriptionModal}>
-          <img src={imageLink} alt={exerciseName} className={s_exerciseImage} />
+          <ResponsiveImage
+            src={imageLink}
+            alt={exerciseName}
+            className={s_exerciseImage}
+            placeHolderImage={placeHolderImage}
+          />
         </button>
         <div className={s_exerciseNameWraper}>
           <span>{exerciseName}</span>
