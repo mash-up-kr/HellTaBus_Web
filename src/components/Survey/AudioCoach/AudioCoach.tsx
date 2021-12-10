@@ -68,18 +68,18 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleClickCustomEvent, buttonT
           onClick={createAudioCoachStateChangeHandler('COMFORTABLE')}
         />
         <CustomLabel
-          htmlFor="funny"
+          htmlFor="kid"
           className={classNames(s_audioCoachButton, {
-            [s_selectedAudioCoach]: audioCoach === 'FUNNY',
+            [s_selectedAudioCoach]: audioCoach === 'KID',
           })}
         >
           운동을 잘아는 잼민이 코치
         </CustomLabel>
         <CustomInput
-          id="funny"
+          id="kid"
           type="radio"
           className={classNames('s_a11yHidden')}
-          onClick={createAudioCoachStateChangeHandler('FUNNY')}
+          onClick={createAudioCoachStateChangeHandler('KID')}
         />
       </div>
       <CustomButton
