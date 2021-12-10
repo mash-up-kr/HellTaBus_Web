@@ -27,7 +27,7 @@ const {
   s_dumbbell,
   s_gripper,
   s_skippingRope,
-  s_split_number,
+  s_splitType,
   s_routineMessage,
   s_exerciseStart,
   s_recommendCarousel,
@@ -72,7 +72,7 @@ const RecommendSection = ({
         <div className={classNames(s_routineMessage)}>
           {!isLoadingSuggestion && (
             <>
-              <strong className={classNames(s_split_number)}>{SPLIT_TYPE[splitType]}</strong>
+              <strong className={classNames(s_splitType)}>{SPLIT_TYPE[splitType]}</strong>
               <em>
                 {SPLIT_TYPE[splitType] === SPLIT_TYPE.FULL_BODY_WORKOUT
                   ? '오늘도 전신운동 하는 날 😄'
