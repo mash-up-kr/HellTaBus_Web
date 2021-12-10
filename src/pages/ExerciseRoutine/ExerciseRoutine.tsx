@@ -51,7 +51,7 @@ const ExerciseRoutine = () => {
           isLoadingExerciseHistory={isLoadingExerciseHistory}
         />
         <RecommendSection
-          splitType={userInfo?.splitType ?? 'FULL_BODY_WORKOUT'}
+          splitType={userInfo?.splitType}
           suggestionExerciseList={suggestionExerciseList}
           suggestionPartList={suggestionPartList}
           isLoadingSuggestion={isLoadingSuggestion}

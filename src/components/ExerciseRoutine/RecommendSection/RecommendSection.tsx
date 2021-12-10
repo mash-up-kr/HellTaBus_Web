@@ -16,7 +16,7 @@ import { BASE64_URI } from '@/assets/images/base64';
 interface Props {
   suggestionExerciseList: Exercise[];
   suggestionPartList: ExercisePartList;
-  splitType: SplitType;
+  splitType: SplitType | undefined;
   isLoadingSuggestion: boolean;
 }
 
@@ -72,9 +72,11 @@ const RecommendSection = ({
         <div className={classNames(s_routineMessage)}>
           {!isLoadingSuggestion && (
             <>
-              <strong className={classNames(s_splitType)}>{SPLIT_TYPE[splitType]}</strong>
+              <strong className={classNames(s_splitType)}>
+                {splitType && SPLIT_TYPE[splitType]}
+              </strong>
               <em>
-                {SPLIT_TYPE[splitType] === SPLIT_TYPE.FULL_BODY_WORKOUT
+                {splitType && SPLIT_TYPE[splitType] === SPLIT_TYPE.FULL_BODY_WORKOUT
                   ? '오늘도 전신운동 하는 날 😄'
                   : `오늘은 ${todayPartList.join('')} 하는 날 😄`}
               </em>
