@@ -82,7 +82,7 @@
 }
 
 .s_audioCoachButton {
-  background-color: color.$background;
+  background-color: color.$primaryVariant1;
   border: 0.1rem solid color.$disable;
   border-radius: 1.2rem;
   color: color.$disable;
@@ -96,8 +96,46 @@
 }
 
 .s_selectedAudioCoach {
-  background: linear-gradient(to right, color.$primaryVariant2 5%, color.$primaryVariant1 55%);
+  // animation-name: slidein;
+  animation-timing-function: linear;
+  background-size: 200% 100%;
   border: 0.15rem solid color.$primary;
   color: color.$primary;
   font-weight: 700;
+}
+
+.s_selectedScaryAudioCoach {
+  // animation-duration: 4.14s;
+  animation-name: slidein;
+}
+
+.s_selectedKidAudioCoach {
+  // animation-duration: 5.76s;
+  animation-name: slidein;
+}
+
+.s_selectedComfortableAudioCoach {
+  // animation-duration: 2.376s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  0% {
+    /* stylelint-disable-next-line declaration-colon-newline-after */
+    background-image: linear-gradient(
+      to right,
+      color.$primaryVariant2 5%,
+      color.$primaryVariant1 55%
+    );
+    background-position: 100% 0;
+  }
+  100% {
+    /* stylelint-disable-next-line declaration-colon-newline-after */
+    background-image: linear-gradient(
+      to right,
+      color.$primaryVariant2 5%,
+      color.$primaryVariant1 55%
+    );
+    background-position: 0 0;
+  }
 }

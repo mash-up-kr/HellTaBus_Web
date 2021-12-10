@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './audioCoach.module.scss';
+import scary from '@/assets/audio/scary.mp3';
+import kid from '@/assets/audio/kid.mp3';
+import comfortable from '@/assets/audio/comfortable.mp3';
 import { CustomInput, CustomLabel, CustomButton } from '@/components';
 import { CustomButtonType } from '@/types';
 
@@ -12,6 +15,9 @@ const {
   s_radioButtonContainer,
   s_audioCoachButton,
   s_selectedAudioCoach,
+  s_selectedScaryAudioCoach,
+  s_selectedKidAudioCoach,
+  s_selectedComfortableAudioCoach,
 } = style;
 
 interface Props {
@@ -21,13 +27,80 @@ interface Props {
   buttonType: CustomButtonType;
 }
 
+const SCARY = new Audio(scary);
+const KID = new Audio(kid);
+const COMFORTABLE = new Audio(comfortable);
+
 const AudioCoach = ({ audioCoach, setAudioCoach, handleClickCustomEvent, buttonType }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!audioCoach);
+  const [currentlyPlayingAudio, setCurrentlyPlayingAudio] = useState('');
+  const [durationTime, setDurationTime] = useState('0s');
+  const [animationTimerId, setAnimationTimerId] = useState<NodeJS.Timeout | null>(null);
+  const audios = { SCARY, KID, COMFORTABLE };
 
   const createAudioCoachStateChangeHandler = (userAudioCoach: string) => () => {
     setAudioCoach(userAudioCoach);
     setIsDisabled(false);
+
+    // MEMO(@mango906): 아래 코드가 이해되지 않으실텐데, 해당 이슈를 확인해주세요!
+    // https://github.com/mash-up-kr/HellTaBus_Web/issues/103
+    setTimeout(() => {
+      setCurrentlyPlayingAudio('');
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      document.body.offsetHeight;
+      setCurrentlyPlayingAudio(userAudioCoach);
+    });
+
+    Object.entries(audios).forEach(([audioKey, audioSound]) => {
+      if (audioKey === userAudioCoach) {
+        if (animationTimerId) {
+          audioSound.pause();
+          // eslint-disable-next-line no-param-reassign
+          audioSound.currentTime = 0;
+          setCurrentlyPlayingAudio(() => '');
+          clearTimeout(animationTimerId);
+          setAnimationTimerId(null);
+        }
+        console.log(animationTimerId);
+
+        setCurrentlyPlayingAudio(audioKey);
+        setDurationTime(`${audioSound.duration}s`);
+
+        audioSound.play();
+        const timerId = setTimeout(() => {
+          setCurrentlyPlayingAudio('');
+        }, audioSound.duration * 1000);
+        console.log('tiemrID', timerId);
+
+        setAnimationTimerId(timerId);
+      } else {
+        audioSound.pause();
+        // eslint-disable-next-line no-param-reassign
+        audioSound.currentTime = 0;
+      }
+    });
   };
+
+  // const createAudioCoachStateChangeHandler = (userAudioCoach: string) => () => {
+  //   setAudioCoach(userAudioCoach);
+  //   setIsDisabled(false);
+
+  //   setCurrentlyPlayingAudio(userAudioCoach);
+  //   Object.entries(audios).forEach(([audioKey, audioSound]) => {
+  //     if (audioKey === userAudioCoach) {
+  //       setDurationTime(`${audioSound.duration}s`);
+
+  //       audioSound.play();
+  //       setTimeout(() => {
+  //         setCurrentlyPlayingAudio('');
+  //       }, audioSound.duration * 1000);
+  //     } else {
+  //       audioSound.pause();
+  //       // eslint-disable-next-line no-param-reassign
+  //       audioSound.currentTime = 0;
+  //     }
+  //   });
+  // };
 
   return (
     <section className={classNames(s_container)}>
@@ -40,8 +113,10 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleClickCustomEvent, buttonT
       <div className={classNames(s_radioButtonContainer)}>
         <CustomLabel
           htmlFor="scary"
+          style={currentlyPlayingAudio === 'SCARY' ? { animationDuration: durationTime } : {}}
           className={classNames(s_audioCoachButton, {
             [s_selectedAudioCoach]: audioCoach === 'SCARY',
+            [s_selectedScaryAudioCoach]: currentlyPlayingAudio === 'SCARY',
           })}
         >
           교관같이 무서운 코치
@@ -52,25 +127,30 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleClickCustomEvent, buttonT
           className={classNames('s_a11yHidden')}
           onClick={createAudioCoachStateChangeHandler('SCARY')}
         />
+
         <CustomLabel
           htmlFor="comfortable"
+          style={currentlyPlayingAudio === 'COMFORTABLE' ? { animationDuration: durationTime } : {}}
           className={classNames(s_audioCoachButton, {
             [s_selectedAudioCoach]: audioCoach === 'COMFORTABLE',
+            [s_selectedComfortableAudioCoach]: currentlyPlayingAudio === 'COMFORTABLE',
           })}
         >
           편안하게 운동을 도와주는 코치
         </CustomLabel>
-
         <CustomInput
           id="comfortable"
           type="radio"
           className={classNames('s_a11yHidden')}
           onClick={createAudioCoachStateChangeHandler('COMFORTABLE')}
         />
+
         <CustomLabel
           htmlFor="kid"
+          style={currentlyPlayingAudio === 'KID' ? { animationDuration: durationTime } : {}}
           className={classNames(s_audioCoachButton, {
             [s_selectedAudioCoach]: audioCoach === 'KID',
+            [s_selectedKidAudioCoach]: currentlyPlayingAudio === 'KID',
           })}
         >
           운동을 잘아는 잼민이 코치

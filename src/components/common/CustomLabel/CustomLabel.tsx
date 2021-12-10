@@ -4,11 +4,12 @@ interface Props {
   htmlFor: string;
   className?: string;
   children?: ReactNode;
+  style?: React.CSSProperties;
 }
 
-const CustomLabel = ({ htmlFor, className, children }: Props) => {
+const CustomLabel = ({ htmlFor, className, children, style }: Props) => {
   return (
-    <label htmlFor={htmlFor} className={className}>
+    <label htmlFor={htmlFor} className={className} style={style}>
       {children}
     </label>
   );
