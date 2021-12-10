@@ -1,20 +1,37 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
-import { Keyboard } from '@/components';
+import { ExerciseModifyConfirmDialog, Keyboard } from '@/components';
 import style from './tabs.module.scss';
 import { useTabs } from '@/hooks';
-import { Tab } from '@/types';
+import { Exercise, Tab } from '@/types';
 
 interface TabsProps {
   children: ReactNode;
   headers: Tab[];
   className?: string;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  handleCustomClickTabHeader?: Function;
+  isModifyConfirmDialogOpen: boolean;
+  setIsModifyConfirmDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedTabIndex: (index: number) => void;
+  clickedIndex: number;
+  setSelectedExercises: React.Dispatch<React.SetStateAction<Map<string, Set<Exercise>>>>;
 }
 
 const { s_tabs, s_tabList, s_tabButtonWrapper, s_tabButton, s_selcted, s_circle, s_tabPanel } =
   style;
 
-const Tabs = ({ children, headers, className }: TabsProps) => {
+const Tabs = ({
+  children,
+  headers,
+  className,
+  handleCustomClickTabHeader,
+  isModifyConfirmDialogOpen,
+  setIsModifyConfirmDialogOpen,
+  setSelectedTabIndex,
+  clickedIndex,
+  setSelectedExercises,
+}: TabsProps) => {
   const {
     tabListRefs,
     isSelected,
@@ -25,6 +42,11 @@ const Tabs = ({ children, headers, className }: TabsProps) => {
   } = useTabs(headers.length);
 
   const getPanelId = (id: string) => `${id}-tab`;
+  const handleClick = (index: number) => {
+    if (handleCustomClickTabHeader) {
+      handleCustomClickTabHeader(index, selectItem);
+    }
+  };
 
   return (
     <div className={classNames(s_tabs, className)}>
@@ -48,7 +70,7 @@ const Tabs = ({ children, headers, className }: TabsProps) => {
                 aria-controls={getPanelId(tab.id)}
                 aria-selected={isSelected(index)}
                 tabIndex={isSelected(index) ? 0 : -1}
-                onClick={() => selectItem(index)}
+                onClick={() => handleClick(index)}
               >
                 {tab.title}
               </button>
@@ -73,6 +95,18 @@ const Tabs = ({ children, headers, className }: TabsProps) => {
             </div>
           ))
         : null}
+
+      {isModifyConfirmDialogOpen && (
+        <ExerciseModifyConfirmDialog
+          handleCancel={() => setIsModifyConfirmDialogOpen(false)}
+          handleApprove={() => {
+            selectItem(clickedIndex);
+            setSelectedTabIndex(clickedIndex);
+            setSelectedExercises(new Map());
+            setIsModifyConfirmDialogOpen(false);
+          }}
+        />
+      )}
     </div>
   );
 };
