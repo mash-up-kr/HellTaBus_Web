@@ -15,10 +15,11 @@ const useSplitTypeChange = () => {
     isLoading: isPatchUserInfoLoading,
     mutate,
   } = usePatchUserInfo({
-    onSuccess: () => {
+    onSuccess: (data) => {
       queryClient.invalidateQueries('userInfo');
+
       setBackButtonReceive(
-        { target: 'android' },
+        { target: 'android', isUpdated: true, updatedSplitType: data.splitType },
         (result_cd: string, result_msg: string, extra: JSON) => {
           console.log(result_cd + result_msg + JSON.stringify(extra));
         }

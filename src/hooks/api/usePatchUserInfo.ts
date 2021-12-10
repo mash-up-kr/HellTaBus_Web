@@ -1,9 +1,11 @@
 import { useMutation } from 'react-query';
 import { patchUserInfo } from '@/api';
-import { SurveyFields } from '@/types';
+import { SurveyFields, User } from '@/types';
 
 interface Options {
-  onSuccess: () => void;
+  onSuccess:
+    | ((data: User, variables: SurveyFields, context: unknown) => void | Promise<unknown>)
+    | undefined;
 }
 
 const usePatchUserInfo = ({ onSuccess }: Options) => {
