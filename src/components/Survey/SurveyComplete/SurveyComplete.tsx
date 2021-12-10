@@ -26,7 +26,7 @@ const SurveyComplete = ({ surveyState, buttonType }: Props) => {
   };
 
   useEffect(() => {
-    console.log(`최종 survey 상태: ${surveyState}`);
+    console.log('최종 survey 상태: ', surveyState);
 
     mutate(surveyState);
 
