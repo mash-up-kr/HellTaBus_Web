@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
 import { useMutation } from 'react-query';
 import { patchUserInfo } from '@/api';
 import { SurveyFields } from '@/types';
 
-const usePatchUserInfo = () => {
-  const { mutate, isLoading, error, isError } = useMutation((surveyState: SurveyFields) =>
-    patchUserInfo(surveyState)
+interface Options {
+  onSuccess: () => void;
+}
+
+const usePatchUserInfo = ({ onSuccess }: Options) => {
+  const { mutate, isLoading, error, isError } = useMutation(
+    (surveyState: SurveyFields) => patchUserInfo(surveyState),
+    {
+      onSuccess,
+    }
   );
 
   console.log(error);
@@ -15,7 +21,6 @@ const usePatchUserInfo = () => {
     isLoading,
     error,
     isError,
-    isPatchSuccess: !isLoading && !isError,
   };
 };
 

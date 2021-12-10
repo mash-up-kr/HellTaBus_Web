@@ -9,10 +9,18 @@ export const getUserInfo = (): Promise<User> =>
     })
     .catch(throwErrorMessage);
 
-export const patchUserInfo = (userInfo: SurveyFields) =>
+export const patchBaseUserInfo = (userInfo: SurveyFields) =>
   api
     .patch({
       url: '/user/my/base-information',
+      data: userInfo,
+    })
+    .catch(throwErrorMessage);
+
+export const patchUserInfo = (userInfo: SurveyFields) =>
+  api
+    .patch({
+      url: '/user/my',
       data: userInfo,
     })
     .catch(throwErrorMessage);

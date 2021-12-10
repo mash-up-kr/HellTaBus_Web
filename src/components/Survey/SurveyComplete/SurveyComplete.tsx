@@ -5,7 +5,7 @@ import style from './surveyComplete.module.scss';
 import complete from '@/assets/lottie/complete.json';
 import SearchExercise from '../SearchExercise/SearchExercise';
 import { SurveyFields, CustomButtonType } from '@/types';
-import { usePatchUserInfo } from '@/hooks/api';
+import { usePatchBaseUserInfo } from '@/hooks/api';
 import { HOME_ACTIVITY } from '@/consts';
 import { startActivity } from '@/utils/mobile/action';
 import { CustomButton } from '@/components';
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const SurveyComplete = ({ surveyState, buttonType }: Props) => {
-  const { mutate, isPatchSuccess } = usePatchUserInfo();
+  const { mutate, isPatchSuccess } = usePatchBaseUserInfo();
   const [dataAnalysisLoading, setDataAnalysisLoading] = useState(true);
 
   const lottieOptions = {
