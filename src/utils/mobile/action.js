@@ -7,3 +7,7 @@ export const startActivity = (options, callback) => {
 export const setBackButtonReceive = (options, callback) => {
   healthyup.callNative('setBackButtonReceive', options, callback);
 };
+
+export const closeWebView = (options, callback) => {
+  healthyup.callNative('closeWebView', options, callback);
+};
