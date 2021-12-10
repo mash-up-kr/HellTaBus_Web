@@ -17,6 +17,7 @@ interface Props {
   suggestionExerciseList: Exercise[];
   suggestionPartList: ExercisePartList;
   splitType: SplitType;
+  isLoadingSuggestion: boolean;
 }
 
 const {
@@ -34,7 +35,12 @@ const {
   s_rightArrow,
 } = style;
 
-const RecommendSection = ({ suggestionExerciseList, suggestionPartList, splitType }: Props) => {
+const RecommendSection = ({
+  suggestionExerciseList,
+  suggestionPartList,
+  splitType,
+  isLoadingSuggestion,
+}: Props) => {
   const todayPartList = suggestionPartList.map((part, index) =>
     part ? `${EXERCISE_PART[part]}${index !== suggestionPartList.length - 1 ? ', ' : ''}` : ''
   );
@@ -64,29 +70,38 @@ const RecommendSection = ({ suggestionExerciseList, suggestionPartList, splitTyp
       </div>
       <div className={classNames(s_recommendSection)}>
         <div className={classNames(s_routineMessage)}>
-          <strong className={classNames(s_split_number)}>{SPLIT_TYPE[splitType]}</strong>
-          <em>
-            {SPLIT_TYPE[splitType] === SPLIT_TYPE.FULL_BODY_WORKOUT
-              ? '오늘도 전신운동 하는 날 😄'
-              : `오늘은 ${todayPartList.join('')} 하는 날 😄`}
-          </em>
-          <span className={classNames('s_whiteSpace')}>이런 운동 어떠세요?</span>
+          {!isLoadingSuggestion && (
+            <>
+              <strong className={classNames(s_split_number)}>{SPLIT_TYPE[splitType]}</strong>
+              <em>
+                {SPLIT_TYPE[splitType] === SPLIT_TYPE.FULL_BODY_WORKOUT
+                  ? '오늘도 전신운동 하는 날 😄'
+                  : `오늘은 ${todayPartList.join('')} 하는 날 😄`}
+              </em>
+              <span className={classNames('s_whiteSpace')}>이런 운동 어떠세요?</span>
+            </>
+          )}
         </div>
         <button
           type="button"
           className={classNames(s_exerciseStart)}
           onClick={handleOpenExerciseActivity}
         >
-          운동시작 GO!
+          {!isLoadingSuggestion && '운동시작 GO!'}
         </button>
         <RecommendCarousel
           className={classNames(s_recommendCarousel)}
           recommendList={suggestionExerciseList}
+          isLoadingSuggestion={isLoadingSuggestion}
         />
         <div className={classNames(s_otherExercise)}>
           <Link to={EXERCISE_CHOICE_PAGE}>
-            다른 운동 선택
-            <RightArrow className={classNames(s_rightArrow)} width="8" height="12" />
+            {!isLoadingSuggestion && (
+              <>
+                다른 운동 선택
+                <RightArrow className={classNames(s_rightArrow)} width="8" height="12" />
+              </>
+            )}
           </Link>
         </div>
       </div>
