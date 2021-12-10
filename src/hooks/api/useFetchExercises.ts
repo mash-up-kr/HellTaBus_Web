@@ -7,6 +7,7 @@ const useFetchExercises = () => {
     'exercise',
     () => getExercises(),
     {
+      staleTime: 1000 * 60 * 60 * 2, // 2시간
       keepPreviousData: true,
       refetchOnWindowFocus: 'always',
     }
