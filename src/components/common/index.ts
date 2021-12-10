@@ -12,3 +12,4 @@ export { default as ConfirmModalDialog } from './ConfirmModalDialog/ConfirmModal
 export { default as ErrorPage } from './ErrorPage/ErrorPage';
 export { default as ExerciseDescriptionModalDialog } from './ExerciseDescriptionModalDialog/ExerciseDescriptionModalDialog';
 export { default as ResponsiveImage } from './ResponsiveImage/ResponsiveImage';
+export { default as LoadingIndicator } from './LoadingIndicator/LoadingIndicator';
