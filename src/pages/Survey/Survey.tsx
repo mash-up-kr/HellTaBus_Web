@@ -54,6 +54,8 @@ const Survey = () => {
   const [step, setStep] = useState<number>(MIN_STEP);
   const { surveyState, setSurveyStateByKey } = useSurveyForm();
 
+  console.log('currentSurveyState: ', surveyState);
+
   const handleSetPreviousPage = () => {
     history.goBack();
   };
