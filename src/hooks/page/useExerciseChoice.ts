@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useRef } from 'react';
 import { EXERCISE_PART, EXERCISE_PART_OF_TAB_BY_SPLIT_TYPE, SPLIT_TYPE } from '@/consts';
 import { useFetchExercises, useFetchUserInfo } from '@/hooks';
 import { Exercise, ExercisePanel, IndexableType, Tab } from '@/types';
@@ -93,8 +93,18 @@ const toTabPanelsOfSplit5DayWorkout = (exercises: Exercise[], tabHeaders: Tab[])
 };
 
 const useExerciseChoice = () => {
-  const { error: exerciseError, isError: isExerciseError, exercises } = useFetchExercises();
-  const { error: userInfoError, isError: isUserInfoError, userInfo } = useFetchUserInfo();
+  const {
+    isLoading: isExerciseLoading,
+    error: exerciseError,
+    isError: isExerciseError,
+    exercises,
+  } = useFetchExercises();
+  const {
+    isLoading: isUserLoading,
+    error: userInfoError,
+    isError: isUserInfoError,
+    userInfo,
+  } = useFetchUserInfo();
 
   const exerciseTabHeaders: Tab[] | null = useMemo(() => {
     if (!userInfo?.splitType) return null;
@@ -126,6 +136,28 @@ const useExerciseChoice = () => {
   }, [exercises, exerciseTabHeaders]);
 
   const [selectedExercises, setSelectedExercises] = useState<Map<string, Set<Exercise>>>(new Map());
+  const [isModifyConfirmDialogOpen, setIsModifyConfirmDialogOpen] = useState(false);
+
+  const [currentTabIndex, setCurrentTabIndex] = useState(0);
+  const [tabIndexWithSelectedExercises, setTabIndexWithSelectedExercises] = useState(new Set([0]));
+  const setSelectedTabIndex = (index: number) => {
+    setTabIndexWithSelectedExercises((prev) => {
+      const newSet = new Set(prev);
+      newSet.clear();
+      newSet.add(index);
+      return newSet;
+    });
+  };
+  const checkTabIndexWithSelectedExercises = (index: number) => {
+    const selectedExerciseCount = Array.from(selectedExercises.values()).reduce(
+      (acc, selectedExercisesBySplitType) => acc + selectedExercisesBySplitType.size,
+      0
+    );
+
+    if (selectedExerciseCount === 0) return true;
+
+    return tabIndexWithSelectedExercises.has(index);
+  };
 
   const sortExercisesByPriority = (_selectedExercises: Map<string, Set<Exercise>>) =>
     exerciseTabPanels.reduce(
@@ -147,6 +179,7 @@ const useExerciseChoice = () => {
     );
 
   return {
+    isLoading: isExerciseLoading || isUserLoading,
     error: exerciseError || userInfoError,
     isError: isExerciseError || isUserInfoError,
     exercises,
@@ -155,6 +188,12 @@ const useExerciseChoice = () => {
     splitType: SPLIT_TYPE[userInfo?.splitType as string],
     selectedExercises,
     setSelectedExercises,
+    isModifyConfirmDialogOpen,
+    setIsModifyConfirmDialogOpen,
+    currentTabIndex,
+    setCurrentTabIndex,
+    setSelectedTabIndex,
+    checkTabIndexWithSelectedExercises,
     sortExercisesByPriority,
   };
 };
