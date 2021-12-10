@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { useHistory } from 'react-router-dom';
 import { useExerciseChoice } from '@/hooks';
-import { Tabs, Header, ExercisePartCarousel, ExerciseChoiceBottom } from '@/components';
+import { Tabs, Header, ExercisePartCarousel, ExerciseChoiceBottom, Loading } from '@/components';
 import style from './exerciseChoice.module.scss';
 import { EXERCISE_SUGGESTION_SIZE_BY_SPLIT_TYPE } from '@/consts';
 
@@ -14,6 +14,7 @@ const ExerciseChoice = () => {
     history.goBack();
   };
   const {
+    isLoading,
     tabHeaders,
     tabPanels,
     splitType,
@@ -23,6 +24,10 @@ const ExerciseChoice = () => {
   } = useExerciseChoice();
   const maxSizeOfSelectableExercise =
     EXERCISE_SUGGESTION_SIZE_BY_SPLIT_TYPE[splitType] * tabPanels[0]?.length;
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className={classNames(s_exerciseChoice)}>

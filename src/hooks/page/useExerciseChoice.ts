@@ -93,8 +93,18 @@ const toTabPanelsOfSplit5DayWorkout = (exercises: Exercise[], tabHeaders: Tab[])
 };
 
 const useExerciseChoice = () => {
-  const { error: exerciseError, isError: isExerciseError, exercises } = useFetchExercises();
-  const { error: userInfoError, isError: isUserInfoError, userInfo } = useFetchUserInfo();
+  const {
+    isLoading: isExerciseLoading,
+    error: exerciseError,
+    isError: isExerciseError,
+    exercises,
+  } = useFetchExercises();
+  const {
+    isLoading: isUserLoading,
+    error: userInfoError,
+    isError: isUserInfoError,
+    userInfo,
+  } = useFetchUserInfo();
 
   const exerciseTabHeaders: Tab[] | null = useMemo(() => {
     if (!userInfo?.splitType) return null;
@@ -147,6 +157,7 @@ const useExerciseChoice = () => {
     );
 
   return {
+    isLoading: isExerciseLoading || isUserLoading,
     error: exerciseError || userInfoError,
     isError: isExerciseError || isUserInfoError,
     exercises,
