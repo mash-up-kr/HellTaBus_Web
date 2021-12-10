@@ -13,6 +13,7 @@
   z-index: 1000;
 
   .s_loadingIndicator {
+    background-color: color.$onPrimary;
     border-radius: 2rem;
     height: 5rem;
     width: 5rem;

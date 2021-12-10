@@ -12,13 +12,13 @@
     text-align: left;
 
     em {
+      display: inline-block;
       font-style: normal;
       font-weight: 500;
     }
 
     strong {
-      // TODO: 디자인 시안에 color변수로 추가되면 변경
-      color: #8f57eb;
+      color: color.$primaryVariant5;
     }
   }
 }

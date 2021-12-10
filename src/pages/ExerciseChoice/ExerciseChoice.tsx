@@ -22,7 +22,7 @@ const ExerciseChoice = () => {
     sortExercisesByPriority,
   } = useExerciseChoice();
   const maxSizeOfSelectableExercise =
-    EXERCISE_SUGGESTION_SIZE_BY_SPLIT_TYPE[splitType] * tabPanels[0].length;
+    EXERCISE_SUGGESTION_SIZE_BY_SPLIT_TYPE[splitType] * tabPanels[0]?.length;
 
   return (
     <div className={classNames(s_exerciseChoice)}>
