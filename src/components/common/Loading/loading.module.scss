@@ -2,13 +2,18 @@
 
 .s_loadingBackground {
   align-items: center;
-  background-color: color.$primaryVariant1;
+  background-color: transparent;
   display: flex;
   height: 100vh;
   justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
   width: 100vw;
+  z-index: 1000;
 
   .s_loadingIndicator {
+    background-color: color.$onPrimary;
     border-radius: 2rem;
     height: 5rem;
     width: 5rem;
