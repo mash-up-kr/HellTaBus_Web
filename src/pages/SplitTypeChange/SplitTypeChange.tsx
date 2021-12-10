@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { Header, Loading, SplitType } from '@/components';
 import { useSplitTypeChange, useSurveyForm } from '@/hooks';
 import style from './splitTypeChange.module.scss';
+import { setBackButtonReceive } from '@/utils/mobile/action';
 
 const SURVEY_STATE_KEY = {
   SPLIT_TYPE: 'splitType',
@@ -15,13 +16,16 @@ const SURVEY_STATE_KEY = {
 const { s_componentContainer } = style;
 
 const SplitTypeChange = () => {
-  const history = useHistory();
-
   const { surveyState, setSurveyStateByKey } = useSurveyForm();
   const { patchUserInfo, isPatchUserInfoLoading } = useSplitTypeChange();
 
   const handleCloseCurrentPage: React.MouseEventHandler<HTMLButtonElement> = () => {
-    history.goBack();
+    setBackButtonReceive(
+      { target: 'android' },
+      (result_cd: string, result_msg: string, extra: JSON) => {
+        console.log(result_cd + result_msg + JSON.stringify(extra));
+      }
+    );
   };
 
   const handlePatchuserInfo: React.MouseEventHandler<HTMLButtonElement> = () => {
