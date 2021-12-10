@@ -1,0 +1,20 @@
+@use '@/styles/color';
+
+.s_exerciseSkeleton {
+  & > div:first-child {
+    background: color.$onPrimary;
+    border-radius: 1.6rem;
+    height: 42.7777777771vw;
+    margin-bottom: 0.8rem;
+    max-height: 21.3230769228rem;
+    max-width: 18rem;
+    min-height: 15.4rem;
+    min-width: 13rem;
+    padding: 22px 10px;
+    width: 36.1111111115vw;
+  }
+
+  .s_exerciseNameSkeleton {
+    height: 1.6rem;
+  }
+}
