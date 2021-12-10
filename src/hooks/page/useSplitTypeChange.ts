@@ -1,9 +1,11 @@
 import { useHistory } from 'react-router-dom';
+import { useQueryClient } from 'react-query';
 import { useFetchUserInfo, usePatchUserInfo } from '@/hooks';
 import { SplitType, User } from '@/types';
 
 const useSplitTypeChange = () => {
   const history = useHistory();
+  const queryClient = useQueryClient();
   const { error: userInfoError, isError: isUserInfoError, userInfo } = useFetchUserInfo();
 
   const { age, audioCoach, explanation, gender, height, nickname, speed, weight } =
@@ -14,7 +16,12 @@ const useSplitTypeChange = () => {
     isError: isPatchUserError,
     isLoading: isPatchUserInfoLoading,
     mutate,
-  } = usePatchUserInfo({ onSuccess: () => history.goBack() });
+  } = usePatchUserInfo({
+    onSuccess: () => {
+      queryClient.invalidateQueries('userInfo');
+      history.goBack();
+    },
+  });
 
   const patchUserInfo = (splitType: SplitType | '') => {
     const newUserInfo = {
