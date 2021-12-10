@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './exerciseRoutine.module.scss';
-import { HistorySection, Loading, RecommendSection } from '@/components';
+import { HistorySection, LoadingIndicator, RecommendSection } from '@/components';
 import { useExerciseRoutine } from '@/hooks';
 import Setting from '@/assets/svg/setting.svg';
 import Calendar from '@/assets/svg/calendar.svg';
@@ -34,7 +34,7 @@ const ExerciseRoutine = () => {
 
   return (
     <>
-      {isLoadingSuggestion && <Loading />}
+      {isLoadingSuggestion && <LoadingIndicator />}
       <section className={s_exerciseRoutine}>
         <h2 className="s_a11yHidden">헬스 루틴 추천</h2>
         <nav className={s_navigator}>
