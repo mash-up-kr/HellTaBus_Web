@@ -8,9 +8,6 @@ const useSplitTypeChange = () => {
   const queryClient = useQueryClient();
   const { error: userInfoError, isError: isUserInfoError, userInfo } = useFetchUserInfo();
 
-  const { age, audioCoach, explanation, gender, height, nickname, speed, weight } =
-    userInfo as User;
-
   const {
     error: patchUserError,
     isError: isPatchUserError,
@@ -24,6 +21,10 @@ const useSplitTypeChange = () => {
   });
 
   const patchUserInfo = (splitType: SplitType | '') => {
+    if (!userInfo) return;
+
+    const { age, audioCoach, explanation, gender, height, nickname, speed, weight } = userInfo;
+
     const newUserInfo = {
       age,
       audioCoach,
