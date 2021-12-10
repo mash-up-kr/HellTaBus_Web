@@ -61,19 +61,19 @@ function ExerciseSpeed({
         />
 
         <CustomLabel
-          htmlFor="middleExerciseSpeed"
+          htmlFor="normalExerciseSpeed"
           className={classNames(s_exerciseSpeedButton, {
-            [s_selectedExerciseSpeed]: exerciseSpeed === 'MIDDLE',
+            [s_selectedExerciseSpeed]: exerciseSpeed === 'NORMAL',
           })}
         >
           보통
         </CustomLabel>
         <CustomInput
           type="radio"
-          value="middleExerciseSpeed"
-          id="middleExerciseSpeed"
+          value="normalExerciseSpeed"
+          id="normalExerciseSpeed"
           className={classNames('s_a11yHidden')}
-          onClick={createExerciseSpeedStateChangeHandler('MIDDLE')}
+          onClick={createExerciseSpeedStateChangeHandler('NORMAL')}
         />
 
         <CustomLabel
