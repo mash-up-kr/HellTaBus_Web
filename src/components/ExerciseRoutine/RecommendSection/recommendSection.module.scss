@@ -74,15 +74,19 @@
     text-align: left;
 
     span {
-      line-height: 3.2rem;
+      display: inline-block;
+      height: 3.1rem;
+      line-height: 3.1rem;
     }
 
     em {
+      display: inline-block;
       font-style: normal;
-      line-height: 3.2rem;
+      height: 3.1rem;
+      line-height: 3.1rem;
     }
 
-    .s_split_number {
+    .s_splitType {
       align-items: center;
       background: rgba(249, 247, 252, 0.2);
       border: 0.1px solid rgba(249, 247, 252, 0.5);
@@ -103,7 +107,7 @@
   }
 
   .s_otherExercise {
-    min-height: 1.9rem;
+    height: 1.9rem;
     order: 1;
     padding-left: 2.4rem;
 
