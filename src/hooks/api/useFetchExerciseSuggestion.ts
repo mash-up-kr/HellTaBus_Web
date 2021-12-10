@@ -7,9 +7,9 @@ const useFetchExerciseSuggestion = (from: string, to: string) => {
     'suggestion',
     () => getSuggestionExercise(from, to),
     {
-      staleTime: 1000 * 60 * 60 * 6, // 6시간
       retry: 1,
       keepPreviousData: true,
+      refetchOnWindowFocus: 'always',
     }
   );
 
