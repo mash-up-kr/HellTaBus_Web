@@ -1,9 +1,5 @@
 @use '@/styles/color';
 
-.s_entireContainer {
-  width: 100%;
-}
-
 .s_componentContainer {
   align-items: center;
   display: flex;
@@ -34,6 +30,22 @@
         color: color.$primary;
       }
     }
+
+    .s_noProgressBarTitle {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 4.8rem;
+      margin-top: 5.5rem;
+      width: 100%;
+
+      > span {
+        margin-bottom: 1rem;
+      }
+      .s_highlight {
+        color: color.$primary;
+      }
+    }
+
     .s_inputContainer {
       position: relative;
       width: 100%;
@@ -112,6 +124,24 @@
     &:disabled {
       background-color: color.$disable;
       color: color.$onBackground;
+    }
+  }
+
+  .s_submitButton {
+    background-color: color.$primary;
+    border-radius: 2.7rem;
+    bottom: 5rem;
+    color: color.$onPrimary;
+    font-size: 1.6rem;
+    font-weight: 700;
+    height: 5.4rem;
+    position: absolute;
+    width: 23rem;
+
+    &:disabled {
+      background-color: color.$disable;
+      color: color.$onBackground;
+      cursor: not-allowed;
     }
   }
 }

@@ -8,11 +8,13 @@ import { Tab } from '@/types';
 interface TabsProps {
   children: ReactNode;
   headers: Tab[];
+  className?: string;
 }
 
-const { s_tabList, s_tabButtonWrapper, s_tabButton, s_selcted, s_circle } = style;
+const { s_tabs, s_tabList, s_tabButtonWrapper, s_tabButton, s_selcted, s_circle, s_tabPanel } =
+  style;
 
-const Tabs = ({ children, headers }: TabsProps) => {
+const Tabs = ({ children, headers, className }: TabsProps) => {
   const {
     tabListRefs,
     isSelected,
@@ -25,7 +27,7 @@ const Tabs = ({ children, headers }: TabsProps) => {
   const getPanelId = (id: string) => `${id}-tab`;
 
   return (
-    <div>
+    <div className={classNames(s_tabs, className)}>
       <Keyboard
         handleLeft={handleLeftKey}
         handleRight={handleRightKey}
@@ -56,13 +58,14 @@ const Tabs = ({ children, headers }: TabsProps) => {
         </div>
       </Keyboard>
 
-      {Array.isArray(children) && children.length === headers.length
+      {Array.isArray(children)
         ? children.map((child, index) => (
             <div
               key={`tabpanel-${index}`}
+              className={classNames(s_tabPanel)}
               role="tabpanel"
-              id={getPanelId(headers[index].id)}
-              aria-labelledby={headers[index].id}
+              id={getPanelId(headers[index]?.id)}
+              aria-labelledby={headers[index]?.id}
               tabIndex={0}
               hidden={!isSelected(index)}
             >
@@ -74,4 +77,4 @@ const Tabs = ({ children, headers }: TabsProps) => {
   );
 };
 
-export default Tabs;
+export default React.memo(Tabs);

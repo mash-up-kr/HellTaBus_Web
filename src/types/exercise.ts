@@ -1,3 +1,10 @@
+export interface ExerciseDescription {
+  what: string;
+  where: string;
+  how: string[];
+  caution: string;
+}
+
 export interface Exercise {
   id: number;
   name: string;
@@ -10,6 +17,8 @@ export interface Exercise {
   setBreakTime: number;
   breakTime: number;
   imageLink: string;
+  placeHolderImage: string;
+  description: string;
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;
@@ -55,3 +64,10 @@ export interface ExerciseLog {
 }
 
 export type SplitType = 'FULL_BODY_WORKOUT' | 'SPLIT_3_DAY_WORKOUT' | 'SPLIT_5_DAY_WORKOUT';
+
+interface ExercisePartInTabPanel {
+  part: string;
+  exercises: Exercise[];
+}
+
+export type ExercisePanel = ExercisePartInTabPanel[];

@@ -6,13 +6,14 @@ import { ExerciseLog } from '@/types';
 interface Props {
   exerciseHistory: ExerciseLog[];
   nickname: string;
+  isLoadingExerciseHistory: boolean;
 }
 
 const { s_historySection, s_calendarSection } = style;
 
 const LAST_DAY_OF_WEEK = 6;
 
-const HistorySection = ({ exerciseHistory, nickname }: Props) => {
+const HistorySection = ({ exerciseHistory, nickname, isLoadingExerciseHistory }: Props) => {
   const [historyMessage, setHistoryMessage] = useState<string>();
 
   const today = new Date();
@@ -62,10 +63,14 @@ const HistorySection = ({ exerciseHistory, nickname }: Props) => {
     <section className={s_historySection}>
       <div className={s_calendarSection}>
         <em>
-          <strong>
-            {currentMonth}월 {currentWeek}주차
-          </strong>{' '}
-          {historyMessage}
+          {!isLoadingExerciseHistory && (
+            <>
+              <strong>
+                {currentMonth}월 {currentWeek}주차
+              </strong>{' '}
+              {historyMessage}
+            </>
+          )}
         </em>
         <WeekHistory currentWeekHistory={currentWeekHistory} />
       </div>

@@ -1,10 +1,11 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import style from './audioCoach.module.scss';
-import { CustomInput, CustomLabel } from '@/components/common';
 import scary from '@/assets/audio/scary.mp3';
-import funny from '@/assets/audio/funny.mp3';
+import kid from '@/assets/audio/kid.mp3';
 import comfortable from '@/assets/audio/comfortable.mp3';
+import { CustomInput, CustomLabel, CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
 const {
   s_mainTitle,
@@ -15,27 +16,27 @@ const {
   s_audioCoachButton,
   s_selectedAudioCoach,
   s_selectedScaryAudioCoach,
-  s_selectedFunnyAudioCoach,
+  s_selectedKidAudioCoach,
   s_selectedComfortableAudioCoach,
-  s_nextButton,
 } = style;
 
 interface Props {
   audioCoach: string;
   setAudioCoach: (audioCoach: string) => void;
-  handleSetNextPage: () => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
+  buttonType: CustomButtonType;
 }
 
 const SCARY = new Audio(scary);
-const FUNNY = new Audio(funny);
+const KID = new Audio(kid);
 const COMFORTABLE = new Audio(comfortable);
 
-const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => {
+const AudioCoach = ({ audioCoach, setAudioCoach, handleClickCustomEvent, buttonType }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!audioCoach);
   const [currentlyPlayingAudio, setCurrentlyPlayingAudio] = useState('');
   const [durationTime, setDurationTime] = useState('0s');
   const [animationTimerId, setAnimationTimerId] = useState<NodeJS.Timeout | null>(null);
-  const audios = { SCARY, FUNNY, COMFORTABLE };
+  const audios = { SCARY, KID, COMFORTABLE };
 
   const createAudioCoachStateChangeHandler = (userAudioCoach: string) => () => {
     setAudioCoach(userAudioCoach);
@@ -137,30 +138,27 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleSetNextPage }: Props) => 
         />
 
         <CustomLabel
-          htmlFor="funny"
-          style={currentlyPlayingAudio === 'FUNNY' ? { animationDuration: durationTime } : {}}
+          htmlFor="kid"
+          style={currentlyPlayingAudio === 'KID' ? { animationDuration: durationTime } : {}}
           className={classNames(s_audioCoachButton, {
-            [s_selectedAudioCoach]: audioCoach === 'FUNNY',
-            [s_selectedFunnyAudioCoach]: currentlyPlayingAudio === 'FUNNY',
+            [s_selectedAudioCoach]: audioCoach === 'KID',
+            [s_selectedKidAudioCoach]: currentlyPlayingAudio === 'KID',
           })}
         >
           운동을 잘아는 잼민이 코치
         </CustomLabel>
         <CustomInput
-          id="funny"
+          id="kid"
           type="radio"
           className={classNames('s_a11yHidden')}
-          onClick={createAudioCoachStateChangeHandler('FUNNY')}
+          onClick={createAudioCoachStateChangeHandler('KID')}
         />
       </div>
-      <button
-        className={classNames(s_nextButton)}
-        type="button"
-        onClick={handleSetNextPage}
-        disabled={isDisabled}
-      >
-        다음
-      </button>
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
 };

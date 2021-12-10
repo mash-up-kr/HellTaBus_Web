@@ -1,5 +1,19 @@
 @use '@/styles/color';
 
 .s_exerciseChoice {
-  background-color: color.$onPrimary;
+  height: 100vh;
+
+  .s_exerciseChoiceHeader {
+    background-color: color.$onPrimary;
+  }
+
+  .s_exerciseTabs {
+    height: calc(100% - 12.6rem);
+  }
+
+  .s_exerciseTabPanel {
+    padding: {
+      top: 3.2rem;
+    }
+  }
 }

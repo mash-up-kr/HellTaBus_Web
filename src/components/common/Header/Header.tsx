@@ -6,7 +6,7 @@ import style from './header.module.scss';
 const { s_header, s_previousButton, s_title } = style;
 
 interface Props {
-  handleClickBackButton: () => void;
+  handleClickBackButton: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   title?: string;
 }

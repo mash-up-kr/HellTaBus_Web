@@ -1,5 +1,7 @@
 import { SplitType } from '@/types';
 
+export type CustomButtonType = 'start' | 'save' | 'next' | 'complete' | 'letsGo';
+
 export interface SurveyFields {
   nickname: string;
   gender: string;
