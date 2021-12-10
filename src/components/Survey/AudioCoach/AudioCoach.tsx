@@ -41,7 +41,15 @@ const AudioCoach = ({ audioCoach, setAudioCoach, handleClickCustomEvent, buttonT
   const createAudioCoachStateChangeHandler = (userAudioCoach: string) => () => {
     setAudioCoach(userAudioCoach);
     setIsDisabled(false);
-    setCurrentlyPlayingAudio(userAudioCoach);
+
+    // MEMO(@mango906): 아래 코드가 이해되지 않으실텐데, 해당 이슈를 확인해주세요!
+    // https://github.com/mash-up-kr/HellTaBus_Web/issues/103
+    setTimeout(() => {
+      setCurrentlyPlayingAudio('');
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      document.body.offsetHeight;
+      setCurrentlyPlayingAudio(userAudioCoach);
+    });
 
     Object.entries(audios).forEach(([audioKey, audioSound]) => {
       if (audioKey === userAudioCoach) {
