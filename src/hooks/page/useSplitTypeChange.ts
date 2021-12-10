@@ -2,6 +2,7 @@ import { useHistory } from 'react-router-dom';
 import { useQueryClient } from 'react-query';
 import { useFetchUserInfo, usePatchUserInfo } from '@/hooks';
 import { SplitType, User } from '@/types';
+import { setBackButtonReceive } from '@/utils/mobile/action';
 
 const useSplitTypeChange = () => {
   const history = useHistory();
@@ -16,7 +17,12 @@ const useSplitTypeChange = () => {
   } = usePatchUserInfo({
     onSuccess: () => {
       queryClient.invalidateQueries('userInfo');
-      history.goBack();
+      setBackButtonReceive(
+        { target: 'android' },
+        (result_cd: string, result_msg: string, extra: JSON) => {
+          console.log(result_cd + result_msg + JSON.stringify(extra));
+        }
+      );
     },
   });
 
