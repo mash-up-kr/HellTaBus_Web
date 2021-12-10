@@ -34,7 +34,7 @@ const ExerciseRoutine = () => {
 
   return (
     <>
-      {isLoadingSuggestion && <LoadingIndicator />}
+      {isLoadingSuggestion && <></>}
       <section className={s_exerciseRoutine}>
         <h2 className="s_a11yHidden">헬스 루틴 추천</h2>
         <nav className={s_navigator}>
