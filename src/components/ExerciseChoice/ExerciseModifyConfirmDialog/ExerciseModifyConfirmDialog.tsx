@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { ConfirmModalDialog } from '@/components';
 import style from './exerciseModifyConfirmDialog.module.scss';
+import { setBackButtonReceive } from '@/utils/mobile/action';
 
 interface Props {
   handleCancel: React.MouseEventHandler<HTMLButtonElement>;
@@ -11,6 +12,12 @@ interface Props {
 const { s_title, s_description } = style;
 
 const ExerciseModifyConfirmDialog = ({ handleCancel, handleApprove }: Props) => {
+  useEffect(() => {
+    setBackButtonReceive({ target: 'web' });
+    return () => {
+      setBackButtonReceive({ target: 'android' });
+    };
+  }, []);
   return (
     <ConfirmModalDialog handleCancel={handleCancel} handleApprove={handleApprove}>
       <span className={classNames(s_title, 's_whiteSpace')}>운동부위 변경하시겠어요?</span>
