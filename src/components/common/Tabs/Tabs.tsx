@@ -98,6 +98,7 @@ const Tabs = ({
 
       {isModifyConfirmDialogOpen && (
         <ExerciseModifyConfirmDialog
+          setIsModifyConfirmDialogOpen={setIsModifyConfirmDialogOpen}
           handleCancel={() => setIsModifyConfirmDialogOpen(false)}
           handleApprove={() => {
             selectItem(clickedIndex);
