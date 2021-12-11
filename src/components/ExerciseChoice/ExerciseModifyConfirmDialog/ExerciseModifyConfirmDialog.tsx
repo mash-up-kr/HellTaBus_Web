@@ -25,6 +25,7 @@ const ExerciseModifyConfirmDialog = ({
     setBackButtonReceive({ target: 'web' });
     return () => {
       setBackButtonReceive({ target: 'android' });
+      customOnBackButtonPressed(() => {});
     };
   }, [setIsModifyConfirmDialogOpen]);
   return (
