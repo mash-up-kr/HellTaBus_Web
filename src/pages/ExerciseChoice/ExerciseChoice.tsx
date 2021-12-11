@@ -2,14 +2,7 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import { useHistory } from 'react-router-dom';
 import { useExerciseChoice } from '@/hooks';
-import {
-  Tabs,
-  Header,
-  ExercisePartCarousel,
-  ExerciseChoiceBottom,
-  Loading,
-  ExerciseModifyConfirmDialog,
-} from '@/components';
+import { Tabs, Header, ExercisePartCarousel, ExerciseChoiceBottom, Loading } from '@/components';
 import style from './exerciseChoice.module.scss';
 import { EXERCISE_SUGGESTION_SIZE_BY_SPLIT_TYPE } from '@/consts';
 
