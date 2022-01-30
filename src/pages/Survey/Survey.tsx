@@ -21,6 +21,10 @@ import style from './survey.module.scss';
 
 const { s_componentContainer } = style;
 
+interface Props {
+  history: History;
+}
+
 const SURVEY_STATE_KEY = {
   NICKNAME: 'nickname',
   AGE: 'age',
