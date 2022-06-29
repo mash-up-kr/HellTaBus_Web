@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { EXERCISE_CHOICE_PAGE, EXERCISE_ROUTINE_PAGE, SURVEY_PAGE } from '@/consts/route';
+import {
+  EXERCISE_CHOICE_PAGE,
+  EXERCISE_ROUTINE_PAGE,
+  SURVEY_PAGE,
+  SPLIT_TYPE_CHAGNE_PAGE,
+} from '@/consts/route';
 import style from './home.module.scss';
 
 const { s_navigator } = style;
@@ -18,6 +23,9 @@ function Home() {
         </li>
         <li>
           <Link to={EXERCISE_ROUTINE_PAGE}>Exercise Routine</Link>
+        </li>
+        <li>
+          <Link to={SPLIT_TYPE_CHAGNE_PAGE}>Split Type Change</Link>
         </li>
       </ul>
     </nav>

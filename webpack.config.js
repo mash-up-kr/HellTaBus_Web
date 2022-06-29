@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const REGEX = {
   CSS: /\.css$/,
@@ -80,7 +81,7 @@ module.exports = (env, argv) => {
           loader: 'babel-loader',
         },
         {
-          test: /\.(png|jpe?g|gif|woff|woff2|ttf|ico)$/i,
+          test: /\.(png|jpe?g|gif|ico|mp3)$/i,
           use: [
             {
               loader: 'file-loader',
@@ -90,6 +91,10 @@ module.exports = (env, argv) => {
         {
           test: /\.svg$/,
           use: ['@svgr/webpack'],
+        },
+        {
+          test: /\.(woff|woff2|eot|ttf|otf)$/i,
+          type: 'asset/resource',
         },
         getStyleRule({
           test: REGEX.CSS,
@@ -132,6 +137,7 @@ module.exports = (env, argv) => {
       new CleanWebpackPlugin({
         cleanStaleWebpackAssets: false,
       }),
+      new Dotenv(),
     ],
   };
 };

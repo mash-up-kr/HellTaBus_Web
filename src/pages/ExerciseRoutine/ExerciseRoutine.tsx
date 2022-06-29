@@ -1,30 +1,64 @@
 import React from 'react';
 import style from './exerciseRoutine.module.scss';
-import { HistorySection, RecommendSection } from '@/components';
-import { Exercise } from '@/types/exercise';
-import dumbbellVentOverLow from '@/assets/images/dumbbell-vent-over-low.jpg';
+import { HistorySection, Loading, RecommendSection } from '@/components';
+import { useExerciseRoutine } from '@/hooks';
+import Setting from '@/assets/svg/setting.svg';
+import Calendar from '@/assets/svg/calendar.svg';
+import { startActivity } from '@/utils/mobile/action';
+import { HISTORY_ACTIVITY, SETTING_ACTIVITY } from '@/consts';
 
-const { s_exerciseRoutine } = style;
+const { s_exerciseRoutine, s_navigator } = style;
 
-// TODO: api를 붙히면 삭제 할 더미데이터
-const recommendExerciseList: Exercise[] = [
-  { img: dumbbellVentOverLow, name: '덤벨 벤트 오버 로우' },
-  { img: dumbbellVentOverLow, name: '덤벨 인크라인 벤치프레스' },
-  { img: dumbbellVentOverLow, name: '덤벨 벤트 오버 로우' },
-  { img: dumbbellVentOverLow, name: '덤벨 벤트 오버 로우' },
-  { img: dumbbellVentOverLow, name: '덤벨 벤트 오버 로우' },
-  { img: dumbbellVentOverLow, name: '덤벨 벤트 오버 로우' },
-  { img: dumbbellVentOverLow, name: '덤벨 벤트 오버 로우' },
-];
+const ExerciseRoutine = () => {
+  const { suggestion, exerciseHistory, userInfo, isLoadingSuggestion, isLoadingExerciseHistory } =
+    useExerciseRoutine();
+  const { suggestionExerciseList, suggestionPartList } = suggestion;
 
-function ExerciseRoutine() {
+  const handleOpenSettingActivity: React.MouseEventHandler<HTMLButtonElement> = () => {
+    const option = {
+      target: SETTING_ACTIVITY,
+    };
+    startActivity(option, (resCodes: string, resMsg: string, resData: JSON) => {
+      console.log(resCodes + resMsg + JSON.stringify(resData));
+    });
+  };
+
+  const handleOpenHistoryActivity: React.MouseEventHandler<HTMLButtonElement> = () => {
+    const option = {
+      target: HISTORY_ACTIVITY,
+    };
+    startActivity(option, (resCodes: string, resMsg: string, resData: JSON) => {
+      console.log(resCodes + resMsg + JSON.stringify(resData));
+    });
+  };
+
   return (
-    <section className={s_exerciseRoutine}>
-      <h2 className="s_a11yHidden">헬스 루틴 추천</h2>
-      <HistorySection />
-      <RecommendSection recommendExerciseList={recommendExerciseList} />
-    </section>
+    <>
+      {isLoadingSuggestion && <Loading />}
+      <section className={s_exerciseRoutine}>
+        <h2 className="s_a11yHidden">헬스 루틴 추천</h2>
+        <nav className={s_navigator}>
+          <button type="button" onClick={handleOpenHistoryActivity}>
+            <Calendar width="20" height="20" />
+          </button>
+          <button type="button" onClick={handleOpenSettingActivity}>
+            <Setting width="20" height="20" />
+          </button>
+        </nav>
+        <HistorySection
+          exerciseHistory={exerciseHistory}
+          nickname={userInfo?.nickname ?? ''}
+          isLoadingExerciseHistory={isLoadingExerciseHistory}
+        />
+        <RecommendSection
+          splitType={userInfo?.splitType}
+          suggestionExerciseList={suggestionExerciseList}
+          suggestionPartList={suggestionPartList}
+          isLoadingSuggestion={isLoadingSuggestion}
+        />
+      </section>
+    </>
   );
-}
+};
 
 export default ExerciseRoutine;

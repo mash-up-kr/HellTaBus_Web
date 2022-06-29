@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import styles from './gender.module.scss';
-import NextButton from '@/components/common/NextButton/NextButton';
+import style from './gender.module.scss';
+import { CustomInput, CustomLabel, CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
-const { s_container, s_title, s_genderButton, s_selectedGender } = styles;
+const {
+  s_container,
+  s_title,
+  s_genderButton,
+  s_selectedGender,
+  s_highlight,
+  s_radioButtonContainer,
+} = style;
 
 interface Props {
   nickname: string;
   gender: string;
-  setGender: (value: string) => void;
-  setNextPage: () => void;
+  setGender: (gender: string) => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
+  buttonType: CustomButtonType;
 }
 
-function Gender({ nickname, gender, setGender, setNextPage }: Props) {
+const Gender = ({ nickname, gender, setGender, handleClickCustomEvent, buttonType }: Props) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(!gender);
 
   const handleClickGenderButton = (userGender: string) => () => {
@@ -22,28 +31,47 @@ function Gender({ nickname, gender, setGender, setNextPage }: Props) {
 
   return (
     <section className={classNames(s_container)}>
-      <h2 className={classNames(s_title)}>
-        {nickname}님의 <span>성별</span>은 무엇인가요?
-      </h2>
-      <div>
-        <button
-          type="button"
-          className={classNames(s_genderButton, { [s_selectedGender]: gender === 'male' })}
-          onClick={handleClickGenderButton('male')}
+      <h2 className={classNames('s_a11yHidden')}>성별 선택</h2>
+      <p className={classNames(s_title)}>
+        <span className={classNames('s_whiteSpace')}>{nickname}님의</span>
+        <span className={classNames(s_highlight)}>성별</span>은 무엇인가요?
+      </p>
+
+      <div className={classNames(s_radioButtonContainer)}>
+        <CustomLabel
+          htmlFor="male"
+          className={classNames(s_genderButton, { [s_selectedGender]: gender === 'MALE' })}
         >
           남성
-        </button>
-        <button
-          type="button"
-          className={classNames(s_genderButton, { [s_selectedGender]: gender === 'female' })}
-          onClick={handleClickGenderButton('female')}
+        </CustomLabel>
+        <CustomInput
+          type="radio"
+          id="male"
+          value="male"
+          onClick={handleClickGenderButton('MALE')}
+          className={classNames('s_a11yHidden')}
+        />
+        <CustomLabel
+          htmlFor="female"
+          className={classNames(s_genderButton, { [s_selectedGender]: gender === 'FEMALE' })}
         >
           여성
-        </button>
+        </CustomLabel>
+        <CustomInput
+          type="radio"
+          id="female"
+          value="female"
+          onClick={handleClickGenderButton('FEMALE')}
+          className={classNames('s_a11yHidden')}
+        />
       </div>
-      <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
-}
+};
 
 export default Gender;

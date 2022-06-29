@@ -1,5 +1,73 @@
-// TODO: api에서 응답받는 interface가 확실하게 잡히면 수정 예정
-export interface Exercise {
-  img: string;
-  name: string;
+export interface ExerciseDescription {
+  what: string;
+  where: string;
+  how: string[];
+  caution: string;
 }
+
+export interface Exercise {
+  id: number;
+  name: string;
+  priority: number;
+  part: string;
+  baseCount: number;
+  setCount: number;
+  startWeight: number;
+  changeWeight: number;
+  setBreakTime: number;
+  breakTime: number;
+  imageLink: string;
+  placeHolderImage: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
+
+export type ExercisePartList = Partial<
+  ['SHOULDER', 'ARM', 'CHEST', 'BACK', 'LOWER', 'TRICEPS', 'BICEPS']
+>;
+
+export interface Suggestion {
+  suggestionPartList: ExercisePartList;
+  suggestionExerciseList: Exercise[];
+}
+
+export interface ExerciseSet {
+  id: number;
+  index: number;
+  weight: number;
+  startTime: string;
+  finishTime: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
+
+export interface Feedback {
+  id: number;
+  difficulty: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
+
+export interface ExerciseLog {
+  id: number;
+  startTime: string;
+  finishTime: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+  exercise: Exercise;
+  setList: ExerciseSet[];
+}
+
+export type SplitType = 'FULL_BODY_WORKOUT' | 'SPLIT_3_DAY_WORKOUT' | 'SPLIT_5_DAY_WORKOUT';
+
+interface ExercisePartInTabPanel {
+  part: string;
+  exercises: Exercise[];
+}
+
+export type ExercisePanel = ExercisePartInTabPanel[];

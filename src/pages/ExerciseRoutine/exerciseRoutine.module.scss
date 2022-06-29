@@ -5,5 +5,22 @@
   display: flex;
   flex-flow: column nowrap;
   height: 100vh;
+  overflow-x: hidden;
   text-align: center;
+}
+
+.s_navigator {
+  align-items: center;
+  display: flex;
+  height: 5.6rem;
+  justify-content: flex-end;
+  padding-right: 1.6rem;
+
+  button {
+    background-color: transparent;
+    border: 0;
+    height: 4rem;
+    padding: 1rem;
+    width: 4rem;
+  }
 }

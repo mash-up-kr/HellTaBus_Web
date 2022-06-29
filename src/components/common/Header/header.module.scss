@@ -3,14 +3,24 @@
 .s_header {
   align-items: center;
   display: flex;
-  margin-top: 3.2rem;
+  height: 5.6rem;
   padding: 0 1.6rem;
-  width: 36rem;
+  width: 100%;
 
   .s_previousButton {
-    background-color: color.$background;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
     height: 4rem;
-    margin-left: -1rem;
+    padding: 0;
     width: 4rem;
+  }
+
+  .s_title {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin: {
+      left: 0.8rem;
+      top: 0.11rem;
+    }
   }
 }

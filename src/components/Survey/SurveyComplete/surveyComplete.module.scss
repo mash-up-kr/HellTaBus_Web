@@ -1,0 +1,38 @@
+@use '@/styles/color.scss';
+
+.s_container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin-top: 10.9rem;
+  width: 100%;
+
+  .s_lottieContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .s_content {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-top: 6rem;
+    text-align: center;
+
+    span {
+      color: color.$primary;
+    }
+  }
+
+  button {
+    background-color: color.$primary;
+    border-radius: 3rem;
+    bottom: 3.6rem;
+    color: color.$onPrimary;
+    font-size: 1.6rem;
+    font-weight: 700;
+    height: 5.4rem;
+    position: absolute;
+    width: 23rem;
+  }
+}

@@ -1,33 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
-import styles from './progressBar.module.scss';
+import style from './progressBar.module.scss';
 
 interface Props {
   step: number;
 }
 
-const { s_container, s_stepContainer, s_stepComment, s_progress, s_currentStep } = styles;
+const { s_container, s_stepContainer, s_stepComment, s_progress, s_currentStep } = style;
 
-const TOTAL_LENGTH = 312;
-const TOTAL_STEP = 6;
+const MIN_STEP = 1;
+const MAX_STEP = 8;
 
 const ProgressBar = ({ step }: Props) => {
+  const message = useMemo(() => {
+    if (step === MIN_STEP) return '시작이 반!';
+    if (step === MAX_STEP) return '얼마남지 않았어요!';
+    return '';
+  }, [step]);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    setProgress((step * TOTAL_LENGTH) / TOTAL_STEP);
+    setProgress((step / MAX_STEP) * 100);
   }, [step]);
 
   return (
     <div className={classNames(s_container)}>
-      <div style={{ width: `${progress}px` }} className={classNames(s_progress)} />
+      <div style={{ width: `${progress}%` }} className={classNames(s_progress)} />
       <div className={classNames(s_stepContainer)}>
-        <span className={classNames(s_stepComment)}>
-          {step === 1 && '시작이 반!'}
-          {step === 6 && '얼마남지 않았어요!'}
-        </span>
+        <span className={classNames(s_stepComment)}>{message}</span>
         <div className={classNames(s_currentStep)}>
-          <span>{step}</span> / {TOTAL_STEP}step
+          <span>{step}</span> / {MAX_STEP}step
         </div>
       </div>
     </div>

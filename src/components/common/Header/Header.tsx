@@ -1,17 +1,19 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from './header.module.scss';
-import Back from '@/assets/back.svg';
+import Back from '@/assets/svg/back.svg';
+import style from './header.module.scss';
 
-const { s_header, s_previousButton } = styles;
+const { s_header, s_previousButton, s_title } = style;
 
 interface Props {
-  handleClickBackButton: () => void;
+  handleClickBackButton: React.MouseEventHandler<HTMLButtonElement>;
+  className?: string;
+  title?: string;
 }
 
-function Header({ handleClickBackButton }: Props) {
+const Header = ({ handleClickBackButton, className, title }: Props) => {
   return (
-    <header className={classNames(s_header)}>
+    <header className={classNames(s_header, className)}>
       <button
         type="button"
         className={classNames(s_previousButton)}
@@ -19,8 +21,9 @@ function Header({ handleClickBackButton }: Props) {
       >
         <Back />
       </button>
+      <span className={classNames(s_title)}>{title}</span>
     </header>
   );
-}
+};
 
 export default Header;

@@ -1,0 +1,19 @@
+@use '@/styles/color.scss';
+@use '@/pages/Survey/survey.module.scss';
+
+@include survey.survey-default-with-button;
+.s_spiltCarousel {
+  padding: 0 2.4rem;
+  position: absolute;
+  top: 23rem;
+
+  & > li {
+    margin: 0 1.2rem;
+    &:first-child {
+      margin: 0 1.2rem 0 0;
+    }
+    &:last-child {
+      margin: 0 0 0 1.2rem;
+    }
+  }
+}

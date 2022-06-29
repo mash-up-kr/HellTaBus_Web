@@ -2,10 +2,6 @@
 
 .s_calendarDay {
   padding: 0 0.6rem 0.9rem;
-  button {
-    background-color: transparent;
-    padding: 0;
-  }
 
   span {
     align-items: center;
@@ -30,11 +26,11 @@
   }
 
   &.s_today {
-    background: rgba(96, 29, 206, 0.06);
+    background: rgba(96, 29, 206, 0.08);
     border-radius: 1rem;
   }
 
-  &.s_didExercise {
+  &.s_didExercised {
     .s_date {
       background: radial-gradient(82.86% 82.86% at 28.57% 17.14%, #a269ff 0%, #6b1dce 100%);
       border-radius: 1rem;

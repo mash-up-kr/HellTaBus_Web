@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
-import styles from './nickname.module.scss';
-import Coolicon from '@/assets/coolicon.svg';
-import NextButton from '@/components/common/NextButton/NextButton';
+import ErrorIcon from '@/assets/svg/error-icon.svg';
+import style from './nickname.module.scss';
+import { CustomInput, CustomLabel, CustomButton } from '@/components';
+import { CustomButtonType } from '@/types';
 
 const {
   s_container,
@@ -12,60 +13,88 @@ const {
   s_title,
   s_errorMsg,
   s_errorIcon,
-} = styles;
+} = style;
 
 interface Props {
   nickname: string;
-  setNickname: (value: string) => void;
-  setNextPage: () => void;
+  setNickname: (nickname: string) => void;
+  handleClickCustomEvent: React.MouseEventHandler<HTMLButtonElement>;
+  buttonType: CustomButtonType;
 }
 
-function Nickname({ nickname, setNickname, setNextPage }: Props) {
-  const [isDisabled, setIsDisabled] = useState<boolean>(!nickname);
+const Nickname = ({ nickname, setNickname, handleClickCustomEvent, buttonType }: Props) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const isDisabled = useMemo(() => !nickname || !!errorMessage, [nickname, errorMessage]);
 
-  const checkNicknameValidation = (value: string) => {
-    const nicknameRegex = /^[가-힣\s|ㄱ-ㅎ|a-z|A-Z|0-9|_|.|,]+$/g;
-    const nicknameLengthRegex = /^.{2,8}$/g;
+  useEffect(() => {
+    const isValidNickname = (userNickname: string) => {
+      const nicknameSpaceRegex = /\s/g;
+      const specialCharactersRegex = /[`~!@#$%^&*()|+\-=?;:'"<>\\{\\}\\[\]\\\\/]/g;
+      const nicknameRegex = /^[가-힣\s|ㄱ-ㅎ|a-z|A-Z|0-9|_|.|,]+$/g;
+      const nicknameLengthRegex = /^.{2,8}$/g;
 
-    if (!nicknameRegex.test(value)) {
-      setErrorMessage('한글, 영어, 숫자, 특수문자(_.,)만 가능해요');
-      setIsDisabled(true);
-    } else if (!nicknameLengthRegex.test(value)) {
-      setErrorMessage('2 ~ 8글자만 가능해요');
-      setIsDisabled(true);
+      if (nicknameSpaceRegex.test(userNickname)) {
+        return '공백을 제거해 주세요.';
+      }
+      if (specialCharactersRegex.test(nickname)) {
+        return '특수문자는 . , _ 만 가능해요';
+      }
+
+      if (!nicknameRegex.test(userNickname)) {
+        return '한글, 영어, 숫자, 특수문자(_.,)만 가능해요';
+      }
+      if (!nicknameLengthRegex.test(userNickname)) {
+        return '2 ~ 8글자만 가능해요';
+      }
+
+      return null;
+    };
+
+    const nickNameError = isValidNickname(nickname);
+
+    if (nickNameError) {
+      setErrorMessage(nickNameError);
     } else {
       setErrorMessage('');
-      setIsDisabled(false);
     }
-  };
+  }, [nickname]);
 
-  // onChange
   const handleChangeNickname = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value }: { value: string } = e.target;
     setNickname(value);
-    checkNicknameValidation(value);
   };
 
   return (
     <section className={classNames(s_container)}>
-      <h2 className={classNames(s_title)}>당신을 뭐라고 불러드릴까요?</h2>
+      <h2 className={classNames('s_a11yHidden')}>닉네임 입력</h2>
+      <p className={classNames(s_title)}>
+        <span className={classNames('s_whiteSpace')}>당신을</span>뭐라고 불러드릴까요?
+      </p>
       <div className={classNames(s_inputContainer)}>
-        <input
-          className={classNames(s_commonInput, {
-            [s_errorInput]: errorMessage,
-          })}
+        <CustomLabel htmlFor="nickname" className={classNames('s_a11yHidden')}>
+          닉네임
+        </CustomLabel>
+        <CustomInput
+          id="nickname"
           type="text"
-          placeholder="닉네임 입력"
           value={nickname}
           onChange={handleChangeNickname}
+          placeholder="닉네임 입력"
+          className={classNames(s_commonInput, {
+            [s_errorInput]: nickname !== '' && errorMessage,
+          })}
         />
-        {errorMessage && <Coolicon className={classNames(s_errorIcon)} />}
+
+        {nickname !== '' && errorMessage && <ErrorIcon className={classNames(s_errorIcon)} />}
       </div>
-      <span className={classNames(s_errorMsg)}>{errorMessage}</span>
-      <NextButton handleClickNextButton={setNextPage} isDisabled={isDisabled} />
+      <span className={classNames(s_errorMsg)}>{nickname !== '' && errorMessage}</span>
+      <CustomButton
+        buttonType={buttonType}
+        onClick={handleClickCustomEvent}
+        isDisabled={isDisabled}
+      />
     </section>
   );
-}
+};
 
 export default Nickname;

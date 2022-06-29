@@ -1,0 +1,141 @@
+@use '@/styles/color.scss';
+@use '@/pages/Survey/survey.module.scss';
+
+.s_container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+
+  .s_mainTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    width: 100%;
+    margin : {
+      bottom: 0.1rem;
+      top: 2.4rem;
+    }
+
+    .s_highlight {
+      color: color.$primary;
+    }
+  }
+
+  .s_subTitle {
+    color: color.$primaryVariant4;
+    font-size: 1.4rem;
+    font-weight: 400;
+    width: 100%;
+    margin : {
+      bottom: 4rem;
+    }
+  }
+
+  input::placeholder {
+    color: color.$onBackground3;
+    font-size: 2.2rem;
+    font-weight: 500;
+    opacity: 1; /* 파이어폭스에서 뿌옇게 나오는 현상을 방지하기 위한 css */
+  }
+  input::-webkit-input-placeholder {
+    color: color.$onBackground3;
+    font-size: 2.2rem;
+    font-weight: 500;
+  }
+
+  /* IE */
+  input:-ms-input-placeholder {
+    color: color.$onBackground3;
+    font-size: 2.2rem;
+    font-weight: 500;
+  }
+
+  /* Firefox */
+  input:-mos-input-placeholder {
+    color: color.$onBackground3;
+    font-size: 2.2rem;
+    font-weight: 500;
+  }
+}
+
+.s_nextButton {
+  background-color: color.$primary;
+  bottom: 0;
+  color: color.$onPrimary;
+  font-size: 1.6rem;
+  font-weight: 700;
+  height: 5.4rem;
+  position: absolute;
+  width: 100%;
+
+  &:disabled {
+    background-color: color.$disable;
+    color: color.$onBackground;
+  }
+}
+
+.s_radioButtonContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.s_audioCoachButton {
+  background-color: color.$primaryVariant1;
+  border: 0.1rem solid color.$disable;
+  border-radius: 1.2rem;
+  color: color.$disable;
+  font-size: 1.6rem;
+  height: 5.4rem;
+  margin: 0.2rem 0;
+  outline: none;
+  padding-top: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.s_selectedAudioCoach {
+  // animation-name: slidein;
+  animation-timing-function: linear;
+  background-size: 200% 100%;
+  border: 0.15rem solid color.$primary;
+  color: color.$primary;
+  font-weight: 700;
+}
+
+.s_selectedScaryAudioCoach {
+  // animation-duration: 4.14s;
+  animation-name: slidein;
+}
+
+.s_selectedKidAudioCoach {
+  // animation-duration: 5.76s;
+  animation-name: slidein;
+}
+
+.s_selectedComfortableAudioCoach {
+  // animation-duration: 2.376s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  0% {
+    /* stylelint-disable-next-line declaration-colon-newline-after */
+    background-image: linear-gradient(
+      to right,
+      color.$primaryVariant2 5%,
+      color.$primaryVariant1 55%
+    );
+    background-position: 100% 0;
+  }
+  100% {
+    /* stylelint-disable-next-line declaration-colon-newline-after */
+    background-image: linear-gradient(
+      to right,
+      color.$primaryVariant2 5%,
+      color.$primaryVariant1 55%
+    );
+    background-position: 0 0;
+  }
+}

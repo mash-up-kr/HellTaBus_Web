@@ -6,20 +6,24 @@ import {
   HOME_PAGE,
   NOT_FOUND_PAGE,
   SURVEY_PAGE,
+  SPLIT_TYPE_CHAGNE_PAGE,
 } from '@/consts/route';
-import { Home, Survey, ExerciseChoice, ExerciseRoutine, NotFound } from '@/pages';
+import { Home, Survey, ExerciseChoice, ExerciseRoutine, NotFound, SplitTypeChange } from '@/pages';
 
-function App() {
+const App = () => {
   return (
-    <Switch>
-      <Route exact path={HOME_PAGE} component={Home} />
-      <Route path={SURVEY_PAGE} component={Survey} />
-      <Route path={EXERCISE_CHOICE_PAGE} component={ExerciseChoice} />
-      <Route path={EXERCISE_ROUTINE_PAGE} component={ExerciseRoutine} />
-      <Route path={NOT_FOUND_PAGE} component={NotFound} />
-      <Redirect to={NOT_FOUND_PAGE} />
-    </Switch>
+    <>
+      <Switch>
+        <Route exact path={HOME_PAGE} component={Home} />
+        <Route path={SURVEY_PAGE} component={Survey} />
+        <Route path={EXERCISE_CHOICE_PAGE} component={ExerciseChoice} />
+        <Route path={EXERCISE_ROUTINE_PAGE} component={ExerciseRoutine} />
+        <Route path={SPLIT_TYPE_CHAGNE_PAGE} component={SplitTypeChange} />
+        <Route path={NOT_FOUND_PAGE} component={NotFound} />
+        <Redirect to={NOT_FOUND_PAGE} />
+      </Switch>
+    </>
   );
-}
+};
 
 export default App;

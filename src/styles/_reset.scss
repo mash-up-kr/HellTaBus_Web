@@ -1,12 +1,11 @@
 @use './color';
 
-@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
-
 /**
  * 사용자 정의 초기화
  */
 html {
-  font-size: 10px;
+  /* 1rem = 10px */
+  font-size: 62.5%;
 }
 
 * {
